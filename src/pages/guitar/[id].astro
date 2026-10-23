@@ -1,0 +1,8 @@
+---
+const { id } = Astro.params;
+const search = Astro.url.search || '';
+if (!id) {
+  return Astro.redirect('/tabs', 301);
+}
+return Astro.redirect(`/tabs/${id}${search}`, 301);
+---

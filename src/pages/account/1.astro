@@ -1,0 +1,43 @@
+---
+import Base from '../../layouts/Base.astro';
+import AccountNav from '../../components/AccountNav.astro';
+import { currentUser } from '../../lib/api';
+import { db } from '../../lib/db';
+
+const user = await currentUser(Astro.cookies);
+let historicalUploadCount: number | null = null;
+if (user) {
+  try {
+    historicalUploadCount = await db.uploadRecord.count({ where: { userId: user.id } });
+  } catch {
+    historicalUploadCount = null;
+  }
+}
+---
+
+<Base title="创作中心 - MIMI Guitar">
+  <div class="flex items-baseline gap-6">
+    <h1 class="font-display text-heading">创作中心</h1>
+    <a href="/library" class="ml-auto text-caption text-signal hover:opacity-70">去本地导入 →</a>
+  </div>
+  <div class="mt-4"><AccountNav /></div>
+  {user ? (
+    <>
+      <div class="card mt-6 max-w-xl p-8">
+        <h2 class="font-display text-subheading">公开投稿已暂停</h2>
+        <p class="mt-2 text-body-sm leading-relaxed text-charcoal">
+          首期提供个人练习和本地曲谱导入。上传与审核 API 会返回“暂未开放”，不会把模拟审核标记为公开成功。
+          之前的投稿记录会保留；此页面不再提供修改或审核入口。
+        </p>
+        <a href="/library" class="btn btn-signal mt-5 inline-block">前往“我的谱”本地导入</a>
+        {historicalUploadCount !== null && <p class="mt-4 text-caption text-ash">历史投稿记录：{historicalUploadCount} 条（保留，不在此页处理）</p>}
+        {historicalUploadCount === null && <p class="mt-4 text-caption text-ash">当前无法读取历史投稿记录；此状态不代表记录已删除。</p>}
+      </div>
+    </>
+  ) : (
+    <div class="card mt-6 flex h-40 flex-col items-center justify-center gap-3 text-ash">
+      <p class="text-body-sm">登录后使用创作中心</p>
+      <a href="/login?returnUrl=/account/1" class="btn">去登录</a>
+    </div>
+  )}
+</Base>

@@ -1,0 +1,126 @@
+{
+  "verifiedAt": "2026-10-18T00:29:00.274Z",
+  "testedMasterCommit": "1fa5317780cf8a9e86f542c73515d96fc1c2a46d",
+  "codeCommit": "ea85e2961c64dd0b134c876758490a6667689941",
+  "checks": {
+    "test": {
+      "command": "npm test",
+      "exitCode": 0,
+      "total": 336,
+      "pass": 329,
+      "skipped": 7,
+      "fail": 0
+    },
+    "build": {
+      "command": "npm run build",
+      "exitCode": 0
+    },
+    "typecheck": {
+      "command": "npm run typecheck",
+      "exitCode": 0,
+      "svelteWarnings": 58,
+      "astroHints": 44
+    },
+    "diffCheck": {
+      "command": "git diff --check",
+      "exitCode": 0
+    }
+  },
+  "preview": {
+    "origin": "http://127.0.0.1:4336",
+    "health": {
+      "status": 200,
+      "body": {
+        "status": "alive"
+      }
+    },
+    "readiness": {
+      "status": 503,
+      "body": {
+        "status": "not_ready",
+        "process": "alive",
+        "database": {
+          "status": "unavailable",
+          "code": "database_unavailable"
+        },
+        "migrations": {
+          "status": "unavailable",
+          "required": 4,
+          "applied": 0,
+          "pending": 4,
+          "failed": 0
+        },
+        "catalog": {
+          "status": "unavailable",
+          "code": "catalog_unavailable"
+        },
+        "resources": {
+          "status": "unavailable",
+          "sampleLimitPerType": 20,
+          "score": {
+            "catalogReferences": 0,
+            "checked": 0,
+            "present": 0,
+            "missing": 0,
+            "unsupported": 0,
+            "unsampled": 0
+          },
+          "xhe": {
+            "catalogReferences": 0,
+            "checked": 0,
+            "present": 0,
+            "missing": 0,
+            "unsupported": 0,
+            "unsampled": 0
+          },
+          "soundfonts": {
+            "status": "ready",
+            "required": 3,
+            "present": 3,
+            "missing": []
+          }
+        }
+      }
+    },
+    "studioStatus": 200,
+    "fonts": [
+      {
+        "name": "acoustic_guitar_fast.sf2",
+        "status": 200,
+        "bytes": 1205140,
+        "sha256": "e57ba29a8040ed9afd336e0ebe2bb39090369cd1bd14e1e476f01be9e5089b38",
+        "matchesLocal": true
+      },
+      {
+        "name": "ukulele_fast.sf2",
+        "status": 200,
+        "bytes": 1205140,
+        "sha256": "e57ba29a8040ed9afd336e0ebe2bb39090369cd1bd14e1e476f01be9e5089b38",
+        "matchesLocal": true
+      },
+      {
+        "name": "0.sf2",
+        "status": 200,
+        "bytes": 400880,
+        "sha256": "a60b0fcc3141ba91b650c0a96e5ac9d40b09b32a421fb34eb86e81e906515d2b",
+        "matchesLocal": true
+      }
+    ],
+    "qaResourcesIncluded": false
+  },
+  "copiedExistingFonts": {
+    "files": 132,
+    "sourceHashDifferences": 0
+  },
+  "protectedOriginal": {
+    "files": 1023,
+    "hashDifferences": 0,
+    "statusRows": 402,
+    "statusDifferences": 0
+  },
+  "boundaries": [
+    "Database was intentionally unavailable in the isolated local preview; no DB migrations were run.",
+    "Resource HTTP and hash checks do not establish audible output.",
+    "No physical-device or controlled long-duration acceptance was performed."
+  ]
+}

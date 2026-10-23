@@ -1,0 +1,36 @@
+{
+  "checkedTrees": [
+    "candidate public/storage",
+    "candidate dist/client/storage"
+  ],
+  "sameResultsInBothTrees": true,
+  "totals": {
+    "rows": 16233,
+    "score": {
+      "references": 12106,
+      "present": 12102,
+      "missing": 0,
+      "unsupported": 4
+    },
+    "xhe": {
+      "references": 4127,
+      "present": 4127,
+      "missing": 0,
+      "unsupported": 0
+    },
+    "screenshot": {
+      "references": 16220,
+      "present": 16220,
+      "missing": 0,
+      "unsupported": 0
+    }
+  },
+  "unsupportedScoreIds": [
+    "1ed4dcd505e5",
+    "845bdfa92938",
+    "a144ec0da3e3",
+    "b9c4134b6e0c"
+  ],
+  "unsupportedReason": "outside approved /storage/scores/ prefix; existence and playback not verified",
+  "inspection": "read-only Tab references and file metadata; no full-library decoding or browser rendering"
+}

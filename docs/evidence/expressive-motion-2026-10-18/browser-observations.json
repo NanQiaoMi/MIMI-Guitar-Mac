@@ -1,0 +1,353 @@
+[
+  {
+    "mode": "gentle",
+    "preference": "gentle",
+    "scrollWidth": 1351,
+    "stage": "gentle-expanded",
+    "width": 1351
+  },
+  {
+    "mode": "off",
+    "preference": "system",
+    "stage": "system-reduce-overrides-choice",
+    "status": "设备系统减少动态效果已启用，当前实际效果为关闭。 偏好已保存在当前浏览器，不纳入个人数据备份。"
+  },
+  {
+    "clientWidth": 305,
+    "controls": [
+      {
+        "height": 44,
+        "label": "跟随系统",
+        "width": 75.5
+      },
+      {
+        "height": 44,
+        "label": "轻柔",
+        "width": 75.5
+      },
+      {
+        "height": 44,
+        "label": "静止",
+        "width": 75.5
+      }
+    ],
+    "innerHeight": 740,
+    "innerWidth": 320,
+    "scrollWidth": 305,
+    "stage": "motion-320"
+  },
+  {
+    "clientWidth": 375,
+    "innerHeight": 844,
+    "innerWidth": 390,
+    "scrollWidth": 375,
+    "stage": "motion-viewport"
+  },
+  {
+    "clientWidth": 753,
+    "innerHeight": 1024,
+    "innerWidth": 768,
+    "scrollWidth": 753,
+    "stage": "motion-viewport"
+  },
+  {
+    "clientWidth": 1009,
+    "innerHeight": 768,
+    "innerWidth": 1024,
+    "scrollWidth": 1009,
+    "stage": "motion-viewport"
+  },
+  {
+    "clientWidth": 1351,
+    "innerHeight": 900,
+    "innerWidth": 1366,
+    "scrollWidth": 1351,
+    "stage": "motion-viewport"
+  },
+  {
+    "dialog": "⌨️ 制谱工坊快捷键速查 ✕ 谱面编辑快捷键仅在交互式乐谱画布拥有键盘焦点时生效。Tab / Shift+Tab 始终用于页面焦点导航。 搜索快捷键  全部编辑节奏技法播放工程与草稿 显示 1 个快捷键 Ctrl + S 保存当前乐谱工程至本地草稿箱 我知道了（Esc）",
+    "focused": null,
+    "stage": "studio-shortcut-search"
+  },
+  {
+    "cursor": "position: absolute; width: 300px; height: 100px; transform: translate(139.033px, 108.2px) scale(0.01, 7.277) translateX(-50%); transform-origin: left top; transition: transform 998.958ms linear; left: 0px; top: 0px; will-change: transform; display: block; visibility: visible; opacity: 1;",
+    "playButton": "⏸",
+    "stage": "studio-playing-before-tools",
+    "title": "工坊交互验收 · 双轨练习（个人副本）"
+  },
+  {
+    "cursor": "position: absolute; width: 300px; height: 100px; transform: translate(298.79px, 135.69px) scale(0.01, 6.47612); transform-origin: left top; transition: transform linear; left: 0px; top: 0px; will-change: transform; display: block; visibility: visible; opacity: 1;",
+    "focus": "studio-open-shortcuts",
+    "playButton": "▶",
+    "stage": "studio-playing-after-tools",
+    "title": "工坊交互验收 · 双轨练习（个人副本）"
+  },
+  {
+    "cursor": "position: absolute; width: 300px; height: 100px; transform: translate(139.867px, 108.2px) scale(0.01, 7.296) translateX(-50%); transform-origin: left top; transition: transform 1997.92ms linear; left: 0px; top: 0px; will-change: transform; display: block; visibility: visible; opacity: 1;",
+    "playButton": "⏸",
+    "stage": "sixteen-bars-playing-before-tools"
+  },
+  {
+    "cursor": "position: absolute; width: 300px; height: 100px; transform: translate(589.813px, 879.6px) scale(0.01, 7.296) translateX(-50%); transform-origin: left top; transition: transform 1935.42ms linear; left: 0px; top: 0px; will-change: transform; display: block; visibility: visible; opacity: 1;",
+    "focus": "studio-open-shortcuts",
+    "playButton": "⏸",
+    "stage": "sixteen-bars-playing-after-tools"
+  },
+  {
+    "stage": "sixteen-bars-surface-continuity",
+    "before": 2692,
+    "after": 2692
+  },
+  {
+    "importCategory": "bass",
+    "note": "验收备注：先慢练，再逐步提速。",
+    "queue": [
+      "工坊交互验收 · 双轨练习（个人副本）",
+      "动效与工具验收 · 自写十六小节（个人副本）"
+    ],
+    "searchCategory": "guitar",
+    "stage": "library-order-and-category"
+  },
+  {
+    "scrollWidth": 305,
+    "stage": "library-320",
+    "width": 305
+  },
+  {
+    "retryButtons": [
+      {
+        "disabled": false,
+        "text": "再次下载 v2 清单"
+      },
+      {
+        "disabled": false,
+        "text": "再次下载第 1 / 1 卷"
+      }
+    ],
+    "stage": "backup-retry",
+    "status": [
+      "已再次发起第 1 卷下载；请在浏览器下载列表确认文件，应用无法确认最终保存。",
+      "第 1 / 1 卷已准备。 每次只生成一卷；点击文件按钮才会发起下载，浏览器可能阻止连续下载。页面只保留当前已准备卷供重复下载；准备下一卷会替换当前卷，请先在浏览器下载列表确认并按需重下。发起下载不等于确认设备已保存。",
+      "第 1 / 1 卷已准备。"
+    ]
+  },
+  {
+    "stage": "catalog-native-query-navigation",
+    "url": "http://127.0.0.1:4338/tabs?difficulty=2&no=1"
+  },
+  {
+    "scrollWidth": 305,
+    "stage": "catalog-320",
+    "width": 305
+  },
+  {
+    "stage": "cross-tab-preference"
+  },
+  {
+    "stage": "catalog-sort-fixed-final",
+    "url": "http://127.0.0.1:4338/tabs?difficulty=2&no=1&sort=0",
+    "selectedLatest": "true"
+  },
+  {
+    "mode": "gentle",
+    "preference": "gentle",
+    "stage": "cross-tab-preference-confirmed",
+    "status": "当前实际效果：轻柔。 偏好已保存在当前浏览器，不纳入个人数据备份。"
+  },
+  {
+    "conflictText": [
+      "备注已在其他页面更新。草稿仍保留，可复制；请取消草稿后再按当前备注重新编辑。"
+    ],
+    "draft": "本页未提交草稿：保留指法难点。",
+    "retryButtons": 0,
+    "stage": "note-conflict-protected"
+  },
+  {
+    "stage": "note-conflict-cancelled",
+    "value": "另一个标签页已保存的新备注。"
+  },
+  {
+    "clientWidth": 305,
+    "height": 740,
+    "scrollWidth": 320,
+    "stage": "studio-final-viewport",
+    "width": 320
+  },
+  {
+    "clientWidth": 375,
+    "height": 844,
+    "scrollWidth": 390,
+    "stage": "studio-final-viewport",
+    "width": 390
+  },
+  {
+    "clientWidth": 753,
+    "height": 1024,
+    "scrollWidth": 768,
+    "stage": "studio-final-viewport",
+    "width": 768
+  },
+  {
+    "clientWidth": 1009,
+    "height": 768,
+    "scrollWidth": 1024,
+    "stage": "studio-final-viewport",
+    "width": 1024
+  },
+  {
+    "clientWidth": 1351,
+    "height": 900,
+    "scrollWidth": 1366,
+    "stage": "studio-final-viewport",
+    "width": 1366
+  },
+  {
+    "bodyWidth": 304.8000183105469,
+    "clientWidth": 305,
+    "offenders": [
+      {
+        "class": "flex items-center gap-1.5",
+        "right": 306.26249504089355,
+        "width": 276.4624938964844
+      }
+    ],
+    "scrollWidth": 306,
+    "stage": "studio-320-settled"
+  },
+  {
+    "clientWidth": 305,
+    "dialogs": 0,
+    "height": 740,
+    "mode": "gentle",
+    "scrollWidth": 305,
+    "stage": "home-gentle-viewport",
+    "width": 320
+  },
+  {
+    "clientWidth": 375,
+    "dialogs": 0,
+    "height": 844,
+    "mode": "gentle",
+    "scrollWidth": 375,
+    "stage": "home-gentle-viewport",
+    "width": 390
+  },
+  {
+    "clientWidth": 753,
+    "dialogs": 0,
+    "height": 1024,
+    "mode": "gentle",
+    "scrollWidth": 753,
+    "stage": "home-gentle-viewport",
+    "width": 768
+  },
+  {
+    "clientWidth": 1009,
+    "dialogs": 0,
+    "height": 768,
+    "mode": "gentle",
+    "scrollWidth": 1009,
+    "stage": "home-gentle-viewport",
+    "width": 1024
+  },
+  {
+    "clientWidth": 1351,
+    "dialogs": 0,
+    "height": 900,
+    "mode": "gentle",
+    "scrollWidth": 1351,
+    "stage": "home-gentle-viewport",
+    "width": 1366
+  },
+  {
+    "href": "/tabs/1sdiivPR3YW",
+    "mode": "gentle",
+    "stage": "home-choose-next",
+    "title": "老男孩"
+  },
+  {
+    "clientWidth": 305,
+    "innerWidth": 320,
+    "openDialogs": 0,
+    "scrollWidth": 305,
+    "stage": "studio-320-final-toolbar"
+  },
+  {
+    "buttons": [
+      {
+        "height": 44,
+        "text": "✕"
+      },
+      {
+        "height": 44,
+        "text": "全部"
+      },
+      {
+        "height": 44,
+        "text": "编辑"
+      },
+      {
+        "height": 44,
+        "text": "节奏"
+      },
+      {
+        "height": 44,
+        "text": "技法"
+      },
+      {
+        "height": 44,
+        "text": "播放"
+      },
+      {
+        "height": 44,
+        "text": "工程与草稿"
+      },
+      {
+        "height": 44,
+        "text": "我知道了（Esc）"
+      }
+    ],
+    "dialogText": "⌨️\n制谱工坊快捷键速查\n✕\n\n谱面编辑快捷键仅在交互式乐谱画布拥有键盘焦点时生效。Tab / Shift+Tab 始终用于页面焦点导航。\n\n搜索快捷键 \n全部\n编辑\n节奏\n技法\n播放\n工程与草稿\n\n显示 1 个快捷键\n\nCtrl/Cmd + S\n保存当前乐谱工程至本地草稿箱\n我知道了（Esc）",
+    "search": "Cmd S",
+    "stage": "studio-mac-shortcut-final"
+  },
+  {
+    "mode": "off",
+    "preference": "off",
+    "stage": "final-off-preference"
+  },
+  {
+    "introButtons": [
+      {
+        "disabled": true,
+        "height": 44
+      }
+    ],
+    "mode": "off",
+    "moduleCount": 8,
+    "stage": "showcase-off-counter-final",
+    "text": "MIMI Spotlight Engine · 动态光标追踪 (0px, 0px) 把每一份乐谱， 都当作一页书来对待 高保真矢量乐谱库 · 毫秒级即时检索 · WebAudio 智能伴奏内核   ⌘K  12,840+ 已收录高清多轨吉他谱 3,520位 原创创作者与制谱师入驻 99.98% AlphaTab 矢量乐谱渲染率"
+  },
+  {
+    "mode": "full",
+    "stage": "showcase-full-counter-final",
+    "text": "MIMI Spotlight Engine · 动态光标追踪 (0px, 0px) 把每一份乐谱， 都当作一页书来对待 高保真矢量乐谱库 · 毫秒级即时检索 · WebAudio 智能伴奏内核   ⌘K  0+ 已收录高清多轨吉他谱 0位 原创创作者与制谱师入驻 0% AlphaTab 矢量乐谱渲染率"
+  },
+  {
+    "mode": "full",
+    "stage": "showcase-full-counter-settled",
+    "text": "MIMI Spotlight Engine · 动态光标追踪 (0px, 0px) 把每一份乐谱， 都当作一页书来对待 高保真矢量乐谱库 · 毫秒级即时检索 · WebAudio 智能伴奏内核   ⌘K  12,840+ 已收录高清多轨吉他谱 3,520位 原创创作者与制谱师入驻 99.98% AlphaTab 矢量乐谱渲染率"
+  },
+  {
+    "intro": "Design System · refero-styles Ui\n全站高级 UI 与动效全家桶 Showcase\n\n这里汇集站内预置的界面与交互动效示例，可试用曲库筛选、指板演示与纸页转场。展示曲目和数字均为内置示例，不代表实时目录统计；实际动画表现会随设备、浏览器和动效偏好变化。",
+    "mode": "full",
+    "stage": "showcase-final-copy"
+  },
+  {
+    "stage": "qa-cleanup",
+    "viewportOverride": "reset",
+    "mediaEmulation": "previously cleared; no further override",
+    "ownPreference": "system",
+    "original4336Tab": "not navigated, reloaded or edited"
+  }
+]

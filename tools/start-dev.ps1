@@ -1,0 +1,2 @@
+$p = Start-Process -FilePath "C:\Program Files\nodejs\node.exe" -ArgumentList @("node_modules/astro/astro.js","dev","--port","4321","--host") -WorkingDirectory "D:\MIMIguitarweb" -WindowStyle Hidden -RedirectStandardOutput "D:\MIMIguitarweb\tools\devserver.log" -RedirectStandardError "D:\MIMIguitarweb\tools\devserver.err.log" -PassThru
+$p.Id

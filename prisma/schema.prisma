@@ -1,0 +1,89 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String          @id @default(cuid())
+  email        String?         @unique
+  phone        String?         @unique
+  passwordHash String
+  nickname     String?
+  avatarUrl    String?
+  createdAt    DateTime        @default(now())
+  favorites    Favorite[]
+  uploads      UploadRecord[]
+}
+
+model Tab {
+  id            String        @id
+  title         String
+  artist        String?
+  category      String        @default("guitar")
+  difficulty    Int           @default(0)
+  style         Int?
+  key           String?
+  tuning        String?
+  sheetForm     Int           @default(0)
+  bpm           Int?
+  timeSig       String?
+  capo          Int           @default(0)
+  tuningText    String?
+  heat          Int           @default(0)
+  uploader      String?
+  publishDate   DateTime?
+  format        String        @default("gp")
+  scoreUrl      String?
+  xheUrl        String?
+  screenshotUrl String?
+  description   String?
+  tags          String        @default("[]")
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+  favorites     Favorite[]
+
+  @@index([category, difficulty, sheetForm])
+  @@index([category, heat])
+  @@index([category, createdAt])
+  @@index([artist])
+  @@index([title])
+}
+
+model Favorite {
+  id        String   @id @default(cuid())
+  userId    String
+  tabId     String
+  createdAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  tab       Tab      @relation(fields: [tabId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, tabId])
+}
+
+model UploadRecord {
+  id            String    @id @default(cuid())
+  userId        String?
+  title         String
+  artist        String?
+  fileName      String
+  scoreUrl      String
+  screenshotUrl String?
+  metaJson      String?
+  tabId         String?
+  status        String    @default("pending")
+  createdAt     DateTime  @default(now())
+  user          User?     @relation(fields: [userId], references: [id], onDelete: SetNull)
+}
+
+model Article {
+  id        String   @id @default(cuid())
+  title     String
+  content   String
+  category  String?
+  views     Int      @default(0)
+  createdAt DateTime @default(now())
+}

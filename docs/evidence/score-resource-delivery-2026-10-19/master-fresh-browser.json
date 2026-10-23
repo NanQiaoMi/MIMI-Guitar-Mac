@@ -1,0 +1,10 @@
+{
+  "newClient": {
+    "alerts": [],
+    "playEnabled": true,
+    "svgs": 20,
+    "url": "http://127.0.0.1:4336/tabs/1sdc49P3eKm",
+    "vectorPages": 21
+  },
+  "errors": []
+}

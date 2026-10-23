@@ -1,0 +1,1045 @@
+[
+  {
+    "stage": "baseline-practice-to-tabs",
+    "clickToControlWallMs": 3113,
+    "public": {
+      "mode": "full",
+      "modules": [],
+      "title": "吉他谱大全 · MIMI Guitar 典藏手稿工坊",
+      "url": "http://127.0.0.1:4338/tabs"
+    },
+    "network": [
+      {
+        "url": "http://127.0.0.1:4338/tabs",
+        "type": "Document",
+        "status": 200,
+        "fromDiskCache": false,
+        "fromPrefetchCache": false,
+        "headersMs": 2053.887,
+        "requestId": "D8267CD513C5CD7D68292637DC3E556F"
+      },
+      {
+        "url": "http://127.0.0.1:4338/_astro/fraunces-latin-400-normal.6IfK1voy.woff2",
+        "type": "Font",
+        "status": 200,
+        "fromDiskCache": true,
+        "fromPrefetchCache": false,
+        "headersMs": 0.994,
+        "requestId": "39188.153"
+      },
+      {
+        "url": "http://127.0.0.1:4338/_astro/fraunces-latin-500-normal.DnGCNyPD.woff2",
+        "type": "Font",
+        "status": 200,
+        "fromDiskCache": true,
+        "fromPrefetchCache": false,
+        "headersMs": 39.716,
+        "requestId": "39188.159"
+      },
+      {
+        "url": "http://127.0.0.1:4338/_astro/inter-latin-400-normal.C38fXH4l.woff2",
+        "type": "Font",
+        "status": 200,
+        "fromDiskCache": true,
+        "fromPrefetchCache": false,
+        "headersMs": 0.773,
+        "requestId": "39188.173"
+      },
+      {
+        "url": "http://127.0.0.1:4338/_astro/inter-latin-500-normal.Cerq10X2.woff2",
+        "type": "Font",
+        "status": 200,
+        "fromDiskCache": true,
+        "fromPrefetchCache": false,
+        "headersMs": 0.579,
+        "requestId": "39188.187"
+      },
+      {
+        "url": "http://127.0.0.1:4338/_astro/inter-latin-600-normal.LgqL8muc.woff2",
+        "type": "Font",
+        "status": 200,
+        "fromDiskCache": true,
+        "fromPrefetchCache": false,
+        "headersMs": 0.633,
+        "requestId": "39188.201"
+      },
+      {
+        "url": "http://127.0.0.1:4338/_astro/inter-latin-700-normal.Yt3aPRUw.woff2",
+        "type": "Font",
+        "status": 200,
+        "fromDiskCache": true,
+        "fromPrefetchCache": false,
+        "headersMs": 0.323,
+        "requestId": "39188.215"
+      },
+      {
+        "url": "http://127.0.0.1:4338/font/Bravura.woff2",
+        "type": "Font",
+        "status": 200,
+        "fromDiskCache": false,
+        "fromPrefetchCache": false,
+        "headersMs": 9.51,
+        "requestId": "39188.217"
+      },
+      {
+        "url": "http://127.0.0.1:4338/font/CascadiaCode.woff2",
+        "type": "Font",
+        "status": 200,
+        "fromDiskCache": false,
+        "fromPrefetchCache": false,
+        "headersMs": 2.664,
+        "requestId": "39188.220"
+      },
+      {
+        "url": "http://127.0.0.1:4338/font/FZXiaoBiaoSong.woff2",
+        "type": "Font",
+        "status": 200,
+        "fromDiskCache": false,
+        "fromPrefetchCache": false,
+        "headersMs": 1.847,
+        "requestId": "39188.222"
+      },
+      {
+        "url": "http://127.0.0.1:4338/_astro/CommandPalette.Cg38vxnE.js",
+        "type": "Script",
+        "status": 200,
+        "fromDiskCache": true,
+        "fromPrefetchCache": false,
+        "headersMs": 0.538,
+        "requestId": "39188.251"
+      }
+    ],
+    "unsupportedObservation": "Readonly evaluation does not expose performance; document TTFB uses CDP Network.responseReceived timing."
+  },
+  {
+    "phase": "baseline-home",
+    "url": "/",
+    "auditionHost": true,
+    "responses": [
+      {
+        "url": "/",
+        "type": "Document",
+        "ms": 2037.183,
+        "status": 200,
+        "bytes": 156
+      },
+      {
+        "url": "/_astro/about.DBq2w10a.css",
+        "type": "Stylesheet",
+        "ms": 3.297,
+        "status": 200,
+        "bytes": 0
+      },
+      {
+        "url": "/_astro/about.B-mLOeXc.css",
+        "type": "Stylesheet",
+        "ms": 3.21,
+        "status": 200,
+        "bytes": 0
+      },
+      {
+        "url": "/_astro/MotionRuntime.BfDmEvFn.js",
+        "type": "Script",
+        "ms": 1.137,
+        "status": 200,
+        "bytes": 0
+      },
+      {
+        "url": "/_astro/client.svelte.Dc4nsyw4.js",
+        "type": "Script",
+        "ms": 0.939,
+        "status": 200,
+        "bytes": 0
+      },
+      {
+        "url": "/_astro/FullscreenPaperWatermarks.87ymn0HC.js",
+        "type": "Script",
+        "ms": 1.088,
+        "status": 200,
+        "bytes": 0
+      },
+      {
+        "url": "/_astro/MobileMenu.CXa5QnYx.js",
+        "type": "Script",
+        "ms": 0.736,
+        "status": 200,
+        "bytes": 0
+      },
+      {
+        "url": "/_astro/disclose-version.DsnmJJEf.js",
+        "type": "Script",
+        "ms": 23.351,
+        "status": 200,
+        "bytes": 0
+      },
+      {
+        "url": "/_astro/legacy.5T5nb4qN.js",
+        "type": "Script",
+        "ms": 22.967,
+        "status": 200,
+        "bytes": 0
+      },
+      {
+        "url": "/_astro/index-client.2B5kxpSm.js",
+        "type": "Script",
+        "ms": 22.756,
+        "status": 200,
+        "bytes": 0
+      },
+      {
+        "url": "/_astro/runtime.C-vcg1Ab.js",
+        "type": "Script",
+        "ms": 22.15,
+        "status": 200,
+        "bytes": 0
+      },
+      {
+        "url": "/_astro/lifecycle.BFegq3gy.js",
+        "type": "Script",
+        "ms": 21.66,
+        "status": 200,
+        "bytes": 0
+      },
+      {
+        "url": "/_astro/motionPreferences.DD88pWg1.js",
+        "type": "Script",
+        "ms": 21.528,
+        "status": 200,
+        "bytes": 0
+      },
+      {
+        "url": "/_astro/render.CRa3r4e0.js",
+        "type": "Script",
+        "ms": 21.436,
+        "status": 200,
+        "bytes": 0
+      },
+      {
+        "url": "/_astro/snippet.rcw5ZC4q.js",
+        "type": "Script",
+        "ms": 21.242,
+        "status": 200,
+        "bytes": 0
+      },
+      {
+        "url": "/_astro/events.CB2A_Wpj.js",
+        "type": "Script",
+        "ms": 21.127,
+        "status": 200,
+        "bytes": 0
+      },
+      {
+        "url": "/_astro/template.BZfnRCIl.js",
+        "type": "Script",
+        "ms": 20.993,
+        "status": 200,
+        "bytes": 0
+      },
+      {
+        "url": "/_astro/branches.CB_RLq2w.js",
+        "type": "Script",
+        "ms": 20.529,
+        "status": 200,
+        "bytes": 0
+      },
+      {
+        "url": "/_astro/class.CPdtnfD1.js",
+        "type": "Script",
+        "ms": 8.701,
+        "status": 200,
+        "bytes": 0
+      },
+      {
+        "url": "/_astro/this.DLsId4-z.js",
+        "type": "Script",
+        "ms": 7.846,
+        "status": 200,
+        "bytes": 0
+      },
+      {
+        "url": "/_astro/audioUnlocker.VXBDllbP.js",
+        "type": "Script",
+        "ms": 7.326,
+        "status": 200,
+        "bytes": 0
+      },
+      {
+        "url": "/_astro/attributes.C7YJlRmi.js",
+        "type": "Script",
+        "ms": 7.064,
+        "status": 200,
+        "bytes": 0
+      },
+      {
+        "url": "/_astro/if.BESvMEYQ.js",
+        "type": "Script",
+        "ms": 20.207,
+        "status": 200,
+        "bytes": 0
+      },
+      {
+        "url": "/_astro/transitions.B8yy3O8e.js",
+        "type": "Script",
+        "ms": 19.407,
+        "status": 200,
+        "bytes": 0
+      },
+      {
+        "url": "/_astro/actions.BelCXTk4.js",
+        "type": "Script",
+        "ms": 13.416,
+        "status": 200,
+        "bytes": 0
+      },
+      {
+        "url": "/_astro/attributes.B2gfa5e1.js",
+        "type": "Script",
+        "ms": 12.45,
+        "status": 200,
+        "bytes": 0
+      },
+      {
+        "url": "/_astro/style.CMxEJT_9.js",
+        "type": "Script",
+        "ms": 8.359,
+        "status": 200,
+        "bytes": 0
+      },
+      {
+        "url": "/_astro/props.a_91EG9t.js",
+        "type": "Script",
+        "ms": 7.687,
+        "status": 200,
+        "bytes": 0
+      },
+      {
+        "url": "/_astro/motion.n6_Be1IT.js",
+        "type": "Script",
+        "ms": 7.282,
+        "status": 200,
+        "bytes": 0
+      },
+      {
+        "url": "/_astro/CommandPalette.Cg38vxnE.js",
+        "type": "Script",
+        "ms": 0.538,
+        "status": 200,
+        "bytes": 0
+      },
+      {
+        "url": "/_astro/fraunces-latin-400-normal.6IfK1voy.woff2",
+        "type": "Font",
+        "ms": 0.994,
+        "status": 200,
+        "bytes": 0
+      },
+      {
+        "url": "/_astro/fraunces-latin-500-normal.DnGCNyPD.woff2",
+        "type": "Font",
+        "ms": 39.716,
+        "status": 200,
+        "bytes": 0
+      },
+      {
+        "url": "/_astro/inter-latin-400-normal.C38fXH4l.woff2",
+        "type": "Font",
+        "ms": 0.773,
+        "status": 200,
+        "bytes": 0
+      },
+      {
+        "url": "/_astro/inter-latin-500-normal.Cerq10X2.woff2",
+        "type": "Font",
+        "ms": 0.579,
+        "status": 200,
+        "bytes": 0
+      },
+      {
+        "url": "/_astro/inter-latin-600-normal.LgqL8muc.woff2",
+        "type": "Font",
+        "ms": 0.633,
+        "status": 200,
+        "bytes": 0
+      },
+      {
+        "url": "/_astro/inter-latin-700-normal.Yt3aPRUw.woff2",
+        "type": "Font",
+        "ms": 0.323,
+        "status": 200,
+        "bytes": 0
+      },
+      {
+        "url": "/font/Bravura.woff2",
+        "type": "Font",
+        "ms": 9.51,
+        "status": 200,
+        "bytes": 244
+      },
+      {
+        "url": "/font/CascadiaCode.woff2",
+        "type": "Font",
+        "ms": 2.664,
+        "status": 200,
+        "bytes": 244
+      },
+      {
+        "url": "/font/FZXiaoBiaoSong.woff2",
+        "type": "Font",
+        "ms": 1.847,
+        "status": 200,
+        "bytes": 245
+      },
+      {
+        "url": "image/svg+xml,%3Csvg viewBox='0 0 64 64' width='64' height='64' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='1' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.15 0 0 0 0 0.13 0 0 0 0 0.1 0 0 0 0.038 0'/%3E%3C/filter%3E%3Crect width='64' height='64' filter='url(%23n)'/%3E%3C/svg%3E",
+        "type": "Image",
+        "status": 200,
+        "bytes": 0
+      },
+      {
+        "url": "/_astro/each.BjWnJvHg.js",
+        "type": "Script",
+        "ms": 5.891,
+        "status": 200,
+        "bytes": 0
+      },
+      {
+        "url": "/_astro/input.B-xjWh5f.js",
+        "type": "Script",
+        "ms": 113.317,
+        "status": 200,
+        "bytes": 0
+      },
+      {
+        "url": "/_astro/MotionDialog.DIxWGDU8.js",
+        "type": "Script",
+        "ms": 110.851,
+        "status": 200,
+        "bytes": 0
+      },
+      {
+        "url": "/_astro/MotionSegmentedControl.DWOcggCL.js",
+        "type": "Script",
+        "ms": 110.217,
+        "status": 200,
+        "bytes": 0
+      },
+      {
+        "url": "image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='paperNoise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.17 0 0 0 0 0.14 0 0 0 0 0.09 0 0 0 0.9 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23paperNoise)'/%3E%3C/svg%3E",
+        "type": "Image",
+        "status": 200,
+        "bytes": 0
+      },
+      {
+        "url": "/_astro/HeroShowcase.D-aVjxP9.js",
+        "type": "Script",
+        "ms": 0.278,
+        "status": 200,
+        "bytes": 0
+      },
+      {
+        "url": "/_astro/MasterpieceIntro.DsLBTZXl.js",
+        "type": "Script",
+        "ms": 6.075,
+        "status": 200,
+        "bytes": 0
+      },
+      {
+        "url": "/_astro/key.VCX4IBYF.js",
+        "type": "Script",
+        "ms": 5.705,
+        "status": 200,
+        "bytes": 0
+      },
+      {
+        "url": "/_astro/html.DU1V3vMs.js",
+        "type": "Script",
+        "ms": 4.208,
+        "status": 200,
+        "bytes": 0
+      },
+      {
+        "url": "/_astro/chords.BlMYEw34.js",
+        "type": "Script",
+        "ms": 110.795,
+        "status": 200,
+        "bytes": 0
+      },
+      {
+        "url": "/_astro/chordPreview.CB8YZwB9.js",
+        "type": "Script",
+        "ms": 3.627,
+        "status": 200,
+        "bytes": 0
+      },
+      {
+        "url": "/_astro/alphaTab.CLE_H-MT.js",
+        "type": "Script",
+        "ms": 113.239,
+        "status": 200,
+        "bytes": 0
+      },
+      {
+        "url": "/_astro/ibe.browser.C5MUuD7b.js",
+        "type": "Script",
+        "ms": 112.76,
+        "status": 200,
+        "bytes": 0
+      },
+      {
+        "url": "/_astro/ar.browser.C8W2DzhV.js",
+        "type": "Script",
+        "ms": 113.051,
+        "status": 200,
+        "bytes": 0
+      },
+      {
+        "url": "/_astro/audioFocus.D5AmoPmv.js",
+        "type": "Script",
+        "ms": 111.095,
+        "status": 200,
+        "bytes": 0
+      },
+      {
+        "url": "/_astro/paperReveal.C8wRpX5x.js",
+        "type": "Script",
+        "ms": 0.308,
+        "status": 200,
+        "bytes": 0
+      },
+      {
+        "url": "/_astro/scoreAuditionEngine.D62k6Wed.js",
+        "type": "Script",
+        "ms": 0.465,
+        "status": 200,
+        "bytes": 0
+      },
+      {
+        "url": "image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='1' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E",
+        "type": "Image",
+        "status": 200,
+        "bytes": 0
+      },
+      {
+        "url": "/font/Bravura.woff2",
+        "type": "Font",
+        "ms": 1.429,
+        "status": 304,
+        "bytes": 244
+      },
+      {
+        "url": "/_astro/RankingsShowcase.Sm60yDyp.js",
+        "type": "Script",
+        "ms": 0.286,
+        "status": 200,
+        "bytes": 0
+      },
+      {
+        "url": "/_astro/MasterpieceStage.DqlS_BKS.js",
+        "type": "Script",
+        "ms": 0.366,
+        "status": 200,
+        "bytes": 0
+      },
+      {
+        "url": "/storage/soundfonts/acoustic_guitar_fast.sf2",
+        "type": "Fetch",
+        "ms": 1.313,
+        "status": 200,
+        "bytes": 245
+      }
+    ]
+  },
+  {
+    "phase": "baseline-logs",
+    "logs": [],
+    "limitations": [
+      "performance API unavailable in read-only DOM scope",
+      "Animation.enable unavailable in browser capability"
+    ]
+  },
+  {
+    "phase": "candidate-prefetched-navigation",
+    "from": "/tabs",
+    "to": "/ukulele",
+    "clickToAXMs": 265,
+    "galleryVisible": true,
+    "documents": [],
+    "prefetchHeadersMs": 2009.662
+  },
+  {
+    "phase": "candidate-navigation-network",
+    "host": false,
+    "mode": "full",
+    "pressed": 0,
+    "url": "http://navigation-20261019.localhost:4338/ukulele",
+    "events": [
+      {
+        "kind": "Network.requestServedFromCache",
+        "requestId": "40116.276"
+      },
+      {
+        "kind": "Network.requestServedFromCache",
+        "requestId": "40116.277"
+      },
+      {
+        "kind": "Network.requestServedFromCache",
+        "requestId": "40116.278"
+      },
+      {
+        "kind": "Network.requestServedFromCache",
+        "requestId": "40116.292"
+      },
+      {
+        "kind": "Network.requestServedFromCache",
+        "requestId": "40116.306"
+      },
+      {
+        "kind": "Network.requestServedFromCache",
+        "requestId": "40116.334"
+      },
+      {
+        "kind": "Network.requestServedFromCache",
+        "requestId": "40116.353"
+      },
+      {
+        "kind": "Network.requestServedFromCache",
+        "requestId": "40116.357"
+      },
+      {
+        "kind": "Network.requestServedFromCache",
+        "requestId": "40116.358"
+      },
+      {
+        "kind": "Network.requestServedFromCache",
+        "requestId": "40116.359"
+      },
+      {
+        "kind": "Network.requestServedFromCache",
+        "requestId": "40116.360"
+      },
+      {
+        "kind": "Network.requestServedFromCache",
+        "requestId": "40116.361"
+      },
+      {
+        "kind": "Network.requestServedFromCache",
+        "requestId": "40116.363"
+      },
+      {
+        "kind": "Network.requestServedFromCache",
+        "requestId": "40116.364"
+      },
+      {
+        "kind": "Network.requestServedFromCache",
+        "requestId": "40116.366"
+      },
+      {
+        "kind": "Network.requestServedFromCache",
+        "requestId": "40116.367"
+      },
+      {
+        "kind": "Network.requestServedFromCache",
+        "requestId": "40116.368"
+      },
+      {
+        "kind": "Network.requestServedFromCache",
+        "requestId": "40116.369"
+      },
+      {
+        "kind": "Network.requestServedFromCache",
+        "requestId": "40116.370"
+      },
+      {
+        "kind": "Network.requestServedFromCache",
+        "requestId": "40116.371"
+      },
+      {
+        "kind": "Network.requestServedFromCache",
+        "requestId": "40116.372"
+      },
+      {
+        "kind": "Network.requestServedFromCache",
+        "requestId": "40116.373"
+      },
+      {
+        "kind": "Network.requestServedFromCache",
+        "requestId": "40116.374"
+      },
+      {
+        "kind": "Network.requestServedFromCache",
+        "requestId": "40116.375"
+      },
+      {
+        "kind": "Network.requestServedFromCache",
+        "requestId": "40116.376"
+      },
+      {
+        "kind": "Network.requestServedFromCache",
+        "requestId": "40116.377"
+      },
+      {
+        "kind": "Network.requestServedFromCache",
+        "requestId": "40116.378"
+      },
+      {
+        "kind": "Network.requestServedFromCache",
+        "requestId": "40116.379"
+      },
+      {
+        "kind": "Network.requestServedFromCache",
+        "requestId": "40116.380"
+      },
+      {
+        "kind": "Network.requestServedFromCache",
+        "requestId": "40116.381"
+      },
+      {
+        "kind": "Network.requestServedFromCache",
+        "requestId": "40116.382"
+      },
+      {
+        "kind": "Network.requestServedFromCache",
+        "requestId": "40116.383"
+      },
+      {
+        "kind": "Network.requestServedFromCache",
+        "requestId": "40116.384"
+      },
+      {
+        "kind": "Network.requestServedFromCache",
+        "requestId": "40116.385"
+      },
+      {
+        "kind": "Network.requestServedFromCache",
+        "requestId": "40116.386"
+      },
+      {
+        "kind": "Network.requestServedFromCache",
+        "requestId": "40116.387"
+      },
+      {
+        "kind": "Network.requestServedFromCache",
+        "requestId": "40116.388"
+      },
+      {
+        "kind": "Network.requestServedFromCache",
+        "requestId": "40116.389"
+      },
+      {
+        "kind": "Network.requestServedFromCache",
+        "requestId": "40116.390"
+      },
+      {
+        "kind": "Network.requestServedFromCache",
+        "requestId": "40116.391"
+      },
+      {
+        "kind": "Network.requestServedFromCache",
+        "requestId": "40116.392"
+      },
+      {
+        "kind": "Network.requestServedFromCache",
+        "requestId": "40116.393"
+      },
+      {
+        "kind": "Network.requestServedFromCache",
+        "requestId": "40116.394"
+      },
+      {
+        "kind": "Network.requestServedFromCache",
+        "requestId": "40116.395"
+      },
+      {
+        "kind": "Network.requestServedFromCache",
+        "requestId": "40116.396"
+      },
+      {
+        "kind": "Network.requestServedFromCache",
+        "requestId": "40116.397"
+      },
+      {
+        "kind": "Network.requestServedFromCache",
+        "requestId": "40116.398"
+      },
+      {
+        "kind": "Network.requestServedFromCache",
+        "requestId": "40116.399"
+      },
+      {
+        "kind": "Network.requestServedFromCache",
+        "requestId": "40116.400"
+      },
+      {
+        "kind": "Network.requestServedFromCache",
+        "requestId": "40116.401"
+      },
+      {
+        "kind": "Network.requestServedFromCache",
+        "requestId": "40116.402"
+      },
+      {
+        "kind": "Network.requestServedFromCache",
+        "requestId": "40116.403"
+      }
+    ],
+    "hasMore": false,
+    "truncated": true
+  },
+  {
+    "phase": "candidate-home-before-audition",
+    "host": false,
+    "heavyRequests": [],
+    "hasMore": false,
+    "truncated": false
+  },
+  {
+    "phase": "candidate-explicit-audition",
+    "public": {
+      "errors": [],
+      "host": true,
+      "pausedControl": true
+    },
+    "requests": [
+      {
+        "url": "/_astro/scoreAuditionRuntime.CqY2bPQH.js",
+        "type": "Script"
+      },
+      {
+        "url": "/_astro/alphaTab.Dp5voThm.js",
+        "type": "Script"
+      },
+      {
+        "url": "/_astro/ibe.browser.CXiXM2jK.js",
+        "type": "Script"
+      },
+      {
+        "url": "/storage/scores/1sdikNKaVJg.ibe",
+        "type": "Fetch"
+      },
+      {
+        "url": "/storage/soundfonts/acoustic_guitar_fast.sf2",
+        "type": "Fetch"
+      }
+    ]
+  },
+  {
+    "phase": "candidate-audition-page-leave-and-back",
+    "away": {
+      "pressed": 0,
+      "url": "http://navigation-20261019.localhost:4338/library"
+    },
+    "returned": {
+      "host": false,
+      "playingControl": false,
+      "pressed": 0,
+      "url": "http://navigation-20261019.localhost:4338/"
+    }
+  },
+  {
+    "phase": "candidate-responsive-navigation",
+    "sizes": [
+      {
+        "client": 305,
+        "mode": "full",
+        "scroll": 305,
+        "width": 320
+      },
+      {
+        "client": 375,
+        "mode": "full",
+        "scroll": 375,
+        "width": 390
+      },
+      {
+        "client": 753,
+        "mode": "full",
+        "scroll": 753,
+        "width": 768
+      },
+      {
+        "client": 1351,
+        "mode": "full",
+        "scroll": 1351,
+        "width": 1366
+      }
+    ]
+  },
+  {
+    "phase": "candidate-mobile-menu-navigation",
+    "expanded": "false",
+    "pressed": 0,
+    "url": "http://navigation-20261019.localhost:4338/practice"
+  },
+  {
+    "phase": "candidate-motion-preference-navigation",
+    "modes": [
+      {
+        "distance": "0px",
+        "mode": "gentle",
+        "pageDuration": ".14s",
+        "url": "http://navigation-20261019.localhost:4338/practice"
+      },
+      {
+        "distance": "6px",
+        "mode": "off",
+        "pageDuration": "280ms",
+        "url": "http://navigation-20261019.localhost:4338/practice"
+      }
+    ],
+    "restoredMode": "full"
+  },
+  {
+    "phase": "candidate-navigation-with-url-confirmation",
+    "from": "/practice",
+    "to": "/tabs",
+    "clickToConfirmedAXMs": 410,
+    "galleryVisible": true,
+    "prefetchHeadersMs": 2013.111,
+    "url": "http://navigation-20261019.localhost:4338/tabs"
+  },
+  {
+    "phase": "candidate-hydrated-catalog-view",
+    "listChecked": "true",
+    "url": "http://navigation-20261019.localhost:4338/tabs"
+  },
+  {
+    "phase": "candidate-command-navigation",
+    "destination": "平台首页",
+    "url": "http://navigation-20261019.localhost:4338/"
+  },
+  {
+    "phase": "candidate-studio-save-navigation",
+    "project": "imported_p31ewa7_mvdzapin",
+    "temporaryTitleRestoredAcrossNavigation": true,
+    "originalTitleRestored": true,
+    "pendingFailureDialog": "not fault-injected; covered by save-boundary tests"
+  },
+  {
+    "phase": "candidate-console",
+    "studio": [
+      {
+        "level": "error",
+        "message": "InvalidStateError: Transition was aborted because of invalid state. Page already revealed"
+      }
+    ],
+    "anonymous": [
+      {
+        "level": "error",
+        "message": "InvalidStateError: Transition was aborted because of invalid state. Page already revealed"
+      },
+      {
+        "level": "error",
+        "message": "InvalidStateError: Transition was aborted because of invalid state. Page already revealed"
+      },
+      {
+        "level": "error",
+        "message": "InvalidStateError: Transition was aborted because of invalid state. Page already revealed"
+      },
+      {
+        "level": "error",
+        "message": "InvalidStateError: Transition was aborted because of invalid state. Page already revealed"
+      },
+      {
+        "level": "error",
+        "message": "InvalidStateError: Transition was aborted because of invalid state. Page already revealed"
+      }
+    ]
+  },
+  {
+    "phase": "stable-baseline-transition-compatibility",
+    "base": "master@939cf5f7",
+    "current": "http://navigation-20261019.localhost:4336/practice",
+    "confirmedRoutes": [
+      "/practice",
+      "/library",
+      "/practice"
+    ],
+    "unconfirmedStep": "/settings/data URL wait expired",
+    "logs": [
+      {
+        "level": "error",
+        "message": "InvalidStateError: Transition was aborted because of invalid state. Page already revealed"
+      },
+      {
+        "level": "error",
+        "message": "InvalidStateError: Transition was aborted because of invalid state. Page already revealed"
+      }
+    ]
+  },
+  {
+    "phase": "final-entry-fallback",
+    "navigations": [
+      {
+        "animation": "navigation-entry-full",
+        "duration": "0.28s",
+        "entry": "fallback",
+        "getAnimationsAvailable": false,
+        "hidden": "visible",
+        "mode": "full",
+        "opacity": "0.929143",
+        "url": "http://navigation-final-20261019.localhost:4338/library"
+      },
+      {
+        "animation": "navigation-entry-full",
+        "duration": "0.28s",
+        "entry": "fallback",
+        "getAnimationsAvailable": false,
+        "hidden": "visible",
+        "mode": "full",
+        "opacity": "0.939704",
+        "url": "http://navigation-final-20261019.localhost:4338/practice"
+      }
+    ],
+    "logs": [
+      {
+        "level": "error",
+        "message": "InvalidStateError: Transition was aborted because of invalid state. Page already revealed"
+      },
+      {
+        "level": "error",
+        "message": "InvalidStateError: Transition was aborted because of invalid state. Page already revealed"
+      }
+    ]
+  },
+  {
+    "phase": "final-entry-motion-modes",
+    "modes": [
+      {
+        "animation": "navigation-entry-full",
+        "duration": "0.28s",
+        "entry": "fallback",
+        "mode": "full",
+        "url": "http://navigation-final-20261019.localhost:4338/practice"
+      },
+      {
+        "animation": "navigation-entry-full",
+        "duration": "0.28s",
+        "entry": "fallback",
+        "mode": "full",
+        "url": "http://navigation-final-20261019.localhost:4338/practice"
+      }
+    ],
+    "restoredMode": "full"
+  },
+  {
+    "phase": "final-entry-verified-motion-modes",
+    "modes": [
+      {
+        "animation": "navigation-entry-gentle",
+        "duration": "0.14s",
+        "entry": "fallback",
+        "mode": "gentle",
+        "url": "http://navigation-final-20261019.localhost:4338/practice"
+      },
+      {
+        "animation": "none",
+        "duration": "0s",
+        "entry": null,
+        "mode": "off",
+        "url": "http://navigation-final-20261019.localhost:4338/practice"
+      }
+    ],
+    "restoredMode": "full",
+    "note": "first immediate-click attempt before hydration left full; this run waits for the ready status and confirms preference before navigating"
+  }
+]

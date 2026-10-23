@@ -1,0 +1,14 @@
+{
+  "missing": {
+    "message": "没有找到这份乐谱文件（404/410）。资源恢复后可重试；当前下载地址也不可用。",
+    "originalDownloadLinks": 0,
+    "retryVisible": true
+  },
+  "recovered": {
+    "alerts": [],
+    "playEnabled": true,
+    "svgs": 20,
+    "url": "http://score-resource-missing-20261019.localhost:4338/tabs/1sdc49P3eKm",
+    "vectorPages": 21
+  }
+}

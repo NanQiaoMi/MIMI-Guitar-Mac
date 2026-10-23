@@ -1,0 +1,98 @@
+{
+  "revision": 26,
+  "payloadSha256": "243e475ab927f31c07b5ee0db0693fe4a83aae99af837b8c1dc38a14ad11b732",
+  "assetsVerified": 2,
+  "queue": [
+    {
+      "scoreId": "project:imported_15qqbxw_mvc3y155",
+      "status": "practicing",
+      "note": "",
+      "order": 0,
+      "updatedAt": 1792224160427,
+      "title": "工坊交互验收 · 双轨练习（个人副本）"
+    }
+  ],
+  "scores": [
+    {
+      "id": "project:imported_15qqbxw_mvc3y155",
+      "source": "project",
+      "revision": "6ef6cd65bbe3588f607dd96019ad01762e3642ee9e95bfc2801ebc44b7ebeb77",
+      "title": "工坊交互验收 · 双轨练习（个人副本）",
+      "assetId": "6ef6cd65bbe3588f607dd96019ad01762e3642ee9e95bfc2801ebc44b7ebeb77"
+    }
+  ],
+  "resumes": [
+    {
+      "scoreId": "project:imported_15qqbxw_mvc3y155",
+      "scoreRevision": "6ef6cd65bbe3588f607dd96019ad01762e3642ee9e95bfc2801ebc44b7ebeb77",
+      "tick": 423,
+      "timeMs": 219.79166666666669,
+      "speed": 120,
+      "capo": 0,
+      "transpose": 0,
+      "loop": null,
+      "trackIndexes": [
+        0,
+        1
+      ],
+      "trackMix": [
+        {
+          "index": 0,
+          "muted": false,
+          "soloed": false,
+          "volume": 94,
+          "program": 25
+        },
+        {
+          "index": 1,
+          "muted": false,
+          "soloed": false,
+          "volume": 94,
+          "program": 25
+        }
+      ],
+      "display": {
+        "fontScale": 1,
+        "chordMode": "diagram",
+        "scoreDisplayMode": "mixed",
+        "numberTab": true,
+        "showFretboard": false
+      },
+      "metronome": false,
+      "countIn": false,
+      "playbackRatio": 1,
+      "updatedAt": 1792254392473
+    }
+  ],
+  "sessions": [
+    {
+      "id": "0e06f1b3-87ab-45f5-803a-62c42d90ab39",
+      "scoreId": "project:imported_15qqbxw_mvc3y155",
+      "scoreRevision": "6ef6cd65bbe3588f607dd96019ad01762e3642ee9e95bfc2801ebc44b7ebeb77",
+      "state": "completed",
+      "startedAt": 1792224160423,
+      "updatedAt": 1792254647231,
+      "timezone": "Asia/Shanghai",
+      "note": "",
+      "endedAt": 1792254647162,
+      "sliceCount": 2,
+      "durationMs": 4288,
+      "slices": [
+        {
+          "id": "0e06f1b3-87ab-45f5-803a-62c42d90ab39:711012d1-b78e-4f77-a339-055c6d559993:1",
+          "sequence": 1,
+          "epoch": "711012d1-b78e-4f77-a339-055c6d559993",
+          "startedAt": 1792224160431,
+          "durationMs": 269
+        },
+        {
+          "id": "0e06f1b3-87ab-45f5-803a-62c42d90ab39:8db80a16-7418-4731-90ae-289fc6dfd8f3:2",
+          "sequence": 2,
+          "epoch": "8db80a16-7418-4731-90ae-289fc6dfd8f3",
+          "startedAt": 1792254243799,
+          "durationMs": 4019
+        }
+      ]
+    }
+  ]
+}

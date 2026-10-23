@@ -1,0 +1,47 @@
+[
+  {
+    "name": "天地龙鳞(bend+vibrato)",
+    "ok": true,
+    "detail": "{\"perNoteBend\":5926,\"pitchBend\":0,\"notes\":359,\"vel\":\"95-95\",\"lowVels\":0,\"maxDur\":387840,\"minDur\":480,\"checks\":[\"bend:true\"],\"errs\":0}"
+  },
+  {
+    "name": "真的爱你前奏(bend)",
+    "ok": true,
+    "detail": "{\"perNoteBend\":212,\"pitchBend\":0,\"notes\":63,\"vel\":\"63-79\",\"lowVels\":4,\"maxDur\":29760,\"minDur\":240,\"checks\":[\"bend:true\"],\"errs\":0}"
+  },
+  {
+    "name": "李白(slide)",
+    "ok": true,
+    "detail": "{\"perNoteBend\":405,\"pitchBend\":0,\"notes\":157,\"vel\":\"95-95\",\"lowVels\":0,\"maxDur\":54720,\"minDur\":-48,\"checks\":[\"bend:true\"],\"errs\":0}"
+  },
+  {
+    "name": "死别(palmMute)",
+    "ok": true,
+    "detail": "{\"perNoteBend\":117,\"pitchBend\":0,\"notes\":117,\"vel\":\"95-95\",\"lowVels\":0,\"maxDur\":30720,\"minDur\":122,\"checks\":[\"palmMute:true(minDur=122)\"],\"errs\":0}"
+  },
+  {
+    "name": "祝你生日快乐(letRing)",
+    "ok": true,
+    "detail": "{\"perNoteBend\":1220,\"pitchBend\":0,\"notes\":1220,\"vel\":\"95-95\",\"lowVels\":0,\"maxDur\":569280,\"minDur\":480,\"checks\":[\"letRing:true(maxDur=569280)\"],\"errs\":0}"
+  },
+  {
+    "name": "知足(harmonic+letRing)",
+    "ok": true,
+    "detail": "{\"perNoteBend\":930,\"pitchBend\":0,\"notes\":910,\"vel\":\"111-127\",\"lowVels\":0,\"maxDur\":298080,\"minDur\":360,\"checks\":[\"harmonic-play:true\"],\"errs\":0}"
+  },
+  {
+    "name": "类似爱情(arpeggio)",
+    "ok": true,
+    "detail": "{\"perNoteBend\":2002,\"pitchBend\":0,\"notes\":2002,\"vel\":\"79-95\",\"lowVels\":0,\"maxDur\":327840,\"minDur\":210,\"checks\":[\"play:true\"],\"errs\":0}"
+  },
+  {
+    "name": "Just The Two Of Us(全乐队+鼓)",
+    "ok": true,
+    "detail": "{\"perNoteBend\":8051,\"pitchBend\":0,\"notes\":6377,\"vel\":\"63-101\",\"lowVels\":102,\"maxDur\":354720,\"minDur\":-48,\"checks\":[\"play:true\"],\"errs\":0}"
+  },
+  {
+    "name": "TECH 全程 console/pageerror 零报错",
+    "ok": true,
+    "detail": "[]"
+  }
+]

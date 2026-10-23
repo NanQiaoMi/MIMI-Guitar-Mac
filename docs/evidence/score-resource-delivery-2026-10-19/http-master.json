@@ -1,0 +1,173 @@
+{
+  "capturedAt": "2026-10-19T15:48:47.452Z",
+  "base": "http://127.0.0.1:4336",
+  "demoScoresChecked": 15,
+  "samplesChecked": 20,
+  "rows": [
+    {
+      "url": "/storage/scores/1sdiYSwWo2S.ibe",
+      "status": 200,
+      "bytes": 16046,
+      "originalHashMatches": true,
+      "decoded": true,
+      "tracks": 2,
+      "decodedTitle": "明天你好"
+    },
+    {
+      "url": "/storage/scores/1sdc49P3eKm.ibe",
+      "status": 200,
+      "bytes": 21277,
+      "originalHashMatches": true,
+      "decoded": true,
+      "tracks": 2,
+      "decodedTitle": "晴天"
+    },
+    {
+      "url": "/storage/scores/1sdiivPR3YW.ibe",
+      "status": 200,
+      "bytes": 18788,
+      "originalHashMatches": true,
+      "decoded": true,
+      "tracks": 2,
+      "decodedTitle": "Title"
+    },
+    {
+      "url": "/storage/scores/1sdjKw3nhA0.ibe",
+      "status": 200,
+      "bytes": 9462,
+      "originalHashMatches": true,
+      "decoded": true,
+      "tracks": 2,
+      "decodedTitle": "反方向的钟"
+    },
+    {
+      "url": "/storage/scores/1yDFAg9Z3mU.ibe",
+      "status": 200,
+      "bytes": 25346,
+      "originalHashMatches": true,
+      "decoded": true,
+      "tracks": 2,
+      "decodedTitle": "后来"
+    },
+    {
+      "url": "/storage/scores/1sdixfUd4Vc.ibe",
+      "status": 200,
+      "bytes": 5946,
+      "originalHashMatches": true,
+      "decoded": true,
+      "tracks": 1,
+      "decodedTitle": "卡农"
+    },
+    {
+      "url": "/storage/scores/1yDFB6u7GnQ.ibe",
+      "status": 200,
+      "bytes": 11529,
+      "originalHashMatches": true,
+      "decoded": true,
+      "tracks": 2,
+      "decodedTitle": "达尔文"
+    },
+    {
+      "url": "/storage/scores/1sdcV2zsRCC.ibe",
+      "status": 200,
+      "bytes": 12507,
+      "originalHashMatches": true,
+      "decoded": true,
+      "tracks": 2,
+      "decodedTitle": "大海"
+    },
+    {
+      "url": "/storage/scores/1sdbywiXwXY.ibe",
+      "status": 200,
+      "bytes": 10476,
+      "originalHashMatches": true,
+      "decoded": true,
+      "tracks": 1,
+      "decodedTitle": "平凡之路"
+    },
+    {
+      "url": "/storage/scores/1yOhtb1c9I0.ibe",
+      "status": 200,
+      "bytes": 28772,
+      "originalHashMatches": true,
+      "decoded": true,
+      "tracks": 2,
+      "decodedTitle": "Hello"
+    },
+    {
+      "url": "/storage/scores/20yD5s1qZ06.ibe",
+      "status": 200,
+      "bytes": 16748,
+      "originalHashMatches": true,
+      "decoded": true,
+      "tracks": 2,
+      "decodedTitle": "安和桥"
+    },
+    {
+      "url": "/storage/scores/20kPMjR5xHF.ibe",
+      "status": 200,
+      "bytes": 16915,
+      "originalHashMatches": true,
+      "decoded": true,
+      "tracks": 2,
+      "decodedTitle": "七里香"
+    },
+    {
+      "url": "/storage/scores/1sdikNKaVJg.ibe",
+      "status": 200,
+      "bytes": 16502,
+      "originalHashMatches": true,
+      "decoded": true,
+      "tracks": 2,
+      "decodedTitle": "Title"
+    },
+    {
+      "url": "/storage/scores/21LT7VB9EGY.ibe",
+      "status": 200,
+      "bytes": 25361,
+      "originalHashMatches": true,
+      "decoded": true,
+      "tracks": 1,
+      "decodedTitle": "Hotel California"
+    },
+    {
+      "url": "/storage/scores/1wcinbxar8D.ibe",
+      "status": 200,
+      "bytes": 22073,
+      "originalHashMatches": true,
+      "decoded": true,
+      "tracks": 2,
+      "decodedTitle": "最好的安排"
+    },
+    {
+      "url": "/storage/screenshots/1sdiYSwWo2S.jpg",
+      "status": 200,
+      "bytes": 15661,
+      "originalHashMatches": true
+    },
+    {
+      "url": "/storage/soundfonts/acoustic_guitar_fast.sf2",
+      "status": 200,
+      "bytes": 1205140,
+      "originalHashMatches": true
+    },
+    {
+      "url": "/storage/soundfonts/ukulele_fast.sf2",
+      "status": 200,
+      "bytes": 1205140,
+      "originalHashMatches": true
+    },
+    {
+      "url": "/storage/soundfonts/0.sf2",
+      "status": 200,
+      "bytes": 400880,
+      "originalHashMatches": true
+    },
+    {
+      "url": "/storage/xhe/1Oy5N2MHF.json",
+      "status": 200,
+      "bytes": 20102,
+      "originalHashMatches": true
+    }
+  ]
+}

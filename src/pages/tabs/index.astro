@@ -1,0 +1,39 @@
+---
+import Base from '../../layouts/Base.astro';
+import TabCardGrid from '../../components/TabCardGrid.svelte';
+import { parseListParams, queryTabs } from '../../lib/tabQuery';
+
+const CATEGORY = 'guitar';
+const TITLE = '吉他谱大全';
+const catPath = 'tabs';
+
+const url = Astro.url;
+const params = parseListParams(url.searchParams, CATEGORY);
+const result = await queryTabs(params);
+const { tabs, total, page, pageCount, source } = result;
+---
+
+<Base title={`${TITLE} · MIMI Guitar 典藏手稿工坊`}>
+  <div class="max-w-[1240px] mx-auto px-4 sm:px-6 my-6 sm:my-8 space-y-6">
+    <TabCardGrid
+      client:load
+      tabs={tabs}
+      totalCount={total}
+      currentPage={page}
+      pageCount={pageCount}
+      initialCategory="guitar"
+      initialDifficulty={params.difficulty || 0}
+      initialStyle={params.style || 0}
+      initialSheetForm={params.sheetForm || 0}
+      initialKey={params.key || ''}
+      initialTuning={params.tuning || ''}
+      initialKeyword={params.keyword || ''}
+      initialSort={params.sort === 0 ? 'newest' : params.sort === 2 ? 'difficulty' : 'heat'}
+      dataSource={source}
+      initialQuery={url.searchParams.toString()}
+      basePath={`/${catPath}`}
+      showFilters={true}
+      showStats={true}
+    />
+  </div>
+</Base>

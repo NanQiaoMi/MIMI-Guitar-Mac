@@ -1,0 +1,2 @@
+$p = Start-Process -FilePath "C:\Program Files\nodejs\node.exe" -ArgumentList @("tools/migrate.mjs","--target","4000","--pace","1500","--state","tools/migrate-state.json") -WorkingDirectory "D:\MIMIguitarweb" -WindowStyle Hidden -RedirectStandardOutput "D:\MIMIguitarweb\tools\migrate-expand.out.log" -RedirectStandardError "D:\MIMIguitarweb\tools\migrate-expand.err.log" -PassThru
+$p.Id

@@ -1,0 +1,16 @@
+---
+import Base from '../../layouts/Base.astro';
+import AccountNav from '../../components/AccountNav.astro';
+import HistoryList from '../../components/HistoryList.svelte';
+---
+
+<Base title="浏览记录 - MIMI Guitar">
+  <h1 class="font-display text-heading">浏览记录</h1>
+  <div class="mt-4"><AccountNav /></div>
+  <p class="mt-2 max-w-xl text-body-sm leading-relaxed text-charcoal">
+    浏览记录保存在本设备的浏览器中，无需登录即可使用，清除浏览器数据后记录会一并清除。
+  </p>
+  <div class="mt-6">
+    <HistoryList client:load />
+  </div>
+</Base>

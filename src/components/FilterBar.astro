@@ -1,0 +1,171 @@
+---
+import {
+  DIFFICULTY_OPTIONS,
+  STYLE_OPTIONS,
+  FORM_OPTIONS,
+  KEY_OPTIONS,
+  TUNING_OPTIONS,
+  buildListHref,
+} from '../lib/tabQuery';
+
+interface Props {
+  category: string;
+  current: {
+    difficulty?: number;
+    style?: number;
+    key?: string;
+    tuning?: string;
+    sheetForm?: number;
+    sort?: number;
+  };
+  title: string;
+}
+const { category, current, title } = Astro.props;
+
+function chipCls(active: boolean): string {
+  return active
+    ? 'inline-flex items-center rounded-pill bg-ink text-paper px-3 py-1 text-caption font-medium shadow-xs border border-ink transition-all transform-gpu scale-[1.02]'
+    : 'inline-flex items-center rounded-pill border hairline bg-surface-alt text-charcoal px-3 py-1 text-caption font-medium transition-all hover:bg-paper hover:text-ink hover:border-mid-gray/40 hover:-translate-y-0.5';
+}
+
+const pageBase = { ...current };
+function href(over: Record<string, number | string | undefined>): string {
+  return buildListHref(category, { ...pageBase, ...over, no: undefined });
+}
+---
+
+<section class="card rounded-card border hairline bg-paper p-6 shadow-xs">
+  <!-- Top Header & Search Bar -->
+  <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b hairline">
+    <div class="flex items-center gap-3">
+      <div class="flex h-8 w-8 items-center justify-center rounded-full bg-surface-alt border hairline text-ink">
+        <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon>
+        </svg>
+      </div>
+      <div>
+        <h2 class="font-display text-subheading text-ink font-semibold">{title}</h2>
+        <p class="text-caption text-mid-gray">通过难度、曲风、调性与谱型精准筛选</p>
+      </div>
+    </div>
+
+    <!-- Quick Search Input within Filter -->
+    <form action="/searchResults" method="get" class="relative flex items-center">
+      <div class="relative w-full sm:w-64">
+        <svg
+          class="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-mid-gray"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          stroke-width="2"
+        >
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <input
+          name="searchValue"
+          type="search"
+          placeholder="在当前分类搜索..."
+          aria-label="搜索曲谱"
+          class="w-full rounded-pill border hairline bg-surface-alt pl-8 pr-16 py-1.5 text-xs text-ink placeholder:text-mid-gray transition-all focus:bg-paper focus:border-signal focus:outline-none"
+        />
+        <button
+          type="submit"
+          class="absolute right-1 top-1/2 -translate-y-1/2 btn btn-primary !py-1 !px-2.5 text-[11px]"
+        >
+          搜索
+        </button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Filter Option Rows with 18px Pill Geometry -->
+  <div class="mt-5 space-y-3.5 text-body-sm">
+    <!-- 难度 Filter -->
+    <div class="flex flex-wrap items-center gap-2">
+      <span class="w-12 shrink-0 text-caption font-semibold tracking-wider uppercase text-mid-gray">难度</span>
+      <div class="flex flex-wrap items-center gap-1.5">
+        {DIFFICULTY_OPTIONS.map((o) => (
+          <a href={href({ difficulty: o.value === 0 ? undefined : o.value })} class={chipCls((current.difficulty ?? 0) === o.value)}>
+            {o.label}
+          </a>
+        ))}
+      </div>
+    </div>
+
+    <!-- 类型 Filter -->
+    <div class="flex flex-wrap items-center gap-2">
+      <span class="w-12 shrink-0 text-caption font-semibold tracking-wider uppercase text-mid-gray">风格</span>
+      <div class="flex flex-wrap items-center gap-1.5">
+        {STYLE_OPTIONS.map((o) => (
+          <a href={href({ style: o.value === 0 ? undefined : o.value })} class={chipCls((current.style ?? 0) === o.value)}>
+            {o.label}
+          </a>
+        ))}
+      </div>
+    </div>
+
+    <!-- 调性 Filter -->
+    <div class="flex flex-wrap items-center gap-2">
+      <span class="w-12 shrink-0 text-caption font-semibold tracking-wider uppercase text-mid-gray">调性</span>
+      <div class="flex flex-wrap items-center gap-1.5">
+        {KEY_OPTIONS.map((k) => (
+          <a href={href({ key: k === '全部' ? undefined : k })} class={chipCls((current.key ?? '全部') === k)}>
+            {k}
+          </a>
+        ))}
+      </div>
+    </div>
+
+    <!-- 调弦 Filter -->
+    <div class="flex flex-wrap items-center gap-2">
+      <span class="w-12 shrink-0 text-caption font-semibold tracking-wider uppercase text-mid-gray">调弦</span>
+      <div class="flex flex-wrap items-center gap-1.5">
+        {TUNING_OPTIONS.map((t) => (
+          <a href={href({ tuning: t === '全部' ? undefined : t })} class={chipCls((current.tuning ?? '全部') === t)}>
+            {t}
+          </a>
+        ))}
+      </div>
+    </div>
+
+    <!-- 谱型 Filter -->
+    <div class="flex flex-wrap items-center gap-2">
+      <span class="w-12 shrink-0 text-caption font-semibold tracking-wider uppercase text-mid-gray">谱型</span>
+      <div class="flex flex-wrap items-center gap-1.5">
+        {FORM_OPTIONS.map((o) => (
+          <a href={href({ sheetForm: o.value === 0 ? undefined : o.value })} class={chipCls((current.sheetForm ?? 0) === o.value)}>
+            {o.label}
+          </a>
+        ))}
+      </div>
+    </div>
+
+    <!-- 排序 Filter (Bottom Segmented Control) -->
+    <div class="flex flex-wrap items-center gap-2 border-t hairline pt-3.5">
+      <span class="w-12 shrink-0 text-caption font-semibold tracking-wider uppercase text-mid-gray">排序</span>
+      <div class="inline-flex items-center rounded-pill border hairline bg-surface-alt p-0.5">
+        <a
+          href={href({ sort: 1 })}
+          class={`rounded-pill px-3 py-1 text-caption font-medium transition-all ${
+            (current.sort ?? 1) === 1
+              ? 'bg-paper text-ink shadow-xs'
+              : 'text-mid-gray hover:text-ink'
+          }`}
+        >
+          🔥 最热优先
+        </a>
+        <a
+          href={href({ sort: 0 })}
+          class={`rounded-pill px-3 py-1 text-caption font-medium transition-all ${
+            (current.sort ?? 1) === 0
+              ? 'bg-paper text-ink shadow-xs'
+              : 'text-mid-gray hover:text-ink'
+          }`}
+        >
+          ✨ 最新发布
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

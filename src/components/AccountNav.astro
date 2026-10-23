@@ -1,0 +1,29 @@
+---
+import LogoutButton from './LogoutButton.svelte';
+
+const items = [
+  { key: '0', href: '/account/0', label: '我的收藏' },
+  { key: '1', href: '/account/1', label: '创作中心' },
+  { key: '2', href: '/account/2', label: '浏览记录' },
+  { key: '3', href: '/account/3', label: '个人资料' },
+];
+const active = Astro.url.pathname;
+---
+
+<nav class="card flex flex-wrap items-center gap-1 p-2" aria-label="账号中心导航">
+  {items.map((it) => (
+    <a
+      href={it.href}
+      class:list={[
+        'rounded-btn px-4 py-2 text-body-sm transition hover:bg-linen',
+        active === it.href ? 'bg-linen font-medium text-graphite' : 'text-charcoal',
+      ]}
+    >
+      {it.label}
+    </a>
+  ))}
+  <span class="ml-auto flex items-center gap-2">
+    <a href="/upload" class="rounded-btn px-3 py-2 text-body-sm text-signal transition hover:opacity-70">上传</a>
+    <LogoutButton client:load className="btn rounded-btn px-3 py-2 text-body-sm" />
+  </span>
+</nav>

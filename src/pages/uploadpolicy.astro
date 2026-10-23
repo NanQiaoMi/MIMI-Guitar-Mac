@@ -1,0 +1,27 @@
+---
+import Base from '../layouts/Base.astro';
+
+const sections = [
+  ['一、可上传的内容', '本站支持上传 Guitar Pro 格式曲谱文件（.gp3 / .gp4 / .gp5 / .gpx / .gp），并自动解析谱面、生成可在线播放的谱面文件与首屏预览图。'],
+  ['二、上传者声明', '上传即表示你声明并保证：你对上传内容拥有相应权利，或已获得权利人的合法授权；上传内容不侵犯任何第三方的著作权、商标权、隐私权等合法权益。'],
+  ['三、审核机制', '上传作品将先进入「审核中」状态，经审核通过后方可公开展示。我们保留拒绝、下架或删除任何不符合本政策内容的权利。'],
+  ['四、禁止内容', '禁止上传以下内容：违法或侵权内容、恶意代码或病毒、批量灌水与重复内容、与音乐谱面无实质关系的内容等。'],
+  ['五、侵权处理', '如权利人认为某上传内容侵犯其权益，可通过「联系我们」页面提交投诉。我们将在核实后下架相关内容，并视情况对上传者账号作出处理。'],
+  ['六、免责说明', '本站为学习与演示用途的复刻项目，上传内容的版权责任由上传者自行承担。因上传内容引发的纠纷，本站不承担相应责任。'],
+];
+---
+
+<Base title="上传政策 - MIMI Guitar">
+  <article class="max-w-3xl">
+    <p class="text-caption tracking-[0.2em] uppercase text-ash">Upload Policy</p>
+    <h1 class="font-display text-heading mt-2">上传政策</h1>
+    <div class="mt-8 space-y-6">
+      {sections.map(([t, body]) => (
+        <section>
+          <h2 class="font-display text-subheading">{t}</h2>
+          <p class="mt-2 text-body-sm leading-[1.9] text-charcoal">{body}</p>
+        </section>
+      ))}
+    </div>
+  </article>
+</Base>

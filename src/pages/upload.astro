@@ -1,0 +1,23 @@
+---
+import Base from '../layouts/Base.astro';
+const type = Astro.url.searchParams.get('type') === 'ukulele' ? 'ukulele' : 'guitar';
+const typeLabel = type === 'ukulele' ? '尤克里里' : '吉他';
+---
+
+<Base title={'上传' + typeLabel + '谱 - MIMI Guitar'}>
+  <div class="mx-auto max-w-2xl">
+    <div class="card p-8">
+      <p class="text-caption tracking-[0.2em] uppercase text-ash">Upload</p>
+      <h1 class="font-display text-heading-sm mt-2">公开投稿暂未开放</h1>
+      <p class="mt-3 text-body-sm leading-[1.8] text-charcoal">
+        首期面向个人练习。公开曲谱上传和审核已关闭，不会接收文件、生成投稿记录或展示“审核通过”。
+        你仍可把{typeLabel}谱导入本机个人曲库；原件和可播放谱会保存在本设备的个人资料中。
+      </p>
+      <div class="mt-6 flex flex-wrap gap-3">
+        <a href="/library" class="btn btn-signal">前往“我的谱”本地导入</a>
+        <a href="/settings/data" class="btn btn-ghost">数据与备份</a>
+      </div>
+      <p class="mt-4 text-caption text-ash">本地导入不会公开分享，也不会上传到服务器。</p>
+    </div>
+  </div>
+</Base>

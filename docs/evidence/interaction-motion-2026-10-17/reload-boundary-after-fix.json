@@ -1,0 +1,49 @@
+{
+  "case": "Fresh route load, no play or continue-last clicked",
+  "observed": {
+    "applyButtons": [
+      {
+        "disabled": false,
+        "label": "应用片段：动效验收已保存"
+      }
+    ],
+    "badReasons": [],
+    "play": "播放",
+    "playDisabled": false,
+    "ranges": [
+      {
+        "disabled": false,
+        "label": "播放进度",
+        "max": "61440",
+        "value": "1"
+      },
+      {
+        "disabled": false,
+        "label": "悬浮控制台播放进度",
+        "max": "61440",
+        "value": "1"
+      }
+    ]
+  },
+  "afterApplyAndArrowRight": {
+    "error": [],
+    "play": "播放",
+    "range": [
+      {
+        "disabled": false,
+        "label": "播放进度",
+        "max": "61440",
+        "value": "48004"
+      },
+      {
+        "disabled": false,
+        "label": "悬浮控制台播放进度",
+        "max": "61440",
+        "value": "48004"
+      }
+    ],
+    "status": [
+      "片段已应用，播放器保持暂停。"
+    ]
+  }
+}

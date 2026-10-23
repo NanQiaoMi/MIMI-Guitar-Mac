@@ -1,0 +1,682 @@
+[
+  {
+    "stage": "baseline-layout",
+    "width": 390,
+    "height": 844,
+    "panelHeight": 1044.737548828125,
+    "scoreTop": 1778.6624755859375,
+    "clientWidth": 375,
+    "scrollWidth": 375
+  },
+  {
+    "stage": "baseline-main-progress-target",
+    "height": 4,
+    "width": 202.375
+  },
+  {
+    "stage": "touch-cancel-browser-attempt",
+    "result": "not executed",
+    "reason": "IAB does not support Input.dispatchTouchEvent",
+    "touchEmulation": "cleared"
+  },
+  {
+    "options": [
+      {
+        "height": 44.650001525878906,
+        "text": "使用原谱变调夹 不夹"
+      },
+      {
+        "height": 25.787500381469727,
+        "text": "降半调调弦"
+      },
+      {
+        "height": 25.787500381469727,
+        "text": "不夹"
+      },
+      {
+        "height": 25.787500381469727,
+        "text": "1品"
+      },
+      {
+        "height": 25.787500381469727,
+        "text": "2品"
+      },
+      {
+        "height": 25.787500381469727,
+        "text": "3品"
+      },
+      {
+        "height": 25.787500381469727,
+        "text": "4品"
+      },
+      {
+        "height": 25.787500381469727,
+        "text": "5品"
+      },
+      {
+        "height": 25.787500381469727,
+        "text": "6品"
+      }
+    ],
+    "stage": "baseline-capo-menu"
+  },
+  {
+    "stage": "baseline-selected-fixture",
+    "title": "动效与工具验收 · 自写十六小节（个人副本） · MIMI 本地测试",
+    "url": "http://127.0.0.1:4338/practice?score=project%3Aimported_w4tq11z_mvdzfwmu"
+  },
+  {
+    "floatingGPreviews": 0,
+    "focused": "G",
+    "stage": "baseline-chord-keyboard",
+    "url": "http://127.0.0.1:4338/"
+  },
+  {
+    "stage": "candidate-viewport-attempt-inactive-tab",
+    "rows": [
+      {
+        "clientWidth": 375,
+        "detailsOpen": false,
+        "height": 844,
+        "hudHidden": "true",
+        "hudInert": true,
+        "panelHeight": 279.5,
+        "scrollWidth": 375,
+        "selectHeight": 44,
+        "sliderHeight": 44,
+        "width": 390
+      },
+      {
+        "clientWidth": 375,
+        "detailsOpen": false,
+        "height": 844,
+        "hudHidden": "true",
+        "hudInert": true,
+        "panelHeight": 279.5,
+        "scrollWidth": 375,
+        "selectHeight": 44,
+        "sliderHeight": 44,
+        "width": 390
+      },
+      {
+        "clientWidth": 375,
+        "detailsOpen": false,
+        "height": 844,
+        "hudHidden": "true",
+        "hudInert": true,
+        "panelHeight": 279.5,
+        "scrollWidth": 375,
+        "selectHeight": 44,
+        "sliderHeight": 44,
+        "width": 390
+      },
+      {
+        "clientWidth": 375,
+        "detailsOpen": false,
+        "height": 844,
+        "hudHidden": "true",
+        "hudInert": true,
+        "panelHeight": 279.5,
+        "scrollWidth": 375,
+        "selectHeight": 44,
+        "sliderHeight": 44,
+        "width": 390
+      },
+      {
+        "clientWidth": 375,
+        "detailsOpen": false,
+        "height": 844,
+        "hudHidden": "true",
+        "hudInert": true,
+        "panelHeight": 279.5,
+        "scrollWidth": 375,
+        "selectHeight": 44,
+        "sliderHeight": 44,
+        "width": 390
+      }
+    ],
+    "result": "Viewport override changed selected peer tab; all actual QA rows remained 390. Not counted as breakpoint coverage."
+  },
+  {
+    "stage": "candidate-practice-layout-actual-matrix",
+    "rows": [
+      {
+        "clientWidth": 305,
+        "detailsOpen": false,
+        "height": 812,
+        "hudHidden": "true",
+        "hudInert": true,
+        "panelHeight": 312.0500183105469,
+        "scrollWidth": 305,
+        "selectHeight": 44,
+        "sliderHeight": 44,
+        "width": 320
+      },
+      {
+        "clientWidth": 753,
+        "detailsOpen": false,
+        "height": 1024,
+        "hudHidden": "true",
+        "hudInert": true,
+        "panelHeight": 182.8125,
+        "scrollWidth": 753,
+        "selectHeight": 44,
+        "sliderHeight": 44,
+        "width": 768
+      },
+      {
+        "clientWidth": 1009,
+        "detailsOpen": false,
+        "height": 768,
+        "hudHidden": "true",
+        "hudInert": true,
+        "panelHeight": 187.9499969482422,
+        "scrollWidth": 1009,
+        "selectHeight": 44,
+        "sliderHeight": 44,
+        "width": 1024
+      },
+      {
+        "clientWidth": 1351,
+        "detailsOpen": false,
+        "height": 900,
+        "hudHidden": "true",
+        "hudInert": true,
+        "panelHeight": 191.02500915527344,
+        "scrollWidth": 1351,
+        "selectHeight": 44,
+        "sliderHeight": 44,
+        "width": 1366
+      },
+      {
+        "clientWidth": 375,
+        "detailsOpen": false,
+        "height": 844,
+        "hudHidden": "true",
+        "hudInert": true,
+        "panelHeight": 278.6875,
+        "scrollWidth": 375,
+        "selectHeight": 44,
+        "sliderHeight": 44,
+        "width": 390
+      }
+    ]
+  },
+  {
+    "stage": "candidate-capo-escape-and-targets",
+    "options": [
+      {
+        "height": 44.76250076293945,
+        "text": "使用原谱变调夹 不夹"
+      },
+      {
+        "height": 44,
+        "text": "降半调调弦"
+      },
+      {
+        "height": 44,
+        "text": "不夹"
+      },
+      {
+        "height": 44,
+        "text": "1品"
+      },
+      {
+        "height": 44,
+        "text": "2品"
+      },
+      {
+        "height": 44,
+        "text": "3品"
+      },
+      {
+        "height": 44,
+        "text": "4品"
+      },
+      {
+        "height": 44,
+        "text": "5品"
+      },
+      {
+        "height": 44,
+        "text": "6品"
+      }
+    ],
+    "escape": {
+      "expanded": "false",
+      "focused": "原谱 · 不夹 · 变调夹",
+      "menuHidden": true
+    }
+  },
+  {
+    "stage": "candidate-capo-keyboard-select",
+    "expanded": "false",
+    "focused": "2品 · 变调夹",
+    "label": "2品 · 变调夹"
+  },
+  {
+    "stage": "candidate-fold-playback-continuity",
+    "duringPlay": {
+      "detailsOpen": false,
+      "note": "本页草稿 A · 10月19日验收",
+      "playText": "暂停",
+      "tick": "26462"
+    },
+    "retained": {
+      "fragmentName": "折叠时保留的片段草稿",
+      "note": "本页草稿 A · 10月19日验收",
+      "step": "7"
+    },
+    "surfaceBackendBefore": 3285,
+    "surfaceBackendAfter": 3285,
+    "paused": true
+  },
+  {
+    "stage": "candidate-note-cas-and-blocked-switch",
+    "conflict": {
+      "endDisabled": true,
+      "note": "本页草稿 A · 10月19日验收",
+      "saveDisabled": true
+    },
+    "blocked": {
+      "alerts": [
+        "曲谱没有切换，当前播放器和备注仍保留。请先修正或取消备注，再重试。",
+        "备注草稿与其他标签页的版本冲突；请取消编辑载入最新备注后再离开。",
+        "备注已在其他标签页更新；草稿仍保留。取消编辑可载入最新备注，再继续修改。"
+      ],
+      "note": "本页草稿 A · 10月19日验收",
+      "selected": "project:imported_w4tq11z_mvdzfwmu",
+      "url": "http://127.0.0.1:4338/practice?score=project%3Aimported_w4tq11z_mvdzfwmu"
+    },
+    "cancelledValue": "另一页已保存的备注 B · 10月19日验收"
+  },
+  {
+    "stage": "candidate-note-cas-finish-rejected",
+    "alerts": [
+      "曲谱没有切换，当前播放器和备注仍保留。请先修正或取消备注，再重试。",
+      "备注已在其他标签页更新；练习未结束，本页草稿已保留。请取消编辑载入最新备注后再试。",
+      "备注已在其他标签页更新；草稿仍保留。取消编辑可载入最新备注，再继续修改。"
+    ],
+    "draft": "本页结束草稿 A2 · 应保留",
+    "review": "练习回顾仅统计播放器已记录的伴奏播放时段，不代表实际演奏时长。 本地时区：Asia/Shanghai  今天 · 10-19 今天 28 秒 近 7 个本地日 10-130 分钟10-140 分钟10-150 分钟10-160 分钟10-170 分钟10-180 分钟10-19 今天28 秒 最近练习记录 动效与工具验收 · 自写十六小节（个人副本） · MIMI 本地测试已暂停 已保存伴奏时长：28 秒 · 2026年10月19日 14:02 备注：另一页最终备注 B2 · 应保留 打开这首曲谱的练习",
+    "sessionStillOpen": true
+  },
+  {
+    "stage": "candidate-note-cas-finish-resolved",
+    "review": "练习回顾仅统计播放器已记录的伴奏播放时段，不代表实际演奏时长。 本地时区：Asia/Shanghai  今天 · 10-19 今天 28 秒 近 7 个本地日 10-130 分钟10-140 分钟10-150 分钟10-160 分钟10-170 分钟10-180 分钟10-19 今天28 秒 最近练习记录 动效与工具验收 · 自写十六小节（个人副本） · MIMI 本地测试已完成 已保存伴奏时长：28 秒 · 2026年10月19日 14:02 备注：另一页最终备注 B2 · 应保留 打开这首曲谱的练习",
+    "startAvailable": true
+  },
+  {
+    "stage": "candidate-guard-saves-before-normal-switch",
+    "maxTick": "7680",
+    "review": "练习回顾仅统计播放器已记录的伴奏播放时段，不代表实际演奏时长。 本地时区：Asia/Shanghai  今天 · 10-19 今天 28 秒 近 7 个本地日 10-130 分钟10-140 分钟10-150 分钟10-160 分钟10-170 分钟10-180 分钟10-19 今天28 秒 最近练习记录 动效与工具验收 · 自写十六小节（个人副本） · MIMI 本地测试已暂停 已保存伴奏时长：0 秒 · 2026年10月19日 14:02 备注：切谱前由护栏保存的备注 · 10月19日 打开这首曲谱的练习动效与工具验收 · 自写十六小节（个人副本） · MIMI 本地测试已完成 已保存伴奏时长：28 秒 · 2026年10月19日 14:02 备注：另一页最终备注 B2 · 应保留 打开这首曲谱的练习",
+    "selected": "project:imported_p31ewa7_mvdzapin",
+    "url": "http://127.0.0.1:4338/practice?score=project%3Aimported_p31ewa7_mvdzapin"
+  },
+  {
+    "stage": "candidate-resume-after-reload",
+    "before": {
+      "resumeLabel": "继续上次并保持暂停（0:06 · tick 6473 · 60 BPM · 2026年10月19日 14:03）",
+      "tick": "5761"
+    },
+    "after": {
+      "capo": "原谱 · 不夹 · 变调夹",
+      "note": "切谱前由护栏保存的备注 · 10月19日",
+      "paused": "播放",
+      "tick": "6473"
+    }
+  },
+  {
+    "stage": "candidate-peer-archive",
+    "targets": [
+      {
+        "height": 44,
+        "text": "将《动效与工具验收 · 自写十六小节（个人副本）》上移"
+      },
+      {
+        "height": 44,
+        "text": "将《动效与工具验收 · 自写十六小节（个人副本）》下移"
+      },
+      {
+        "height": 44,
+        "text": "开始练习"
+      },
+      {
+        "height": 44,
+        "text": "归档"
+      },
+      {
+        "height": 44,
+        "text": "移出待练"
+      },
+      {
+        "height": 44,
+        "text": "动效与工具验收 · 自写十六小节（个人副本）练习状态"
+      },
+      {
+        "height": 44,
+        "text": "动效与工具验收 · 自写十六小节（个人副本）备注"
+      }
+    ],
+    "review": "练习回顾仅统计播放器已记录的伴奏播放时段，不代表实际演奏时长。 本地时区：Asia/Shanghai  今天 · 10-19 今天 29 秒 近 7 个本地日 10-130 分钟10-140 分钟10-150 分钟10-160 分钟10-170 分钟10-180 分钟10-19 今天29 秒 最近练习记录 动效与工具验收 · 自写十六小节（个人副本） · MIMI 本地测试已暂停 已保存伴奏时长：0 秒 · 2026年10月19日 14:03 备注：切谱前由护栏保存的备注 · 10月19日 曲谱已归档。前往我的谱恢复动效与工具验收 · 自写十六小节（个人副本） · MIMI 本地测试已完成 已保存伴奏时长：28 秒 · 2026年10月19日 14:02 备注：另一页最终备注 B2 · 应保留 曲谱已归档。前往我的谱恢复",
+    "selected": "",
+    "surfaceCount": 0,
+    "url": "http://127.0.0.1:4338/practice?score=project%3Aimported_w4tq11z_mvdzfwmu"
+  },
+  {
+    "stage": "candidate-home-archived-first-attempt",
+    "result": "Not loaded before scroll: StudyNotesFeed is client:visible, exact action text timed out while its SSR loading placeholder remained."
+  },
+  {
+    "stage": "candidate-home-archived-route",
+    "links": [
+      {
+        "href": "/library",
+        "text": "动效与工具验收 · 自写十六小节（个人副本） 有效练习 0 分钟 切谱前由护栏保存的备注 · 10月19日 已归档 · 去我的曲库恢复到待练"
+      },
+      {
+        "href": "/library",
+        "text": "动效与工具验收 · 自写十六小节（个人副本） 有效练习 0 分钟 另一页最终备注 B2 · 应保留 已归档 · 去我的曲库恢复到待练"
+      }
+    ]
+  },
+  {
+    "stage": "candidate-peer-restore-same-url",
+    "note": "切谱前由护栏保存的备注 · 10月19日",
+    "reviewLinks": [
+      "/practice?score=project%3Aimported_w4tq11z_mvdzfwmu",
+      "/practice?score=project%3Aimported_w4tq11z_mvdzfwmu"
+    ],
+    "selected": "project:imported_w4tq11z_mvdzfwmu",
+    "surfaceCount": 1,
+    "url": "http://127.0.0.1:4338/practice?score=project%3Aimported_w4tq11z_mvdzfwmu"
+  },
+  {
+    "stage": "candidate-studio-toggle-states",
+    "before": [
+      {
+        "name": "节拍器",
+        "pressed": "false"
+      },
+      {
+        "name": "预备拍",
+        "pressed": "false"
+      },
+      {
+        "name": "整首乐谱循环",
+        "pressed": "false"
+      }
+    ],
+    "on": [
+      {
+        "name": "节拍器",
+        "pressed": "true"
+      },
+      {
+        "name": "预备拍",
+        "pressed": "true"
+      },
+      {
+        "name": "整首乐谱循环",
+        "pressed": "true"
+      }
+    ],
+    "restored": [
+      {
+        "name": "节拍器",
+        "pressed": "false"
+      },
+      {
+        "name": "预备拍",
+        "pressed": "false"
+      },
+      {
+        "name": "整首乐谱循环",
+        "pressed": "false"
+      }
+    ],
+    "layout": {
+      "clientWidth": 1351,
+      "scrollWidth": 1351,
+      "width": 1366
+    }
+  },
+  {
+    "stage": "candidate-known-chord-geometry-before-final-touch-fix",
+    "focused": "预览G和弦指法图",
+    "height": 812,
+    "tooltips": [],
+    "width": 320
+  },
+  {
+    "stage": "candidate-known-chord-after-client-ready",
+    "result": "First keyboard attempt was made before client readiness was established and is not counted as a pass. Repeated once after observing ssr=false.",
+    "tooltips": [
+      {
+        "bottom": 375.36251068115234,
+        "id": "home-stage-chord-preview-tooltip",
+        "left": 18.36250114440918,
+        "right": 88.48750114440918,
+        "text": "G 和弦图 G",
+        "top": 284.7250061035156
+      }
+    ]
+  },
+  {
+    "stage": "candidate-ab-keyboard-speed-plan",
+    "source": "Recorded from prior AX observations in this browser run",
+    "pointA": 26881,
+    "keyboardSeekTick": 33025,
+    "pointB": 33600,
+    "speedStepDraft": 7,
+    "currentBpm": 60,
+    "targetBpm": 90,
+    "completedLaps": 0,
+    "lapsPerLevel": 3,
+    "automaticLapProgression": "Not re-exercised in this round; no extra runtime claim"
+  },
+  {
+    "stage": "full-mode-clipping-before-container-fix",
+    "bounds": {
+      "bottom": 42.42499542236328,
+      "left": 96.7249984741211,
+      "right": 203.875,
+      "top": -90.20000457763672
+    },
+    "mode": "full",
+    "parentBackdropFilter": "blur(12px)",
+    "parentBounds": {
+      "left": 14.550000190734863,
+      "top": -407.8000183105469
+    },
+    "parentOverflow": "hidden",
+    "result": "Fails viewport geometry; fixed child is contained and clipped by its backdrop-filter parent",
+    "style": "left: 81.375px; top: 316.8px; max-height: calc(100dvh - 16px); visibility: visible;"
+  },
+  {
+    "stage": "final-hero-full-320",
+    "buttons": [
+      {
+        "height": 44,
+        "width": 44
+      },
+      {
+        "height": 44,
+        "width": 44
+      },
+      {
+        "height": 44,
+        "width": 44
+      },
+      {
+        "height": 44,
+        "width": 44
+      }
+    ],
+    "clientWidth": 305,
+    "focused": "预览C和弦指法图",
+    "height": 812,
+    "mode": "full",
+    "scrollWidth": 305,
+    "tooltip": {
+      "bottom": 449.4250183105469,
+      "left": 81.375,
+      "parent": "ASTRO-ISLAND",
+      "right": 188.5250015258789,
+      "text": "C 和弦指法图 C",
+      "top": 316.8000183105469
+    },
+    "width": 320
+  },
+  {
+    "stage": "final-hero-activation-and-escape",
+    "pinCount": 1,
+    "secondActivationCount": 0,
+    "immediateEscapeDOMCount": 1,
+    "settledEscapeCount": 0
+  },
+  {
+    "stage": "missing-diagram-full-before-initial-scroll-fix",
+    "result": "First remote keyboard activation closed before browser auto-scroll; after anchor settled a second Enter opened. Not counted as a first-action pass.",
+    "focused": "查看G#m和弦指法图收录情况",
+    "tooltip": {
+      "bottom": 376.2500076293946,
+      "left": 49.6875,
+      "right": 156.8375015258789,
+      "text": "G#m 和弦 暂未收录此和弦指法图",
+      "top": 250.90000915527344
+    }
+  },
+  {
+    "stage": "candidate-grid-keyboard-view-switch",
+    "before": {
+      "height": 900,
+      "tooltip": {
+        "bottom": 450.8125,
+        "left": 246.1750030517578,
+        "right": 389.8500061035156,
+        "top": 300.4624938964844
+      },
+      "width": 1366
+    },
+    "listChecked": "true",
+    "tooltipCount": 0
+  },
+  {
+    "stage": "final-remote-first-keyboard-activation-full-320",
+    "before": {
+      "scrollY": 0,
+      "top": 2576.324951171875
+    },
+    "after": {
+      "focused": "查看G#m和弦指法图收录情况",
+      "height": 812,
+      "mode": "full",
+      "tooltip": {
+        "bottom": 408.2000122070313,
+        "left": 49.54999923706055,
+        "parent": "ASTRO-ISLAND",
+        "right": 156.3125038146973,
+        "text": "G#m 和弦 暂未收录此和弦指法图",
+        "top": 283.32501220703125
+      },
+      "width": 320
+    },
+    "activationCount": 1
+  },
+  {
+    "stage": "final-chord-gentle-off",
+    "rows": [
+      {
+        "height": 812,
+        "mode": "gentle",
+        "tooltip": {
+          "bottom": 375.9875030517578,
+          "left": 81.375,
+          "right": 188.5250015258789,
+          "text": "D 和弦指法图 D",
+          "top": 243.3625030517578
+        },
+        "width": 320
+      },
+      {
+        "height": 812,
+        "mode": "off",
+        "tooltip": {
+          "bottom": 375.8249969482422,
+          "left": 81.375,
+          "right": 188.5250015258789,
+          "text": "D 和弦指法图 D",
+          "top": 243.1999969482422
+        },
+        "width": 320
+      }
+    ]
+  },
+  {
+    "stage": "final-queue-targets-320",
+    "targets": [
+      {
+        "height": 44,
+        "label": "将《动效与工具验收 · 自写十六小节（个人副本）》上移",
+        "tag": "BUTTON"
+      },
+      {
+        "height": 44,
+        "label": "将《动效与工具验收 · 自写十六小节（个人副本）》下移",
+        "tag": "BUTTON"
+      },
+      {
+        "height": 44,
+        "label": "开始练习",
+        "tag": "A"
+      },
+      {
+        "height": 44,
+        "label": "归档",
+        "tag": "BUTTON"
+      },
+      {
+        "height": 44,
+        "label": "移出待练",
+        "tag": "BUTTON"
+      },
+      {
+        "height": 44,
+        "label": "动效与工具验收 · 自写十六小节（个人副本）练习状态",
+        "tag": "SELECT"
+      },
+      {
+        "height": 44,
+        "label": "动效与工具验收 · 自写十六小节（个人副本）备注",
+        "tag": "INPUT"
+      }
+    ],
+    "clientWidth": 305,
+    "scrollWidth": 305,
+    "width": 320
+  },
+  {
+    "stage": "final-grid-keyboard-view-switch",
+    "listChecked": "true",
+    "tooltipCount": 0
+  },
+  {
+    "stage": "final-practice-details-enter",
+    "clientWidth": 375,
+    "focused": "SUMMARY",
+    "open": false,
+    "playText": "播放",
+    "scrollWidth": 375,
+    "width": 390
+  },
+  {
+    "stage": "final-qa-cleanup",
+    "preference": "system",
+    "practiceSessions": "Test sessions ended through the UI; no unsaved session note remains",
+    "resetViewport": {
+      "height": 720,
+      "width": 1280
+    }
+  }
+]

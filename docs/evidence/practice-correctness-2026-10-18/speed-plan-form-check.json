@@ -1,0 +1,79 @@
+{
+  "revision": 8487,
+  "assetsVerified": 4,
+  "observationsVerified": 4,
+  "draftPreserved": true,
+  "savedParametersRestored": true,
+  "session": {
+    "id": "ab18094b-1f82-454a-b393-fad51ba65b1a",
+    "scoreId": "catalog:acceptance-2",
+    "scoreRevision": "804392771cf3f1a75bc77dce5f8a90847fb2dd993c8808048a2f119da2cdbd67",
+    "state": "completed",
+    "startedAt": 1792283675608,
+    "updatedAt": 1792283744248,
+    "timezone": "Asia/Shanghai",
+    "note": "第五轮：实际45→60期间保留未提交target75草稿；刷新及明确恢复回填45/60/15/1，tick12780→12781，倍率2/3且暂停；结束后核对计划仍target60。",
+    "speedPlan": {
+      "revision": "804392771cf3f1a75bc77dce5f8a90847fb2dd993c8808048a2f119da2cdbd67",
+      "nativeAnchorBpm": 90,
+      "loopRange": {
+        "startTick": 12288,
+        "endTick": 15360
+      },
+      "startBpm": 45,
+      "targetBpm": 60,
+      "stepBpm": 15,
+      "lapsPerLevel": 1,
+      "currentBpm": 60,
+      "completedLaps": 0
+    },
+    "endedAt": 1792283744156,
+    "sliceCount": 5,
+    "durationMs": 19071
+  },
+  "resume": {
+    "scoreId": "catalog:acceptance-2",
+    "scoreRevision": "804392771cf3f1a75bc77dce5f8a90847fb2dd993c8808048a2f119da2cdbd67",
+    "tick": 12781,
+    "timeMs": 11312.500000000002,
+    "speed": 60,
+    "capo": 0,
+    "useSourceCapo": true,
+    "transpose": 0,
+    "loop": {
+      "startTick": 12288,
+      "endTick": 15360
+    },
+    "trackIndexes": [
+      0,
+      1
+    ],
+    "trackMix": [
+      {
+        "index": 0,
+        "muted": false,
+        "soloed": false,
+        "volume": 50,
+        "program": 25
+      },
+      {
+        "index": 1,
+        "muted": false,
+        "soloed": false,
+        "volume": 50,
+        "program": 25
+      }
+    ],
+    "display": {
+      "fontScale": 1,
+      "chordMode": "diagram",
+      "scoreDisplayMode": "mixed",
+      "numberTab": true,
+      "showFretboard": false
+    },
+    "metronome": false,
+    "countIn": false,
+    "playbackRatio": 0.6666666666666666,
+    "updatedAt": 1792283736538
+  }
+}

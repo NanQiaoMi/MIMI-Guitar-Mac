@@ -1,0 +1,276 @@
+---
+import Base from '../layouts/Base.astro';
+import { db } from '../lib/db';
+import { buildClearFiltersHref, buildSearchCategoryHref, parseListParams, queryTabs, DIFFICULTY_OPTIONS, FORM_OPTIONS, formLabel, heatText } from '../lib/tabQuery';
+import { withCatalogRead } from '../lib/catalogReadGate';
+
+const sp = Astro.url.searchParams;
+const searchValue = (sp.get('searchValue') || sp.get('keyword') || '').trim();
+const requestedType = sp.get('type');
+const type = requestedType === 'all' || requestedType === 'ukulele' || requestedType === 'article' ? requestedType : 'guitar';
+const params = parseListParams(sp, 'guitar');
+const field = params.searchField ?? 'all';
+const difficulty = params.difficulty ?? 0;
+const sheetForm = params.sheetForm ?? 0;
+const sort = type === 'article' && params.sort === 2 ? 1 : params.sort ?? 1;
+const page = params.no ?? 1;
+const PAGE_SIZE = 30;
+
+const emptyTabsResult = { tabs: [] as any[], total: 0, page: 1, pageCount: 1, pageSize: PAGE_SIZE, source: 'catalog' as const };
+import { DEMO_ARTICLES } from '../lib/demoData';
+
+async function loadArticles() {
+  let articleTotal = 0;
+  let articles: any[] = [];
+  let articleSource: 'catalog' | 'demo' | 'unavailable' = 'catalog';
+  if (!searchValue) return { articleTotal, articles, articleSource };
+
+  try {
+    const articleWhere = {
+      OR: [
+        { title: { contains: searchValue, mode: 'insensitive' as const } },
+        { content: { contains: searchValue, mode: 'insensitive' as const } },
+      ],
+    };
+    const articleOrderBy = sort === 0 ? { createdAt: 'desc' as const } : { views: 'desc' as const };
+    const requestedRows = withCatalogRead(() => db.article.findMany({
+      where: articleWhere,
+      orderBy: articleOrderBy,
+      skip: (page - 1) * PAGE_SIZE,
+      take: PAGE_SIZE,
+    }));
+    const [countResult, rowsResult] = await Promise.allSettled([
+      withCatalogRead(() => db.article.count({ where: articleWhere })),
+      requestedRows,
+    ]);
+    if (countResult.status === 'rejected') throw countResult.reason;
+    if (rowsResult.status === 'rejected') throw rowsResult.reason;
+    articleTotal = countResult.value;
+    articles = rowsResult.value;
+    const articlePageCount = Math.max(1, Math.ceil(articleTotal / PAGE_SIZE));
+    const articlePage = Math.min(page, articlePageCount);
+    if (articlePage !== page) {
+      articles = await withCatalogRead(() => db.article.findMany({
+        where: articleWhere,
+        orderBy: articleOrderBy,
+        skip: (articlePage - 1) * PAGE_SIZE,
+        take: PAGE_SIZE,
+      }));
+    }
+  } catch {
+    try {
+      const kw = searchValue.toLocaleLowerCase();
+      const matched = DEMO_ARTICLES.filter(
+        (a) => a.title.toLocaleLowerCase().includes(kw) || a.content.toLocaleLowerCase().includes(kw)
+      );
+      articleSource = 'demo';
+      articleTotal = matched.length;
+      const safePage = Math.min(page, Math.max(1, Math.ceil(articleTotal / PAGE_SIZE)));
+      articles = matched.slice((safePage - 1) * PAGE_SIZE, safePage * PAGE_SIZE);
+    } catch {
+      articleSource = 'unavailable';
+    }
+  }
+
+  return { articleTotal, articles, articleSource };
+}
+
+const queryResults = await Promise.allSettled([
+  type === 'all'
+    ? queryTabs({ ...params, category: 'all', keyword: searchValue || undefined, searchField: field, pageSize: PAGE_SIZE })
+    : Promise.resolve(emptyTabsResult),
+  searchValue
+    ? queryTabs({ ...params, category: 'guitar', keyword: searchValue, searchField: field, pageSize: PAGE_SIZE })
+    : Promise.resolve(emptyTabsResult),
+  searchValue
+    ? queryTabs({ ...params, category: 'ukulele', keyword: searchValue, searchField: field, pageSize: PAGE_SIZE })
+    : Promise.resolve(emptyTabsResult),
+  loadArticles(),
+]);
+function settledValue<T>(result: PromiseSettledResult<T>): T {
+  if (result.status === 'rejected') throw result.reason;
+  return result.value;
+}
+const allRes = settledValue(queryResults[0]);
+const guitarRes = settledValue(queryResults[1]);
+const ukuRes = settledValue(queryResults[2]);
+const articleResult = settledValue(queryResults[3]);
+const { articleTotal, articles, articleSource } = articleResult;
+
+const articlePageCount = Math.max(1, Math.ceil(articleTotal / PAGE_SIZE));
+const articlePage = Math.min(page, articlePageCount);
+
+const totalFound = type === 'all' ? allRes.total : type === 'article' ? articleTotal : type === 'ukulele' ? ukuRes.total : guitarRes.total;
+const allCategoryCount = type === 'all' ? allRes.total : guitarRes.total + ukuRes.total;
+
+function difficultyLabel(d: number): string {
+  const m: Record<number, string> = { 1: '零基础', 2: '初级', 3: '中级', 4: '高级', 5: '专业' };
+  return m[d] ?? '';
+}
+
+function tabHref(t: 'all' | 'guitar' | 'ukulele' | 'article'): string {
+  return buildSearchCategoryHref(Astro.url.toString(), t, sort);
+}
+
+function filterHref(over: Record<string, string | number | undefined>): string {
+  const q = new URLSearchParams(sp);
+  q.set('type', type);
+  q.set('searchValue', searchValue);
+  q.delete('keyword');
+  q.set('field', field);
+  q.set('sort', String(sort));
+  q.set('no', '1');
+  q.delete('page');
+  for (const [k, v] of Object.entries(over)) {
+    if (v === undefined || v === '') q.delete(k);
+    else q.set(k, String(v));
+  }
+  return '/searchResults?' + q.toString();
+}
+
+const pageHref = (p: number) =>
+  (() => { const q = new URLSearchParams(sp); q.set('no', String(p)); q.delete('page'); return '/searchResults?' + q.toString(); })();
+const source = type === 'all' ? allRes.source : type === 'article' ? articleSource : type === 'ukulele' ? ukuRes.source : guitarRes.source;
+---
+
+<Base title={searchValue ? `搜索「${searchValue}」 - MIMI Guitar` : type === 'all' ? '全部曲谱 - MIMI Guitar' : '搜索 - MIMI Guitar'}>
+  <section class="card p-6 sm:p-8">
+    <h1 class="font-display text-heading">{searchValue ? `搜索「${searchValue}」` : type === 'all' ? '全部曲谱' : '搜索曲谱'}</h1>
+    <p class="mt-2 text-body-sm text-ash">{searchValue || type === 'all' ? `共找到 ${totalFound} 个结果` : '输入曲名或艺人开始搜索'}</p>
+    {source === 'demo' && <p class="mt-2 rounded-lg bg-amber-100 px-3 py-2 text-sm text-amber-900">当前显示演示数据，在线曲库暂不可用；结果数量不代表完整曲库。</p>}
+    {source === 'unavailable' && <p class="mt-2 rounded-lg bg-red-100 px-3 py-2 text-sm text-red-800">曲库当前不可用，无法提供搜索结果，请稍后重试。</p>}
+
+    <form action="/searchResults" method="get" class="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
+      <input type="hidden" name="type" value={type} />
+      <input type="hidden" name="sort" value={String(sort)} />
+      <input type="hidden" name="no" value="1" />
+      <input type="hidden" name="style" value={sp.get('style') ?? ''} />
+      <input type="hidden" name="key" value={sp.get('key') ?? ''} />
+      <input type="hidden" name="tuning" value={sp.get('tuning') ?? ''} />
+      <input
+        name="searchValue"
+        value={searchValue}
+        type="search"
+        placeholder="输入曲名或艺人，如：晴天 / 周杰伦"
+        class="hairline rounded-btn bg-paper px-4 py-2 text-body-sm outline-none focus:border-signal"
+      />
+      {type !== 'article' && (
+        <>
+          <select name="field" class="hairline rounded-btn bg-paper px-3 py-2 text-body-sm outline-none focus:border-signal">
+            <option value="all" selected={field === 'all'}>全部</option>
+            <option value="title" selected={field === 'title'}>按歌曲名称</option>
+            <option value="artist" selected={field === 'artist'}>按艺术家</option>
+          </select>
+          <select name="difficulty" class="hairline rounded-btn bg-paper px-3 py-2 text-body-sm outline-none focus:border-signal">
+            {DIFFICULTY_OPTIONS.map((d) => (
+              <option value={String(d.value)} selected={difficulty === d.value}>{d.label}</option>
+            ))}
+          </select>
+          <select name="sheetForm" class="hairline rounded-btn bg-paper px-3 py-2 text-body-sm outline-none focus:border-signal">
+            {FORM_OPTIONS.map((f) => (
+              <option value={String(f.value)} selected={sheetForm === f.value}>{f.label}</option>
+            ))}
+          </select>
+        </>
+      )}
+      <div class="sm:col-span-2 lg:col-span-4 flex flex-wrap items-center gap-3">
+        <button type="submit" class="btn btn-signal">搜索</button>
+        <a href={buildClearFiltersHref(Astro.url.toString(), type)} class="text-caption text-ash hover:opacity-70">清除筛选</a>
+        <span class="ml-auto flex items-center gap-2 text-caption text-ash">
+          排序：
+          <a href={filterHref({ sort: 1 })} class={"chip " + (sort === 1 ? 'chip-active' : '')}>最热</a>
+          <a href={filterHref({ sort: 0 })} class={"chip " + (sort === 0 ? 'chip-active' : '')}>最新</a>
+          {type !== 'article' && <a href={filterHref({ sort: 2 })} class={"chip " + (sort === 2 ? 'chip-active' : '')}>难度</a>}
+        </span>
+      </div>
+    </form>
+  </section>
+
+  {(searchValue || type === 'all') && (
+    <>
+      <div class="mt-6 flex gap-2 border-b hairline pb-0">
+        <a href={tabHref('all')} class={"px-4 py-2 text-body-sm " + (type === 'all' ? 'border-b-2 border-signal font-medium text-signal' : 'text-charcoal hover:opacity-70')}>
+          全部 {type === 'all' || searchValue ? <span class="text-ash">{allCategoryCount}</span> : null}
+        </a>
+        <a href={tabHref('guitar')} class={"px-4 py-2 text-body-sm " + (type === 'guitar' ? 'border-b-2 border-signal font-medium text-signal' : 'text-charcoal hover:opacity-70')}>
+          吉他 {searchValue ? <span class="text-ash">{guitarRes.total}</span> : null}
+        </a>
+        <a href={tabHref('ukulele')} class={"px-4 py-2 text-body-sm " + (type === 'ukulele' ? 'border-b-2 border-signal font-medium text-signal' : 'text-charcoal hover:opacity-70')}>
+          尤克里里 {searchValue ? <span class="text-ash">{ukuRes.total}</span> : null}
+        </a>
+        <a href={tabHref('article')} class={"px-4 py-2 text-body-sm " + (type === 'article' ? 'border-b-2 border-signal font-medium text-signal' : 'text-charcoal hover:opacity-70')}>
+          文章 {searchValue ? <span class="text-ash">{articleTotal}</span> : null}
+        </a>
+      </div>
+
+      {type !== 'article' && (() => {
+        const res = type === 'all' ? allRes : type === 'ukulele' ? ukuRes : guitarRes;
+        if (res.tabs.length === 0) {
+          if (res.source === 'unavailable') return <div class="card mt-6 flex h-40 items-center justify-center text-ash">曲库不可用，未能完成搜索</div>;
+          return <div class="card mt-6 flex h-40 items-center justify-center text-ash">{searchValue ? '未找到相关曲谱' : '当前条件下暂无曲谱'}</div>;
+        }
+        return (
+          <>
+            <ul class="mt-4 grid grid-cols-1 gap-3 md:grid-cols-2">
+              {res.tabs.map((tab: any) => (
+                <li class="card flex items-center gap-4 p-4">
+                  <span class="chip flex-shrink-0">{formLabel(tab.sheetForm)}</span>
+                  <a href={'/' + (tab.category === 'ukulele' ? 'ukulele' : 'tabs') + '/' + tab.id} class="min-w-0 flex-1 transition hover:opacity-75">
+                    <p class="truncate font-medium">{tab.title}</p>
+                    <p class="mt-1 truncate text-caption text-ash">
+                      {tab.artist ?? '未知艺人'} · {difficultyLabel(tab.difficulty) || '难度未知'} · {heatText(tab.heat)} 热度
+                    </p>
+                  </a>
+                </li>
+              ))}
+            </ul>
+            {res.pageCount > 1 && (
+              <nav class="mt-8 flex flex-wrap items-center justify-center gap-2">
+                {res.page > 1 && <a href={pageHref(res.page - 1)} class="chip">上一页</a>}
+                {Array.from({ length: res.pageCount }, (_, i) => i + 1).slice(0, 12).map((p) => (
+                  <a href={pageHref(p)} class={"chip " + (p === res.page ? 'chip-active' : '')}>{p}</a>
+                ))}
+                {res.page < res.pageCount && <a href={pageHref(res.page + 1)} class="chip">下一页</a>}
+              </nav>
+            )}
+          </>
+        );
+      })()}
+
+      {type === 'article' && (
+        <>
+          {articles.length === 0 ? (
+            <div class="card mt-6 flex h-40 items-center justify-center text-ash">{articleSource === 'unavailable' ? '文章服务不可用，未能完成搜索' : '未找到相关文章'}</div>
+          ) : (
+            <>
+              <ul class="mt-4 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+                {articles.map((a: any) => (
+                  <li>
+                    <a href={'/article/' + a.id} class="card group block h-full p-6 transition hover:opacity-80">
+                      <p class="text-caption text-ash">{a.category ?? '乐谱知识'} · {a.createdAt.toISOString().slice(0, 10)} · {heatText(a.views)} 热度</p>
+                      <h2 class="font-display text-subheading mt-2 leading-snug group-hover:text-signal">{a.title}</h2>
+                      <p class="mt-3 text-body-sm text-charcoal line-clamp-3">{a.content.replace(/\n+/g, ' ').trim().slice(0, 96)}…</p>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+              {articlePageCount > 1 && (
+                <nav class="mt-8 flex flex-wrap items-center justify-center gap-2">
+                  {articlePage > 1 && <a href={pageHref(articlePage - 1)} class="chip">上一页</a>}
+                  {Array.from({ length: articlePageCount }, (_, i) => i + 1).slice(0, 12).map((p) => (
+                    <a href={pageHref(p)} class={"chip " + (p === articlePage ? 'chip-active' : '')}>{p}</a>
+                  ))}
+                  {articlePage < articlePageCount && <a href={pageHref(articlePage + 1)} class="chip">下一页</a>}
+                </nav>
+              )}
+            </>
+          )}
+        </>
+      )}
+    </>
+  )}
+
+  {!searchValue && type !== 'all' && (
+    <div class="card mt-6 flex h-40 items-center justify-center text-ash">输入曲名或艺人开始搜索</div>
+  )}
+</Base>

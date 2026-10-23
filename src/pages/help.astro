@@ -1,0 +1,28 @@
+---
+import Base from '../layouts/Base.astro';
+
+const faqs = [
+  ['如何查找乐谱', '在首页排行榜或「吉他谱」「尤克里里」列表中浏览；也可以使用顶部的筛选（难度、调性、调弦、谱型、排序）缩小范围，或在搜索框输入曲名 / 艺人直接检索。'],
+  ['如何播放乐谱', '进入曲谱详情页，播放器会自动加载谱面。点击播放按钮即可试听，支持变速、节拍器、预备拍、变调夹、循环区间、音轨混音等控制。'],
+  ['如何打印乐谱', '点击播放器右上角的「打印」按钮，浏览器会以隐藏容器重新渲染纯谱面并弹出打印窗口，选择目标打印机即可。'],
+  ['如何保存乐谱为 PDF', '点击「PDF」按钮，系统会把谱面按 A4 分页渲染并拼接为 PDF 文件自动下载，文件名取自曲谱标题。'],
+  ['乐谱难度如何划分', '难度分为零基础、初级、中级、高级、专业五档，对应 1 到 5 级。零基础适合刚接触吉他的新手，专业级通常包含复杂技巧或原版编配。'],
+  ['为什么有些谱没有难度标注', '部分曲谱在上传时未提供难度信息，这类谱在列表中不会显示难度标签，不影响查看与播放。'],
+  ['下载或播放遇到问题怎么办', '请先尝试刷新页面；如果仍然无法解决，通过「联系我们」页面提交问题，我们会尽快回复。'],
+];
+---
+
+<Base title="帮助中心 - MIMI Guitar">
+  <article class="max-w-3xl">
+    <p class="text-caption tracking-[0.2em] uppercase text-ash">Help</p>
+    <h1 class="font-display text-heading mt-2">帮助中心</h1>
+    <div class="mt-8 space-y-6">
+      {faqs.map(([q, a]) => (
+        <section class="card p-6">
+          <h2 class="font-display text-subheading">{q}</h2>
+          <p class="mt-2 text-body-sm leading-[1.8] text-charcoal">{a}</p>
+        </section>
+      ))}
+    </div>
+  </article>
+</Base>

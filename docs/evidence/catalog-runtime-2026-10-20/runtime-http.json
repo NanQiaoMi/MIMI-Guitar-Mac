@@ -1,0 +1,106 @@
+{
+  "servedProject": "D:/MIMIguitarweb-master-merge",
+  "endpoints": [
+    {
+      "path": "/api/health",
+      "status": 200,
+      "ms": 41,
+      "data": {
+        "status": "alive"
+      }
+    },
+    {
+      "path": "/api/readiness",
+      "status": 200,
+      "ms": 83,
+      "data": {
+        "status": "ready",
+        "process": "alive",
+        "database": {
+          "status": "ready"
+        },
+        "migrations": {
+          "status": "ready",
+          "required": 4,
+          "applied": 4,
+          "pending": 0,
+          "failed": 0
+        },
+        "catalog": {
+          "status": "ready",
+          "tabs": 16233
+        },
+        "resources": {
+          "status": "sampled",
+          "sampleLimitPerType": 20,
+          "score": {
+            "catalogReferences": 12106,
+            "checked": 20,
+            "present": 20,
+            "missing": 0,
+            "unsupported": 0,
+            "unsampled": 12086
+          },
+          "xhe": {
+            "catalogReferences": 4127,
+            "checked": 20,
+            "present": 20,
+            "missing": 0,
+            "unsupported": 0,
+            "unsampled": 4107
+          },
+          "soundfonts": {
+            "status": "ready",
+            "required": 3,
+            "present": 3,
+            "missing": []
+          }
+        }
+      }
+    },
+    {
+      "path": "/api/search?category=guitar&limit=1",
+      "status": 200,
+      "ms": 18,
+      "data": {
+        "source": "catalog",
+        "total": 12212
+      }
+    },
+    {
+      "path": "/api/search?category=ukulele&limit=1",
+      "status": 200,
+      "ms": 8,
+      "data": {
+        "source": "catalog",
+        "total": 4021
+      }
+    }
+  ],
+  "scores": [
+    {
+      "id": "1sdc49P3eKm",
+      "detailHttp": 200,
+      "source": "database",
+      "resourceHttp": 200,
+      "bytes": 21277,
+      "matchesBuiltFile": true
+    },
+    {
+      "id": "1wmj8hqHnYf",
+      "detailHttp": 200,
+      "source": "database",
+      "resourceHttp": 200,
+      "bytes": 7145,
+      "matchesBuiltFile": true
+    },
+    {
+      "id": "1Oy6jj7V1",
+      "detailHttp": 200,
+      "source": "database",
+      "resourceHttp": 200,
+      "bytes": 13038,
+      "matchesBuiltFile": true
+    }
+  ]
+}

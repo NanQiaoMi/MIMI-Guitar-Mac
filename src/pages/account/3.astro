@@ -1,0 +1,48 @@
+---
+import Base from '../../layouts/Base.astro';
+import AccountNav from '../../components/AccountNav.astro';
+import LogoutButton from '../../components/LogoutButton.svelte';
+import { currentUser } from '../../lib/api';
+
+const user = await currentUser(Astro.cookies);
+const display = user?.nickname || user?.email || user?.phone || 'U';
+---
+
+<Base title="个人资料 - MIMI Guitar">
+  <div class="flex items-baseline gap-6">
+    <h1 class="font-display text-heading">个人资料</h1>
+    <a href="/tabs" class="ml-auto text-caption text-signal hover:opacity-70">← 返回曲谱</a>
+  </div>
+  <div class="mt-4"><AccountNav /></div>
+  {user ? (
+    <div class="card mt-6 max-w-xl p-8">
+      <div class="flex items-center gap-4">
+        <div class="hairline flex h-16 w-16 items-center justify-center rounded-full bg-linen font-display text-heading-sm text-signal">
+          {display.slice(0, 1).toUpperCase()}
+        </div>
+        <div>
+          <h2 class="font-display text-subheading">{user.nickname || '未设置昵称'}</h2>
+          <p class="text-caption text-ash">{user.email || user.phone || '未绑定手机/邮箱'}</p>
+        </div>
+      </div>
+      <dl class="mt-8 grid grid-cols-2 gap-6 text-body-sm">
+        <div>
+          <dt class="text-ash text-caption">账号类型</dt>
+          <dd>{user.email ? '邮箱账号' : '手机账号'}</dd>
+        </div>
+        <div>
+          <dt class="text-ash text-caption">注册时间</dt>
+          <dd>{user.createdAt ? user.createdAt.toISOString().slice(0, 10) : '-'}</dd>
+        </div>
+      </dl>
+      <div class="mt-8">
+        <LogoutButton client:load />
+      </div>
+    </div>
+  ) : (
+    <div class="card mt-6 flex h-40 flex-col items-center justify-center gap-3 text-ash">
+      <p class="text-body-sm">登录后查看个人资料</p>
+      <a href="/login?returnUrl=/account/3" class="btn">去登录</a>
+    </div>
+  )}
+</Base>

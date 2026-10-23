@@ -1,0 +1,108 @@
+---
+import Base from '../layouts/Base.astro';
+import HeroShowcase from '../components/home/HeroShowcase.svelte';
+import MasterpieceStage from '../components/home/MasterpieceStage.svelte';
+import BentoGridFeatures from '../components/home/BentoGridFeatures.svelte';
+import RankingsShowcase from '../components/home/RankingsShowcase.svelte';
+import TheoryDiscoveryCompass from '../components/home/TheoryDiscoveryCompass.svelte';
+import StudyNotesFeed from '../components/home/StudyNotesFeed.svelte';
+import CallToActionBanner from '../components/home/CallToActionBanner.svelte';
+import MegaFooter from '../components/home/MegaFooter.svelte';
+import { db } from '../lib/db';
+import { DEMO_TABS } from '../lib/demoData';
+import { withCatalogRead } from '../lib/catalogReadGate';
+
+let totalTabsCount = 0;
+let catalogDemo = false;
+let hotToday: any[] = [];
+let hotWeek: any[] = [];
+let hotMonth: any[] = [];
+
+try {
+  const now = new Date();
+  const dayStart = new Date(now.getTime() - 24 * 3600 * 1000);
+  const weekStart = new Date(now.getTime() - 7 * 24 * 3600 * 1000);
+  const monthStart = new Date(now.getTime() - 30 * 24 * 3600 * 1000);
+
+  const playableWhere = { AND: [{ scoreUrl: { not: null } }, { scoreUrl: { not: '' } }] };
+  const findTabs = (args: Parameters<typeof db.tab.findMany>[0]) =>
+    withCatalogRead(() => db.tab.findMany(args));
+  let allHotPromise: Promise<any[]> | null = null;
+  const allHot = () => allHotPromise ??= findTabs({
+    where: playableWhere,
+    orderBy: { heat: 'desc' },
+    take: 10,
+  });
+
+  async function hotSince(since: Date) {
+    const rows = await findTabs({
+      where: {
+        AND: [{ scoreUrl: { not: null } }, { scoreUrl: { not: '' } }],
+        publishDate: { gte: since },
+      },
+      orderBy: { heat: 'desc' },
+      take: 10,
+    });
+    return rows.length >= 6 ? rows : await allHot();
+  }
+
+  const results = await Promise.allSettled([
+    withCatalogRead(() => db.tab.count()),
+    hotSince(dayStart),
+    hotSince(weekStart),
+    hotSince(monthStart),
+  ]);
+  const failure = results.find((result) => result.status === 'rejected');
+  if (failure?.status === 'rejected') throw failure.reason;
+  totalTabsCount = (results[0] as PromiseFulfilledResult<number>).value;
+  hotToday = (results[1] as PromiseFulfilledResult<any[]>).value;
+  hotWeek = (results[2] as PromiseFulfilledResult<any[]>).value;
+  hotMonth = (results[3] as PromiseFulfilledResult<any[]>).value;
+} catch (err) {
+  catalogDemo = true;
+  totalTabsCount = DEMO_TABS.length;
+  hotToday = [
+    { id: '1sdc49P3eKm', title: '晴天', artist: '周杰伦', heat: 126500, difficulty: 2, sheetForm: 4, key: 'G' },
+    { id: '1sdiivPR3YW', title: '老男孩', artist: '筷子兄弟', heat: 97800, difficulty: 1, sheetForm: 4, key: 'C' },
+    { id: '1sdjKw3nhA0', title: '反方向的钟', artist: '周杰伦', heat: 97200, difficulty: 3, sheetForm: 4, key: 'B' },
+    { id: '1yDFAg9Z3mU', title: '后来', artist: '刘若英', heat: 83400, difficulty: 2, sheetForm: 4, key: 'Eb' },
+    { id: '1sdikNKaVJg', title: '成都', artist: '赵雷', heat: 73500, difficulty: 1, sheetForm: 4, key: 'D' },
+    { id: '1sdixfUd4Vc', title: '卡农', artist: 'Johann Pachelbel', heat: 71200, difficulty: 4, sheetForm: 2, key: 'D' },
+    { id: '1yDFB6u7GnQ', title: '达尔文', artist: '林俊杰', heat: 68900, difficulty: 3, sheetForm: 4, key: 'Gb' },
+    { id: '1sdcV2zsRCC', title: '大海', artist: '张雨生', heat: 62100, difficulty: 2, sheetForm: 4, key: 'Eb' },
+    { id: '1sdbywiXwXY', title: '平凡之路', artist: '朴树', heat: 68700, difficulty: 2, sheetForm: 4, key: 'A' },
+    { id: '1yOhtb1c9I0', title: 'Hello', artist: 'Adele', heat: 58700, difficulty: 2, sheetForm: 4, key: 'G' },
+  ];
+  hotWeek = hotToday;
+  hotMonth = hotToday;
+}
+---
+
+<Base title="MIMI Guitar 典藏手稿工坊 · 吉他谱与尤克里里谱浏览器" showFooter={false}>
+  {catalogDemo && <p role="status" class="mx-auto mt-4 w-full max-w-[1240px] rounded-xl border border-amber-200 bg-amber-50 p-3 text-sm text-amber-900">联网曲库暂时不可用，以下显示内置演示曲目。你的本地收藏、待练和练习记录仍可从“我的练习”打开。</p>}
+  <div class="max-w-[1240px] mx-auto px-4 sm:px-6 my-4 sm:my-6 space-y-12 sm:space-y-16">
+    <!-- 1. Hero Showcase -->
+    <HeroShowcase client:load totalTabs={totalTabsCount} />
+
+    <!-- 2. Masterpiece 3D Stage -->
+    <MasterpieceStage client:idle />
+
+    <!-- 3. Bento Grid Features -->
+    <BentoGridFeatures client:visible />
+
+    <!-- 4. Rankings Showcase -->
+    <RankingsShowcase client:idle today={hotToday} week={hotWeek} month={hotMonth} />
+
+    <!-- 5. Theory Discovery Compass -->
+    <TheoryDiscoveryCompass client:visible />
+
+    <!-- 6. Study Notes Feed -->
+    <StudyNotesFeed client:visible />
+
+    <!-- 7. Call To Action Banner -->
+    <CallToActionBanner client:visible totalTabs={totalTabsCount} />
+  </div>
+
+  <!-- 8. Mega Footer -->
+  <MegaFooter client:visible />
+</Base>

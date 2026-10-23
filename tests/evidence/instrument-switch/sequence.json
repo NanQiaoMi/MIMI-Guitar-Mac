@@ -1,0 +1,86 @@
+{
+  "to": [
+    {
+      "seq": 1,
+      "cmd": "alphaSynth.playPause",
+      "d": {}
+    },
+    {
+      "seq": 3,
+      "cmd": "alphaSynth.pause",
+      "d": {}
+    },
+    {
+      "seq": 5,
+      "cmd": "alphaSynth.setTickPosition",
+      "d": {
+        "v": 1440
+      }
+    },
+    {
+      "seq": 6,
+      "cmd": "alphaSynth.loadSoundFontBytes",
+      "d": {
+        "len": 258138
+      }
+    },
+    {
+      "seq": 8,
+      "cmd": "alphaSynth.loadMidi",
+      "d": {
+        "hasMidi": true
+      }
+    },
+    {
+      "seq": 9,
+      "cmd": "alphaSynth.applyTranspositionPitches",
+      "d": {}
+    },
+    {
+      "seq": 13,
+      "cmd": "alphaSynth.setTickPosition",
+      "d": {
+        "v": 1611
+      }
+    },
+    {
+      "seq": 14,
+      "cmd": "alphaSynth.play",
+      "d": {}
+    }
+  ],
+  "from": [
+    {
+      "seq": 2,
+      "cmd": "alphaSynth.playerStateChanged"
+    },
+    {
+      "seq": 4,
+      "cmd": "alphaSynth.playerStateChanged"
+    },
+    {
+      "seq": 7,
+      "cmd": "alphaSynth.soundFontLoaded"
+    },
+    {
+      "seq": 10,
+      "cmd": "alphaSynth.readyForPlayback"
+    },
+    {
+      "seq": 11,
+      "cmd": "alphaSynth.playerStateChanged"
+    },
+    {
+      "seq": 12,
+      "cmd": "alphaSynth.midiLoaded"
+    },
+    {
+      "seq": 15,
+      "cmd": "alphaSynth.readyForPlayback"
+    },
+    {
+      "seq": 16,
+      "cmd": "alphaSynth.playerStateChanged"
+    }
+  ]
+}

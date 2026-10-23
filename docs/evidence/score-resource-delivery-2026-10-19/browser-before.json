@@ -1,0 +1,23 @@
+{
+  "url": "http://127.0.0.1:4336/tabs/1sdc49P3eKm",
+  "logs": [
+    {
+      "level": "error",
+      "message": "[VectorManuscriptRoll] Error rendering vector manuscript: Error: 网络请求异常：HTTP 404\n    at Ie (http://127.0.0.1:4336/_astro/VectorManuscriptRoll.BILxBQjc.js:29:1976)",
+      "timestamp": "2026-10-19T09:10:08.061Z",
+      "url": "http://127.0.0.1:4336/_astro/VectorManuscriptRoll.BILxBQjc.js"
+    },
+    {
+      "level": "error",
+      "message": "[ScorePlayer] loadScore failed: Error: 谱面加载失败：HTTP 404\n    at H (http://127.0.0.1:4336/_astro/ScorePlayer.F1TslM0q.js:4:1214)",
+      "timestamp": "2026-10-19T09:10:08.098Z",
+      "url": "http://127.0.0.1:4336/_astro/ScorePlayer.F1TslM0q.js"
+    },
+    {
+      "level": "error",
+      "message": "[ScorePlayer] load failure detail: 谱面加载失败：HTTP 404",
+      "timestamp": "2026-10-19T09:10:08.098Z",
+      "url": "http://127.0.0.1:4336/_astro/ScorePlayer.F1TslM0q.js"
+    }
+  ]
+}

@@ -1,0 +1,303 @@
+{
+  "capturedAt": "2026-10-19T09:05:54.613Z",
+  "base": "http://127.0.0.1:4336",
+  "rows": [
+    {
+      "route": "/practice",
+      "phase": "route-run-1",
+      "ms": 38.71,
+      "status": 200,
+      "bytes": 28187,
+      "cacheControl": "no-store",
+      "vary": null,
+      "demo": false,
+      "unavailable": false
+    },
+    {
+      "route": "/library",
+      "phase": "route-run-1",
+      "ms": 8.83,
+      "status": 200,
+      "bytes": 25242,
+      "cacheControl": "no-store",
+      "vary": null,
+      "demo": false,
+      "unavailable": false
+    },
+    {
+      "route": "/motion",
+      "phase": "route-run-1",
+      "ms": 5.38,
+      "status": 200,
+      "bytes": 46614,
+      "cacheControl": "no-store",
+      "vary": null,
+      "demo": false,
+      "unavailable": false
+    },
+    {
+      "route": "/studio",
+      "phase": "route-run-1",
+      "ms": 5.57,
+      "status": 200,
+      "bytes": 164322,
+      "cacheControl": "no-store",
+      "vary": null,
+      "demo": false,
+      "unavailable": false
+    },
+    {
+      "route": "/",
+      "phase": "route-run-1",
+      "ms": 2031.24,
+      "status": 200,
+      "bytes": 154870,
+      "cacheControl": "private, max-age=10",
+      "vary": "Cookie",
+      "demo": true,
+      "unavailable": true
+    },
+    {
+      "route": "/tabs",
+      "phase": "route-run-1",
+      "ms": 4.85,
+      "status": 200,
+      "bytes": 128894,
+      "cacheControl": "private, max-age=10",
+      "vary": "Cookie",
+      "demo": true,
+      "unavailable": true
+    },
+    {
+      "route": "/ukulele",
+      "phase": "route-run-1",
+      "ms": 6.28,
+      "status": 200,
+      "bytes": 41638,
+      "cacheControl": "private, max-age=10",
+      "vary": "Cookie",
+      "demo": true,
+      "unavailable": true
+    },
+    {
+      "route": "/article",
+      "phase": "route-run-1",
+      "ms": 5.43,
+      "status": 200,
+      "bytes": 26927,
+      "cacheControl": "private, max-age=10",
+      "vary": "Cookie",
+      "demo": true,
+      "unavailable": true
+    },
+    {
+      "route": "/practice",
+      "phase": "route-run-2",
+      "ms": 2.58,
+      "status": 200,
+      "bytes": 28187,
+      "cacheControl": "no-store",
+      "vary": null,
+      "demo": false,
+      "unavailable": false
+    },
+    {
+      "route": "/library",
+      "phase": "route-run-2",
+      "ms": 2.17,
+      "status": 200,
+      "bytes": 25242,
+      "cacheControl": "no-store",
+      "vary": null,
+      "demo": false,
+      "unavailable": false
+    },
+    {
+      "route": "/motion",
+      "phase": "route-run-2",
+      "ms": 2.9,
+      "status": 200,
+      "bytes": 46614,
+      "cacheControl": "no-store",
+      "vary": null,
+      "demo": false,
+      "unavailable": false
+    },
+    {
+      "route": "/studio",
+      "phase": "route-run-2",
+      "ms": 4.96,
+      "status": 200,
+      "bytes": 164322,
+      "cacheControl": "no-store",
+      "vary": null,
+      "demo": false,
+      "unavailable": false
+    },
+    {
+      "route": "/",
+      "phase": "route-run-2",
+      "ms": 4.62,
+      "status": 200,
+      "bytes": 154870,
+      "cacheControl": "private, max-age=10",
+      "vary": "Cookie",
+      "demo": true,
+      "unavailable": true
+    },
+    {
+      "route": "/tabs",
+      "phase": "route-run-2",
+      "ms": 4.6,
+      "status": 200,
+      "bytes": 128894,
+      "cacheControl": "private, max-age=10",
+      "vary": "Cookie",
+      "demo": true,
+      "unavailable": true
+    },
+    {
+      "route": "/ukulele",
+      "phase": "route-run-2",
+      "ms": 4.19,
+      "status": 200,
+      "bytes": 41638,
+      "cacheControl": "private, max-age=10",
+      "vary": "Cookie",
+      "demo": true,
+      "unavailable": true
+    },
+    {
+      "route": "/article",
+      "phase": "route-run-2",
+      "ms": 5,
+      "status": 200,
+      "bytes": 26927,
+      "cacheControl": "private, max-age=10",
+      "vary": "Cookie",
+      "demo": true,
+      "unavailable": true
+    },
+    {
+      "route": "/searchResults?searchValue=%E6%99%B4%E5%A4%A9&type=all",
+      "phase": "extra",
+      "ms": 7.21,
+      "status": 200,
+      "bytes": 27983,
+      "cacheControl": "no-store",
+      "vary": null,
+      "demo": true,
+      "unavailable": true
+    },
+    {
+      "route": "/api/search?q=%E6%99%B4%E5%A4%A9",
+      "phase": "extra",
+      "ms": 3.23,
+      "status": 200,
+      "bytes": 429,
+      "cacheControl": null,
+      "vary": null,
+      "demo": true,
+      "unavailable": false
+    },
+    {
+      "route": "/tabs/1sdc49P3eKm",
+      "phase": "extra",
+      "ms": 15.03,
+      "status": 200,
+      "bytes": 114495,
+      "cacheControl": "no-store",
+      "vary": null,
+      "demo": true,
+      "unavailable": false
+    },
+    {
+      "route": "/article/nonexistent-navigation-probe",
+      "phase": "extra",
+      "ms": 3.78,
+      "status": 503,
+      "bytes": 81,
+      "cacheControl": "no-store",
+      "vary": null,
+      "demo": false,
+      "unavailable": true
+    },
+    {
+      "route": "/tabs/nonexistent-navigation-probe",
+      "phase": "extra",
+      "ms": 1.33,
+      "status": 503,
+      "bytes": 105,
+      "cacheControl": "no-store",
+      "vary": null,
+      "demo": false,
+      "unavailable": true
+    },
+    {
+      "route": "/ukulele/nonexistent-navigation-probe",
+      "phase": "extra",
+      "ms": 5.4,
+      "status": 503,
+      "bytes": 111,
+      "cacheControl": "no-store",
+      "vary": null,
+      "demo": false,
+      "unavailable": true
+    },
+    {
+      "route": "/tabs?no=9999",
+      "phase": "extra",
+      "ms": 4.61,
+      "status": 200,
+      "bytes": 128956,
+      "cacheControl": "no-store",
+      "vary": null,
+      "demo": true,
+      "unavailable": true
+    },
+    {
+      "route": "/article?page=9999",
+      "phase": "extra",
+      "ms": 2.84,
+      "status": 200,
+      "bytes": 26983,
+      "cacheControl": "no-store",
+      "vary": null,
+      "demo": true,
+      "unavailable": true
+    },
+    {
+      "route": "/tabs",
+      "phase": "cookie-cache-exclusion",
+      "ms": 6.9,
+      "status": 200,
+      "bytes": 128950,
+      "cacheControl": "no-store",
+      "vary": "Cookie",
+      "demo": true,
+      "unavailable": true
+    },
+    {
+      "route": "/api/health",
+      "phase": "liveness",
+      "ms": 1.72,
+      "status": 200,
+      "bytes": 18,
+      "cacheControl": "no-store",
+      "vary": null,
+      "demo": false,
+      "unavailable": false
+    },
+    {
+      "route": "/api/readiness",
+      "phase": "readiness",
+      "ms": 2014.35,
+      "status": 503,
+      "bytes": 581,
+      "cacheControl": "no-store",
+      "vary": null,
+      "demo": false,
+      "unavailable": false
+    }
+  ]
+}

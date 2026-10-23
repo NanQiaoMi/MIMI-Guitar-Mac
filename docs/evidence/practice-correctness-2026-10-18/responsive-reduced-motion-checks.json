@@ -1,0 +1,140 @@
+{
+  "mode": "CSS viewport, reduced motion prevents transient width animations; no physical-device claim",
+  "checks": [
+    {
+      "buttons": [
+        {
+          "height": 44,
+          "right": 180.07500457763672,
+          "text": "开始练习"
+        },
+        {
+          "height": 44,
+          "right": 86.32500457763672,
+          "text": "设 A"
+        },
+        {
+          "height": 44,
+          "right": 151.48750686645508,
+          "text": "设 B"
+        },
+        {
+          "height": 44,
+          "right": 217.47500228881836,
+          "text": "清除"
+        }
+      ],
+      "clientWidth": 305,
+      "scrollWidth": 305,
+      "width": 320
+    },
+    {
+      "buttons": [
+        {
+          "height": 44,
+          "right": 183.1125030517578,
+          "text": "开始练习"
+        },
+        {
+          "height": 44,
+          "right": 87.75000381469727,
+          "text": "设 A"
+        },
+        {
+          "height": 44,
+          "right": 154.0000038146973,
+          "text": "设 B"
+        },
+        {
+          "height": 44,
+          "right": 221.10000228881836,
+          "text": "清除"
+        }
+      ],
+      "clientWidth": 375,
+      "scrollWidth": 375,
+      "width": 390
+    },
+    {
+      "buttons": [
+        {
+          "height": 44,
+          "right": 183.1125030517578,
+          "text": "开始练习"
+        },
+        {
+          "height": 44,
+          "right": 87.75000381469727,
+          "text": "设 A"
+        },
+        {
+          "height": 44,
+          "right": 154.0000038146973,
+          "text": "设 B"
+        },
+        {
+          "height": 44,
+          "right": 221.10000228881836,
+          "text": "清除"
+        }
+      ],
+      "clientWidth": 753,
+      "scrollWidth": 753,
+      "width": 768
+    },
+    {
+      "buttons": [
+        {
+          "height": 44,
+          "right": 183.1125030517578,
+          "text": "开始练习"
+        },
+        {
+          "height": 44,
+          "right": 87.75000381469727,
+          "text": "设 A"
+        },
+        {
+          "height": 44,
+          "right": 154.0000038146973,
+          "text": "设 B"
+        },
+        {
+          "height": 44,
+          "right": 221.10000228881836,
+          "text": "清除"
+        }
+      ],
+      "clientWidth": 1009,
+      "scrollWidth": 1009,
+      "width": 1024
+    },
+    {
+      "buttons": [
+        {
+          "height": 44,
+          "right": 238.71250915527344,
+          "text": "开始练习"
+        },
+        {
+          "height": 44,
+          "right": 143.35000610351562,
+          "text": "设 A"
+        },
+        {
+          "height": 44,
+          "right": 209.6000099182129,
+          "text": "设 B"
+        },
+        {
+          "height": 44,
+          "right": 276.700008392334,
+          "text": "清除"
+        }
+      ],
+      "clientWidth": 1351,
+      "scrollWidth": 1351,
+      "width": 1366
+    }
+  ]
+}

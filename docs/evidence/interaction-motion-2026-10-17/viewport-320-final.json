@@ -1,0 +1,42 @@
+{
+  "active": "nav-search-trigger",
+  "bodyOverflow": "",
+  "clientWidth": 305,
+  "controls": [
+    {
+      "height": 44,
+      "label": "打开搜索与命令面板 (⌘K)",
+      "width": 44
+    },
+    {
+      "height": 44,
+      "label": "上一页",
+      "width": 44
+    },
+    {
+      "height": 44,
+      "label": "第 1 页",
+      "width": 44
+    },
+    {
+      "height": 44,
+      "label": "第 2 页",
+      "width": 44
+    },
+    {
+      "height": 44,
+      "label": "第 3 页",
+      "width": 44
+    },
+    {
+      "height": 44,
+      "label": "下一页",
+      "width": 44
+    }
+  ],
+  "scrollWidth": 305,
+  "viewport": {
+    "height": 740,
+    "width": 320
+  }
+}

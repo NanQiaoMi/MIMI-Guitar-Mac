@@ -1,0 +1,23 @@
+services:
+  db:
+    image: postgres:16
+    container_name: mimi-guitar-mac-dev-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${MIMI_MAC_DB_NAME:?run tools/mac-bootstrap.mjs restore-catalog first}
+      POSTGRES_USER: ${MIMI_MAC_DB_USER:?run tools/mac-bootstrap.mjs restore-catalog first}
+      POSTGRES_PASSWORD: ${MIMI_MAC_DB_PASSWORD:?run tools/mac-bootstrap.mjs restore-catalog first}
+    ports:
+      - "127.0.0.1:${MIMI_MAC_DB_PORT:-15433}:5432"
+    volumes:
+      - catalog-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready --username=$${POSTGRES_USER} --dbname=$${POSTGRES_DB}"]
+      interval: 3s
+      timeout: 3s
+      retries: 30
+      start_period: 5s
+
+volumes:
+  catalog-data:
+    name: mimi-guitar-mac-dev-data

@@ -1,0 +1,203 @@
+---
+import Base from '../../layouts/Base.astro';
+import TabCard from '../../components/TabCard.astro';
+import ScorePlayer from '../../components/player/ScorePlayer.svelte';
+import XheScoreViewer from '../../components/player/XheScoreViewer.svelte';
+import FavoriteButton from '../../components/FavoriteButton.svelte';
+import ShareButton from '../../components/ShareButton.svelte';
+import DownloadButton from '../../components/DownloadButton.svelte';
+import TabMetadataDeck from '../../components/player/TabMetadataDeck.svelte';
+import ManuscriptGalleryDeck from '../../components/player/ManuscriptGalleryDeck.svelte';
+import VectorManuscriptRoll from '../../components/player/VectorManuscriptRoll.svelte';
+import { tabTitle, tuningDisplay, difficultyBlurb } from '../../lib/tabMeta';
+import TrackHistory from '../../components/TrackHistory.svelte';
+import { db } from '../../lib/db';
+import { withCatalogRead } from '../../lib/catalogReadGate';
+
+import { DEMO_TABS } from '../../lib/demoData';
+
+const { id } = Astro.params;
+let tab: any = null;
+let related: any[] = [];
+let isDemoTab = false;
+let catalogUnavailable = false;
+
+try {
+  tab = await withCatalogRead(() => db.tab.findUnique({ where: { id: id ?? '' } }));
+  if (tab) {
+    related = await withCatalogRead(() => db.tab.findMany({
+      where: { category: tab.category, id: { not: tab.id } },
+      orderBy: { heat: 'desc' },
+      take: 6,
+    }));
+  }
+} catch (err) {
+  catalogUnavailable = true;
+}
+
+if (!tab) {
+  const match = DEMO_TABS.find((t) => t.id === id && t.category === 'ukulele');
+  tab = match ? { ...match } : null;
+  isDemoTab = Boolean(match);
+  related = tab ? DEMO_TABS.filter((t) => t.category === 'ukulele' && t.id !== tab.id).slice(0, 6) : [];
+}
+
+if (!tab) {
+  return new Response(catalogUnavailable ? '曲库暂时不可用，无法确认这份尤克里里谱。请稍后重试；本地个人资料不受影响。' : '未找到这份尤克里里谱。请检查曲谱编号，或返回曲库重新选择。', {
+    status: catalogUnavailable ? 503 : 404,
+    headers: { 'content-type': 'text/plain; charset=utf-8', 'cache-control': 'no-store' },
+  });
+}
+
+const difficultyMap = ['', '零基础', '初级', '中级', '高级', '专业'];
+const formMap = ['', '弹唱谱', '指弹谱', '和弦谱', '四线谱'];
+const difficulty = difficultyMap[tab.difficulty] ?? '';
+const form = formMap[tab.sheetForm] ?? '';
+const heatText = tab.heat >= 10000 ? (tab.heat / 10000).toFixed(1) + '万' : String(tab.heat);
+let tags: string[] = [];
+try { const t = JSON.parse(tab.tags ?? '[]'); if (Array.isArray(t)) tags = t; } catch { /* ignore */ }
+
+const pageTitle = tabTitle({ title: tab.title, artist: tab.artist, key: tab.key, difficulty: tab.difficulty, sheetForm: tab.sheetForm, category: tab.category });
+const blurb = difficultyBlurb(tab);
+const meta = [tab.artist, difficulty, form, `${tab.key ?? '-'} 调`, `♩= ${tab.bpm ?? '-'}`, tab.timeSig ?? '-'].filter(Boolean).join(' · ');
+---
+
+<Base title={`${tab.title} (${tab.artist || '尤克里里谱'}) - MIMI Guitar`}>
+  <div class="max-w-[1240px] mx-auto px-4 sm:px-6 my-6 sm:my-8 space-y-6">
+    <!-- 标题与元数据：现代典雅纸质手稿风标题设计 -->
+    <article class="card rounded-3xl border border-[#e8e2d4] bg-white p-5 sm:p-8 shadow-[0_4px_20px_rgba(76,59,43,0.05)]">
+      <header class="flex flex-col gap-3">
+        <!-- 顶部标签阵列 -->
+        <div class="flex flex-wrap items-center gap-2">
+          <span class="inline-flex items-center gap-1 rounded-lg bg-[#c84b31]/10 border border-[#c84b31]/30 px-2.5 py-0.5 text-xs font-semibold text-[#c84b31]">
+            {tab.category === 'ukulele' ? '尤克里里' : '吉他'}
+          </span>
+          {isDemoTab && <span class="rounded-lg border border-amber-300 bg-amber-50 px-2.5 py-0.5 text-xs font-medium text-amber-800">内置演示内容 · 曲库离线回退</span>}
+          {difficulty && (
+            <span class="rounded-lg bg-[#8f6d2b]/10 border border-[#8f6d2b]/25 px-2.5 py-0.5 text-xs font-medium text-[#8f6d2b]">
+              {difficulty}
+            </span>
+          )}
+          {form && (
+            <span class="rounded-lg bg-[#2e7d32]/10 border border-[#2e7d32]/25 px-2.5 py-0.5 text-xs font-medium text-[#2e7d32]">
+              {form}
+            </span>
+          )}
+          {tab.key && (
+            <span class="rounded-lg bg-[#3d3833]/10 border border-[#3d3833]/20 px-2 py-0.5 text-xs font-mono font-medium text-[#3d3833]">
+              {tab.key} 调
+            </span>
+          )}
+          {tab.bpm ? (
+            <span class="rounded-lg bg-[#f0eae0] border border-[#dfd7c5] px-2 py-0.5 text-xs font-mono text-[#736859]">
+              ♩ = {tab.bpm}
+            </span>
+          ) : null}
+        </div>
+
+        <!-- 主标题与歌手 -->
+        <div class="flex flex-col sm:flex-row sm:items-baseline gap-2 sm:gap-3">
+          <h1 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-[#1a1816] font-display leading-tight">
+            {tab.title}
+          </h1>
+          {tab.artist && (
+            <span class="text-base sm:text-lg lg:text-xl font-medium text-[#8c7b68] font-sans">
+              {tab.artist}
+            </span>
+          )}
+        </div>
+
+        <!-- 操作按钮栏 -->
+        <div class="mt-1 flex flex-wrap items-center gap-2 sm:gap-3">
+          <FavoriteButton client:load tabId={tab.id} title={tab.title} artist={tab.artist ?? ''} category="ukulele" scoreUrl={tab.scoreUrl ?? ''} format={tab.format ?? 'gp'} catalogAvailable={!isDemoTab} />
+          <ShareButton client:load />
+          {tab.format !== 'xhe' && <DownloadButton client:load tabId={tab.id} />}
+          <a
+            href={`/studio?cloneFrom=${tab.id}`}
+            class="inline-flex items-center gap-1.5 rounded-full border border-[#c49a45]/40 bg-[#c49a45]/10 px-3.5 py-2 text-xs font-serif font-bold text-[#8a6b29] hover:bg-[#c49a45] hover:text-[#1a1715] transition-colors shadow-2xs"
+            title="将本曲谱克隆导入制谱工坊进行自由改编与编辑"
+          >
+            <span>🛠️ 基于此谱改编</span>
+          </a>
+        </div>
+
+        <!-- 描述文案 -->
+        {blurb && (
+          <p class="text-xs sm:text-sm text-[#705c42] mt-1 leading-relaxed font-sans border-t border-[#f2ede4] pt-3">
+            {blurb}
+          </p>
+        )}
+      </header>
+    </article>
+
+    <!-- 乐谱播放器 -->
+    <div class="mt-4 sm:mt-6">
+      {tab.format === 'xhe' ? (tab.xheUrl ? (
+        <XheScoreViewer client:load xheUrl={tab.xheUrl} title={tab.title} />
+      ) : <p class="rounded-xl border border-amber-300 bg-amber-50 p-4 text-sm text-amber-900">这份曲谱尚未提供可用的 XHE 资源。</p>) : tab.scoreUrl ? (
+        <ScorePlayer
+          client:load
+          scoreUrl={tab.scoreUrl}
+          title={tab.title}
+          artist={tab.artist ?? ''}
+          bpm={tab.bpm ?? 0}
+          capo={tab.capo ?? undefined}
+          defaultTrack={tab.defaultTrack ?? 0}
+          scoreKey={tab.key ?? ''}
+          timeSig={tab.timeSig ?? ''}
+          category={tab.category || 'ukulele'}
+        />
+      ) : <p class="rounded-xl border border-amber-300 bg-amber-50 p-4 text-sm text-amber-900">这份曲谱暂时没有可用的乐谱文件。</p>}
+    </div>
+
+    <!-- 乐谱下方内容（优雅适度的呼吸间距） -->
+    <div class="score-page-content mt-6 sm:mt-8 lg:mt-10">
+      <article class="card rounded-card border hairline bg-paper p-4 sm:p-8 shadow-xs">
+        <TabMetadataDeck client:load tab={tab} />
+
+        {tab.format !== 'xhe' && tab.scoreUrl && (
+          <VectorManuscriptRoll
+            client:load
+            scoreUrl={tab.scoreUrl}
+            title={tab.title}
+            artist={tab.artist ?? ''}
+            tabKey={tab.key ?? 'G'}
+            capo={tab.capo ?? 0}
+            bpm={tab.bpm ?? 80}
+            tabId={tab.id}
+          />
+        )}
+
+        {tab.screenshotUrl && !tab.scoreUrl && (
+          <ManuscriptGalleryDeck
+            client:load
+            screenshotUrl={tab.screenshotUrl}
+            title={tab.title}
+            artist={tab.artist ?? ''}
+            tabKey={tab.key ?? 'G'}
+            capo={tab.capo ?? 0}
+            bpm={tab.bpm ?? 80}
+            tabId={tab.id}
+          />
+        )}
+      </article>
+
+      {related.length > 0 && (
+        <section class="mt-12">
+          <div class="flex items-baseline justify-between mb-4">
+            <h2 class="font-display text-heading-sm text-ink">相关推荐曲谱</h2>
+            <a href="/ukulele" class="text-caption font-medium text-signal hover:opacity-75">查看更多 →</a>
+          </div>
+          <ul class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {related.map((r, i) => (
+              <li>
+                <TabCard tab={r} staggerIndex={i} />
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+      <TrackHistory client:load id={tab.id} title={tab.title} artist={tab.artist ?? ''} category={tab.category} />
+    </div>
+  </div>
+</Base>

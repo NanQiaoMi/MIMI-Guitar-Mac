@@ -1,0 +1,11 @@
+---
+import Base from '../layouts/Base.astro';
+import PersonalPractice from '../components/PersonalPractice.svelte';
+---
+
+<Base title="我的练习 · MIMI Guitar">
+  <section class="mx-auto my-6 max-w-[1240px] space-y-5 px-4 sm:my-10 sm:px-6">
+    <header class="space-y-2"><p class="text-xs font-semibold uppercase tracking-[0.18em] text-[#8c6d46]">个人练习</p><h1 class="font-display text-heading">继续练习</h1><p class="max-w-2xl text-sm leading-6 text-ash">从本设备待练曲目中选择一首。个人谱只在本地读取；曲库谱需要联网。</p></header>
+    <PersonalPractice client:load />
+  </section>
+</Base>

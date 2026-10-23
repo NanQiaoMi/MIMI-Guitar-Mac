@@ -1,0 +1,11 @@
+{
+  "playing": {
+    "alerts": [],
+    "button": "暂停",
+    "progress": "111193",
+    "svgs": 20,
+    "url": "http://score-resource-20261019.localhost:4338/practice?score=private%3Ab7c85f8e696ca6fa4361055379a15cac9a1f34ba0825eb4e8173d0b2b9792c58"
+  },
+  "pausedButton": "播放",
+  "errors": []
+}

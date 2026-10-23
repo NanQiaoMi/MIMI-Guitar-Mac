@@ -1,0 +1,20 @@
+[
+  {
+    "route": "/searchResults?searchValue=%E6%99%B4%E5%A4%A9&type=all",
+    "ms": 2236.24,
+    "status": 200,
+    "demo": true
+  },
+  {
+    "route": "/tabs",
+    "ms": 11.64,
+    "status": 200,
+    "demo": true
+  },
+  {
+    "route": "/ukulele",
+    "ms": 9.26,
+    "status": 200,
+    "demo": true
+  }
+]

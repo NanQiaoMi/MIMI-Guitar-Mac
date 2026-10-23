@@ -1,0 +1,513 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="dark">
+    <title>Motion frame probe · 本地 QA</title>
+    <style>
+      :root {
+        color-scheme: dark;
+        font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        background: #111114;
+        color: #f2eee8;
+        font-synthesis: none;
+        text-rendering: optimizeLegibility;
+      }
+
+      * { box-sizing: border-box; }
+
+      body {
+        min-width: 320px;
+        min-height: 100vh;
+        margin: 0;
+        background: radial-gradient(ellipse at top left, #25211d 0, #111114 42rem);
+      }
+
+      button { font: inherit; }
+
+      .topbar {
+        position: sticky;
+        z-index: 5;
+        top: 0;
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 1.25rem;
+        padding: 1rem clamp(1rem, 3vw, 2rem);
+        border-bottom: 1px solid #3b3734;
+        background: rgb(17 17 20 / 94%);
+        backdrop-filter: blur(12px);
+      }
+
+      .topbar-copy { max-width: 68rem; }
+
+      .eyebrow {
+        margin: 0 0 .35rem;
+        color: #d2b77e;
+        font-size: .7rem;
+        font-weight: 750;
+        letter-spacing: .14em;
+        text-transform: uppercase;
+      }
+
+      h1 { margin: 0; font-size: clamp(1.1rem, 2.4vw, 1.55rem); }
+
+      .topbar p:last-child {
+        margin: .4rem 0 0;
+        color: #c2bbb3;
+        font-size: .86rem;
+        line-height: 1.5;
+      }
+
+      .clear-button {
+        flex: 0 0 auto;
+        min-height: 2.65rem;
+        padding: .55rem .9rem;
+        border: 1px solid #806d4b;
+        border-radius: .7rem;
+        background: #29241c;
+        color: #f6e8ca;
+        cursor: pointer;
+      }
+
+      .clear-button:hover { background: #393020; }
+      .clear-button:focus-visible { outline: 2px solid #edc974; outline-offset: 3px; }
+
+      main { padding: 1rem clamp(.75rem, 2vw, 1.5rem) 2rem; }
+
+      .status-row {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: .6rem 1rem;
+        margin: 0 0 .8rem;
+        color: #c2bbb3;
+        font-size: .82rem;
+      }
+
+      .pill {
+        display: inline-flex;
+        align-items: center;
+        min-height: 1.8rem;
+        padding: .2rem .6rem;
+        border: 1px solid #49433b;
+        border-radius: 999px;
+        background: #1d1b1a;
+      }
+
+      .pill[data-state="ready"] { color: #c9e5c1; border-color: #526b4c; }
+      .pill[data-state="error"] { color: #ffc2b8; border-color: #8c4d45; }
+
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: .65rem;
+        margin: 0 0 .8rem;
+      }
+
+      .stat {
+        min-width: 0;
+        padding: .7rem .85rem;
+        border: 1px solid #343235;
+        border-radius: .8rem;
+        background: #19181b;
+      }
+
+      .stat dt { color: #aaa39b; font-size: .72rem; }
+      .stat dd { margin: .2rem 0 0; font-size: 1rem; font-variant-numeric: tabular-nums; }
+
+      .measurement-note {
+        margin: 0 0 .8rem;
+        color: #aaa39b;
+        font-size: .76rem;
+        line-height: 1.45;
+      }
+
+      .frame-shell {
+        overflow: hidden;
+        border: 1px solid #514940;
+        border-radius: .9rem;
+        background: #f4f0e8;
+        box-shadow: 0 16px 42px rgb(0 0 0 / 28%);
+      }
+
+      #motion-frame {
+        display: block;
+        width: 100%;
+        height: max(80vh, 720px);
+        min-height: 80vh;
+        border: 0;
+        background: #f4f0e8;
+      }
+
+      .json-section { margin-top: 1rem; }
+      .json-section h2 { margin: 0 0 .45rem; font-size: .92rem; }
+
+      #json-output {
+        min-height: 7rem;
+        max-height: 48vh;
+        overflow: auto;
+        margin: 0;
+        padding: .9rem;
+        border: 1px solid #343235;
+        border-radius: .75rem;
+        background: #0c0c0e;
+        color: #ded7cc;
+        font: .73rem/1.5 ui-monospace, SFMono-Regular, Consolas, monospace;
+        tab-size: 2;
+        white-space: pre;
+      }
+
+      @media (max-width: 560px) {
+        .topbar { gap: .65rem; padding: .8rem; }
+        .topbar p:last-child { max-width: 34rem; font-size: .78rem; }
+        .clear-button { min-height: 2.4rem; padding: .45rem .65rem; font-size: .8rem; }
+        main { padding: .75rem .55rem 1.25rem; }
+        .stats { gap: .4rem; }
+        .stat { padding: .55rem .5rem; }
+        .stat dt { font-size: .65rem; }
+        .stat dd { font-size: .85rem; }
+        .frame-shell { border-radius: .65rem; }
+        #motion-frame { height: max(80vh, 680px); }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="topbar-copy">
+        <p class="eyebrow">Local QA · motion frame probe</p>
+        <h1>动效帧采样</h1>
+        <p>在下方页面里手动点击或按键；每个可信交互会在 iframe 内用 requestAnimationFrame 采样 450ms。探针只读取指定节点的 computed style 和矩形，不代替操作。</p>
+      </div>
+      <button class="clear-button" id="clear-samples" type="button">清空采样</button>
+    </header>
+
+    <main>
+      <div class="status-row" aria-live="polite">
+        <span class="pill" id="frame-status" data-state="loading">等待 /motion 加载</span>
+        <span class="pill" id="reduced-motion-status">reduced-motion：读取中</span>
+        <span id="active-status">等待 iframe 中的手动点击或按键</span>
+      </div>
+
+      <dl class="stats" aria-label="最近一次交互采样统计">
+        <div class="stat"><dt>RAF 样本数</dt><dd id="sample-count">0</dd></div>
+        <div class="stat"><dt>不同 transform 值</dt><dd id="transform-count">0</dd></div>
+        <div class="stat"><dt>最大帧间隔</dt><dd id="frame-gap">—</dd></div>
+      </dl>
+
+      <p class="measurement-note">结果只描述这个本地测试 iframe 环境中的观测；最大帧间隔是采样到的时间差，不能据此声明 FPS 恒定。</p>
+
+      <div class="frame-shell">
+        <iframe id="motion-frame" title="同源 /motion 页面交互测试" src="/motion"></iframe>
+      </div>
+
+      <section class="json-section" aria-labelledby="json-heading">
+        <h2 id="json-heading">最近最多 3 次采样的完整 JSON</h2>
+        <pre id="json-output" tabindex="0" aria-live="polite">等待 iframe 加载并进行手动交互。</pre>
+      </section>
+    </main>
+
+    <script>
+      (() => {
+        'use strict';
+
+        const SAMPLE_DURATION_MS = 450;
+        const MAX_RETAINED_RUNS = 3;
+        const frame = document.getElementById('motion-frame');
+        const clearButton = document.getElementById('clear-samples');
+        const frameStatus = document.getElementById('frame-status');
+        const reducedMotionStatus = document.getElementById('reduced-motion-status');
+        const activeStatus = document.getElementById('active-status');
+        const sampleCount = document.getElementById('sample-count');
+        const transformCount = document.getElementById('transform-count');
+        const frameGap = document.getElementById('frame-gap');
+        const jsonOutput = document.getElementById('json-output');
+
+        const observationSpecs = [
+          { key: 'segmentedIndicator', selector: '.motion-segmented-control__indicator', includeOpacity: false },
+          { key: 'dialogPanel', selector: '.motion-dialog-panel', includeOpacity: true },
+          { key: 'menuPanel', selector: '#mobile-navigation-menu > *', includeOpacity: true },
+          { key: 'settingsBody', selector: '.experience__settings-body', includeOpacity: true },
+          { key: 'folioCard', selector: '.folio-card', includeOpacity: true }
+        ];
+
+        const runs = [];
+        const activeRuns = new Map();
+        const derivedStats = new WeakMap();
+        let nextRunId = 1;
+        let boundDocument = null;
+        let boundWindow = null;
+        let clickListener = null;
+        let keydownListener = null;
+        let motionQuery = null;
+        let motionChangeListener = null;
+        let nodeIds = new WeakMap();
+        let nextNodeId = 1;
+
+        const round = (value) => Math.round(value * 1000) / 1000;
+
+        function getNodeId(node) {
+          let id = nodeIds.get(node);
+          if (!id) {
+            id = nextNodeId++;
+            nodeIds.set(node, id);
+          }
+          return id;
+        }
+
+        function rectSnapshot(rect) {
+          return {
+            x: round(rect.x),
+            y: round(rect.y),
+            top: round(rect.top),
+            right: round(rect.right),
+            bottom: round(rect.bottom),
+            left: round(rect.left),
+            width: round(rect.width),
+            height: round(rect.height)
+          };
+        }
+
+        function readObservations(doc, win) {
+          const observations = {};
+          for (const spec of observationSpecs) {
+            try {
+              observations[spec.key] = Array.from(doc.querySelectorAll(spec.selector), (node) => {
+                const style = win.getComputedStyle(node);
+                const result = {
+                  nodeId: getNodeId(node),
+                  tag: node.tagName.toLowerCase(),
+                  transform: style.transform,
+                  rect: rectSnapshot(node.getBoundingClientRect())
+                };
+                if (spec.includeOpacity) result.opacity = style.opacity;
+                return result;
+              });
+            } catch (error) {
+              observations[spec.key] = [];
+            }
+          }
+          return observations;
+        }
+
+        function safeKeyCategory(key) {
+          const knownKeys = new Map([
+            ['Enter', 'Enter'], [' ', 'Space'], ['Escape', 'Escape'], ['Tab', 'Tab'],
+            ['ArrowLeft', 'ArrowLeft'], ['ArrowRight', 'ArrowRight'],
+            ['ArrowUp', 'ArrowUp'], ['ArrowDown', 'ArrowDown'],
+            ['Home', 'Home'], ['End', 'End'], ['PageUp', 'PageUp'], ['PageDown', 'PageDown']
+          ]);
+          return knownKeys.get(key) || 'Other';
+        }
+
+        function updateFrameStatus(state, message) {
+          frameStatus.dataset.state = state;
+          frameStatus.textContent = message;
+        }
+
+        function updateReducedMotion(matches) {
+          reducedMotionStatus.textContent = 'reduced-motion：' + (matches ? 'reduce（启用）' : 'no-preference（未启用）');
+        }
+
+        function updateLatestSummary() {
+          const latest = runs[runs.length - 1];
+          if (!latest) {
+            sampleCount.textContent = '0';
+            transformCount.textContent = '0';
+            frameGap.textContent = '—';
+            return;
+          }
+          sampleCount.textContent = String(latest.summary.sampleCount);
+          transformCount.textContent = String(latest.summary.distinctTransformCount);
+          frameGap.textContent = latest.summary.maxFrameIntervalMs === null
+            ? '—'
+            : latest.summary.maxFrameIntervalMs.toFixed(3) + ' ms';
+        }
+
+        function renderJson() {
+          const payload = {
+            note: 'Local test iframe observations only; this does not establish constant FPS.',
+            durationTargetMs: SAMPLE_DURATION_MS,
+            maxRetainedRuns: MAX_RETAINED_RUNS,
+            observationSpecs,
+            recentRuns: runs
+          };
+          jsonOutput.textContent = runs.length ? JSON.stringify(payload, null, 2) : '等待 iframe 加载并进行手动交互。';
+          updateLatestSummary();
+        }
+
+        function recomputeSummary(run) {
+          const stats = derivedStats.get(run);
+          run.summary = {
+            sampleCount: run.samples.length,
+            distinctTransformCount: stats.transforms.size,
+            maxFrameIntervalMs: stats.maxFrameIntervalMs,
+            actualElapsedMs: run.samples.length
+              ? round(run.samples[run.samples.length - 1].performanceTimeMs - run.startedAtPerformanceMs)
+              : 0
+          };
+        }
+
+        function stopRun(run, status, reason) {
+          const state = activeRuns.get(run);
+          if (state) {
+            if (state.rafId !== null) state.win.cancelAnimationFrame(state.rafId);
+            activeRuns.delete(run);
+          }
+          run.status = status;
+          if (reason) run.cancelReason = reason;
+          recomputeSummary(run);
+        }
+
+        function cancelActiveRuns(reason) {
+          for (const run of Array.from(activeRuns.keys())) stopRun(run, 'cancelled', reason);
+        }
+
+        function detachFrameObservers(reason) {
+          if (boundDocument && clickListener) boundDocument.removeEventListener('click', clickListener, true);
+          if (boundDocument && keydownListener) boundDocument.removeEventListener('keydown', keydownListener, true);
+          if (motionQuery && motionChangeListener) {
+            if (typeof motionQuery.removeEventListener === 'function') motionQuery.removeEventListener('change', motionChangeListener);
+            else if (typeof motionQuery.removeListener === 'function') motionQuery.removeListener(motionChangeListener);
+          }
+          cancelActiveRuns(reason);
+          boundDocument = null;
+          boundWindow = null;
+          clickListener = null;
+          keydownListener = null;
+          motionQuery = null;
+          motionChangeListener = null;
+          nodeIds = new WeakMap();
+          nextNodeId = 1;
+        }
+
+        function retainRun(run) {
+          runs.push(run);
+          while (runs.length > MAX_RETAINED_RUNS) {
+            const oldest = runs.shift();
+            if (activeRuns.has(oldest)) stopRun(oldest, 'cancelled', 'trimmed from the three-run retention window');
+          }
+        }
+
+        function startSampling(event, win) {
+          if (!event.isTrusted || win !== boundWindow) return;
+          const startedAt = win.performance.now();
+          const run = {
+            id: nextRunId++,
+            source: {
+              type: event.type,
+              key: event.type === 'keydown' ? safeKeyCategory(event.key) : null,
+              isTrusted: true,
+              eventTimeStampMs: round(event.timeStamp),
+              observedAtPerformanceMs: round(startedAt)
+            },
+            startedAtPerformanceMs: round(startedAt),
+            reducedMotionAtStart: Boolean(motionQuery?.matches),
+            effectiveMotionAtStart: boundDocument?.documentElement.getAttribute('data-motion') ?? 'unknown',
+            firstFrameDelayMs: null,
+            targetDurationMs: SAMPLE_DURATION_MS,
+            status: 'sampling',
+            summary: {
+              sampleCount: 0,
+              distinctTransformCount: 0,
+              maxFrameIntervalMs: null,
+              actualElapsedMs: 0
+            },
+            samples: []
+          };
+          derivedStats.set(run, { transforms: new Set(), maxFrameIntervalMs: null });
+          retainRun(run);
+          activeRuns.set(run, { win, rafId: null });
+          activeStatus.textContent = '正在采样最近一次 iframe 交互';
+          let firstFrameAt = null;
+
+          const sampleFrame = (rafTime) => {
+            const state = activeRuns.get(run);
+            if (!state || state.win !== win) return;
+            const now = win.performance.now();
+            if (firstFrameAt === null) {
+              firstFrameAt = now;
+              run.firstFrameDelayMs = round(now - startedAt);
+            }
+            const previous = run.samples.length ? run.samples[run.samples.length - 1].performanceTimeMs : null;
+            const interval = previous === null ? null : round(now - previous);
+            const observations = readObservations(boundDocument, win);
+            const sample = {
+              frameIndex: run.samples.length,
+              performanceTimeMs: round(now),
+              rafTimestampMs: round(rafTime),
+              intervalSincePreviousFrameMs: interval,
+              reducedMotion: Boolean(motionQuery?.matches),
+              effectiveMotion: boundDocument?.documentElement.getAttribute('data-motion') ?? 'unknown',
+              observations
+            };
+            run.samples.push(sample);
+
+            const stats = derivedStats.get(run);
+            if (interval !== null && (stats.maxFrameIntervalMs === null || interval > stats.maxFrameIntervalMs)) {
+              stats.maxFrameIntervalMs = interval;
+            }
+            for (const nodes of Object.values(observations)) {
+              for (const node of nodes) stats.transforms.add(node.transform);
+            }
+            recomputeSummary(run);
+            if (runs[runs.length - 1] === run) updateLatestSummary();
+
+            if (now - firstFrameAt >= SAMPLE_DURATION_MS) {
+              stopRun(run, 'complete');
+              if (!activeRuns.size) activeStatus.textContent = '最近一次采样已完成；继续在 iframe 中手动交互可生成新记录';
+              renderJson();
+              return;
+            }
+            state.rafId = win.requestAnimationFrame(sampleFrame);
+          };
+
+          const state = activeRuns.get(run);
+          state.rafId = win.requestAnimationFrame(sampleFrame);
+          renderJson();
+        }
+
+        function handleFrameLoad() {
+          detachFrameObservers('iframe reloaded; pending RAF sampling cancelled');
+          try {
+            const win = frame.contentWindow;
+            const doc = frame.contentDocument;
+            if (!win || !doc || !doc.documentElement) throw new Error('iframe document is not accessible');
+
+            boundWindow = win;
+            boundDocument = doc;
+            clickListener = (event) => startSampling(event, win);
+            keydownListener = (event) => startSampling(event, win);
+            doc.addEventListener('click', clickListener, true);
+            doc.addEventListener('keydown', keydownListener, true);
+
+            motionQuery = win.matchMedia('(prefers-reduced-motion: reduce)');
+            motionChangeListener = (event) => updateReducedMotion(event.matches);
+            if (typeof motionQuery.addEventListener === 'function') motionQuery.addEventListener('change', motionChangeListener);
+            else if (typeof motionQuery.addListener === 'function') motionQuery.addListener(motionChangeListener);
+
+            updateReducedMotion(motionQuery.matches);
+            updateFrameStatus('ready', '同源 /motion 已连接');
+            activeStatus.textContent = '请在 iframe 内手动点击或按键开始采样';
+          } catch (error) {
+            updateFrameStatus('error', '无法只读访问 iframe');
+            reducedMotionStatus.textContent = 'reduced-motion：不可读取';
+            activeStatus.textContent = '请确认本地测试页面与 /motion 同源';
+          }
+          renderJson();
+        }
+
+        clearButton.addEventListener('click', () => {
+          cancelActiveRuns('cleared by the probe toolbar');
+          runs.length = 0;
+          activeStatus.textContent = '测试记录已清空；iframe 页面未被修改';
+          renderJson();
+        });
+
+        frame.addEventListener('load', handleFrameLoad);
+        renderJson();
+      })();
+    </script>
+  </body>
+</html>

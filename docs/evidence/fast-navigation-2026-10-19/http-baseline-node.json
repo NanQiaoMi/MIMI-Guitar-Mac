@@ -1,0 +1,303 @@
+{
+  "capturedAt": "2026-10-19T08:02:55.115Z",
+  "base": "http://127.0.0.1:4338",
+  "rows": [
+    {
+      "route": "/practice",
+      "phase": "route-run-1",
+      "ms": 33.07,
+      "status": 200,
+      "bytes": 22177,
+      "cacheControl": null,
+      "vary": null,
+      "demo": false,
+      "unavailable": false
+    },
+    {
+      "route": "/library",
+      "phase": "route-run-1",
+      "ms": 10.33,
+      "status": 200,
+      "bytes": 19231,
+      "cacheControl": null,
+      "vary": null,
+      "demo": false,
+      "unavailable": false
+    },
+    {
+      "route": "/motion",
+      "phase": "route-run-1",
+      "ms": 8.06,
+      "status": 200,
+      "bytes": 40605,
+      "cacheControl": null,
+      "vary": null,
+      "demo": false,
+      "unavailable": false
+    },
+    {
+      "route": "/studio",
+      "phase": "route-run-1",
+      "ms": 17.02,
+      "status": 200,
+      "bytes": 158311,
+      "cacheControl": null,
+      "vary": null,
+      "demo": false,
+      "unavailable": false
+    },
+    {
+      "route": "/",
+      "phase": "route-run-1",
+      "ms": 2012.38,
+      "status": 200,
+      "bytes": 149338,
+      "cacheControl": null,
+      "vary": null,
+      "demo": true,
+      "unavailable": true
+    },
+    {
+      "route": "/tabs",
+      "phase": "route-run-1",
+      "ms": 2013.57,
+      "status": 200,
+      "bytes": 122938,
+      "cacheControl": null,
+      "vary": null,
+      "demo": true,
+      "unavailable": true
+    },
+    {
+      "route": "/ukulele",
+      "phase": "route-run-1",
+      "ms": 2018.67,
+      "status": 200,
+      "bytes": 35684,
+      "cacheControl": null,
+      "vary": null,
+      "demo": true,
+      "unavailable": true
+    },
+    {
+      "route": "/article",
+      "phase": "route-run-1",
+      "ms": 2020.74,
+      "status": 200,
+      "bytes": 20800,
+      "cacheControl": null,
+      "vary": null,
+      "demo": false,
+      "unavailable": false
+    },
+    {
+      "route": "/practice",
+      "phase": "route-run-2",
+      "ms": 2.55,
+      "status": 200,
+      "bytes": 22177,
+      "cacheControl": null,
+      "vary": null,
+      "demo": false,
+      "unavailable": false
+    },
+    {
+      "route": "/library",
+      "phase": "route-run-2",
+      "ms": 2.95,
+      "status": 200,
+      "bytes": 19231,
+      "cacheControl": null,
+      "vary": null,
+      "demo": false,
+      "unavailable": false
+    },
+    {
+      "route": "/motion",
+      "phase": "route-run-2",
+      "ms": 3.16,
+      "status": 200,
+      "bytes": 40605,
+      "cacheControl": null,
+      "vary": null,
+      "demo": false,
+      "unavailable": false
+    },
+    {
+      "route": "/studio",
+      "phase": "route-run-2",
+      "ms": 5.62,
+      "status": 200,
+      "bytes": 158311,
+      "cacheControl": null,
+      "vary": null,
+      "demo": false,
+      "unavailable": false
+    },
+    {
+      "route": "/",
+      "phase": "route-run-2",
+      "ms": 2010.73,
+      "status": 200,
+      "bytes": 149338,
+      "cacheControl": null,
+      "vary": null,
+      "demo": true,
+      "unavailable": true
+    },
+    {
+      "route": "/tabs",
+      "phase": "route-run-2",
+      "ms": 2010.76,
+      "status": 200,
+      "bytes": 122938,
+      "cacheControl": null,
+      "vary": null,
+      "demo": true,
+      "unavailable": true
+    },
+    {
+      "route": "/ukulele",
+      "phase": "route-run-2",
+      "ms": 2005.65,
+      "status": 200,
+      "bytes": 35684,
+      "cacheControl": null,
+      "vary": null,
+      "demo": true,
+      "unavailable": true
+    },
+    {
+      "route": "/article",
+      "phase": "route-run-2",
+      "ms": 2006.66,
+      "status": 200,
+      "bytes": 20800,
+      "cacheControl": null,
+      "vary": null,
+      "demo": false,
+      "unavailable": false
+    },
+    {
+      "route": "/searchResults?searchValue=%E6%99%B4%E5%A4%A9&type=all",
+      "phase": "extra",
+      "ms": 8033.89,
+      "status": 200,
+      "bytes": 21972,
+      "cacheControl": null,
+      "vary": null,
+      "demo": true,
+      "unavailable": true
+    },
+    {
+      "route": "/api/search?q=%E6%99%B4%E5%A4%A9",
+      "phase": "extra",
+      "ms": 2017.18,
+      "status": 200,
+      "bytes": 429,
+      "cacheControl": null,
+      "vary": null,
+      "demo": true,
+      "unavailable": false
+    },
+    {
+      "route": "/tabs/1sdc49P3eKm",
+      "phase": "extra",
+      "ms": 2006.64,
+      "status": 200,
+      "bytes": 108485,
+      "cacheControl": null,
+      "vary": null,
+      "demo": true,
+      "unavailable": false
+    },
+    {
+      "route": "/article/nonexistent-navigation-probe",
+      "phase": "extra",
+      "ms": 2006.16,
+      "status": 404,
+      "bytes": 84,
+      "cacheControl": null,
+      "vary": null,
+      "demo": false,
+      "unavailable": false
+    },
+    {
+      "route": "/tabs/nonexistent-navigation-probe",
+      "phase": "extra",
+      "ms": 2005.7,
+      "status": 503,
+      "bytes": 105,
+      "cacheControl": null,
+      "vary": null,
+      "demo": false,
+      "unavailable": true
+    },
+    {
+      "route": "/ukulele/nonexistent-navigation-probe",
+      "phase": "extra",
+      "ms": 2021.34,
+      "status": 503,
+      "bytes": 111,
+      "cacheControl": null,
+      "vary": null,
+      "demo": false,
+      "unavailable": true
+    },
+    {
+      "route": "/tabs?no=9999",
+      "phase": "extra",
+      "ms": 2008.93,
+      "status": 200,
+      "bytes": 122945,
+      "cacheControl": null,
+      "vary": null,
+      "demo": true,
+      "unavailable": true
+    },
+    {
+      "route": "/article?page=9999",
+      "phase": "extra",
+      "ms": 2004.82,
+      "status": 200,
+      "bytes": 18906,
+      "cacheControl": null,
+      "vary": null,
+      "demo": false,
+      "unavailable": false
+    },
+    {
+      "route": "/tabs",
+      "phase": "cookie-cache-exclusion",
+      "ms": 2016.98,
+      "status": 200,
+      "bytes": 122938,
+      "cacheControl": null,
+      "vary": null,
+      "demo": true,
+      "unavailable": true
+    },
+    {
+      "route": "/api/health",
+      "phase": "liveness",
+      "ms": 1.52,
+      "status": 200,
+      "bytes": 18,
+      "cacheControl": "no-store",
+      "vary": null,
+      "demo": false,
+      "unavailable": false
+    },
+    {
+      "route": "/api/readiness",
+      "phase": "readiness",
+      "ms": 2006.79,
+      "status": 503,
+      "bytes": 581,
+      "cacheControl": "no-store",
+      "vary": null,
+      "demo": false,
+      "unavailable": false
+    }
+  ]
+}

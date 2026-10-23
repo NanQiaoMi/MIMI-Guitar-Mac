@@ -1,0 +1,38 @@
+---
+import Base from '../layouts/Base.astro';
+
+const libs = [
+  ['Astro', 'https://astro.build/', 'MIT License', '页面框架与 SSR 服务端渲染'],
+  ['Svelte 5', 'https://svelte.dev/', 'MIT License', '播放器等交互岛屿组件'],
+  ['Tailwind CSS v4', 'https://tailwindcss.com/', 'MIT License', '样式与设计系统落地'],
+  ['AlphaTab', 'https://alphatab.net/', 'MPL-2.0', '乐谱解析、渲染与播放引擎'],
+  ['Prisma', 'https://www.prisma.io/', 'Apache-2.0', '数据库 ORM'],
+  ['jsPDF', 'https://github.com/parallax/jsPDF', 'MIT License', '谱面 PDF 生成'],
+  ['Fraunces / Inter 字体', 'https://fonts.google.com/', 'OFL-1.1', '标题与正文字体（本地自托管）'],
+  ['sf2 音源', '—', '演示用途', '按乐器分发的 General MIDI 音源（迁移自原站，商用需替换为授权音源）'],
+];
+---
+
+<Base title="授权说明 - MIMI Guitar">
+  <article class="max-w-3xl">
+    <p class="text-caption tracking-[0.2em] uppercase text-ash">Licenses</p>
+    <h1 class="font-display text-heading mt-2">授权说明</h1>
+    <p class="mt-4 max-w-xl text-body-sm leading-relaxed text-charcoal">
+      本项目基于多个开源项目构建，以下为本项目依赖的主要开源组件及其许可证。请在使用与分发时遵守相应许可证条款。
+    </p>
+    <ul class="mt-8 divide-y hairline">
+      {libs.map(([name, url, license, role]) => (
+        <li class="flex items-baseline gap-4 py-4">
+          <div class="flex-1">
+            <p class="font-medium">{name}</p>
+            <p class="text-caption text-ash mt-0.5">{role}</p>
+          </div>
+          <div class="text-right">
+            {url && url !== '—' ? <a href={url} class="text-caption text-signal hover:opacity-70" target="_blank" rel="noreferrer">官网 ↗</a> : <span class="text-caption text-ash">—</span>}
+            <p class="text-caption text-ash mt-0.5">{license}</p>
+          </div>
+        </li>
+      ))}
+    </ul>
+  </article>
+</Base>
