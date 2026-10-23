@@ -644,17 +644,17 @@ export function createMacBootstrap({
     requireMacOS();
     requireNode24();
     if (dryRun) {
-      output('Dry run: would run npm ci, then npx prisma generate with a non-routable placeholder DATABASE_URL.');
+      output('Dry run: would run npm ci --include=dev, then npm run prisma:generate with a non-routable placeholder DATABASE_URL.');
       return { ok: true, dryRun: true };
     }
     await call('npm', ['--version'], {}, 'npm check');
     output('Running npm ci...');
-    await call('npm', ['ci'], {
+    await call('npm', ['ci', '--include=dev'], {
       env: { ...parentEnv, DATABASE_URL: INSTALL_DATABASE_URL },
       timeoutMs: INSTALL_TIMEOUT_MS,
     }, 'npm ci');
     output('Generating Prisma Client...');
-    await call('npx', ['prisma', 'generate'], {
+    await call('npm', ['run', 'prisma:generate'], {
       env: { ...parentEnv, DATABASE_URL: INSTALL_DATABASE_URL },
       timeoutMs: INSTALL_TIMEOUT_MS,
     }, 'Prisma Client generation');
@@ -788,6 +788,6 @@ export function createMacBootstrap({
   };
 }
 
-export const MAC_BOOTSTRAP_HELP = `MIMI Guitar Mac bootstrap\n\nCommands (Node.js 24.x):\n  doctor                     Check Node, npm, Docker Compose, and the Docker Desktop engine\n  install [--dry-run]        Run npm ci and npx prisma generate\n  restore-catalog [--dry-run]\n                             Restore root/database/catalog.dump into a new PostgreSQL 16 target\n  build [--dry-run]          Build with the local database URL passed only to the child process\n  dev [--dry-run]            Start Astro dev at 127.0.0.1:4321\n  start [--dry-run]          Start dist/server/entry.mjs at 127.0.0.1:4336\n  help                       Show this help\n\nStart with doctor and review its results before choosing the next step. Use a local Docker Desktop context backed by a Unix socket; remote, TCP, and SSH endpoints are refused, and the tool never changes contexts. The tool never installs Docker, Homebrew, Node, or OS permissions and never uses sudo.\nThe restore target is a dedicated Compose project, container, volume, network, and loopback port 15433. Existing targets or a busy port are refused.\nThe archive must be a PostgreSQL custom dump. Restore uses --no-owner, --no-privileges, --exit-on-error, and --single-transaction; it never uses --clean or DROP.\nLocal random development credentials are stored in gitignored .env.mac.local. Real Windows credentials and Windows node_modules/dist are not used.\nAfter any restore failure, created resources are preserved for manual inspection; the tool does not stop or delete containers, networks, volumes, or partial files. Review before retrying.`;
+export const MAC_BOOTSTRAP_HELP = `MIMI Guitar Mac bootstrap\n\nCommands (Node.js 24.x):\n  doctor                     Check Node, npm, Docker Compose, and the Docker Desktop engine\n  install [--dry-run]        Run npm ci --include=dev and npm run prisma:generate\n  restore-catalog [--dry-run]\n                             Restore root/database/catalog.dump into a new PostgreSQL 16 target\n  build [--dry-run]          Build with the local database URL passed only to the child process\n  dev [--dry-run]            Start Astro dev at 127.0.0.1:4321\n  start [--dry-run]          Start dist/server/entry.mjs at 127.0.0.1:4336\n  help                       Show this help\n\nStart with doctor and review its results before choosing the next step. Use a local Docker Desktop context backed by a Unix socket; remote, TCP, and SSH endpoints are refused, and the tool never changes contexts. The tool never installs Docker, Homebrew, Node, or OS permissions and never uses sudo.\nThe restore target is a dedicated Compose project, container, volume, network, and loopback port 15433. Existing targets or a busy port are refused.\nThe archive must be a PostgreSQL custom dump. Restore uses --no-owner, --no-privileges, --exit-on-error, and --single-transaction; it never uses --clean or DROP.\nLocal random development credentials are stored in gitignored .env.mac.local. Real Windows credentials and Windows node_modules/dist are not used.\nAfter any restore failure, created resources are preserved for manual inspection; the tool does not stop or delete containers, networks, volumes, or partial files. Review before retrying.`;
 
 export const MAC_BOOTSTRAP_RESTORE_HELP = `\nSnapshot checks: the dump SHA-256 and PostgreSQL/count metadata must match the approved package. Before data is written, the archive TOC must contain data only for Tab, Article, and _prisma_migrations; restored counts and migration state are checked afterward.\nrestore-catalog --dry-run checks the dump checksum and local prerequisites without starting a container; it does not inspect the archive TOC.`;

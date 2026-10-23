@@ -236,13 +236,13 @@ test('dry run checks prerequisites without writing config or starting Compose', 
   assert.match(app.output.join('\n'), /No config or container was created/);
 });
 
-test('install resets inherited DATABASE_URL and runs npm ci before Prisma generation', async () => {
+test('install includes locked development tools even with production defaults and resets inherited DATABASE_URL', async () => {
   const calls = [];
   const app = createMacBootstrap({
     projectDir: path.resolve('mac-install-test-project'),
     platform: 'darwin',
     nodeVersion: 'v24.1.0',
-    parentEnv: { DATABASE_URL: 'parent-test-value' },
+    parentEnv: { DATABASE_URL: 'parent-test-value', NODE_ENV: 'production', npm_config_omit: 'dev' },
     run: async (command, args, options) => {
       calls.push({ command, args, options });
       return { code: 0, stdout: 'ok' };
@@ -253,8 +253,8 @@ test('install resets inherited DATABASE_URL and runs npm ci before Prisma genera
 
   assert.deepEqual(calls.map(({ command, args }) => `${command} ${args.join(' ')}`), [
     'npm --version',
-    'npm ci',
-    'npx prisma generate',
+    'npm ci --include=dev',
+    'npm run prisma:generate',
   ]);
   assert.equal(calls[1].options.env.DATABASE_URL.includes('parent-test-value'), false);
   assert.equal(calls[2].options.env.DATABASE_URL, calls[1].options.env.DATABASE_URL);

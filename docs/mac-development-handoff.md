@@ -66,7 +66,7 @@ node tools/mac-bootstrap.mjs install
 node tools/mac-bootstrap.mjs dev
 ~~~
 
-迁移 CLI 命令为 doctor、install、build、dev、start、restore-catalog、help。除 doctor/help 外，命令支持在子命令后追加 `--dry-run`；restore-catalog 的 dry-run 会校验 dump/metadata SHA、Docker、端口及已有资源，但不写配置或启动容器，也不检查 archive TOC；其余 dry-run 只显示将执行的动作。install 执行 npm ci 和 npx prisma generate；build 调用 npm build 脚本，start 直接运行 `dist/server/entry.mjs`。不要用 npm install 或 npm update 改写锁文件。可用 `node -p "process.platform + ' ' + process.arch"` 确认当前是 darwin arm64 或 darwin x64，`node -v` 应处于 24.x。
+迁移 CLI 命令为 doctor、install、build、dev、start、restore-catalog、help。除 doctor/help 外，命令支持在子命令后追加 `--dry-run`；restore-catalog 的 dry-run 会校验 dump/metadata SHA、Docker、端口及已有资源，但不写配置或启动容器，也不检查 archive TOC；其余 dry-run 只显示将执行的动作。install 执行 npm ci --include=dev 和 npm run prisma:generate；build 调用 npm build 脚本，start 直接运行 `dist/server/entry.mjs`。显式包含dev依赖，即使外部NODE_ENV或omit默认值为production/dev也保留本地工具；Prisma使用项目锁定脚本，不通过npx缺失回退获取新版本。不要用 npm install 或 npm update 改写锁文件。可用 `node -p "process.platform + ' ' + process.arch"` 确认当前是 darwin arm64 或 darwin x64，`node -v` 应处于 24.x。
 
 Docker Desktop 必须已按脚本所需启动。Mac Compose 独立使用 project `mimi-guitar-mac-dev`、容器 `mimi-guitar-mac-dev-db`、卷 `mimi-guitar-mac-dev-data`、PostgreSQL 16，并只绑定 `127.0.0.1:15433`；不复用 Windows 的 `mimi-guitar-pg`。如果该端口或服务端口冲突，先停止并确认占用来源；脚本拒绝冲突，不应自行换名或改端口。`dev` 固定服务于 http://127.0.0.1:4321，`start` 服务于 http://127.0.0.1:4336。`build`、`dev`、`start` 都由 wrapper 注入本机 `.env.mac.local` 环境；不要直接运行 `npm run start` 来代替 `start`，因为它不会注入该文件。`restore-catalog` 建立本机 `.env.mac.local`，其中只保存新生成的本机随机开发口令，权限设为 `0600` 且由 Git 忽略；之后 `build`/`dev`/`start` 读取并只向子进程注入本地数据库配置；`install` 不创建该文件。不要复制配置进交付包、提交 Git 或输出到诊断报告。新口令只留在本机。
 
@@ -108,7 +108,7 @@ metadata 必须声明 `postgresMajor=16`、dump 的 `sha256`，以及 `counts.ta
 在 Mac 完成以下工作并留下不含秘密的结果记录：
 
 1. 在包根验证 `zip.sha256`，解压后运行 `node project/tools/verify-handoff.mjs --root .`；核对 `PACKAGE-MANIFEST.json` 的文件数、字节数和逐文件 SHA-256，并确认 `database/catalog-metadata.json` 的 Postgres 主版本、dump SHA 与计数。只看总量或抽样不能替代完整清单。
-2. 确认 Node 24.x 与正确架构；阅读 help/doctor，再用 install --dry-run 预览。install 成功后确认 npm ci 和 npx prisma generate 已由 wrapper 执行且锁文件未变。如果依赖安装受阻，记录锁文件实际 resolved URL/Prisma 引擎分发请求及错误类别，不改锁文件或升级依赖绕过。
+2. 确认 Node 24.x 与正确架构；阅读 help/doctor，再用 install --dry-run 预览。install 成功后确认 npm ci 和 npm run prisma:generate 已由 wrapper 执行且锁文件未变。如果依赖安装受阻，记录锁文件实际 resolved URL/Prisma 引擎分发请求及错误类别，不改锁文件或升级依赖绕过。
 3. 运行 `npm test` 并记录退出码、跳过项、warning/hint。Windows 全量结果中的 7 个数据库 skip 来自 `tests/search.test.mjs` 的 5 项及 `tests/sheetform.test.mjs` 的 2 项；各文件先调用 `db.tab.count()`，数据库连接不可用时 skip，若 `REQUIRE_TEST_DATABASE=1` 则直接失败。它们不能证明 Docker 不可用。若配置独立 `mimi_platform_test` 并运行 `npm run test:db`，连接失败就是失败，不能当作通过。
 4. 运行 `node tools/mac-bootstrap.mjs restore-catalog --dry-run`，确认目标空闲后执行真实 `restore-catalog`，核对 metadata 与摘要/计数；该步骤创建隔离数据库和 `.env.mac.local`。bootstrap 的 `build`、`dev`、`start` 要求该配置存在，因此在恢复失败时不要手工伪造连接信息来继续，也不要把 app build/runtime 记作通过。
 5. 按顺序执行 `node tools/mac-bootstrap.mjs build` → `npm run typecheck`，记录真实退出码；build 会维护生成类型，勿与 typecheck 并行。确认实际 dist/client/storage 与包内资源一致；打开真实曲谱，分别验证吉他、尤克里里、未知资源和资源缺失状态。正式页面不能含测试夹具。这样项目检查顺序为 `npm test` → wrapper build → typecheck，数据库恢复是 build 的先决准备。
