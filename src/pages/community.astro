@@ -1,0 +1,9 @@
+---
+// /community 为 /article 的别名（原站社区路由）
+const sort = Astro.url.searchParams.get('sort') ?? '';
+const page = Astro.url.searchParams.get('page') ?? '';
+const qs = new URLSearchParams();
+if (sort) qs.set('sort', sort);
+if (page) qs.set('page', page);
+return Astro.redirect('/article' + (qs.toString() ? '?' + qs.toString() : ''), 302);
+---

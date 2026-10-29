@@ -1,0 +1,11 @@
+---
+import Base from '../../layouts/Base.astro';
+import PersonalDataSettings from '../../components/PersonalDataSettings.svelte';
+---
+
+<Base title="数据与备份 · MIMI Guitar">
+  <section class="mx-auto my-6 max-w-[960px] space-y-5 px-4 sm:my-10 sm:px-6">
+    <header class="space-y-2"><p class="text-xs font-semibold uppercase tracking-[0.18em] text-[#8c6d46]">本设备个人资料</p><h1 class="font-display text-heading">数据与备份</h1><p class="max-w-2xl text-sm leading-6 text-ash">查看本设备资料、导出完整备份，或先校验备份内容再合并恢复。</p></header>
+    <PersonalDataSettings client:load />
+  </section>
+</Base>

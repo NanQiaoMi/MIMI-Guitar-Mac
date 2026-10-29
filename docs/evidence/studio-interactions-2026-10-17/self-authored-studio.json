@@ -1,0 +1,326 @@
+{
+  "schemaVersion": 1,
+  "id": "studio-interactions-acceptance-20261017",
+  "title": "工坊交互验收 · 双轨练习",
+  "artist": "MIMI 本地测试",
+  "album": "",
+  "words": "",
+  "music": "",
+  "tabber": "MIMI Guitar 琴友",
+  "key": "C",
+  "initialTempo": 120,
+  "timeSignatureNumerator": 4,
+  "timeSignatureDenominator": 4,
+  "tracks": [
+    {
+      "id": "acceptance-track-a",
+      "name": "旋律 A",
+      "program": 25,
+      "tuning": [
+        64,
+        59,
+        55,
+        50,
+        45,
+        40
+      ],
+      "tuningName": "标准吉他 (E A D G B E)",
+      "capo": 0,
+      "volume": 1,
+      "pan": 0,
+      "mute": false,
+      "solo": false
+    },
+    {
+      "id": "acceptance-track-b",
+      "name": "旋律 B",
+      "program": 25,
+      "tuning": [
+        64,
+        59,
+        55,
+        50,
+        45,
+        40
+      ],
+      "tuningName": "标准吉他 (E A D G B E)",
+      "capo": 0,
+      "volume": 1,
+      "pan": 0,
+      "mute": false,
+      "solo": false
+    }
+  ],
+  "bars": [
+    {
+      "id": "bar_dg8zqcb_mvc2a8m4",
+      "index": 0,
+      "timeSignatureNumerator": 4,
+      "timeSignatureDenominator": 4,
+      "tempo": 120,
+      "section": "前奏",
+      "trackBeats": {
+        "acceptance-track-a": [
+          {
+            "id": "beat_6zc6rem_mvc2a8m4",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 0
+              }
+            ],
+            "chordName": null,
+            "lyrics": null
+          },
+          {
+            "id": "beat_z4x0hf0_mvc2a8m4",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 1
+              }
+            ],
+            "chordName": null,
+            "lyrics": null
+          },
+          {
+            "id": "beat_xooefq3_mvc2a8m4",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 2
+              }
+            ],
+            "chordName": null,
+            "lyrics": null
+          },
+          {
+            "id": "beat_rlg5bdy_mvc2a8m4",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 3
+              }
+            ],
+            "chordName": null,
+            "lyrics": null
+          }
+        ],
+        "acceptance-track-b": [
+          {
+            "id": "bar_dg8zqcb_mvc2a8m4-b-0",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 0
+              }
+            ],
+            "chordName": null,
+            "lyrics": "原词"
+          },
+          {
+            "id": "bar_dg8zqcb_mvc2a8m4-b-1",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 1
+              }
+            ],
+            "chordName": null,
+            "lyrics": null
+          },
+          {
+            "id": "bar_dg8zqcb_mvc2a8m4-b-2",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 2
+              }
+            ],
+            "chordName": null,
+            "lyrics": null
+          },
+          {
+            "id": "bar_dg8zqcb_mvc2a8m4-b-3",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 3
+              }
+            ],
+            "chordName": null,
+            "lyrics": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "bar_6ttbj9n_mvc2a8m4",
+      "index": 1,
+      "timeSignatureNumerator": 4,
+      "timeSignatureDenominator": 4,
+      "tempo": null,
+      "section": null,
+      "trackBeats": {
+        "acceptance-track-a": [
+          {
+            "id": "beat_8rkvnfc_mvc2a8m4",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 4
+              }
+            ],
+            "chordName": null,
+            "lyrics": null
+          },
+          {
+            "id": "beat_5f7dyv7_mvc2a8m4",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 5
+              }
+            ],
+            "chordName": null,
+            "lyrics": null
+          },
+          {
+            "id": "beat_9wpqw7j_mvc2a8m4",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 6
+              }
+            ],
+            "chordName": null,
+            "lyrics": null
+          },
+          {
+            "id": "beat_lbm9ucx_mvc2a8m4",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 0
+              }
+            ],
+            "chordName": null,
+            "lyrics": null
+          }
+        ],
+        "acceptance-track-b": [
+          {
+            "id": "bar_6ttbj9n_mvc2a8m4-b-0",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 4
+              }
+            ],
+            "chordName": null,
+            "lyrics": "原词"
+          },
+          {
+            "id": "bar_6ttbj9n_mvc2a8m4-b-1",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 5
+              }
+            ],
+            "chordName": null,
+            "lyrics": null
+          },
+          {
+            "id": "bar_6ttbj9n_mvc2a8m4-b-2",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 6
+              }
+            ],
+            "chordName": null,
+            "lyrics": null
+          },
+          {
+            "id": "bar_6ttbj9n_mvc2a8m4-b-3",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 0
+              }
+            ],
+            "chordName": null,
+            "lyrics": null
+          }
+        ]
+      }
+    }
+  ],
+  "createdAt": 1792221293596,
+  "updatedAt": 1792221293596
+}

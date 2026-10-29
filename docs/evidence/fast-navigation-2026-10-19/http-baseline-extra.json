@@ -1,0 +1,38 @@
+[
+  {
+    "route": "/searchResults?q=晴天",
+    "ms": 275.8,
+    "status": 200,
+    "bytes": 20718,
+    "cacheControl": "",
+    "unavailable": false,
+    "demo": false
+  },
+  {
+    "route": "/api/search?q=晴天",
+    "ms": 2016.8,
+    "status": 200,
+    "bytes": 429,
+    "cacheControl": "",
+    "unavailable": false,
+    "demo": true
+  },
+  {
+    "route": "/tabs/1sdc49P3eKm",
+    "ms": 2048.9,
+    "status": 200,
+    "bytes": 108485,
+    "cacheControl": "",
+    "unavailable": false,
+    "demo": true
+  },
+  {
+    "route": "/article/nonexistent-navigation-probe",
+    "ms": 2015.9,
+    "status": 404,
+    "bytes": 84,
+    "cacheControl": "",
+    "unavailable": false,
+    "demo": false
+  }
+]

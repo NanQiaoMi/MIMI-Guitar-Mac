@@ -1,0 +1,74 @@
+{
+  "health": {
+    "body": {
+      "status": "alive"
+    },
+    "httpStatus": 200
+  },
+  "readiness": {
+    "body": {
+      "status": "not_ready",
+      "process": "alive",
+      "database": {
+        "status": "unavailable",
+        "code": "database_unavailable"
+      },
+      "migrations": {
+        "status": "unavailable",
+        "required": 4,
+        "applied": 0,
+        "pending": 4,
+        "failed": 0
+      },
+      "catalog": {
+        "status": "unavailable",
+        "code": "catalog_unavailable"
+      },
+      "resources": {
+        "status": "unavailable",
+        "sampleLimitPerType": 20,
+        "score": {
+          "catalogReferences": 0,
+          "checked": 0,
+          "present": 0,
+          "missing": 0,
+          "unsupported": 0,
+          "unsampled": 0
+        },
+        "xhe": {
+          "catalogReferences": 0,
+          "checked": 0,
+          "present": 0,
+          "missing": 0,
+          "unsupported": 0,
+          "unsampled": 0
+        },
+        "soundfonts": {
+          "status": "ready",
+          "required": 3,
+          "present": 3,
+          "missing": []
+        }
+      }
+    },
+    "httpStatus": 503
+  },
+  "routes": [
+    {
+      "route": "/practice",
+      "status": 200
+    },
+    {
+      "route": "/studio",
+      "status": 200
+    },
+    {
+      "route": "/tabs/1sdc49P3eKm",
+      "status": 200
+    },
+    {
+      "route": "/ukulele/1sdiYSwWo2S",
+      "status": 200
+    }
+  ]
+}

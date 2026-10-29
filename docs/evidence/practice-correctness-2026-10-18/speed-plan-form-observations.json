@@ -1,0 +1,111 @@
+[
+  {
+    "at": "2026-10-18T00:34:53.615Z",
+    "fields": [
+      {
+        "label": "提速计划起始 BPM",
+        "value": "45"
+      },
+      {
+        "label": "提速计划目标 BPM",
+        "value": "75"
+      },
+      {
+        "label": "每级增加 BPM",
+        "value": "15"
+      },
+      {
+        "label": "每级完整循环圈数",
+        "value": "1"
+      }
+    ],
+    "stage": "live-unsaved-target-draft",
+    "text": [
+      "小节 2 · 拍 1 · tick 12473",
+      "当前 45 BPM · 0/1 圈 · 上限 60"
+    ]
+  },
+  {
+    "at": "2026-10-18T00:35:12.355Z",
+    "fields": [
+      {
+        "label": "提速计划起始 BPM",
+        "value": "45"
+      },
+      {
+        "label": "提速计划目标 BPM",
+        "value": "75"
+      },
+      {
+        "label": "每级增加 BPM",
+        "value": "15"
+      },
+      {
+        "label": "每级完整循环圈数",
+        "value": "1"
+      }
+    ],
+    "stage": "live-goal-keeps-unsaved-draft",
+    "text": [
+      "小节 2 · 拍 2 · tick 12698",
+      "目标已达 · 保持 60 BPM",
+      "已确认伴奏时长：16 秒"
+    ]
+  },
+  {
+    "at": "2026-10-18T00:35:21.826Z",
+    "fields": [
+      {
+        "label": "提速计划起始 BPM",
+        "value": "45"
+      },
+      {
+        "label": "提速计划目标 BPM",
+        "value": "60"
+      },
+      {
+        "label": "每级增加 BPM",
+        "value": "15"
+      },
+      {
+        "label": "每级完整循环圈数",
+        "value": "1"
+      }
+    ],
+    "stage": "cold-reload-saved-form",
+    "text": [
+      "小节 1 · 拍 1 · tick 1",
+      "上次计划 60 BPM，恢复后生效",
+      "已确认伴奏时长：19 秒"
+    ]
+  },
+  {
+    "at": "2026-10-18T00:35:43.932Z",
+    "fields": [
+      {
+        "label": "提速计划起始 BPM",
+        "value": "45"
+      },
+      {
+        "label": "提速计划目标 BPM",
+        "value": "60"
+      },
+      {
+        "label": "每级增加 BPM",
+        "value": "15"
+      },
+      {
+        "label": "每级完整循环圈数",
+        "value": "1"
+      }
+    ],
+    "playButton": "播放",
+    "stage": "explicit-restore-replaces-draft-with-saved-plan",
+    "text": [
+      "小节 2 · 拍 2 · tick 12781",
+      "循环中 [12288, 15360)",
+      "目标已达 · 保持 60 BPM",
+      "已确认伴奏时长：19 秒"
+    ]
+  }
+]

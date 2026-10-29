@@ -1,0 +1,137 @@
+[
+  {
+    "clientWidth": 305,
+    "innerWidth": 320,
+    "practiceButtons": [
+      {
+        "height": 44,
+        "right": 180.07500457763672,
+        "text": "开始练习"
+      },
+      {
+        "height": 44,
+        "right": 86.32500457763672,
+        "text": "设 A"
+      },
+      {
+        "height": 44,
+        "right": 151.48750686645508,
+        "text": "设 B"
+      },
+      {
+        "height": 44,
+        "right": 217.47500228881836,
+        "text": "清除"
+      }
+    ],
+    "scrollWidth": 442
+  },
+  {
+    "clientWidth": 375,
+    "innerWidth": 390,
+    "practiceButtons": [
+      {
+        "height": 44,
+        "right": 183.1125030517578,
+        "text": "开始练习"
+      },
+      {
+        "height": 44,
+        "right": 87.75000381469727,
+        "text": "设 A"
+      },
+      {
+        "height": 44,
+        "right": 154.0000038146973,
+        "text": "设 B"
+      },
+      {
+        "height": 44,
+        "right": 221.10000228881836,
+        "text": "清除"
+      }
+    ],
+    "scrollWidth": 445
+  },
+  {
+    "clientWidth": 753,
+    "innerWidth": 768,
+    "practiceButtons": [
+      {
+        "height": 44,
+        "right": 211.3500061035156,
+        "text": "开始练习"
+      },
+      {
+        "height": 44,
+        "right": 107.37500381469728,
+        "text": "设 A"
+      },
+      {
+        "height": 44,
+        "right": 179.42501068115234,
+        "text": "设 B"
+      },
+      {
+        "height": 44,
+        "right": 252.3874969482422,
+        "text": "清除"
+      }
+    ],
+    "scrollWidth": 753
+  },
+  {
+    "clientWidth": 1009,
+    "innerWidth": 1024,
+    "practiceButtons": [
+      {
+        "height": 44,
+        "right": 223.00000762939453,
+        "text": "开始练习"
+      },
+      {
+        "height": 44,
+        "right": 113.1875,
+        "text": "设 A"
+      },
+      {
+        "height": 44,
+        "right": 189.137508392334,
+        "text": "设 B"
+      },
+      {
+        "height": 44,
+        "right": 266.06250381469727,
+        "text": "清除"
+      }
+    ],
+    "scrollWidth": 1009
+  },
+  {
+    "clientWidth": 1351,
+    "innerWidth": 1366,
+    "practiceButtons": [
+      {
+        "height": 44,
+        "right": 285.4625015258789,
+        "text": "开始练习"
+      },
+      {
+        "height": 44,
+        "right": 172.22500610351562,
+        "text": "设 A"
+      },
+      {
+        "height": 44,
+        "right": 250.50000762939453,
+        "text": "设 B"
+      },
+      {
+        "height": 44,
+        "right": 329.78750228881836,
+        "text": "清除"
+      }
+    ],
+    "scrollWidth": 1351
+  }
+]

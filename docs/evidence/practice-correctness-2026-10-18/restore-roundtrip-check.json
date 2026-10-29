@@ -1,0 +1,72 @@
+{
+  "beforeRevision": 8455,
+  "afterRevision": 8456,
+  "payloadEqualExceptRevision": true,
+  "assetsVerified": 4,
+  "sessionCount": 7,
+  "shortSession": {
+    "id": "81685aad-a2d2-4a60-acda-0855690520d4",
+    "state": "completed",
+    "durationMs": 16560,
+    "slices": 5,
+    "speedPlan": {
+      "revision": "804392771cf3f1a75bc77dce5f8a90847fb2dd993c8808048a2f119da2cdbd67",
+      "nativeAnchorBpm": 90,
+      "loopRange": {
+        "startTick": 12288,
+        "endTick": 15360
+      },
+      "startBpm": 45,
+      "targetBpm": 60,
+      "stepBpm": 15,
+      "lapsPerLevel": 1,
+      "currentBpm": 60,
+      "completedLaps": 0
+    }
+  },
+  "resume": {
+    "scoreId": "catalog:acceptance-2",
+    "scoreRevision": "804392771cf3f1a75bc77dce5f8a90847fb2dd993c8808048a2f119da2cdbd67",
+    "tick": 13273,
+    "timeMs": 11825.000000000002,
+    "speed": 60,
+    "capo": 0,
+    "useSourceCapo": true,
+    "transpose": 0,
+    "loop": {
+      "startTick": 12288,
+      "endTick": 15360
+    },
+    "trackIndexes": [
+      0,
+      1
+    ],
+    "trackMix": [
+      {
+        "index": 0,
+        "muted": false,
+        "soloed": false,
+        "volume": 50,
+        "program": 25
+      },
+      {
+        "index": 1,
+        "muted": false,
+        "soloed": false,
+        "volume": 50,
+        "program": 25
+      }
+    ],
+    "display": {
+      "fontScale": 1,
+      "chordMode": "diagram",
+      "scoreDisplayMode": "mixed",
+      "numberTab": true,
+      "showFretboard": false
+    },
+    "metronome": false,
+    "countIn": false,
+    "playbackRatio": 0.6666666666666666,
+    "updatedAt": 1792282562199
+  }
+}

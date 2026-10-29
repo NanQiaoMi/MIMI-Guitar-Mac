@@ -1,0 +1,10 @@
+{
+  "applicationBaseline": "c0fdccae0842b7db4835befe5e9d74fb9641d4af",
+  "handoffSourceCommit": "e687095d4983b99cf17ff258136c46361c7d4752",
+  "sourceBranch": "master",
+  "exportedAt": "2026-10-23T16:18:21.099412+00:00",
+  "exportMode": "sanitized standalone snapshot; no original Git history or remotes",
+  "originalGitHistoryIncluded": false,
+  "mediaSupplementCount": 4,
+  "note": "Package snapshot Git HEAD differs from Windows history; original unmerged candidates are separate."
+}

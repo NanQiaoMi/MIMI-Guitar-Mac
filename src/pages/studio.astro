@@ -1,0 +1,10 @@
+---
+import Base from '../layouts/Base.astro';
+import ScoreStudioApp from '../components/studio/ScoreStudioApp.svelte';
+---
+
+<Base title="在线打谱与编曲工坊 · MIMI Guitar" description="专业吉他与尤克里里在线打谱、多轨编曲、智能和弦反推与出版级曲谱导出工作台">
+  <div class="max-w-[1240px] mx-auto px-4 sm:px-6 my-4 sm:my-6 space-y-5">
+    <ScoreStudioApp client:load />
+  </div>
+</Base>

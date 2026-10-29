@@ -1,0 +1,69 @@
+{
+  "beatCount": 193,
+  "checked": 193,
+  "okDelta": 193,
+  "samples": [
+    {
+      "track": 7,
+      "tick": 232320,
+      "boost": 22,
+      "slap": true,
+      "pop": false,
+      "plain": 79,
+      "boosted": 101,
+      "expect": 101
+    },
+    {
+      "track": 7,
+      "tick": 233040,
+      "boost": 18,
+      "slap": false,
+      "pop": true,
+      "plain": 79,
+      "boosted": 97,
+      "expect": 97
+    },
+    {
+      "track": 7,
+      "tick": 234000,
+      "boost": 22,
+      "slap": true,
+      "pop": false,
+      "plain": 79,
+      "boosted": 101,
+      "expect": 101
+    },
+    {
+      "track": 7,
+      "tick": 234240,
+      "boost": 22,
+      "slap": true,
+      "pop": false,
+      "plain": 79,
+      "boosted": 101,
+      "expect": 101
+    },
+    {
+      "track": 7,
+      "tick": 234960,
+      "boost": 18,
+      "slap": false,
+      "pop": true,
+      "plain": 79,
+      "boosted": 97,
+      "expect": 97
+    },
+    {
+      "track": 7,
+      "tick": 235920,
+      "boost": 22,
+      "slap": true,
+      "pop": false,
+      "plain": 79,
+      "boosted": 101,
+      "expect": 101
+    }
+  ],
+  "slapCount": 132,
+  "popCount": 61
+}

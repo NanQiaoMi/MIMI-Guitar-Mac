@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; connect-src 'self'; media-src 'self' blob:; worker-src blob:; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none'">
+    <title>MIMI Guitar Score</title>
+    <link rel="stylesheet" href="/player.css">
+  </head>
+  <body>
+    <main id="sheet-root">
+      <div id="score-scroll" class="score-page" aria-label="乐谱内容">
+          <header id="score-page-head" class="score-page-head" hidden>
+            <div class="score-page-head-row">
+              <span class="score-page-ornament" aria-hidden="true">♩</span>
+              <span id="score-page-key" class="score-page-kv" hidden>
+                调性 <strong id="score-page-key-value"></strong><span id="score-page-timesig"></span>
+              </span>
+              <span id="score-page-tempo" class="score-page-kv" hidden>
+                速度 <strong>♩= <span id="score-page-tempo-value"></span></strong>
+              </span>
+              <span id="score-page-song" class="score-page-song"></span>
+            </div>
+            <div class="score-page-rule" aria-hidden="true"></div>
+          </header>
+          <div id="score"></div>
+          <footer class="score-page-foot" hidden>
+            <span id="score-page-foot-title">乐谱</span>
+            <span class="score-page-foot-dot" aria-hidden="true">✦</span>
+            <span>MIMI Guitar · 谱页</span>
+          </footer>
+        <section id="xhe" hidden aria-label="文本和弦谱">
+          <div id="xhe-title"></div>
+          <div id="xhe-content"></div>
+        </section>
+        <p id="web-error" role="alert" hidden></p>
+      </div>
+    </main>
+    <script src="/ar.es.js"></script>
+    <script src="/score-rendering.bundle.js"></script>
+    <script src="/practice-runtime.bundle.js"></script>
+    <script src="/player.js"></script>
+  </body>
+</html>

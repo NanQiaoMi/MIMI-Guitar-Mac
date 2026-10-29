@@ -1,0 +1,196 @@
+{
+  "date": "2026-10-19",
+  "branch": "fix/score-resource-delivery",
+  "base": "a140638e",
+  "sourceCommit": "eb4f61fc",
+  "candidate": {
+    "tests": {
+      "command": "npm test",
+      "exitCode": 0,
+      "total": 432,
+      "passed": 425,
+      "skipped": 7,
+      "failed": 0
+    },
+    "build": {
+      "command": "npm run build",
+      "exitCode": 0,
+      "seconds": 45.24
+    },
+    "typecheck": {
+      "command": "npm run typecheck",
+      "exitCode": 0,
+      "errors": 0,
+      "svelteWarnings": 57,
+      "svelteWarningFiles": 18,
+      "astroHints": 40
+    },
+    "resources": {
+      "command": "npm run resources:check -- --source <original-storage> --public <candidate-public-storage> --dist <candidate-dist-storage>",
+      "exitCode": 0,
+      "summary": {
+        "source": {
+          "expectedFiles": 32595,
+          "expectedBytes": 554546235,
+          "missing": 0,
+          "extra": 0,
+          "different": 0
+        },
+        "public": {
+          "expectedFiles": 32595,
+          "expectedBytes": 554546235,
+          "missing": 0,
+          "extra": 0,
+          "different": 0
+        },
+        "dist": {
+          "expectedFiles": 32595,
+          "expectedBytes": 554546235,
+          "missing": 0,
+          "extra": 0,
+          "different": 0
+        }
+      },
+      "inventorySha256": "56657f412533849fa7bff5f2d88e6e647e08b12af3f2a7f975545d7486f3d955",
+      "originalSourceInventoryUnchanged": true,
+      "directories": {
+        "scores": 12122,
+        "xhe": 4122,
+        "screenshots": 16219,
+        "soundfonts": 132
+      }
+    },
+    "http": {
+      "demoScores": 15,
+      "samples": 20,
+      "allOriginalHashesMatch": true
+    },
+    "browser": {
+      "guitarSvgCount": 20,
+      "guitarVectorPages": 21,
+      "ukuleleSvgCount": 16,
+      "missingFileDownloadLinks": 0,
+      "bothRetriesRecovered": true,
+      "qaFileRestoredAndHashVerified": true,
+      "personalImportThroughFileChooser": true,
+      "personalPracticeSvgCount": 20,
+      "playbackTickObserved": 111193,
+      "explicitPause": true
+    }
+  },
+  "delivery": {
+    "status": "verified-local-master",
+    "masterMergeCommit": "1e72c391187d83323b276106b65e2fd4765054f9",
+    "mergeScope": "source and candidate evidence; later delivery edits are documentation only",
+    "port": 4336,
+    "tests": {
+      "command": "npm test",
+      "exitCode": 0,
+      "total": 432,
+      "passed": 425,
+      "skipped": 7,
+      "failed": 0
+    },
+    "build": {
+      "command": "npm run build",
+      "exitCode": 0,
+      "seconds": 60.93
+    },
+    "resources": {
+      "exitCode": 0,
+      "summary": {
+        "source": {
+          "expectedFiles": 32595,
+          "expectedBytes": 554546235,
+          "missing": 0,
+          "extra": 0,
+          "different": 0
+        },
+        "public": {
+          "expectedFiles": 32595,
+          "expectedBytes": 554546235,
+          "missing": 0,
+          "extra": 0,
+          "different": 0
+        },
+        "dist": {
+          "expectedFiles": 32595,
+          "expectedBytes": 554546235,
+          "missing": 0,
+          "extra": 0,
+          "different": 0
+        }
+      },
+      "inventorySha256": "56657f412533849fa7bff5f2d88e6e647e08b12af3f2a7f975545d7486f3d955",
+      "originalSourceInventoryUnchanged": true
+    },
+    "typecheck": {
+      "command": "npm run typecheck",
+      "exitCode": 0,
+      "errors": 0,
+      "svelteWarnings": 57,
+      "svelteWarningFiles": 18,
+      "astroHints": 40
+    },
+    "http": {
+      "demoScores": 15,
+      "samples": 20,
+      "allOriginalHashesMatch": true
+    },
+    "health": {
+      "body": {
+        "status": "alive"
+      },
+      "httpStatus": 200
+    },
+    "readiness": 503,
+    "routes": [
+      {
+        "route": "/practice",
+        "status": 200
+      },
+      {
+        "route": "/studio",
+        "status": 200
+      },
+      {
+        "route": "/tabs/1sdc49P3eKm",
+        "status": 200
+      },
+      {
+        "route": "/ukulele/1sdiYSwWo2S",
+        "status": 200
+      }
+    ],
+    "browser": {
+      "newClient": {
+        "alerts": [],
+        "playEnabled": true,
+        "svgs": 20,
+        "url": "http://127.0.0.1:4336/tabs/1sdc49P3eKm",
+        "vectorPages": 21
+      },
+      "errors": []
+    },
+    "cleanup": {
+      "ownQaTabsClosed": true,
+      "qaServerStopped": true,
+      "viewportOverridesUsed": false,
+      "originalUserPracticeTabRefreshed": false,
+      "userPersonalDataTouched": false,
+      "retainedDeliverableTab": 8
+    },
+    "originalProtection": {
+      "files": 1023,
+      "hashDifferences": 0,
+      "statusRows": 402,
+      "statusDifferences": 0
+    }
+  },
+  "limitations": [
+    "7 database tests skipped; real database restoration not executed",
+    "real mobile devices and Safari not executed",
+    "playback state progression verified; audibility and long duration not verified",
+    "upload directory and remote deployment are outside this repair"
+  ]
+}

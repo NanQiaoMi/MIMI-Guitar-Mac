@@ -1,0 +1,203 @@
+{
+  "scope": "Local Chromium UI and self-authored data; not physical-device, sound, memory-leak or sustained-FPS evidence",
+  "checks": [
+    {
+      "bodyOverflow": "",
+      "case": "lyrics Escape settled",
+      "focus": "studio-open-lyrics",
+      "open": 0
+    },
+    {
+      "case": "align eight words",
+      "focus": "studio-open-lyrics",
+      "observedWords": true,
+      "otherTrackOriginal": true
+    },
+    {
+      "case": "shortened alignment",
+      "input": "慢 弹",
+      "summary": "有效字词 2 个 · 当前目标有 8 个可对齐拍位。  "
+    },
+    {
+      "case": "track B initial",
+      "input": "原词 原词",
+      "target": "歌词目标：工坊交互验收 · 双轨练习（个人副本） · 旋律 B"
+    },
+    {
+      "case": "track A draft restored",
+      "input": "甲轨草稿"
+    },
+    {
+      "case": "modal text keys stay local",
+      "input": "甲轨草稿 1",
+      "playLabel": "▶",
+      "undoDisabled": true
+    },
+    {
+      "alignDisabled": true,
+      "case": "revision guard",
+      "draft": "甲轨草稿 1"
+    },
+    {
+      "case": "explicit lyrics reload",
+      "input": "慢 弹"
+    },
+    {
+      "case": "menus exclusive",
+      "exportExpanded": "true",
+      "newExpanded": "false"
+    },
+    {
+      "case": "menu Escape",
+      "focus": "studio-export-menu-trigger"
+    },
+    {
+      "case": "new project lyrics isolated",
+      "input": ""
+    },
+    {
+      "case": "old project draft returned",
+      "conflict": "工程内容在打开歌词窗口后发生了变化。草稿已保留；请明确重载工程歌词后再应用，避免覆盖较新的编辑。",
+      "input": "保留甲草稿"
+    },
+    {
+      "canvasStatus": "     第 1 / 2 小节 | 第 2 拍 | 1 弦  打谱编辑中 + 加小节 ⧉ 复节 ✕ 清空 🗑️ 删节   \n工坊验收 · 版本更改M",
+      "case": "pending fret settles before tool",
+      "focus": "lyrics-drawer-title"
+    },
+    {
+      "canvasStatus": "     第 1 / 2 小节 | 第 3 拍 | 1 弦  打谱编辑中 + 加小节 ⧉ 复节 ✕ 清空 🗑️ 删节   \n工坊验收 · 版本更改M",
+      "case": "two digit entry and native Tab",
+      "focusTag": "BUTTON",
+      "focusText": "+ 加小节"
+    },
+    {
+      "case": "real exported project",
+      "frets": [
+        [
+          1
+        ],
+        [
+          12
+        ],
+        [
+          2
+        ],
+        [
+          3
+        ]
+      ],
+      "lyricsA": [
+        "慢",
+        "弹",
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "lyricsB": [
+        "原词",
+        null,
+        null,
+        null,
+        "原词",
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "case": "shortcuts Shift Tab wraps",
+      "focus": "  astro-island,astro-slot,astro-static-slot{display:contents}(()=>{var e=async t=>{await(await t())()};(self.Astro||(self.Astro={})).only=e;window.dispatchEvent(new Event(\"astro:only\"));})();(()=>{var A=Object.defineProperty;var g=(i,o,a)=>o in i?A(i,o,{enumerable:!0,configurable:!0,writable:!0,value:a}):i[o]=a;var d=(i,o,a)=>g(i,typeof o!=\"symbol\"?o+\"\":o,a);{let i={0:t=>m(t),1:t=>a(t),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(a(t)),5:t=>new Set(a(t)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(t),9:t=>new Uint16Array(t),10:t=>new Uint32Array(t),11:t=>1/0*t},o=t=>{let[l,e]=t;return l in i?i[l](e):void 0},a=t=>t.map(o),m=t=>typeof t!=\"object\"||t===null?t:Object.fromEntries(Object.entries(t).map(([l,e])=>[l,o(e)]));class y extends HTMLElement{constructor(){super(...arguments);d(this,\"Component\");d(this,\"hydrator\");d(this,\"hydrate\",async()=>{var b;if(!this.hydrator||!this.isConnected)return;let e=(b=this.parentElement)==null?void 0:b.closest(\"astro-island[ssr]\");if(e){e.addEventListener(\"astro:hydrate\",this.hydrate,{once:!0});return}let c=this.querySelectorAll(\"astro-slot\"),n={},h=this.querySelectorAll(\"template[data-astro-template]\");for(let r of h){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute(\"data-astro-template\")||\"default\"]=r.innerHTML,r.remove())}for(let r of c){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute(\"name\")||\"default\"]=r.innerHTML)}let p;try{p=this.hasAttribute(\"props\")?m(JSON.parse(this.getAttribute(\"props\"))):{}}catch(r){let s=this.getAttribute(\"component-url\")||\"<unknown>\",v=this.getAttribute(\"component-export\");throw v&&(s+=` (export ${v})`),console.error(`[hydrate] Error parsing props for component ${s}`,this.getAttribute(\"props\"),r),r}let u;await this.hydrator(this)(this.Component,p,n,{client:this.getAttribute(\"client\")}),this.removeAttribute(\"ssr\"),this.dispatchEvent(new CustomEvent(\"astro:hydrate\"))});d(this,\"unmount\",()=>{this.isConnected||this.dispatchEvent(new CustomEvent(\"astro:unmount\"))})}disconnectedCallback(){document.removeEventListener(\"astro:after-swap\",this.unmount),document.addEventListener(\"astro:after-swap\",this.unmount,{once:!0})}connectedCallback(){if(!this.hasAttribute(\"await-children\")||document.readyState===\"interactive\"||document.readyState===\"complete\")this.childrenConnectedCallback();else{let e=()=>{document.removeEventListener(\"DOMContentLoaded\",e),c.disconnect(),this.childrenConnectedCallback()},c=new MutationObserver(()=>{var n;((n=this.lastChild)==null?void 0:n.nodeType)===Node.COMMENT_NODE&&this.lastChild.nodeValue===\"astro:end\"&&(this.lastChild.remove(),e())});c.observe(this,{childList:!0}),document.addEventListener(\"DOMContentLoaded\",e)}}async childrenConnectedCallback(){let e=this.getAttribute(\"before-hydration-url\");e&&await import(e),this.start()}async start(){let e=JSON.parse(this.getAttribute(\"opts\")),c=this.getAttribute(\"client\");if(Astro[c]===void 0){window.addEventListener(`astro:${c}`,()=>this.start(),{once:!0});return}try{await Astro[c](async()=>{let n=this.getAttribute(\"renderer-url\"),[h,{default:p}]=await Promise.all([import(this.getAttribute(\"component-url\")),n?import(n):()=>()=>{}]),u=this.getAttribute(\"component-export\")||\"default\";if(!u.includes(\".\"))this.Component=h[u];else{this.Component=h;for(let f of u.split(\".\"))this.Component=this.Component[f]}return this.hydrator=p,this.hydrate},e,this)}catch(n){console.error(`[astro-island] Error hydrating ${this.getAttribute(\"component-url\")}`,n)}}attributeChangedCallback(){this.hydrate()}}d(y,\"observedAttributes\",[\"props\"]),customElements.get(\"astro-island\")||customElements.define(\"astro-island\",y)}})();          \nM\n MIMI Guitar    \n吉他谱\n \n尤克里里\n  制谱工坊 PRO  \n专栏文章\n 我的练习 我的谱 备份          搜索曲谱... \n⌘K\n          上传    \n吉他谱 (GP / MusicXML)\n  \n尤克里里谱\n       (()=>{var e=async t=>{await(await t())()};(self.Astro||(self.Astro={})).load=e;window.dispatchEvent(new Event(\"astro:load\"));})();          ‹ 曲库   ↩ 撤销 ↪ 重做 ▶ ⏹ ⏱️ 节拍器 1234 🔄 循环 BPM  C 调G 调D 调A 调E 调F 调Bb 调Eb 调Am 调Em 调Dm 调Bm 调F#m 调 4/4 拍3/4 拍2/4 拍6/8 拍12/8 拍 原调 (无Capo)Capo 1 品Capo 2 品Capo 3 品Capo 4 品Capo 5 品Capo 6 品 🎛️ 调音台 📝 歌词 ⌨️ 📖 教程 ➕ 新建 ▼  📁 草稿 保存 / 导出 ▼  工程 JSON文件已导出。 ✕  时值: 𝅝 全音符𝅗𝅥 二分𝅘𝅥 四分𝅘𝅥𝅮 八分𝅘𝅥𝅯 十六分𝅘𝅥𝅰 三十二分 · 附点 3 连音 𝄽 休止 + 插拍 - 删拍  🎵 单音步进 技法: ⌒ LH/P Hsl. S↗ B◆ NP.M. P✕ X～ V + 加小节 📋 复制节 🗑️ 删节 🏷️ 段落标记...前奏 (Intro)主歌 (Verse)副歌 (Chorus)间奏 (Interlude)吉他独奏 (Solo)桥段 (Bridge)尾奏 (Outro)       第 1 / 2 小节 | 第 3 拍 | 1 弦  打谱编辑中 + 加小节 ⧉ 复节 ✕ 清空 🗑️ 删节   \n工坊验收 · 版本更改MIMI 本地测试\n\n\n\n\n\n\n1  \n\n\n\n\n\n\n\n慢弹\n\n\n\n\n2  \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n11223\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n4560\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n原词\n\n\n\n\n\n\n\n\n\n\n\n\n原词\n\n\n\n\n\n\n\n\n\n\n0123\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n4560\n\n\n\n\n\n\n\n\n\n\n\nrendered by alphaTab ▼ 收起工作台  指板与和弦多轨调音台 键盘按 0-24 输入品数 · 按 Space 播放 · 按 Alt+1..6 切时值  🎛️ 多音轨调音台 (Track Mixer) 共 2 个独立音轨 + 新增音轨  旋律 A 标准吉他 (E A D G B E) 原声钢弦木吉他古典尼龙弦吉他清音电吉他过载/失真主音吉他电贝斯 (Finger Bass)大钢琴 (Grand Piano)标准架子鼓组 (Drums) S M Vol  Pan  ✕ 旋律 B 标准吉他 (E A D G B E) 原声钢弦木吉他古典尼龙弦吉他清音电吉他过载/失真主音吉他电贝斯 (Finger Bass)大钢琴 (Grand Piano)标准架子鼓组 (Drums) S M Vol  Pan  ✕  ⌨️ 制谱工坊快捷键速查 ✕ 谱面编辑快捷键仅在交互式乐谱画布拥有键盘焦点时生效。Tab / Shift+Tab 始终用于页面焦点导航。 0 ~ 9 输入品位；1/2 可继续输入第二位组成 10–24 品。0 是空弦↑ / ↓ 在当前音轨琴弦之间移动，1 弦为高音弦← / → 向前 / 向后移动一拍；末拍后会自动加小节Tab / Shift+Tab 在页面控件之间移动焦点，不执行谱面编辑Alt+1…6 全、二、四、八、十六、三十二分音符. / 斜杠 切换附点 / 三连音R 切换当前拍为休止符；0 仍表示空弦Delete / Backspace 删除当前拍选中琴弦上的音符Shift+Delete 删除当前拍Space (空格键) 播放 / 暂停乐谱原声试听L 添加 / 取消 延音线 (Tie)H 添加 / 取消 击勾弦 (Hammer-on / Pull-off)S 添加 / 取消 滑音 (Slide)B 添加 / 取消 推弦 (Bend)N 添加 / 取消 泛音 (Harmonic)P 添加 / 取消 闷音 (Palm Mute)X 切换为死音/哑音 (Dead Note)V 添加 / 取消 颤音揉弦 (Vibrato)Insert / Shift+Insert 插入小节 / 在当前拍前插入一拍Ctrl + Z / Ctrl + Y 撤销上一步操作 / 重做恢复Ctrl + S 保存当前乐谱工程至本地草稿箱 我知道了（Esc）          const e=\"mimiBaseNavActionsBound\";document.documentElement.dataset[e]!==\"true\"&&(document.documentElement.dataset[e]=\"true\",document.addEventListener(\"click\",n=>{const t=n.target;if(t instanceof Element){if(t.closest(\"#nav-search-trigger\")){window.dispatchEvent(new Event(\"open-command-palette\"));return}t.closest(\"#nav-play-intro-btn\")&&window.dispatchEvent(new Event(\"mimi:play-intro\"))}}));     MIMI Guitar · 纸本墨韵 · 专业数字乐谱工坊   吉他曲库 尤克里里 制谱工坊 专栏 我的练习 我的谱 数据与备份 交互体验  \n© 2026 MIMI Guitar. All rights reserved.\n   ",
+      "inside": false
+    },
+    {
+      "case": "shortcuts Tab wraps",
+      "focusLabel": null,
+      "inside": false
+    },
+    {
+      "case": "⌨️ twenty cycles",
+      "failures": []
+    },
+    {
+      "case": "📖 教程 twenty cycles",
+      "failures": []
+    },
+    {
+      "case": "📝 歌词 twenty cycles",
+      "failures": []
+    },
+    {
+      "case": "📁 草稿 twenty cycles",
+      "failures": []
+    },
+    {
+      "alerts": [
+        "文件未载入；当前编辑工程已保留。请查看工坊提示后重试。 已保留所选文件：broken-score.json 重试导入"
+      ],
+      "case": "invalid import preserved project",
+      "title": "工坊验收 · 版本更改"
+    },
+    {
+      "buttons": [
+        {
+          "bottom": 74.75,
+          "height": 44,
+          "text": "关闭使用指南",
+          "top": 30.75
+        },
+        {
+          "bottom": 373.1750183105469,
+          "height": 44,
+          "text": "开始制谱",
+          "top": 329.1750183105469
+        }
+      ],
+      "case": "short viewport guide",
+      "scrollRegions": [
+        {
+          "content": 2136,
+          "height": 227
+        }
+      ],
+      "view": [
+        390,
+        400
+      ]
+    }
+  ],
+  "playback": [
+    {
+      "focusInside": true,
+      "play": "⏸",
+      "status": "     第 1 / 2 小节 | 第 4 拍 | 1 弦  实况演奏中 + 加小节 ⧉ 复节 ✕ 清空 🗑️ 删",
+      "step": "📝 歌词 open"
+    },
+    {
+      "focusInside": true,
+      "play": "⏸",
+      "status": "     第 2 / 2 小节 | 第 2 拍 | 1 弦  实况演奏中 + 加小节 ⧉ 复节 ✕ 清空 🗑️ 删",
+      "step": "⌨️ open"
+    },
+    {
+      "focusInside": true,
+      "play": "⏸",
+      "status": "     第 2 / 2 小节 | 第 3 拍 | 1 弦  实况演奏中 + 加小节 ⧉ 复节 ✕ 清空 🗑️ 删",
+      "step": "📖 教程 open"
+    },
+    {
+      "play": "⏸",
+      "status": "     第 2 / 2 小节 | 第 4 拍 | 1 弦  实况演奏中 + 加小节 ⧉ 复节 ✕ 清空 🗑️ 删",
+      "step": "workbench collapsed"
+    },
+    {
+      "message": [
+        "播放中暂不录入品位；请先按空格暂停，再输入音符。 ✕"
+      ],
+      "step": "playing fret rejected with reason"
+    }
+  ]
+}

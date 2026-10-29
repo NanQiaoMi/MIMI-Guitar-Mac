@@ -1,0 +1,537 @@
+{
+  "revision": 144,
+  "payloadSha256": "75a1433cc3f997d53c9a57852da0af78d377a48e2b20a9b4db1f9c7d7aa9abdd",
+  "assetsVerified": 4,
+  "queue": [
+    {
+      "scoreId": "catalog:acceptance-1",
+      "status": "practicing",
+      "order": 0,
+      "note": "",
+      "updatedAt": 1792256213183,
+      "title": "曲库排序乙"
+    },
+    {
+      "scoreId": "project:imported_15qqbxw_mvc3y155",
+      "status": "practicing",
+      "note": "",
+      "order": 1,
+      "updatedAt": 1792224160427,
+      "title": "工坊交互验收 · 双轨练习（个人副本）"
+    },
+    {
+      "scoreId": "catalog:acceptance-2",
+      "status": "practicing",
+      "order": 2,
+      "note": "",
+      "updatedAt": 1792258275876,
+      "title": "反复变速丙"
+    },
+    {
+      "scoreId": "project:imported_7zcf5p9_mvcn8cj1",
+      "status": "todo",
+      "note": "",
+      "order": 3,
+      "updatedAt": 1792256481256,
+      "title": "练习闭环验收 · 双轨变调夹（个人副本）"
+    },
+    {
+      "scoreId": "catalog:acceptance-0",
+      "status": "todo",
+      "order": 4,
+      "note": "",
+      "updatedAt": 1792256668283,
+      "title": "曲库校验甲"
+    }
+  ],
+  "scores": [
+    {
+      "id": "project:imported_15qqbxw_mvc3y155",
+      "source": "project",
+      "revision": "6ef6cd65bbe3588f607dd96019ad01762e3642ee9e95bfc2801ebc44b7ebeb77",
+      "title": "工坊交互验收 · 双轨练习（个人副本）",
+      "assetId": "6ef6cd65bbe3588f607dd96019ad01762e3642ee9e95bfc2801ebc44b7ebeb77"
+    },
+    {
+      "id": "catalog:acceptance-0",
+      "source": "catalog",
+      "revision": "79f3f434108f45596210e4e176fb282cb8bcc7b0bbe851ad9b111bab1960b5e1",
+      "title": "曲库校验甲"
+    },
+    {
+      "id": "catalog:acceptance-1",
+      "source": "catalog",
+      "revision": "79f3f434108f45596210e4e176fb282cb8bcc7b0bbe851ad9b111bab1960b5e1",
+      "title": "曲库排序乙"
+    },
+    {
+      "id": "catalog:acceptance-2",
+      "source": "catalog",
+      "revision": "804392771cf3f1a75bc77dce5f8a90847fb2dd993c8808048a2f119da2cdbd67",
+      "title": "反复变速丙"
+    },
+    {
+      "id": "project:imported_7zcf5p9_mvcn8cj1",
+      "source": "project",
+      "revision": "5b0bd0a5bb59f47ea8bc7c7b1645a8e3bc46f585e2817048f161dd3ea8c4567a",
+      "title": "练习闭环验收 · 双轨变调夹（个人副本）",
+      "assetId": "5b0bd0a5bb59f47ea8bc7c7b1645a8e3bc46f585e2817048f161dd3ea8c4567a"
+    }
+  ],
+  "resumes": [
+    {
+      "scoreId": "project:imported_15qqbxw_mvc3y155",
+      "scoreRevision": "6ef6cd65bbe3588f607dd96019ad01762e3642ee9e95bfc2801ebc44b7ebeb77",
+      "tick": 423,
+      "timeMs": 219.79166666666669,
+      "speed": 120,
+      "capo": 0,
+      "transpose": 0,
+      "loop": null,
+      "trackIndexes": [
+        0,
+        1
+      ],
+      "trackMix": [
+        {
+          "index": 0,
+          "muted": false,
+          "soloed": false,
+          "volume": 94,
+          "program": 25
+        },
+        {
+          "index": 1,
+          "muted": false,
+          "soloed": false,
+          "volume": 94,
+          "program": 25
+        }
+      ],
+      "display": {
+        "fontScale": 1,
+        "chordMode": "diagram",
+        "scoreDisplayMode": "mixed",
+        "numberTab": true,
+        "showFretboard": false
+      },
+      "metronome": false,
+      "countIn": false,
+      "playbackRatio": 1,
+      "updatedAt": 1792254392473
+    },
+    {
+      "scoreId": "catalog:acceptance-1",
+      "scoreRevision": "79f3f434108f45596210e4e176fb282cb8bcc7b0bbe851ad9b111bab1960b5e1",
+      "tick": 5762,
+      "timeMs": 4500.781250000001,
+      "speed": 80,
+      "capo": 2,
+      "useSourceCapo": true,
+      "transpose": 0,
+      "loop": {
+        "startTick": 0,
+        "endTick": 7680
+      },
+      "trackIndexes": [
+        0,
+        1
+      ],
+      "trackMix": [
+        {
+          "index": 0,
+          "muted": false,
+          "soloed": false,
+          "volume": 0,
+          "program": 25
+        },
+        {
+          "index": 1,
+          "muted": false,
+          "soloed": false,
+          "volume": 56,
+          "program": 25
+        }
+      ],
+      "display": {
+        "fontScale": 1,
+        "chordMode": "diagram",
+        "scoreDisplayMode": "mixed",
+        "numberTab": true,
+        "showFretboard": false
+      },
+      "metronome": false,
+      "countIn": false,
+      "playbackRatio": 0.6666666666666666,
+      "updatedAt": 1792256392069
+    },
+    {
+      "scoreId": "catalog:acceptance-2",
+      "scoreRevision": "804392771cf3f1a75bc77dce5f8a90847fb2dd993c8808048a2f119da2cdbd67",
+      "tick": 14173,
+      "timeMs": 12763.541666666666,
+      "speed": 60,
+      "capo": 0,
+      "useSourceCapo": true,
+      "transpose": 0,
+      "loop": {
+        "startTick": 12288,
+        "endTick": 15360
+      },
+      "trackIndexes": [
+        0,
+        1
+      ],
+      "trackMix": [
+        {
+          "index": 0,
+          "muted": false,
+          "soloed": false,
+          "volume": 50,
+          "program": 25
+        },
+        {
+          "index": 1,
+          "muted": false,
+          "soloed": false,
+          "volume": 50,
+          "program": 25
+        }
+      ],
+      "display": {
+        "fontScale": 1,
+        "chordMode": "diagram",
+        "scoreDisplayMode": "mixed",
+        "numberTab": true,
+        "showFretboard": false
+      },
+      "metronome": false,
+      "countIn": false,
+      "playbackRatio": 0.6666666666666666,
+      "updatedAt": 1792258331629
+    },
+    {
+      "scoreId": "project:imported_7zcf5p9_mvcn8cj1",
+      "scoreRevision": "5b0bd0a5bb59f47ea8bc7c7b1645a8e3bc46f585e2817048f161dd3ea8c4567a",
+      "tick": 1,
+      "timeMs": 0,
+      "speed": 120,
+      "capo": 2,
+      "useSourceCapo": true,
+      "transpose": 0,
+      "loop": {
+        "startTick": 0,
+        "endTick": 7680
+      },
+      "trackIndexes": [
+        0,
+        1
+      ],
+      "trackMix": [
+        {
+          "index": 0,
+          "muted": false,
+          "soloed": false,
+          "volume": 0,
+          "program": 25
+        },
+        {
+          "index": 1,
+          "muted": false,
+          "soloed": false,
+          "volume": 56,
+          "program": 25
+        }
+      ],
+      "display": {
+        "fontScale": 1,
+        "chordMode": "diagram",
+        "scoreDisplayMode": "mixed",
+        "numberTab": true,
+        "showFretboard": false
+      },
+      "metronome": false,
+      "countIn": false,
+      "playbackRatio": 1,
+      "updatedAt": 1792258519404
+    }
+  ],
+  "sessions": [
+    {
+      "id": "0e06f1b3-87ab-45f5-803a-62c42d90ab39",
+      "scoreId": "project:imported_15qqbxw_mvc3y155",
+      "scoreRevision": "6ef6cd65bbe3588f607dd96019ad01762e3642ee9e95bfc2801ebc44b7ebeb77",
+      "state": "completed",
+      "startedAt": 1792224160423,
+      "updatedAt": 1792254647231,
+      "timezone": "Asia/Shanghai",
+      "note": "",
+      "endedAt": 1792254647162,
+      "sliceCount": 2,
+      "durationMs": 4288,
+      "slices": [
+        {
+          "id": "0e06f1b3-87ab-45f5-803a-62c42d90ab39:711012d1-b78e-4f77-a339-055c6d559993:1",
+          "sequence": 1,
+          "epoch": "711012d1-b78e-4f77-a339-055c6d559993",
+          "startedAt": 1792224160431,
+          "durationMs": 269
+        },
+        {
+          "id": "0e06f1b3-87ab-45f5-803a-62c42d90ab39:8db80a16-7418-4731-90ae-289fc6dfd8f3:2",
+          "sequence": 2,
+          "epoch": "8db80a16-7418-4731-90ae-289fc6dfd8f3",
+          "startedAt": 1792254243799,
+          "durationMs": 4019
+        }
+      ]
+    },
+    {
+      "id": "d88fb9f7-113d-488e-8fea-23360a43aa91",
+      "scoreId": "catalog:acceptance-0",
+      "scoreRevision": "79f3f434108f45596210e4e176fb282cb8bcc7b0bbe851ad9b111bab1960b5e1",
+      "state": "paused",
+      "startedAt": 1792254789875,
+      "updatedAt": 1792254789950,
+      "timezone": "Asia/Shanghai",
+      "note": "",
+      "sliceCount": 0,
+      "durationMs": 0,
+      "slices": []
+    },
+    {
+      "id": "b7c7a8ea-ae29-4e96-80bf-c5fe67986d3e",
+      "scoreId": "catalog:acceptance-1",
+      "scoreRevision": "79f3f434108f45596210e4e176fb282cb8bcc7b0bbe851ad9b111bab1960b5e1",
+      "state": "completed",
+      "startedAt": 1792256213179,
+      "updatedAt": 1792256441992,
+      "timezone": "Asia/Shanghai",
+      "note": "真实验收：60→70→80 BPM；暂停后刷新续练；双轨原谱 capo 与零音量。",
+      "speedPlan": {
+        "revision": "79f3f434108f45596210e4e176fb282cb8bcc7b0bbe851ad9b111bab1960b5e1",
+        "nativeAnchorBpm": 120,
+        "loopRange": {
+          "startTick": 0,
+          "endTick": 7680
+        },
+        "startBpm": 60,
+        "targetBpm": 80,
+        "stepBpm": 10,
+        "lapsPerLevel": 1,
+        "currentBpm": 80,
+        "completedLaps": 0
+      },
+      "endedAt": 1792256441936,
+      "sliceCount": 6,
+      "durationMs": 30287,
+      "slices": [
+        {
+          "id": "b7c7a8ea-ae29-4e96-80bf-c5fe67986d3e:333cad7f-1fc9-4bdd-88e9-b5b29d57cf02:1",
+          "sequence": 1,
+          "epoch": "333cad7f-1fc9-4bdd-88e9-b5b29d57cf02",
+          "startedAt": 1792256213191,
+          "durationMs": 4011
+        },
+        {
+          "id": "b7c7a8ea-ae29-4e96-80bf-c5fe67986d3e:333cad7f-1fc9-4bdd-88e9-b5b29d57cf02:2",
+          "sequence": 2,
+          "epoch": "333cad7f-1fc9-4bdd-88e9-b5b29d57cf02",
+          "startedAt": 1792256312296,
+          "durationMs": 5466
+        },
+        {
+          "id": "b7c7a8ea-ae29-4e96-80bf-c5fe67986d3e:333cad7f-1fc9-4bdd-88e9-b5b29d57cf02:3",
+          "sequence": 3,
+          "epoch": "333cad7f-1fc9-4bdd-88e9-b5b29d57cf02",
+          "startedAt": 1792256317762,
+          "durationMs": 6003
+        },
+        {
+          "id": "b7c7a8ea-ae29-4e96-80bf-c5fe67986d3e:333cad7f-1fc9-4bdd-88e9-b5b29d57cf02:4",
+          "sequence": 4,
+          "epoch": "333cad7f-1fc9-4bdd-88e9-b5b29d57cf02",
+          "startedAt": 1792256323765,
+          "durationMs": 5000
+        },
+        {
+          "id": "b7c7a8ea-ae29-4e96-80bf-c5fe67986d3e:333cad7f-1fc9-4bdd-88e9-b5b29d57cf02:5",
+          "sequence": 5,
+          "epoch": "333cad7f-1fc9-4bdd-88e9-b5b29d57cf02",
+          "startedAt": 1792256328766,
+          "durationMs": 6000
+        },
+        {
+          "id": "b7c7a8ea-ae29-4e96-80bf-c5fe67986d3e:333cad7f-1fc9-4bdd-88e9-b5b29d57cf02:6",
+          "sequence": 6,
+          "epoch": "333cad7f-1fc9-4bdd-88e9-b5b29d57cf02",
+          "startedAt": 1792256334767,
+          "durationMs": 3807
+        }
+      ]
+    },
+    {
+      "id": "6dd4450f-bc67-4fe5-9d20-c6bfac199d81",
+      "scoreId": "catalog:acceptance-2",
+      "scoreRevision": "804392771cf3f1a75bc77dce5f8a90847fb2dd993c8808048a2f119da2cdbd67",
+      "state": "completed",
+      "startedAt": 1792256739671,
+      "updatedAt": 1792257221804,
+      "timezone": "Asia/Shanghai",
+      "note": "阶段1缺陷验收：反复第二遍暂停回跳首遍，范围未保持；此记录不作为选段成功证据。",
+      "speedPlan": {
+        "revision": "804392771cf3f1a75bc77dce5f8a90847fb2dd993c8808048a2f119da2cdbd67",
+        "nativeAnchorBpm": 90,
+        "loopRange": {
+          "startTick": 12288,
+          "endTick": 15360
+        },
+        "startBpm": 45,
+        "targetBpm": 60,
+        "stepBpm": 15,
+        "lapsPerLevel": 1,
+        "currentBpm": 45,
+        "completedLaps": 0
+      },
+      "endedAt": 1792257221798,
+      "sliceCount": 12,
+      "durationMs": 62333,
+      "slices": [
+        {
+          "id": "6dd4450f-bc67-4fe5-9d20-c6bfac199d81:d4500345-ea2b-4ddc-a216-c5ddb7ab9635:1",
+          "sequence": 1,
+          "epoch": "d4500345-ea2b-4ddc-a216-c5ddb7ab9635",
+          "startedAt": 1792256739681,
+          "durationMs": 930
+        },
+        {
+          "id": "6dd4450f-bc67-4fe5-9d20-c6bfac199d81:d4500345-ea2b-4ddc-a216-c5ddb7ab9635:2",
+          "sequence": 2,
+          "epoch": "d4500345-ea2b-4ddc-a216-c5ddb7ab9635",
+          "startedAt": 1792256757456,
+          "durationMs": 5458
+        },
+        {
+          "id": "6dd4450f-bc67-4fe5-9d20-c6bfac199d81:d4500345-ea2b-4ddc-a216-c5ddb7ab9635:3",
+          "sequence": 3,
+          "epoch": "d4500345-ea2b-4ddc-a216-c5ddb7ab9635",
+          "startedAt": 1792256762914,
+          "durationMs": 6010
+        },
+        {
+          "id": "6dd4450f-bc67-4fe5-9d20-c6bfac199d81:d4500345-ea2b-4ddc-a216-c5ddb7ab9635:4",
+          "sequence": 4,
+          "epoch": "d4500345-ea2b-4ddc-a216-c5ddb7ab9635",
+          "startedAt": 1792256768924,
+          "durationMs": 5997
+        },
+        {
+          "id": "6dd4450f-bc67-4fe5-9d20-c6bfac199d81:d4500345-ea2b-4ddc-a216-c5ddb7ab9635:5",
+          "sequence": 5,
+          "epoch": "d4500345-ea2b-4ddc-a216-c5ddb7ab9635",
+          "startedAt": 1792256774922,
+          "durationMs": 5989
+        },
+        {
+          "id": "6dd4450f-bc67-4fe5-9d20-c6bfac199d81:d4500345-ea2b-4ddc-a216-c5ddb7ab9635:6",
+          "sequence": 6,
+          "epoch": "d4500345-ea2b-4ddc-a216-c5ddb7ab9635",
+          "startedAt": 1792256780911,
+          "durationMs": 5008
+        },
+        {
+          "id": "6dd4450f-bc67-4fe5-9d20-c6bfac199d81:d4500345-ea2b-4ddc-a216-c5ddb7ab9635:7",
+          "sequence": 7,
+          "epoch": "d4500345-ea2b-4ddc-a216-c5ddb7ab9635",
+          "startedAt": 1792256785919,
+          "durationMs": 6004
+        },
+        {
+          "id": "6dd4450f-bc67-4fe5-9d20-c6bfac199d81:d4500345-ea2b-4ddc-a216-c5ddb7ab9635:8",
+          "sequence": 8,
+          "epoch": "d4500345-ea2b-4ddc-a216-c5ddb7ab9635",
+          "startedAt": 1792256791923,
+          "durationMs": 5991
+        },
+        {
+          "id": "6dd4450f-bc67-4fe5-9d20-c6bfac199d81:d4500345-ea2b-4ddc-a216-c5ddb7ab9635:9",
+          "sequence": 9,
+          "epoch": "d4500345-ea2b-4ddc-a216-c5ddb7ab9635",
+          "startedAt": 1792256797915,
+          "durationMs": 6007
+        },
+        {
+          "id": "6dd4450f-bc67-4fe5-9d20-c6bfac199d81:d4500345-ea2b-4ddc-a216-c5ddb7ab9635:10",
+          "sequence": 10,
+          "epoch": "d4500345-ea2b-4ddc-a216-c5ddb7ab9635",
+          "startedAt": 1792256803922,
+          "durationMs": 6002
+        },
+        {
+          "id": "6dd4450f-bc67-4fe5-9d20-c6bfac199d81:d4500345-ea2b-4ddc-a216-c5ddb7ab9635:11",
+          "sequence": 11,
+          "epoch": "d4500345-ea2b-4ddc-a216-c5ddb7ab9635",
+          "startedAt": 1792256809925,
+          "durationMs": 5998
+        },
+        {
+          "id": "6dd4450f-bc67-4fe5-9d20-c6bfac199d81:d4500345-ea2b-4ddc-a216-c5ddb7ab9635:12",
+          "sequence": 12,
+          "epoch": "d4500345-ea2b-4ddc-a216-c5ddb7ab9635",
+          "startedAt": 1792256815924,
+          "durationMs": 2939
+        }
+      ]
+    },
+    {
+      "id": "7ebca2ae-a999-4cfb-b170-06528c4cd7b2",
+      "scoreId": "catalog:acceptance-2",
+      "scoreRevision": "804392771cf3f1a75bc77dce5f8a90847fb2dd993c8808048a2f119da2cdbd67",
+      "state": "completed",
+      "startedAt": 1792258275869,
+      "updatedAt": 1792258381487,
+      "timezone": "Asia/Shanghai",
+      "note": "第二轮缺陷验收：反复第二遍选段及45→60实播通过，但刷新后计划旧45与实际60不一致；此记录不作为完整恢复成功证据。",
+      "endedAt": 1792258381472,
+      "sliceCount": 5,
+      "durationMs": 21298,
+      "slices": [
+        {
+          "id": "7ebca2ae-a999-4cfb-b170-06528c4cd7b2:571b1aae-3204-4712-a7d6-da3f60065d9c:1",
+          "sequence": 1,
+          "epoch": "571b1aae-3204-4712-a7d6-da3f60065d9c",
+          "startedAt": 1792258275889,
+          "durationMs": 167
+        },
+        {
+          "id": "7ebca2ae-a999-4cfb-b170-06528c4cd7b2:571b1aae-3204-4712-a7d6-da3f60065d9c:2",
+          "sequence": 2,
+          "epoch": "571b1aae-3204-4712-a7d6-da3f60065d9c",
+          "startedAt": 1792258304617,
+          "durationMs": 5013
+        },
+        {
+          "id": "7ebca2ae-a999-4cfb-b170-06528c4cd7b2:571b1aae-3204-4712-a7d6-da3f60065d9c:3",
+          "sequence": 3,
+          "epoch": "571b1aae-3204-4712-a7d6-da3f60065d9c",
+          "startedAt": 1792258309630,
+          "durationMs": 5997
+        },
+        {
+          "id": "7ebca2ae-a999-4cfb-b170-06528c4cd7b2:571b1aae-3204-4712-a7d6-da3f60065d9c:4",
+          "sequence": 4,
+          "epoch": "571b1aae-3204-4712-a7d6-da3f60065d9c",
+          "startedAt": 1792258315627,
+          "durationMs": 5005
+        },
+        {
+          "id": "7ebca2ae-a999-4cfb-b170-06528c4cd7b2:571b1aae-3204-4712-a7d6-da3f60065d9c:5",
+          "sequence": 5,
+          "epoch": "571b1aae-3204-4712-a7d6-da3f60065d9c",
+          "startedAt": 1792258320633,
+          "durationMs": 5116
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,110 @@
+[
+  {
+    "level": "log",
+    "message": "[ScorePlayer] decoding score...",
+    "timestamp": "2026-10-17T16:22:58.846Z",
+    "url": "http://127.0.0.1:4337/_astro/ScorePlayer.CaguTyVl.js"
+  },
+  {
+    "level": "log",
+    "message": "[ScorePlayer] rendering score...",
+    "timestamp": "2026-10-17T16:22:58.867Z",
+    "url": "http://127.0.0.1:4337/_astro/ScorePlayer.CaguTyVl.js"
+  },
+  {
+    "level": "log",
+    "message": "[ScorePlayer] score rendered successfully",
+    "timestamp": "2026-10-17T16:22:59.139Z",
+    "url": "http://127.0.0.1:4337/_astro/ScorePlayer.CaguTyVl.js"
+  },
+  {
+    "level": "log",
+    "message": "[ScorePlayer] starting loadScore for blob:http://127.0.0.1:4337/4b745896-b8f6-497f-8b6d-b9acd75f02ea",
+    "timestamp": "2026-10-17T16:32:45.784Z",
+    "url": "http://127.0.0.1:4337/_astro/ScorePlayer.CaguTyVl.js"
+  },
+  {
+    "level": "log",
+    "message": "[ScorePlayer] fetching scoreUrl...",
+    "timestamp": "2026-10-17T16:32:45.961Z",
+    "url": "http://127.0.0.1:4337/_astro/ScorePlayer.CaguTyVl.js"
+  },
+  {
+    "level": "log",
+    "message": "[ScorePlayer] decoding score...",
+    "timestamp": "2026-10-17T16:32:45.999Z",
+    "url": "http://127.0.0.1:4337/_astro/ScorePlayer.CaguTyVl.js"
+  },
+  {
+    "level": "log",
+    "message": "[ScorePlayer] rendering score...",
+    "timestamp": "2026-10-17T16:32:46.024Z",
+    "url": "http://127.0.0.1:4337/_astro/ScorePlayer.CaguTyVl.js"
+  },
+  {
+    "level": "log",
+    "message": "[ScorePlayer] score rendered successfully",
+    "timestamp": "2026-10-17T16:32:46.049Z",
+    "url": "http://127.0.0.1:4337/_astro/ScorePlayer.CaguTyVl.js"
+  },
+  {
+    "level": "log",
+    "message": "[ScorePlayer] starting loadScore for /__practice-audit__/self-authored-practice.ibe",
+    "timestamp": "2026-10-17T16:33:02.076Z",
+    "url": "http://127.0.0.1:4337/_astro/ScorePlayer.CaguTyVl.js"
+  },
+  {
+    "level": "log",
+    "message": "[ScorePlayer] fetching scoreUrl...",
+    "timestamp": "2026-10-17T16:33:02.108Z",
+    "url": "http://127.0.0.1:4337/_astro/ScorePlayer.CaguTyVl.js"
+  },
+  {
+    "level": "log",
+    "message": "[ScorePlayer] decoding score...",
+    "timestamp": "2026-10-17T16:33:02.120Z",
+    "url": "http://127.0.0.1:4337/_astro/ScorePlayer.CaguTyVl.js"
+  },
+  {
+    "level": "log",
+    "message": "[ScorePlayer] rendering score...",
+    "timestamp": "2026-10-17T16:33:02.143Z",
+    "url": "http://127.0.0.1:4337/_astro/ScorePlayer.CaguTyVl.js"
+  },
+  {
+    "level": "log",
+    "message": "[ScorePlayer] score rendered successfully",
+    "timestamp": "2026-10-17T16:33:02.150Z",
+    "url": "http://127.0.0.1:4337/_astro/ScorePlayer.CaguTyVl.js"
+  },
+  {
+    "level": "log",
+    "message": "[ScorePlayer] starting loadScore for /__practice-audit__/self-authored-practice.ibe",
+    "timestamp": "2026-10-17T16:33:09.888Z",
+    "url": "http://127.0.0.1:4337/_astro/ScorePlayer.CaguTyVl.js"
+  },
+  {
+    "level": "log",
+    "message": "[ScorePlayer] fetching scoreUrl...",
+    "timestamp": "2026-10-17T16:33:09.911Z",
+    "url": "http://127.0.0.1:4337/_astro/ScorePlayer.CaguTyVl.js"
+  },
+  {
+    "level": "log",
+    "message": "[ScorePlayer] decoding score...",
+    "timestamp": "2026-10-17T16:33:09.919Z",
+    "url": "http://127.0.0.1:4337/_astro/ScorePlayer.CaguTyVl.js"
+  },
+  {
+    "level": "log",
+    "message": "[ScorePlayer] rendering score...",
+    "timestamp": "2026-10-17T16:33:09.931Z",
+    "url": "http://127.0.0.1:4337/_astro/ScorePlayer.CaguTyVl.js"
+  },
+  {
+    "level": "log",
+    "message": "[ScorePlayer] score rendered successfully",
+    "timestamp": "2026-10-17T16:33:09.945Z",
+    "url": "http://127.0.0.1:4337/_astro/ScorePlayer.CaguTyVl.js"
+  }
+]

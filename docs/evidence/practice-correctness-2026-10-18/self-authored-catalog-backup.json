@@ -1,0 +1,104 @@
+{
+  "format": "mimi-personal-backup",
+  "manifest": {
+    "formatVersion": 1,
+    "schemaVersion": 2,
+    "revision": 0,
+    "generatedAt": "2026-10-17T16:00:00.000Z",
+    "counts": {
+      "scores": 3,
+      "favorites": 0,
+      "practiceItems": 3,
+      "resumes": 0,
+      "sessions": 0,
+      "projects": 0,
+      "originals": 0,
+      "history": 0,
+      "assets": 0,
+      "practiceFragments": 0
+    },
+    "assets": [],
+    "payloadSha256": "568094ee918d45136352fa5137abf569f6dc1fd02c0910b76af5447ff7884aff",
+    "assetBytes": 0
+  },
+  "payload": {
+    "data": {
+      "schemaVersion": 2,
+      "revision": 0,
+      "scores": [
+        {
+          "id": "catalog:acceptance-0",
+          "source": "catalog",
+          "sourceId": "acceptance-0",
+          "title": "曲库校验甲",
+          "artist": "MIMI 自写测试",
+          "category": "guitar",
+          "format": "ibe",
+          "revision": "unverified",
+          "scoreUrl": "/__practice-audit__/self-authored-practice.ibe",
+          "createdAt": 1792252800000,
+          "updatedAt": 1792252800000
+        },
+        {
+          "id": "catalog:acceptance-1",
+          "source": "catalog",
+          "sourceId": "acceptance-1",
+          "title": "曲库排序乙",
+          "artist": "MIMI 自写测试",
+          "category": "guitar",
+          "format": "ibe",
+          "revision": "unverified",
+          "scoreUrl": "/__practice-audit__/self-authored-practice.ibe",
+          "createdAt": 1792252800000,
+          "updatedAt": 1792252800000
+        },
+        {
+          "id": "catalog:acceptance-2",
+          "source": "catalog",
+          "sourceId": "acceptance-2",
+          "title": "反复变速丙",
+          "artist": "MIMI 自写测试",
+          "category": "guitar",
+          "format": "ibe",
+          "revision": "unverified",
+          "scoreUrl": "/__practice-audit__/self-authored-repeat.ibe",
+          "createdAt": 1792252800000,
+          "updatedAt": 1792252800000
+        }
+      ],
+      "favorites": [],
+      "practiceItems": [
+        {
+          "scoreId": "catalog:acceptance-0",
+          "status": "todo",
+          "order": 0,
+          "note": "",
+          "updatedAt": 1792252800000
+        },
+        {
+          "scoreId": "catalog:acceptance-1",
+          "status": "todo",
+          "order": 1,
+          "note": "",
+          "updatedAt": 1792252800000
+        },
+        {
+          "scoreId": "catalog:acceptance-2",
+          "status": "todo",
+          "order": 2,
+          "note": "",
+          "updatedAt": 1792252800000
+        }
+      ],
+      "practiceFragments": [],
+      "resumes": [],
+      "sessions": [],
+      "projects": [],
+      "originals": [],
+      "history": [],
+      "settings": {},
+      "migrationCompleted": true
+    },
+    "assets": []
+  }
+}

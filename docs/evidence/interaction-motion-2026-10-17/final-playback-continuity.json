@@ -1,0 +1,20 @@
+{
+  "start": {
+    "max": "61440",
+    "playLabel": "暂停",
+    "progress": "246"
+  },
+  "trackPanel": {
+    "playLabel": "暂停",
+    "progress": "17613"
+  },
+  "afterInstrumentAndSearch": {
+    "bodyOverflow": "",
+    "openDialogs": 0,
+    "playLabel": "暂停",
+    "progress": "29082"
+  },
+  "limits": "Engine tick/visible state only; no audible output or long-run claim",
+  "errorsSinceFinalReload": 0,
+  "completedSession": true
+}

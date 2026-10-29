@@ -1,0 +1,52 @@
+---
+import Base from '../../layouts/Base.astro';
+import { db } from '../../lib/db';
+import { DEMO_ARTICLES } from '../../lib/demoData';
+import { CatalogReadUnavailableError, withCatalogRead } from '../../lib/catalogReadGate';
+
+const { id } = Astro.params;
+let article: any = null;
+let isDemoArticle = false;
+let catalogUnavailable = false;
+
+try {
+  article = await withCatalogRead(() => db.article.findUnique({ where: { id: id ?? '' } }));
+} catch (error) {
+  catalogUnavailable = error instanceof CatalogReadUnavailableError;
+  // Offline fallback
+}
+
+if (!article) {
+  article = DEMO_ARTICLES.find((a) => a.id === id) ?? null;
+  isDemoArticle = Boolean(article);
+}
+
+if (!article) {
+  return new Response(catalogUnavailable
+    ? '文章曲库暂时不可用，当前无法确认这篇文章。请稍后重试。'
+    : '未找到这篇文章。请检查文章编号，或返回文章列表重新选择。', {
+    status: catalogUnavailable ? 503 : 404,
+    headers: {
+      'content-type': 'text/plain; charset=utf-8',
+      'cache-control': 'no-store',
+    },
+  });
+}
+---
+
+<Base title={`${article.title} - MIMI Guitar`}>
+  <article class="card p-6 sm:p-10">
+    <header class="border-b hairline pb-6 mb-8">
+      {isDemoArticle && <p class="mb-3 inline-flex rounded-lg border border-amber-300 bg-amber-50 px-2.5 py-1 text-xs font-medium text-amber-800">内置演示文章 · 曲库离线回退</p>}
+      <p class="text-caption text-ash">{article.category ?? '乐谱知识'} · {article.createdAt.toISOString().slice(0, 10)}</p>
+      <h1 class="font-display text-heading leading-[1.15] mt-2">{article.title}</h1>
+    </header>
+    <div class="whitespace-pre-line text-body-sm leading-[1.9] text-charcoal">
+      {article.content}
+    </div>
+    <div class="mt-10 border-t hairline pt-6 flex items-center justify-between text-caption text-ash">
+      <a href="/article" class="text-signal hover:opacity-70">← 返回文章列表</a>
+      <span>MIMI Guitar</span>
+    </div>
+  </article>
+</Base>

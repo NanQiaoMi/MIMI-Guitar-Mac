@@ -1,0 +1,21 @@
+{
+  "case": "Before fix: first load max=0 disabled; continue-last restores valid boundary",
+  "afterContinue": {
+    "bodyOverflow": "",
+    "playLabel": "播放",
+    "ranges": [
+      {
+        "disabled": false,
+        "label": "播放进度",
+        "max": "61440",
+        "value": "48003"
+      },
+      {
+        "disabled": false,
+        "label": "悬浮控制台播放进度",
+        "max": "61440",
+        "value": "48003"
+      }
+    ]
+  }
+}

@@ -1,0 +1,11 @@
+---
+import Base from '../layouts/Base.astro';
+import PersonalLibrary from '../components/PersonalLibrary.svelte';
+---
+
+<Base title="我的谱 · MIMI Guitar">
+  <section class="mx-auto my-6 max-w-[1120px] space-y-5 px-4 sm:my-10 sm:px-6">
+    <header class="space-y-2"><p class="text-xs font-semibold uppercase tracking-[0.18em] text-[#8c6d46]">本设备个人资料</p><h1 class="font-display text-heading">我的谱</h1><p class="max-w-2xl text-sm leading-6 text-ash">收藏、待练和个人导入保存在当前浏览器。导出备份可迁移到其他设备。</p></header>
+    <PersonalLibrary client:load />
+  </section>
+</Base>

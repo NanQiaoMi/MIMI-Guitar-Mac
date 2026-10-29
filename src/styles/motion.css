@@ -1,0 +1,222 @@
+/* Token values come from motionStyle in lib/ui/motion.ts, rendered by Base. */
+@view-transition {
+  navigation: auto;
+}
+
+html {
+  scrollbar-gutter: stable;
+  --motion-page-distance: 6px;
+}
+
+/* Background tabs retain playback state while decorative CSS timelines sleep. */
+html[data-page-hidden] *,
+html[data-page-hidden] *::before,
+html[data-page-hidden] *::after {
+  animation-play-state: paused !important;
+}
+
+.site-header {
+  view-transition-name: mimi-site-header;
+}
+
+.site-desktop-nav > a {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
+  transition-property: background-color, color, border-color;
+  transition-duration: var(--motion-duration-micro);
+}
+
+.site-desktop-nav > a[aria-current="page"] {
+  view-transition-name: mimi-nav-selection;
+}
+
+.site-navigation-link {
+  border-radius: 999px;
+  padding-inline: 0.25rem;
+  margin-inline: -0.25rem;
+  transition-property: background-color, border-color, color;
+  transition-duration: var(--motion-duration-micro);
+  transition-timing-function: var(--motion-ease-settle);
+}
+
+.site-navigation-link:active,
+a[data-navigation-pressed] {
+  background-color: #ede5d8;
+  color: #2c2825;
+  border-radius: 999px;
+}
+
+footer a { display: inline-flex; align-items: center; min-height: 44px; }
+
+/* A stable frame of reference; navigation remains ordinary browser navigation. */
+::view-transition {
+  pointer-events: none;
+}
+
+::view-transition-group(root) {
+  animation-duration: var(--motion-duration-page);
+  animation-timing-function: var(--motion-ease-settle);
+}
+
+::view-transition-old(root) {
+  animation: motion-page-leave var(--motion-duration-page) var(--motion-ease-standard) both;
+  mix-blend-mode: normal;
+}
+
+::view-transition-new(root) {
+  animation: motion-page-arrive var(--motion-duration-page) var(--motion-ease-settle) both;
+  mix-blend-mode: normal;
+}
+
+::view-transition-group(mimi-site-header),
+::view-transition-new(mimi-site-header) {
+  animation: none;
+}
+
+::view-transition-old(mimi-site-header) {
+  animation: none;
+  opacity: 0;
+}
+
+::view-transition-group(mimi-nav-selection),
+::view-transition-old(mimi-nav-selection),
+::view-transition-new(mimi-nav-selection) {
+  animation-duration: var(--motion-duration-control);
+  animation-timing-function: var(--motion-ease-settle);
+}
+
+@keyframes motion-page-leave {
+  to { opacity: 0; }
+}
+
+@keyframes motion-page-arrive {
+  from { opacity: 0; transform: translateY(var(--motion-page-distance)); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes navigation-entry-full {
+  from { opacity: 0.88; transform: translateY(6px); }
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes navigation-entry-gentle {
+  from { opacity: 0.88; }
+  to { opacity: 1; }
+}
+
+/* Explicit properties keep layout changes out of routine button feedback. */
+.btn {
+  transition-property: transform, background-color, border-color, color, opacity, box-shadow;
+  transition-duration: var(--motion-duration-micro);
+  transition-timing-function: var(--motion-ease-settle);
+}
+
+.btn:disabled,
+.btn[aria-disabled="true"] {
+  cursor: not-allowed;
+  opacity: 0.46;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Preserve layout transforms (drawers, cursors, indicators); only timing changes. */
+html[data-motion="gentle"] {
+  --motion-page-distance: 0px;
+  --motion-duration-control: 140ms !important;
+  --motion-duration-panel: 140ms !important;
+  --motion-duration-page: 140ms !important;
+  --motion-duration-folio: 0ms !important;
+}
+
+html[data-motion="gentle"] *,
+html[data-motion="gentle"] *::before,
+html[data-motion="gentle"] *::after {
+  animation: none !important;
+  transition-property: color, background-color, border-color, opacity, box-shadow !important;
+  transition-duration: 140ms !important;
+  transition-delay: 0ms !important;
+  scroll-behavior: auto !important;
+}
+
+html[data-motion="off"] *,
+html[data-motion="off"] *::before,
+html[data-motion="off"] *::after {
+  animation-duration: 0s !important;
+  animation-delay: 0s !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0s !important;
+  transition-delay: 0s !important;
+  scroll-behavior: auto !important;
+}
+
+html[data-motion="off"]::view-transition-group(*),
+html[data-motion="off"]::view-transition-old(*),
+html[data-motion="off"]::view-transition-new(*) {
+  animation: none !important;
+}
+
+html[data-motion="gentle"]::view-transition-group(*),
+html[data-motion="gentle"]::view-transition-new(*),
+html[data-motion="gentle"]::view-transition-old(*) {
+  animation-duration: 140ms !important;
+}
+
+html[data-motion="gentle"]::view-transition-group(*),
+html[data-motion="gentle"]::view-transition-new(mimi-nav-selection),
+html[data-motion="gentle"]::view-transition-old(mimi-nav-selection) {
+  animation: none !important;
+}
+
+html[data-motion="gentle"] .motion-ambient,
+html[data-motion="off"] .motion-ambient,
+html[data-motion="gentle"] #nav-play-intro-btn,
+html[data-motion="off"] #nav-play-intro-btn {
+  display: none !important;
+}
+
+html[data-motion="gentle"] .btn:hover,
+html[data-motion="gentle"] .btn:active,
+html[data-motion="off"] .btn:hover,
+html[data-motion="off"] .btn:active {
+  transform: none;
+}
+
+html[data-motion="full"][data-navigation-entry="fallback"] main {
+  animation: navigation-entry-full var(--motion-duration-page) var(--motion-ease-settle) backwards;
+}
+
+html[data-motion="gentle"][data-navigation-entry="fallback"] main {
+  animation: navigation-entry-gentle 140ms var(--motion-ease-settle) backwards !important;
+}
+
+html[data-motion="off"][data-navigation-entry="fallback"] main {
+  animation: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  @view-transition { navigation: none; }
+
+  html[data-navigation-entry="fallback"][data-motion="full"] main,
+  html[data-navigation-entry="fallback"][data-motion="gentle"] main {
+    animation: none !important;
+  }
+
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+    transform: none !important;
+  }
+
+  .btn:hover,
+  .btn:active,
+  .chip:hover,
+  .card-interactive:hover,
+  .site-navigation-link:hover {
+    transform: none;
+  }
+
+  .motion-ambient, #nav-play-intro-btn { display: none !important; }
+}

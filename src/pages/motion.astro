@@ -1,0 +1,35 @@
+---
+import Base from '../layouts/Base.astro';
+import MotionExperience from '../components/MotionExperience.svelte';
+import MotionPreferences from '../components/ui/MotionPreferences.svelte';
+import PaperFolioSection from '../components/PaperFolioSection.svelte';
+import { DEMO_TABS } from '../lib/demoData';
+---
+
+<Base title="交互体验 · MIMI Guitar" description="体验更自然的视图切换、练习控件和快捷搜索。">
+  <div class="mx-auto w-full max-w-6xl px-4 pb-16 pt-10 sm:px-8 sm:pt-16">
+    <header class="mb-10 max-w-3xl sm:mb-14">
+      <p class="mb-4 text-[11px] font-semibold uppercase tracking-[0.24em] text-[#8a7151]">MIMI GUITAR / A QUIETER RHYTHM</p>
+      <h1 class="text-3xl font-medium leading-[1.35] tracking-tight sm:text-5xl">让每一次切换，<br />都顺着你的手。</h1>
+      <p class="mt-5 max-w-xl text-sm leading-7 text-[#756a5b] sm:text-base">从选一段谱，到打开工具，再回到练习。用轻柔、连贯的反馈，让注意力留在音乐里。</p>
+    </header>
+
+    <MotionPreferences client:load />
+    <div class="mt-8"><MotionExperience client:load /></div>
+
+    <section id="paper-folio-preview" class="mt-12 grid items-start gap-8 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1fr)]" aria-labelledby="paper-folio-preview-title">
+      <div class="max-w-xl lg:pt-8">
+        <h2 id="paper-folio-preview-title" class="text-xl font-medium">换一页，换一种心情。</h2>
+        <p class="mt-2 text-sm leading-7 text-[#847561]">试着翻动纸页，或用页码选择。以下为内置示例曲目，仅用于交互展示。</p>
+      </div>
+      <div class="mx-auto w-full max-w-xl">
+        <PaperFolioSection client:load title="纸页切换预览" tabs={DEMO_TABS.filter((tab) => tab.category === 'guitar').slice(0, 5)} allHref="/tabs" />
+      </div>
+    </section>
+
+    <div class="mt-10 flex flex-wrap items-center justify-between gap-4 border-t border-[#e5dccd] pt-6">
+      <p class="max-w-xl text-xs leading-6 text-[#847561]">动画偏好保存于当前浏览器，并优先尊重系统“减少动态效果”。下方练习与纸页预览只保留本页状态，不写入练习记录。</p>
+      <a class="btn min-h-[44px]" href="/library">去我的谱 <span aria-hidden="true">↗</span></a>
+    </div>
+  </div>
+</Base>

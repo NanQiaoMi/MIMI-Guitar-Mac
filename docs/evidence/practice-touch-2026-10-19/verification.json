@@ -1,0 +1,71 @@
+{
+  "date": "2026-10-19",
+  "baseline": "2097463d",
+  "branch": "feature/practice-touch-continuity",
+  "agents": { "model": "gpt-6-luna", "reasoningEffort": "max", "count": 3 },
+  "codeCommits": { "practice": "4c290610", "chords": "65860e47" },
+  "environment": { "node": "24.16.0", "qaOrigin": "http://127.0.0.1:4338", "dedicatedDatabaseRunning": false, "dataSchemaChanged": false },
+  "candidate": {
+    "npmTest": { "exitCode": 0, "total": 383, "passed": 376, "skipped": 7, "failed": 0 },
+    "npmBuild": { "exitCode": 0, "elapsedSeconds": 41.51 },
+    "npmTypecheckAfterBuild": { "exitCode": 0, "errors": 0, "svelteWarnings": 57, "svelteWarningFiles": 18, "astroHints": 41 },
+    "gitDiffCheck": { "exitCode": 0 },
+    "lint": "No standalone lint script configured"
+  },
+  "browser": {
+    "observations": "browser-observations.json",
+    "actualPracticeWidths": [320, 390, 768, 1024, 1366],
+    "horizontalPageOverflow": false,
+    "practicePanelInitial390HeightPx": 279.5,
+    "practicePanelBaseline390HeightPx": 1044.737548828125,
+    "mainSeekAndScoreSelectHeightPx": 44,
+    "queueControlsAt320HeightPx": 44,
+    "heroChordTargetsAt320Px": [44, 44],
+    "noteCompareAndSetSaveConflict": "passed via two real tabs",
+    "noteCompareAndSetFinishConflict": "passed; completion rejected, draft and peer note retained",
+    "guardedScoreSelection": "passed for denied conflict and save-before-switch paths",
+    "archiveRestoreSameUrl": "passed via another tab",
+    "resumeAfterReload": { "savedTick": 6473, "restoredTick": 6473, "stayedPaused": true },
+    "foldContinuity": { "surfaceBackendBefore": 3285, "surfaceBackendAfter": 3285, "draftsRetained": true, "playbackContinued": true },
+    "abAndSpeedPlanSetup": { "startTick": 26881, "keyboardSeekTick": 33025, "endTick": 33600, "bpm": 60, "targetBpm": 90, "completedLaps": 0, "lapsPerLevel": 3 },
+    "nativeDetailsEnter": "passed; closed with SUMMARY focus and playback paused",
+    "nativeDetailsSpace": "tool attempt did not toggle; not counted as passed",
+    "chordModes": ["full", "gentle", "off"],
+    "fullModeClipping": "observed failure then repaired by moving fixed tooltip outside containing block",
+    "firstRemoteKeyboardActivation": "passed after initial-hidden positioning repair; one Enter from anchor top 2576.32px",
+    "missingChordDiagram": "truthful unavailable message; no fabricated fingering",
+    "pinnedGridViewSwitch": "passed; list checked and tooltip detached",
+    "studioToggleStates": "false -> true -> false for all three buttons; no audibility claim",
+    "consoleErrorsAtFinalRead": { "practice": 0, "catalog": 0 }
+  },
+  "master": {
+    "mergeCommit": "106e50bb",
+    "mergeMode": "--no-ff",
+    "worktree": "D:/MIMIguitarweb-master-merge",
+    "npmTest": { "exitCode": 0, "total": 383, "passed": 376, "skipped": 7, "failed": 0 },
+    "npmBuild": { "exitCode": 0, "elapsedSeconds": 12.23 },
+    "npmTypecheckAfterBuild": { "exitCode": 0, "errors": 0, "svelteWarnings": 57, "svelteWarningFiles": 18, "astroHints": 41 },
+    "gitDiffCheck": { "exitCode": 0 },
+    "cleanAfterCodeMerge": true,
+    "deliveryDocumentationOnly": true
+  },
+  "preview": {
+    "origin": "http://127.0.0.1:4336",
+    "health": { "httpStatus": 200, "status": "alive" },
+    "practicePage": { "httpStatus": 200, "practicePresent": true },
+    "studioPage": { "httpStatus": 200 },
+    "motionPage": { "httpStatus": 200, "preferencesPresent": true },
+    "readiness": { "httpStatus": 503, "status": "not_ready", "database": "unavailable", "catalog": "unavailable", "soundfontsPresent": 3, "soundfontsRequired": 3 },
+    "qaRoute": { "httpStatus": 404, "qaHtmlAbsentFromDist": true },
+    "soundfonts": [
+      { "name": "acoustic_guitar_fast.sf2", "headStatus": 200, "bytes": 1205140, "distHashMatchesOriginal": true },
+      { "name": "ukulele_fast.sf2", "headStatus": 200, "bytes": 1205140, "distHashMatchesOriginal": true },
+      { "name": "0.sf2", "headStatus": 200, "bytes": 400880, "distHashMatchesOriginal": true }
+    ]
+  },
+  "protection": { "exitCode": 0, "files": 1023, "hashDifferences": 0, "gitStatusRows": 402, "gitStatusDifferences": 0, "originalBranch": "feature/complete-score-studio", "originalHead": "f4ac8ece", "originalBrowserTabNotNavigatedReloadedOrEdited": true },
+  "cleanup": { "qaTabsClosed": true, "qaServiceStopped": true, "viewportOverrideReset": true, "touchEmulationCleared": true, "preferenceRestoredToSystem": true },
+  "notExecuted": ["7 dedicated database tests", "real touch pointercancel", "physical iPhone/iPad Safari and Android", "screen reader", "virtual keyboard", "audibility", "30-minute and 2-hour playback", "automatic multi-lap progression rerun in browser", "native beforeunload dialog observation", "production catalog acceptance"],
+  "notClaimed": ["constant 60 or 120 fps", "production readiness", "real-device acceptance"],
+  "externalActions": { "pushed": false, "pullRequestCreated": false, "deployed": false }
+}

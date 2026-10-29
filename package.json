@@ -1,0 +1,64 @@
+{
+    "name": "mimi-guitar",
+    "type": "module",
+    "version": "0.1.0",
+    "private": true,
+    "engines": {
+        "node": ">=24.0.0 <25"
+    },
+    "scripts": {
+        "dev": "astro dev",
+        "build": "astro build",
+        "preview": "astro preview",
+        "start": "node ./dist/server/entry.mjs",
+        "start:local": "node tools/start-local-catalog.mjs",
+        "resources:prepare": "node tools/prepare-score-resources.mjs prepare",
+        "resources:check": "node tools/prepare-score-resources.mjs check",
+        "prisma:generate": "prisma generate",
+        "prisma:migrate": "prisma migrate dev",
+        "prisma:studio": "prisma studio",
+        "db:up": "docker compose up -d",
+        "db:down": "docker compose down",
+        "migrate:run": "node tools/migrate.mjs",
+        "test": "node --test tests/*.test.mjs",
+        "test:unit": "node --test tests/*.test.mjs",
+        "test:db": "node tools/test-database.mjs",
+        "typecheck": "node tools/check-project.mjs",
+        "typecheck:ts": "tsc --noEmit --pretty false",
+        "pretest:lyrics-layout": "npm run build",
+        "test:lyrics-layout": "node tools/verify-lyrics-beam-spacing.mjs"
+    },
+    "dependencies": {
+        "@astrojs/node": "^9.5.5",
+        "@astrojs/svelte": "7.2.5",
+        "@coderline/alphatab": "1.8.4",
+        "@fontsource/fraunces": "5.3.0",
+        "@fontsource/inter": "5.3.0",
+        "@prisma/client": "6.19.3",
+        "astro": "5.18.2",
+        "jspdf": "4.2.1",
+        "svelte": "5.56.8"
+    },
+    "devDependencies": {
+        "@astrojs/check": "0.9.10",
+        "@tailwindcss/vite": "4.3.3",
+        "@types/node": "^24.0.0",
+        "fake-indexeddb": "6.2.5",
+        "playwright-core": "^1.62.1",
+        "prisma": "6.19.3",
+        "ssh2": "^1.17.0",
+        "svelte-check": "4.7.6",
+        "tailwindcss": "4.3.3",
+        "typescript": "~5.8.0",
+        "zod": "4.4.3"
+    },
+    "allowScripts": {
+        "@prisma/client@6.19.3": true,
+        "@prisma/engines@6.19.3": true,
+        "core-js@3.50.0": true,
+        "esbuild@0.27.7": true,
+        "esbuild@0.25.12": true,
+        "prisma@6.19.3": true,
+        "sharp@0.34.5": true
+    }
+}

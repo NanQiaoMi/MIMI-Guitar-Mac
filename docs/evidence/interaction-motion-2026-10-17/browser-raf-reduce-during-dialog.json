@@ -1,0 +1,1498 @@
+{
+  "note": "Local test iframe observations only; this does not establish constant FPS.",
+  "durationTargetMs": 450,
+  "maxRetainedRuns": 3,
+  "observationSpecs": [
+    {
+      "key": "segmentedIndicator",
+      "selector": ".motion-segmented-control__indicator",
+      "includeOpacity": false
+    },
+    {
+      "key": "dialogPanel",
+      "selector": ".motion-dialog-panel",
+      "includeOpacity": true
+    },
+    {
+      "key": "menuPanel",
+      "selector": "#mobile-navigation-menu > *",
+      "includeOpacity": true
+    },
+    {
+      "key": "settingsBody",
+      "selector": ".experience__settings-body",
+      "includeOpacity": true
+    }
+  ],
+  "recentRuns": [
+    {
+      "id": 4,
+      "source": {
+        "type": "click",
+        "key": null,
+        "isTrusted": true,
+        "eventTimeStampMs": 204174.4,
+        "observedAtPerformanceMs": 204174.7
+      },
+      "startedAtPerformanceMs": 204174.7,
+      "reducedMotionAtStart": true,
+      "firstFrameDelayMs": 740.7,
+      "targetDurationMs": 450,
+      "status": "complete",
+      "summary": {
+        "sampleCount": 8,
+        "distinctTransformCount": 3,
+        "maxFrameIntervalMs": 1004.9,
+        "actualElapsedMs": 1819
+      },
+      "samples": [
+        {
+          "frameIndex": 0,
+          "performanceTimeMs": 204915.4,
+          "rafTimestampMs": 204914.3,
+          "intervalSincePreviousFrameMs": null,
+          "reducedMotion": true,
+          "observations": {
+            "segmentedIndicator": [
+              {
+                "nodeId": 1,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 128.25, 0)",
+                "rect": {
+                  "x": 566.575,
+                  "y": 607,
+                  "top": 607,
+                  "right": 628.7,
+                  "bottom": 651,
+                  "left": 566.575,
+                  "width": 62.125,
+                  "height": 44
+                }
+              },
+              {
+                "nodeId": 2,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 0, 0)",
+                "rect": {
+                  "x": 71.025,
+                  "y": 183.338,
+                  "top": 183.338,
+                  "right": 189.113,
+                  "bottom": 227.338,
+                  "left": 71.025,
+                  "width": 118.088,
+                  "height": 44
+                }
+              }
+            ],
+            "dialogPanel": [
+              {
+                "nodeId": 3,
+                "tag": "div",
+                "transform": "none",
+                "rect": {
+                  "x": 43.75,
+                  "y": 86.4,
+                  "top": 86.4,
+                  "right": 1156.25,
+                  "bottom": 693.75,
+                  "left": 43.75,
+                  "width": 1112.5,
+                  "height": 607.35
+                },
+                "opacity": "1"
+              }
+            ],
+            "menuPanel": [],
+            "settingsBody": []
+          }
+        },
+        {
+          "frameIndex": 1,
+          "performanceTimeMs": 204923.2,
+          "rafTimestampMs": 204920.4,
+          "intervalSincePreviousFrameMs": 7.8,
+          "reducedMotion": true,
+          "observations": {
+            "segmentedIndicator": [
+              {
+                "nodeId": 1,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 128.25, 0)",
+                "rect": {
+                  "x": 566.575,
+                  "y": 607,
+                  "top": 607,
+                  "right": 628.7,
+                  "bottom": 651,
+                  "left": 566.575,
+                  "width": 62.125,
+                  "height": 44
+                }
+              },
+              {
+                "nodeId": 2,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 0, 0)",
+                "rect": {
+                  "x": 71.025,
+                  "y": 183.338,
+                  "top": 183.338,
+                  "right": 189.113,
+                  "bottom": 227.338,
+                  "left": 71.025,
+                  "width": 118.088,
+                  "height": 44
+                }
+              }
+            ],
+            "dialogPanel": [
+              {
+                "nodeId": 3,
+                "tag": "div",
+                "transform": "none",
+                "rect": {
+                  "x": 43.75,
+                  "y": 86.4,
+                  "top": 86.4,
+                  "right": 1156.25,
+                  "bottom": 693.75,
+                  "left": 43.75,
+                  "width": 1112.5,
+                  "height": 607.35
+                },
+                "opacity": "1"
+              }
+            ],
+            "menuPanel": [],
+            "settingsBody": []
+          }
+        },
+        {
+          "frameIndex": 2,
+          "performanceTimeMs": 204927.5,
+          "rafTimestampMs": 204926.4,
+          "intervalSincePreviousFrameMs": 4.3,
+          "reducedMotion": true,
+          "observations": {
+            "segmentedIndicator": [
+              {
+                "nodeId": 1,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 128.25, 0)",
+                "rect": {
+                  "x": 566.575,
+                  "y": 607,
+                  "top": 607,
+                  "right": 628.7,
+                  "bottom": 651,
+                  "left": 566.575,
+                  "width": 62.125,
+                  "height": 44
+                }
+              },
+              {
+                "nodeId": 2,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 0, 0)",
+                "rect": {
+                  "x": 71.025,
+                  "y": 183.338,
+                  "top": 183.338,
+                  "right": 189.113,
+                  "bottom": 227.338,
+                  "left": 71.025,
+                  "width": 118.088,
+                  "height": 44
+                }
+              }
+            ],
+            "dialogPanel": [
+              {
+                "nodeId": 3,
+                "tag": "div",
+                "transform": "none",
+                "rect": {
+                  "x": 43.75,
+                  "y": 86.4,
+                  "top": 86.4,
+                  "right": 1156.25,
+                  "bottom": 693.75,
+                  "left": 43.75,
+                  "width": 1112.5,
+                  "height": 607.35
+                },
+                "opacity": "1"
+              }
+            ],
+            "menuPanel": [],
+            "settingsBody": []
+          }
+        },
+        {
+          "frameIndex": 3,
+          "performanceTimeMs": 204952.2,
+          "rafTimestampMs": 204951,
+          "intervalSincePreviousFrameMs": 24.7,
+          "reducedMotion": true,
+          "observations": {
+            "segmentedIndicator": [
+              {
+                "nodeId": 1,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 128.25, 0)",
+                "rect": {
+                  "x": 566.575,
+                  "y": 607,
+                  "top": 607,
+                  "right": 628.7,
+                  "bottom": 651,
+                  "left": 566.575,
+                  "width": 62.125,
+                  "height": 44
+                }
+              },
+              {
+                "nodeId": 2,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 0, 0)",
+                "rect": {
+                  "x": 71.025,
+                  "y": 183.338,
+                  "top": 183.338,
+                  "right": 189.113,
+                  "bottom": 227.338,
+                  "left": 71.025,
+                  "width": 118.088,
+                  "height": 44
+                }
+              }
+            ],
+            "dialogPanel": [
+              {
+                "nodeId": 3,
+                "tag": "div",
+                "transform": "none",
+                "rect": {
+                  "x": 43.75,
+                  "y": 86.4,
+                  "top": 86.4,
+                  "right": 1156.25,
+                  "bottom": 693.75,
+                  "left": 43.75,
+                  "width": 1112.5,
+                  "height": 607.35
+                },
+                "opacity": "1"
+              }
+            ],
+            "menuPanel": [],
+            "settingsBody": []
+          }
+        },
+        {
+          "frameIndex": 4,
+          "performanceTimeMs": 204978.4,
+          "rafTimestampMs": 204975.9,
+          "intervalSincePreviousFrameMs": 26.2,
+          "reducedMotion": true,
+          "observations": {
+            "segmentedIndicator": [
+              {
+                "nodeId": 1,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 128.25, 0)",
+                "rect": {
+                  "x": 566.575,
+                  "y": 607,
+                  "top": 607,
+                  "right": 628.7,
+                  "bottom": 651,
+                  "left": 566.575,
+                  "width": 62.125,
+                  "height": 44
+                }
+              },
+              {
+                "nodeId": 2,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 0, 0)",
+                "rect": {
+                  "x": 71.025,
+                  "y": 183.338,
+                  "top": 183.338,
+                  "right": 189.113,
+                  "bottom": 227.338,
+                  "left": 71.025,
+                  "width": 118.088,
+                  "height": 44
+                }
+              }
+            ],
+            "dialogPanel": [
+              {
+                "nodeId": 3,
+                "tag": "div",
+                "transform": "none",
+                "rect": {
+                  "x": 43.75,
+                  "y": 86.4,
+                  "top": 86.4,
+                  "right": 1156.25,
+                  "bottom": 693.75,
+                  "left": 43.75,
+                  "width": 1112.5,
+                  "height": 607.35
+                },
+                "opacity": "1"
+              }
+            ],
+            "menuPanel": [],
+            "settingsBody": []
+          }
+        },
+        {
+          "frameIndex": 5,
+          "performanceTimeMs": 204981.9,
+          "rafTimestampMs": 204981.1,
+          "intervalSincePreviousFrameMs": 3.5,
+          "reducedMotion": true,
+          "observations": {
+            "segmentedIndicator": [
+              {
+                "nodeId": 1,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 128.25, 0)",
+                "rect": {
+                  "x": 566.575,
+                  "y": 607,
+                  "top": 607,
+                  "right": 628.7,
+                  "bottom": 651,
+                  "left": 566.575,
+                  "width": 62.125,
+                  "height": 44
+                }
+              },
+              {
+                "nodeId": 2,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 0, 0)",
+                "rect": {
+                  "x": 71.025,
+                  "y": 183.338,
+                  "top": 183.338,
+                  "right": 189.113,
+                  "bottom": 227.338,
+                  "left": 71.025,
+                  "width": 118.088,
+                  "height": 44
+                }
+              }
+            ],
+            "dialogPanel": [
+              {
+                "nodeId": 3,
+                "tag": "div",
+                "transform": "none",
+                "rect": {
+                  "x": 43.75,
+                  "y": 86.4,
+                  "top": 86.4,
+                  "right": 1156.25,
+                  "bottom": 693.75,
+                  "left": 43.75,
+                  "width": 1112.5,
+                  "height": 607.35
+                },
+                "opacity": "1"
+              }
+            ],
+            "menuPanel": [],
+            "settingsBody": []
+          }
+        },
+        {
+          "frameIndex": 6,
+          "performanceTimeMs": 204988.8,
+          "rafTimestampMs": 204987,
+          "intervalSincePreviousFrameMs": 6.9,
+          "reducedMotion": true,
+          "observations": {
+            "segmentedIndicator": [
+              {
+                "nodeId": 1,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 128.25, 0)",
+                "rect": {
+                  "x": 566.575,
+                  "y": 607,
+                  "top": 607,
+                  "right": 628.7,
+                  "bottom": 651,
+                  "left": 566.575,
+                  "width": 62.125,
+                  "height": 44
+                }
+              },
+              {
+                "nodeId": 2,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 0, 0)",
+                "rect": {
+                  "x": 71.025,
+                  "y": 183.338,
+                  "top": 183.338,
+                  "right": 189.113,
+                  "bottom": 227.338,
+                  "left": 71.025,
+                  "width": 118.088,
+                  "height": 44
+                }
+              }
+            ],
+            "dialogPanel": [
+              {
+                "nodeId": 3,
+                "tag": "div",
+                "transform": "none",
+                "rect": {
+                  "x": 43.75,
+                  "y": 86.4,
+                  "top": 86.4,
+                  "right": 1156.25,
+                  "bottom": 693.75,
+                  "left": 43.75,
+                  "width": 1112.5,
+                  "height": 607.35
+                },
+                "opacity": "1"
+              }
+            ],
+            "menuPanel": [],
+            "settingsBody": []
+          }
+        },
+        {
+          "frameIndex": 7,
+          "performanceTimeMs": 205993.7,
+          "rafTimestampMs": 205992.9,
+          "intervalSincePreviousFrameMs": 1004.9,
+          "reducedMotion": true,
+          "observations": {
+            "segmentedIndicator": [
+              {
+                "nodeId": 1,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 128.25, 0)",
+                "rect": {
+                  "x": 566.575,
+                  "y": 607,
+                  "top": 607,
+                  "right": 628.7,
+                  "bottom": 651,
+                  "left": 566.575,
+                  "width": 62.125,
+                  "height": 44
+                }
+              },
+              {
+                "nodeId": 2,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 0, 0)",
+                "rect": {
+                  "x": 71.025,
+                  "y": 183.338,
+                  "top": 183.338,
+                  "right": 189.113,
+                  "bottom": 227.338,
+                  "left": 71.025,
+                  "width": 118.088,
+                  "height": 44
+                }
+              }
+            ],
+            "dialogPanel": [
+              {
+                "nodeId": 3,
+                "tag": "div",
+                "transform": "none",
+                "rect": {
+                  "x": 43.75,
+                  "y": 86.4,
+                  "top": 86.4,
+                  "right": 1156.25,
+                  "bottom": 693.75,
+                  "left": 43.75,
+                  "width": 1112.5,
+                  "height": 607.35
+                },
+                "opacity": "1"
+              }
+            ],
+            "menuPanel": [],
+            "settingsBody": []
+          }
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "source": {
+        "type": "keydown",
+        "key": "Escape",
+        "isTrusted": true,
+        "eventTimeStampMs": 219955.9,
+        "observedAtPerformanceMs": 219957.1
+      },
+      "startedAtPerformanceMs": 219957.1,
+      "reducedMotionAtStart": true,
+      "firstFrameDelayMs": 113.2,
+      "targetDurationMs": 450,
+      "status": "complete",
+      "summary": {
+        "sampleCount": 2,
+        "distinctTransformCount": 1,
+        "maxFrameIntervalMs": 507.8,
+        "actualElapsedMs": 621
+      },
+      "samples": [
+        {
+          "frameIndex": 0,
+          "performanceTimeMs": 220070.3,
+          "rafTimestampMs": 220067.8,
+          "intervalSincePreviousFrameMs": null,
+          "reducedMotion": true,
+          "observations": {
+            "segmentedIndicator": [
+              {
+                "nodeId": 1,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 128.25, 0)",
+                "rect": {
+                  "x": 566.575,
+                  "y": 607,
+                  "top": 607,
+                  "right": 628.7,
+                  "bottom": 651,
+                  "left": 566.575,
+                  "width": 62.125,
+                  "height": 44
+                }
+              }
+            ],
+            "dialogPanel": [],
+            "menuPanel": [],
+            "settingsBody": []
+          }
+        },
+        {
+          "frameIndex": 1,
+          "performanceTimeMs": 220578.1,
+          "rafTimestampMs": 220576.6,
+          "intervalSincePreviousFrameMs": 507.8,
+          "reducedMotion": false,
+          "observations": {
+            "segmentedIndicator": [
+              {
+                "nodeId": 1,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 128.25, 0)",
+                "rect": {
+                  "x": 566.575,
+                  "y": 607,
+                  "top": 607,
+                  "right": 628.7,
+                  "bottom": 651,
+                  "left": 566.575,
+                  "width": 62.125,
+                  "height": 44
+                }
+              }
+            ],
+            "dialogPanel": [],
+            "menuPanel": [],
+            "settingsBody": []
+          }
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "source": {
+        "type": "click",
+        "key": null,
+        "isTrusted": true,
+        "eventTimeStampMs": 231874.2,
+        "observedAtPerformanceMs": 231874.3
+      },
+      "startedAtPerformanceMs": 231874.3,
+      "reducedMotionAtStart": false,
+      "firstFrameDelayMs": 16.6,
+      "targetDurationMs": 450,
+      "status": "complete",
+      "summary": {
+        "sampleCount": 14,
+        "distinctTransformCount": 4,
+        "maxFrameIntervalMs": 1005.7,
+        "actualElapsedMs": 1402.6
+      },
+      "samples": [
+        {
+          "frameIndex": 0,
+          "performanceTimeMs": 231890.9,
+          "rafTimestampMs": 231876.6,
+          "intervalSincePreviousFrameMs": null,
+          "reducedMotion": false,
+          "observations": {
+            "segmentedIndicator": [
+              {
+                "nodeId": 1,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 128.25, 0)",
+                "rect": {
+                  "x": 566.575,
+                  "y": 607,
+                  "top": 607,
+                  "right": 628.7,
+                  "bottom": 651,
+                  "left": 566.575,
+                  "width": 62.125,
+                  "height": 44
+                }
+              },
+              {
+                "nodeId": 4,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 0, 0)",
+                "rect": {
+                  "x": 78.96,
+                  "y": 198.439,
+                  "top": 198.439,
+                  "right": 195.276,
+                  "bottom": 241.779,
+                  "left": 78.96,
+                  "width": 116.316,
+                  "height": 43.34
+                }
+              }
+            ],
+            "dialogPanel": [
+              {
+                "nodeId": 5,
+                "tag": "div",
+                "transform": "matrix(0.985, 0, 0, 0.985, 0, 12)",
+                "rect": {
+                  "x": 52.094,
+                  "y": 102.955,
+                  "top": 102.955,
+                  "right": 1147.906,
+                  "bottom": 701.195,
+                  "left": 52.094,
+                  "width": 1095.813,
+                  "height": 598.24
+                },
+                "opacity": "0"
+              }
+            ],
+            "menuPanel": [],
+            "settingsBody": []
+          }
+        },
+        {
+          "frameIndex": 1,
+          "performanceTimeMs": 231897.5,
+          "rafTimestampMs": 231888.7,
+          "intervalSincePreviousFrameMs": 6.6,
+          "reducedMotion": false,
+          "observations": {
+            "segmentedIndicator": [
+              {
+                "nodeId": 1,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 128.25, 0)",
+                "rect": {
+                  "x": 566.575,
+                  "y": 607,
+                  "top": 607,
+                  "right": 628.7,
+                  "bottom": 651,
+                  "left": 566.575,
+                  "width": 62.125,
+                  "height": 44
+                }
+              },
+              {
+                "nodeId": 4,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 0, 0)",
+                "rect": {
+                  "x": 78.96,
+                  "y": 198.439,
+                  "top": 198.439,
+                  "right": 195.276,
+                  "bottom": 241.779,
+                  "left": 78.96,
+                  "width": 116.316,
+                  "height": 43.34
+                }
+              }
+            ],
+            "dialogPanel": [
+              {
+                "nodeId": 5,
+                "tag": "div",
+                "transform": "matrix(0.985, 0, 0, 0.985, 0, 12)",
+                "rect": {
+                  "x": 52.094,
+                  "y": 102.955,
+                  "top": 102.955,
+                  "right": 1147.906,
+                  "bottom": 701.195,
+                  "left": 52.094,
+                  "width": 1095.813,
+                  "height": 598.24
+                },
+                "opacity": "0"
+              }
+            ],
+            "menuPanel": [],
+            "settingsBody": []
+          }
+        },
+        {
+          "frameIndex": 2,
+          "performanceTimeMs": 231898.9,
+          "rafTimestampMs": 231894.7,
+          "intervalSincePreviousFrameMs": 1.4,
+          "reducedMotion": false,
+          "observations": {
+            "segmentedIndicator": [
+              {
+                "nodeId": 1,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 128.25, 0)",
+                "rect": {
+                  "x": 566.575,
+                  "y": 607,
+                  "top": 607,
+                  "right": 628.7,
+                  "bottom": 651,
+                  "left": 566.575,
+                  "width": 62.125,
+                  "height": 44
+                }
+              },
+              {
+                "nodeId": 4,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 0, 0)",
+                "rect": {
+                  "x": 78.96,
+                  "y": 198.439,
+                  "top": 198.439,
+                  "right": 195.276,
+                  "bottom": 241.779,
+                  "left": 78.96,
+                  "width": 116.316,
+                  "height": 43.34
+                }
+              }
+            ],
+            "dialogPanel": [
+              {
+                "nodeId": 5,
+                "tag": "div",
+                "transform": "matrix(0.985, 0, 0, 0.985, 0, 12)",
+                "rect": {
+                  "x": 52.094,
+                  "y": 102.955,
+                  "top": 102.955,
+                  "right": 1147.906,
+                  "bottom": 701.195,
+                  "left": 52.094,
+                  "width": 1095.813,
+                  "height": 598.24
+                },
+                "opacity": "0"
+              }
+            ],
+            "menuPanel": [],
+            "settingsBody": []
+          }
+        },
+        {
+          "frameIndex": 3,
+          "performanceTimeMs": 231936.9,
+          "rafTimestampMs": 231919,
+          "intervalSincePreviousFrameMs": 38,
+          "reducedMotion": true,
+          "observations": {
+            "segmentedIndicator": [
+              {
+                "nodeId": 1,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 128.25, 0)",
+                "rect": {
+                  "x": 566.575,
+                  "y": 607,
+                  "top": 607,
+                  "right": 628.7,
+                  "bottom": 651,
+                  "left": 566.575,
+                  "width": 62.125,
+                  "height": 44
+                }
+              },
+              {
+                "nodeId": 4,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 0, 0)",
+                "rect": {
+                  "x": 71.025,
+                  "y": 183.338,
+                  "top": 183.338,
+                  "right": 189.113,
+                  "bottom": 227.338,
+                  "left": 71.025,
+                  "width": 118.088,
+                  "height": 44
+                }
+              }
+            ],
+            "dialogPanel": [
+              {
+                "nodeId": 5,
+                "tag": "div",
+                "transform": "none",
+                "rect": {
+                  "x": 43.75,
+                  "y": 86.4,
+                  "top": 86.4,
+                  "right": 1156.25,
+                  "bottom": 693.75,
+                  "left": 43.75,
+                  "width": 1112.5,
+                  "height": 607.35
+                },
+                "opacity": "1"
+              }
+            ],
+            "menuPanel": [],
+            "settingsBody": []
+          }
+        },
+        {
+          "frameIndex": 4,
+          "performanceTimeMs": 232222.8,
+          "rafTimestampMs": 232222,
+          "intervalSincePreviousFrameMs": 285.9,
+          "reducedMotion": true,
+          "observations": {
+            "segmentedIndicator": [
+              {
+                "nodeId": 1,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 128.25, 0)",
+                "rect": {
+                  "x": 566.575,
+                  "y": 607,
+                  "top": 607,
+                  "right": 628.7,
+                  "bottom": 651,
+                  "left": 566.575,
+                  "width": 62.125,
+                  "height": 44
+                }
+              },
+              {
+                "nodeId": 4,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 0, 0)",
+                "rect": {
+                  "x": 71.025,
+                  "y": 183.338,
+                  "top": 183.338,
+                  "right": 189.113,
+                  "bottom": 227.338,
+                  "left": 71.025,
+                  "width": 118.088,
+                  "height": 44
+                }
+              }
+            ],
+            "dialogPanel": [
+              {
+                "nodeId": 5,
+                "tag": "div",
+                "transform": "none",
+                "rect": {
+                  "x": 43.75,
+                  "y": 86.4,
+                  "top": 86.4,
+                  "right": 1156.25,
+                  "bottom": 693.75,
+                  "left": 43.75,
+                  "width": 1112.5,
+                  "height": 607.35
+                },
+                "opacity": "1"
+              }
+            ],
+            "menuPanel": [],
+            "settingsBody": []
+          }
+        },
+        {
+          "frameIndex": 5,
+          "performanceTimeMs": 232228.8,
+          "rafTimestampMs": 232228.2,
+          "intervalSincePreviousFrameMs": 6,
+          "reducedMotion": true,
+          "observations": {
+            "segmentedIndicator": [
+              {
+                "nodeId": 1,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 128.25, 0)",
+                "rect": {
+                  "x": 566.575,
+                  "y": 607,
+                  "top": 607,
+                  "right": 628.7,
+                  "bottom": 651,
+                  "left": 566.575,
+                  "width": 62.125,
+                  "height": 44
+                }
+              },
+              {
+                "nodeId": 4,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 0, 0)",
+                "rect": {
+                  "x": 71.025,
+                  "y": 183.338,
+                  "top": 183.338,
+                  "right": 189.113,
+                  "bottom": 227.338,
+                  "left": 71.025,
+                  "width": 118.088,
+                  "height": 44
+                }
+              }
+            ],
+            "dialogPanel": [
+              {
+                "nodeId": 5,
+                "tag": "div",
+                "transform": "none",
+                "rect": {
+                  "x": 43.75,
+                  "y": 86.4,
+                  "top": 86.4,
+                  "right": 1156.25,
+                  "bottom": 693.75,
+                  "left": 43.75,
+                  "width": 1112.5,
+                  "height": 607.35
+                },
+                "opacity": "1"
+              }
+            ],
+            "menuPanel": [],
+            "settingsBody": []
+          }
+        },
+        {
+          "frameIndex": 6,
+          "performanceTimeMs": 232236.4,
+          "rafTimestampMs": 232234.1,
+          "intervalSincePreviousFrameMs": 7.6,
+          "reducedMotion": true,
+          "observations": {
+            "segmentedIndicator": [
+              {
+                "nodeId": 1,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 128.25, 0)",
+                "rect": {
+                  "x": 566.575,
+                  "y": 607,
+                  "top": 607,
+                  "right": 628.7,
+                  "bottom": 651,
+                  "left": 566.575,
+                  "width": 62.125,
+                  "height": 44
+                }
+              },
+              {
+                "nodeId": 4,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 0, 0)",
+                "rect": {
+                  "x": 71.025,
+                  "y": 183.338,
+                  "top": 183.338,
+                  "right": 189.113,
+                  "bottom": 227.338,
+                  "left": 71.025,
+                  "width": 118.088,
+                  "height": 44
+                }
+              }
+            ],
+            "dialogPanel": [
+              {
+                "nodeId": 5,
+                "tag": "div",
+                "transform": "none",
+                "rect": {
+                  "x": 43.75,
+                  "y": 86.4,
+                  "top": 86.4,
+                  "right": 1156.25,
+                  "bottom": 693.75,
+                  "left": 43.75,
+                  "width": 1112.5,
+                  "height": 607.35
+                },
+                "opacity": "1"
+              }
+            ],
+            "menuPanel": [],
+            "settingsBody": []
+          }
+        },
+        {
+          "frameIndex": 7,
+          "performanceTimeMs": 232245.2,
+          "rafTimestampMs": 232240.5,
+          "intervalSincePreviousFrameMs": 8.8,
+          "reducedMotion": true,
+          "observations": {
+            "segmentedIndicator": [
+              {
+                "nodeId": 1,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 128.25, 0)",
+                "rect": {
+                  "x": 566.575,
+                  "y": 607,
+                  "top": 607,
+                  "right": 628.7,
+                  "bottom": 651,
+                  "left": 566.575,
+                  "width": 62.125,
+                  "height": 44
+                }
+              },
+              {
+                "nodeId": 4,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 0, 0)",
+                "rect": {
+                  "x": 71.025,
+                  "y": 183.338,
+                  "top": 183.338,
+                  "right": 189.113,
+                  "bottom": 227.338,
+                  "left": 71.025,
+                  "width": 118.088,
+                  "height": 44
+                }
+              }
+            ],
+            "dialogPanel": [
+              {
+                "nodeId": 5,
+                "tag": "div",
+                "transform": "none",
+                "rect": {
+                  "x": 43.75,
+                  "y": 86.4,
+                  "top": 86.4,
+                  "right": 1156.25,
+                  "bottom": 693.75,
+                  "left": 43.75,
+                  "width": 1112.5,
+                  "height": 607.35
+                },
+                "opacity": "1"
+              }
+            ],
+            "menuPanel": [],
+            "settingsBody": []
+          }
+        },
+        {
+          "frameIndex": 8,
+          "performanceTimeMs": 232247.8,
+          "rafTimestampMs": 232246.2,
+          "intervalSincePreviousFrameMs": 2.6,
+          "reducedMotion": true,
+          "observations": {
+            "segmentedIndicator": [
+              {
+                "nodeId": 1,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 128.25, 0)",
+                "rect": {
+                  "x": 566.575,
+                  "y": 607,
+                  "top": 607,
+                  "right": 628.7,
+                  "bottom": 651,
+                  "left": 566.575,
+                  "width": 62.125,
+                  "height": 44
+                }
+              },
+              {
+                "nodeId": 4,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 0, 0)",
+                "rect": {
+                  "x": 71.025,
+                  "y": 183.338,
+                  "top": 183.338,
+                  "right": 189.113,
+                  "bottom": 227.338,
+                  "left": 71.025,
+                  "width": 118.088,
+                  "height": 44
+                }
+              }
+            ],
+            "dialogPanel": [
+              {
+                "nodeId": 5,
+                "tag": "div",
+                "transform": "none",
+                "rect": {
+                  "x": 43.75,
+                  "y": 86.4,
+                  "top": 86.4,
+                  "right": 1156.25,
+                  "bottom": 693.75,
+                  "left": 43.75,
+                  "width": 1112.5,
+                  "height": 607.35
+                },
+                "opacity": "1"
+              }
+            ],
+            "menuPanel": [],
+            "settingsBody": []
+          }
+        },
+        {
+          "frameIndex": 9,
+          "performanceTimeMs": 232254,
+          "rafTimestampMs": 232252.2,
+          "intervalSincePreviousFrameMs": 6.2,
+          "reducedMotion": true,
+          "observations": {
+            "segmentedIndicator": [
+              {
+                "nodeId": 1,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 128.25, 0)",
+                "rect": {
+                  "x": 566.575,
+                  "y": 607,
+                  "top": 607,
+                  "right": 628.7,
+                  "bottom": 651,
+                  "left": 566.575,
+                  "width": 62.125,
+                  "height": 44
+                }
+              },
+              {
+                "nodeId": 4,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 0, 0)",
+                "rect": {
+                  "x": 71.025,
+                  "y": 183.338,
+                  "top": 183.338,
+                  "right": 189.113,
+                  "bottom": 227.338,
+                  "left": 71.025,
+                  "width": 118.088,
+                  "height": 44
+                }
+              }
+            ],
+            "dialogPanel": [
+              {
+                "nodeId": 5,
+                "tag": "div",
+                "transform": "none",
+                "rect": {
+                  "x": 43.75,
+                  "y": 86.4,
+                  "top": 86.4,
+                  "right": 1156.25,
+                  "bottom": 693.75,
+                  "left": 43.75,
+                  "width": 1112.5,
+                  "height": 607.35
+                },
+                "opacity": "1"
+              }
+            ],
+            "menuPanel": [],
+            "settingsBody": []
+          }
+        },
+        {
+          "frameIndex": 10,
+          "performanceTimeMs": 232259.1,
+          "rafTimestampMs": 232258.3,
+          "intervalSincePreviousFrameMs": 5.1,
+          "reducedMotion": true,
+          "observations": {
+            "segmentedIndicator": [
+              {
+                "nodeId": 1,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 128.25, 0)",
+                "rect": {
+                  "x": 566.575,
+                  "y": 607,
+                  "top": 607,
+                  "right": 628.7,
+                  "bottom": 651,
+                  "left": 566.575,
+                  "width": 62.125,
+                  "height": 44
+                }
+              },
+              {
+                "nodeId": 4,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 0, 0)",
+                "rect": {
+                  "x": 71.025,
+                  "y": 183.338,
+                  "top": 183.338,
+                  "right": 189.113,
+                  "bottom": 227.338,
+                  "left": 71.025,
+                  "width": 118.088,
+                  "height": 44
+                }
+              }
+            ],
+            "dialogPanel": [
+              {
+                "nodeId": 5,
+                "tag": "div",
+                "transform": "none",
+                "rect": {
+                  "x": 43.75,
+                  "y": 86.4,
+                  "top": 86.4,
+                  "right": 1156.25,
+                  "bottom": 693.75,
+                  "left": 43.75,
+                  "width": 1112.5,
+                  "height": 607.35
+                },
+                "opacity": "1"
+              }
+            ],
+            "menuPanel": [],
+            "settingsBody": []
+          }
+        },
+        {
+          "frameIndex": 11,
+          "performanceTimeMs": 232268,
+          "rafTimestampMs": 232264.4,
+          "intervalSincePreviousFrameMs": 8.9,
+          "reducedMotion": true,
+          "observations": {
+            "segmentedIndicator": [
+              {
+                "nodeId": 1,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 128.25, 0)",
+                "rect": {
+                  "x": 566.575,
+                  "y": 607,
+                  "top": 607,
+                  "right": 628.7,
+                  "bottom": 651,
+                  "left": 566.575,
+                  "width": 62.125,
+                  "height": 44
+                }
+              },
+              {
+                "nodeId": 4,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 0, 0)",
+                "rect": {
+                  "x": 71.025,
+                  "y": 183.338,
+                  "top": 183.338,
+                  "right": 189.113,
+                  "bottom": 227.338,
+                  "left": 71.025,
+                  "width": 118.088,
+                  "height": 44
+                }
+              }
+            ],
+            "dialogPanel": [
+              {
+                "nodeId": 5,
+                "tag": "div",
+                "transform": "none",
+                "rect": {
+                  "x": 43.75,
+                  "y": 86.4,
+                  "top": 86.4,
+                  "right": 1156.25,
+                  "bottom": 693.75,
+                  "left": 43.75,
+                  "width": 1112.5,
+                  "height": 607.35
+                },
+                "opacity": "1"
+              }
+            ],
+            "menuPanel": [],
+            "settingsBody": []
+          }
+        },
+        {
+          "frameIndex": 12,
+          "performanceTimeMs": 232271.2,
+          "rafTimestampMs": 232270.5,
+          "intervalSincePreviousFrameMs": 3.2,
+          "reducedMotion": true,
+          "observations": {
+            "segmentedIndicator": [
+              {
+                "nodeId": 1,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 128.25, 0)",
+                "rect": {
+                  "x": 566.575,
+                  "y": 607,
+                  "top": 607,
+                  "right": 628.7,
+                  "bottom": 651,
+                  "left": 566.575,
+                  "width": 62.125,
+                  "height": 44
+                }
+              },
+              {
+                "nodeId": 4,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 0, 0)",
+                "rect": {
+                  "x": 71.025,
+                  "y": 183.338,
+                  "top": 183.338,
+                  "right": 189.113,
+                  "bottom": 227.338,
+                  "left": 71.025,
+                  "width": 118.088,
+                  "height": 44
+                }
+              }
+            ],
+            "dialogPanel": [
+              {
+                "nodeId": 5,
+                "tag": "div",
+                "transform": "none",
+                "rect": {
+                  "x": 43.75,
+                  "y": 86.4,
+                  "top": 86.4,
+                  "right": 1156.25,
+                  "bottom": 693.75,
+                  "left": 43.75,
+                  "width": 1112.5,
+                  "height": 607.35
+                },
+                "opacity": "1"
+              }
+            ],
+            "menuPanel": [],
+            "settingsBody": []
+          }
+        },
+        {
+          "frameIndex": 13,
+          "performanceTimeMs": 233276.9,
+          "rafTimestampMs": 233276.3,
+          "intervalSincePreviousFrameMs": 1005.7,
+          "reducedMotion": true,
+          "observations": {
+            "segmentedIndicator": [
+              {
+                "nodeId": 1,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 128.25, 0)",
+                "rect": {
+                  "x": 566.575,
+                  "y": 607,
+                  "top": 607,
+                  "right": 628.7,
+                  "bottom": 651,
+                  "left": 566.575,
+                  "width": 62.125,
+                  "height": 44
+                }
+              },
+              {
+                "nodeId": 4,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 0, 0)",
+                "rect": {
+                  "x": 71.025,
+                  "y": 183.338,
+                  "top": 183.338,
+                  "right": 189.113,
+                  "bottom": 227.338,
+                  "left": 71.025,
+                  "width": 118.088,
+                  "height": 44
+                }
+              }
+            ],
+            "dialogPanel": [
+              {
+                "nodeId": 5,
+                "tag": "div",
+                "transform": "none",
+                "rect": {
+                  "x": 43.75,
+                  "y": 86.4,
+                  "top": 86.4,
+                  "right": 1156.25,
+                  "bottom": 693.75,
+                  "left": 43.75,
+                  "width": 1112.5,
+                  "height": 607.35
+                },
+                "opacity": "1"
+              }
+            ],
+            "menuPanel": [],
+            "settingsBody": []
+          }
+        }
+      ]
+    }
+  ]
+}

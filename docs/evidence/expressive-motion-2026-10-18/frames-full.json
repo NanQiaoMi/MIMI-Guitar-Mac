@@ -1,0 +1,4846 @@
+{
+  "note": "Local test iframe observations only; this does not establish constant FPS.",
+  "durationTargetMs": 450,
+  "maxRetainedRuns": 3,
+  "observationSpecs": [
+    {
+      "key": "segmentedIndicator",
+      "selector": ".motion-segmented-control__indicator",
+      "includeOpacity": false
+    },
+    {
+      "key": "dialogPanel",
+      "selector": ".motion-dialog-panel",
+      "includeOpacity": true
+    },
+    {
+      "key": "menuPanel",
+      "selector": "#mobile-navigation-menu > *",
+      "includeOpacity": true
+    },
+    {
+      "key": "settingsBody",
+      "selector": ".experience__settings-body",
+      "includeOpacity": true
+    },
+    {
+      "key": "folioCard",
+      "selector": ".folio-card",
+      "includeOpacity": true
+    }
+  ],
+  "recentRuns": [
+    {
+      "id": 1,
+      "source": {
+        "type": "click",
+        "key": null,
+        "isTrusted": true,
+        "eventTimeStampMs": 65790.4,
+        "observedAtPerformanceMs": 65791
+      },
+      "startedAtPerformanceMs": 65791,
+      "reducedMotionAtStart": false,
+      "effectiveMotionAtStart": "full",
+      "firstFrameDelayMs": 9.4,
+      "targetDurationMs": 450,
+      "status": "complete",
+      "summary": {
+        "sampleCount": 76,
+        "distinctTransformCount": 35,
+        "maxFrameIntervalMs": 11.3,
+        "actualElapsedMs": 461.4
+      },
+      "samples": [
+        {
+          "frameIndex": 0,
+          "performanceTimeMs": 65800.4,
+          "rafTimestampMs": 65791.1,
+          "intervalSincePreviousFrameMs": null,
+          "reducedMotion": false,
+          "effectiveMotion": "full",
+          "observations": {
+            "segmentedIndicator": [
+              {
+                "nodeId": 1,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 0, 0)",
+                "rect": {
+                  "x": 929.35,
+                  "y": -15.15,
+                  "top": -15.15,
+                  "right": 1022.1,
+                  "bottom": 28.85,
+                  "left": 929.35,
+                  "width": 92.75,
+                  "height": 44
+                }
+              },
+              {
+                "nodeId": 2,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 0, 0)",
+                "rect": {
+                  "x": 471.025,
+                  "y": 337.95,
+                  "top": 337.95,
+                  "right": 533.15,
+                  "bottom": 381.95,
+                  "left": 471.025,
+                  "width": 62.125,
+                  "height": 44
+                }
+              }
+            ],
+            "dialogPanel": [],
+            "menuPanel": [],
+            "settingsBody": [],
+            "folioCard": [
+              {
+                "nodeId": 3,
+                "tag": "a",
+                "transform": "none",
+                "rect": {
+                  "x": 602.362,
+                  "y": 908.713,
+                  "top": 908.713,
+                  "right": 1232.362,
+                  "bottom": 1461.825,
+                  "left": 602.362,
+                  "width": 630,
+                  "height": 553.112
+                },
+                "opacity": "1"
+              }
+            ]
+          }
+        },
+        {
+          "frameIndex": 1,
+          "performanceTimeMs": 65803.3,
+          "rafTimestampMs": 65797,
+          "intervalSincePreviousFrameMs": 2.9,
+          "reducedMotion": false,
+          "effectiveMotion": "full",
+          "observations": {
+            "segmentedIndicator": [
+              {
+                "nodeId": 1,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 0, 0)",
+                "rect": {
+                  "x": 929.35,
+                  "y": -15.15,
+                  "top": -15.15,
+                  "right": 1022.1,
+                  "bottom": 28.85,
+                  "left": 929.35,
+                  "width": 92.75,
+                  "height": 44
+                }
+              },
+              {
+                "nodeId": 2,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 0, 0)",
+                "rect": {
+                  "x": 471.025,
+                  "y": 337.95,
+                  "top": 337.95,
+                  "right": 533.15,
+                  "bottom": 381.95,
+                  "left": 471.025,
+                  "width": 62.125,
+                  "height": 44
+                }
+              }
+            ],
+            "dialogPanel": [],
+            "menuPanel": [],
+            "settingsBody": [],
+            "folioCard": [
+              {
+                "nodeId": 3,
+                "tag": "a",
+                "transform": "none",
+                "rect": {
+                  "x": 602.362,
+                  "y": 908.713,
+                  "top": 908.713,
+                  "right": 1232.362,
+                  "bottom": 1461.825,
+                  "left": 602.362,
+                  "width": 630,
+                  "height": 553.112
+                },
+                "opacity": "1"
+              }
+            ]
+          }
+        },
+        {
+          "frameIndex": 2,
+          "performanceTimeMs": 65804.8,
+          "rafTimestampMs": 65803.1,
+          "intervalSincePreviousFrameMs": 1.5,
+          "reducedMotion": false,
+          "effectiveMotion": "full",
+          "observations": {
+            "segmentedIndicator": [
+              {
+                "nodeId": 1,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 0, 0)",
+                "rect": {
+                  "x": 929.35,
+                  "y": -15.15,
+                  "top": -15.15,
+                  "right": 1022.1,
+                  "bottom": 28.85,
+                  "left": 929.35,
+                  "width": 92.75,
+                  "height": 44
+                }
+              },
+              {
+                "nodeId": 2,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 0, 0)",
+                "rect": {
+                  "x": 471.025,
+                  "y": 337.95,
+                  "top": 337.95,
+                  "right": 533.15,
+                  "bottom": 381.95,
+                  "left": 471.025,
+                  "width": 62.125,
+                  "height": 44
+                }
+              }
+            ],
+            "dialogPanel": [],
+            "menuPanel": [],
+            "settingsBody": [],
+            "folioCard": [
+              {
+                "nodeId": 3,
+                "tag": "a",
+                "transform": "none",
+                "rect": {
+                  "x": 602.362,
+                  "y": 908.713,
+                  "top": 908.713,
+                  "right": 1232.362,
+                  "bottom": 1461.825,
+                  "left": 602.362,
+                  "width": 630,
+                  "height": 553.112
+                },
+                "opacity": "1"
+              }
+            ]
+          }
+        },
+        {
+          "frameIndex": 3,
+          "performanceTimeMs": 65816.1,
+          "rafTimestampMs": 65815.2,
+          "intervalSincePreviousFrameMs": 11.3,
+          "reducedMotion": false,
+          "effectiveMotion": "full",
+          "observations": {
+            "segmentedIndicator": [
+              {
+                "nodeId": 1,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 0, 0)",
+                "rect": {
+                  "x": 929.35,
+                  "y": -15.15,
+                  "top": -15.15,
+                  "right": 1022.1,
+                  "bottom": 28.85,
+                  "left": 929.35,
+                  "width": 92.75,
+                  "height": 44
+                }
+              },
+              {
+                "nodeId": 2,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 8.2822, 0)",
+                "rect": {
+                  "x": 479.307,
+                  "y": 337.95,
+                  "top": 337.95,
+                  "right": 541.432,
+                  "bottom": 381.95,
+                  "left": 479.307,
+                  "width": 62.125,
+                  "height": 44
+                }
+              }
+            ],
+            "dialogPanel": [],
+            "menuPanel": [],
+            "settingsBody": [],
+            "folioCard": [
+              {
+                "nodeId": 3,
+                "tag": "a",
+                "transform": "none",
+                "rect": {
+                  "x": 602.362,
+                  "y": 908.713,
+                  "top": 908.713,
+                  "right": 1232.362,
+                  "bottom": 1461.825,
+                  "left": 602.362,
+                  "width": 630,
+                  "height": 553.112
+                },
+                "opacity": "1"
+              }
+            ]
+          }
+        },
+        {
+          "frameIndex": 4,
+          "performanceTimeMs": 65822.1,
+          "rafTimestampMs": 65821.3,
+          "intervalSincePreviousFrameMs": 6,
+          "reducedMotion": false,
+          "effectiveMotion": "full",
+          "observations": {
+            "segmentedIndicator": [
+              {
+                "nodeId": 1,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 0, 0)",
+                "rect": {
+                  "x": 929.35,
+                  "y": -15.15,
+                  "top": -15.15,
+                  "right": 1022.1,
+                  "bottom": 28.85,
+                  "left": 929.35,
+                  "width": 92.75,
+                  "height": 44
+                }
+              },
+              {
+                "nodeId": 2,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 16.2859, 0)",
+                "rect": {
+                  "x": 487.311,
+                  "y": 337.95,
+                  "top": 337.95,
+                  "right": 549.436,
+                  "bottom": 381.95,
+                  "left": 487.311,
+                  "width": 62.125,
+                  "height": 44
+                }
+              }
+            ],
+            "dialogPanel": [],
+            "menuPanel": [],
+            "settingsBody": [],
+            "folioCard": [
+              {
+                "nodeId": 3,
+                "tag": "a",
+                "transform": "none",
+                "rect": {
+                  "x": 602.362,
+                  "y": 908.713,
+                  "top": 908.713,
+                  "right": 1232.362,
+                  "bottom": 1461.825,
+                  "left": 602.362,
+                  "width": 630,
+                  "height": 553.112
+                },
+                "opacity": "1"
+              }
+            ]
+          }
+        },
+        {
+          "frameIndex": 5,
+          "performanceTimeMs": 65828.2,
+          "rafTimestampMs": 65827.2,
+          "intervalSincePreviousFrameMs": 6.1,
+          "reducedMotion": false,
+          "effectiveMotion": "full",
+          "observations": {
+            "segmentedIndicator": [
+              {
+                "nodeId": 1,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 0, 0)",
+                "rect": {
+                  "x": 929.35,
+                  "y": -15.15,
+                  "top": -15.15,
+                  "right": 1022.1,
+                  "bottom": 28.85,
+                  "left": 929.35,
+                  "width": 92.75,
+                  "height": 44
+                }
+              },
+              {
+                "nodeId": 2,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 23.3407, 0)",
+                "rect": {
+                  "x": 494.366,
+                  "y": 337.95,
+                  "top": 337.95,
+                  "right": 556.491,
+                  "bottom": 381.95,
+                  "left": 494.366,
+                  "width": 62.125,
+                  "height": 44
+                }
+              }
+            ],
+            "dialogPanel": [],
+            "menuPanel": [],
+            "settingsBody": [],
+            "folioCard": [
+              {
+                "nodeId": 3,
+                "tag": "a",
+                "transform": "none",
+                "rect": {
+                  "x": 602.362,
+                  "y": 908.713,
+                  "top": 908.713,
+                  "right": 1232.362,
+                  "bottom": 1461.825,
+                  "left": 602.362,
+                  "width": 630,
+                  "height": 553.112
+                },
+                "opacity": "1"
+              }
+            ]
+          }
+        },
+        {
+          "frameIndex": 6,
+          "performanceTimeMs": 65834.4,
+          "rafTimestampMs": 65833.3,
+          "intervalSincePreviousFrameMs": 6.2,
+          "reducedMotion": false,
+          "effectiveMotion": "full",
+          "observations": {
+            "segmentedIndicator": [
+              {
+                "nodeId": 1,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 0, 0)",
+                "rect": {
+                  "x": 929.35,
+                  "y": -15.15,
+                  "top": -15.15,
+                  "right": 1022.1,
+                  "bottom": 28.85,
+                  "left": 929.35,
+                  "width": 92.75,
+                  "height": 44
+                }
+              },
+              {
+                "nodeId": 2,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 29.8633, 0)",
+                "rect": {
+                  "x": 500.888,
+                  "y": 337.95,
+                  "top": 337.95,
+                  "right": 563.013,
+                  "bottom": 381.95,
+                  "left": 500.888,
+                  "width": 62.125,
+                  "height": 44
+                }
+              }
+            ],
+            "dialogPanel": [],
+            "menuPanel": [],
+            "settingsBody": [],
+            "folioCard": [
+              {
+                "nodeId": 3,
+                "tag": "a",
+                "transform": "none",
+                "rect": {
+                  "x": 602.362,
+                  "y": 908.713,
+                  "top": 908.713,
+                  "right": 1232.362,
+                  "bottom": 1461.825,
+                  "left": 602.362,
+                  "width": 630,
+                  "height": 553.112
+                },
+                "opacity": "1"
+              }
+            ]
+          }
+        },
+        {
+          "frameIndex": 7,
+          "performanceTimeMs": 65840.3,
+          "rafTimestampMs": 65839.4,
+          "intervalSincePreviousFrameMs": 5.9,
+          "reducedMotion": false,
+          "effectiveMotion": "full",
+          "observations": {
+            "segmentedIndicator": [
+              {
+                "nodeId": 1,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 0, 0)",
+                "rect": {
+                  "x": 929.35,
+                  "y": -15.15,
+                  "top": -15.15,
+                  "right": 1022.1,
+                  "bottom": 28.85,
+                  "left": 929.35,
+                  "width": 92.75,
+                  "height": 44
+                }
+              },
+              {
+                "nodeId": 2,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 35.5783, 0)",
+                "rect": {
+                  "x": 506.603,
+                  "y": 337.95,
+                  "top": 337.95,
+                  "right": 568.728,
+                  "bottom": 381.95,
+                  "left": 506.603,
+                  "width": 62.125,
+                  "height": 44
+                }
+              }
+            ],
+            "dialogPanel": [],
+            "menuPanel": [],
+            "settingsBody": [],
+            "folioCard": [
+              {
+                "nodeId": 3,
+                "tag": "a",
+                "transform": "none",
+                "rect": {
+                  "x": 602.362,
+                  "y": 908.713,
+                  "top": 908.713,
+                  "right": 1232.362,
+                  "bottom": 1461.825,
+                  "left": 602.362,
+                  "width": 630,
+                  "height": 553.112
+                },
+                "opacity": "1"
+              }
+            ]
+          }
+        },
+        {
+          "frameIndex": 8,
+          "performanceTimeMs": 65846.3,
+          "rafTimestampMs": 65845.4,
+          "intervalSincePreviousFrameMs": 6,
+          "reducedMotion": false,
+          "effectiveMotion": "full",
+          "observations": {
+            "segmentedIndicator": [
+              {
+                "nodeId": 1,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 0, 0)",
+                "rect": {
+                  "x": 929.35,
+                  "y": -15.15,
+                  "top": -15.15,
+                  "right": 1022.1,
+                  "bottom": 28.85,
+                  "left": 929.35,
+                  "width": 92.75,
+                  "height": 44
+                }
+              },
+              {
+                "nodeId": 2,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 40.4281, 0)",
+                "rect": {
+                  "x": 511.453,
+                  "y": 337.95,
+                  "top": 337.95,
+                  "right": 573.578,
+                  "bottom": 381.95,
+                  "left": 511.453,
+                  "width": 62.125,
+                  "height": 44
+                }
+              }
+            ],
+            "dialogPanel": [],
+            "menuPanel": [],
+            "settingsBody": [],
+            "folioCard": [
+              {
+                "nodeId": 3,
+                "tag": "a",
+                "transform": "none",
+                "rect": {
+                  "x": 602.362,
+                  "y": 908.713,
+                  "top": 908.713,
+                  "right": 1232.362,
+                  "bottom": 1461.825,
+                  "left": 602.362,
+                  "width": 630,
+                  "height": 553.112
+                },
+                "opacity": "1"
+              }
+            ]
+          }
+        },
+        {
+          "frameIndex": 9,
+          "performanceTimeMs": 65852.5,
+          "rafTimestampMs": 65851.7,
+          "intervalSincePreviousFrameMs": 6.2,
+          "reducedMotion": false,
+          "effectiveMotion": "full",
+          "observations": {
+            "segmentedIndicator": [
+              {
+                "nodeId": 1,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 0, 0)",
+                "rect": {
+                  "x": 929.35,
+                  "y": -15.15,
+                  "top": -15.15,
+                  "right": 1022.1,
+                  "bottom": 28.85,
+                  "left": 929.35,
+                  "width": 92.75,
+                  "height": 44
+                }
+              },
+              {
+                "nodeId": 2,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 44.75, 0)",
+                "rect": {
+                  "x": 515.775,
+                  "y": 337.95,
+                  "top": 337.95,
+                  "right": 577.9,
+                  "bottom": 381.95,
+                  "left": 515.775,
+                  "width": 62.125,
+                  "height": 44
+                }
+              }
+            ],
+            "dialogPanel": [],
+            "menuPanel": [],
+            "settingsBody": [],
+            "folioCard": [
+              {
+                "nodeId": 3,
+                "tag": "a",
+                "transform": "none",
+                "rect": {
+                  "x": 602.362,
+                  "y": 908.713,
+                  "top": 908.713,
+                  "right": 1232.362,
+                  "bottom": 1461.825,
+                  "left": 602.362,
+                  "width": 630,
+                  "height": 553.112
+                },
+                "opacity": "1"
+              }
+            ]
+          }
+        },
+        {
+          "frameIndex": 10,
+          "performanceTimeMs": 65858.5,
+          "rafTimestampMs": 65857.5,
+          "intervalSincePreviousFrameMs": 6,
+          "reducedMotion": false,
+          "effectiveMotion": "full",
+          "observations": {
+            "segmentedIndicator": [
+              {
+                "nodeId": 1,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 0, 0)",
+                "rect": {
+                  "x": 929.35,
+                  "y": -15.15,
+                  "top": -15.15,
+                  "right": 1022.1,
+                  "bottom": 28.85,
+                  "left": 929.35,
+                  "width": 92.75,
+                  "height": 44
+                }
+              },
+              {
+                "nodeId": 2,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 48.0989, 0)",
+                "rect": {
+                  "x": 519.124,
+                  "y": 337.95,
+                  "top": 337.95,
+                  "right": 581.249,
+                  "bottom": 381.95,
+                  "left": 519.124,
+                  "width": 62.125,
+                  "height": 44
+                }
+              }
+            ],
+            "dialogPanel": [],
+            "menuPanel": [],
+            "settingsBody": [],
+            "folioCard": [
+              {
+                "nodeId": 3,
+                "tag": "a",
+                "transform": "none",
+                "rect": {
+                  "x": 602.362,
+                  "y": 908.713,
+                  "top": 908.713,
+                  "right": 1232.362,
+                  "bottom": 1461.825,
+                  "left": 602.362,
+                  "width": 630,
+                  "height": 553.112
+                },
+                "opacity": "1"
+              }
+            ]
+          }
+        },
+        {
+          "frameIndex": 11,
+          "performanceTimeMs": 65864.7,
+          "rafTimestampMs": 65863.8,
+          "intervalSincePreviousFrameMs": 6.2,
+          "reducedMotion": false,
+          "effectiveMotion": "full",
+          "observations": {
+            "segmentedIndicator": [
+              {
+                "nodeId": 1,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 0, 0)",
+                "rect": {
+                  "x": 929.35,
+                  "y": -15.15,
+                  "top": -15.15,
+                  "right": 1022.1,
+                  "bottom": 28.85,
+                  "left": 929.35,
+                  "width": 92.75,
+                  "height": 44
+                }
+              },
+              {
+                "nodeId": 2,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 51.1373, 0)",
+                "rect": {
+                  "x": 522.162,
+                  "y": 337.95,
+                  "top": 337.95,
+                  "right": 584.287,
+                  "bottom": 381.95,
+                  "left": 522.162,
+                  "width": 62.125,
+                  "height": 44
+                }
+              }
+            ],
+            "dialogPanel": [],
+            "menuPanel": [],
+            "settingsBody": [],
+            "folioCard": [
+              {
+                "nodeId": 3,
+                "tag": "a",
+                "transform": "none",
+                "rect": {
+                  "x": 602.362,
+                  "y": 908.713,
+                  "top": 908.713,
+                  "right": 1232.362,
+                  "bottom": 1461.825,
+                  "left": 602.362,
+                  "width": 630,
+                  "height": 553.112
+                },
+                "opacity": "1"
+              }
+            ]
+          }
+        },
+        {
+          "frameIndex": 12,
+          "performanceTimeMs": 65870.7,
+          "rafTimestampMs": 65869.7,
+          "intervalSincePreviousFrameMs": 6,
+          "reducedMotion": false,
+          "effectiveMotion": "full",
+          "observations": {
+            "segmentedIndicator": [
+              {
+                "nodeId": 1,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 0, 0)",
+                "rect": {
+                  "x": 929.35,
+                  "y": -15.15,
+                  "top": -15.15,
+                  "right": 1022.1,
+                  "bottom": 28.85,
+                  "left": 929.35,
+                  "width": 92.75,
+                  "height": 44
+                }
+              },
+              {
+                "nodeId": 2,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 53.4961, 0)",
+                "rect": {
+                  "x": 524.521,
+                  "y": 337.95,
+                  "top": 337.95,
+                  "right": 586.646,
+                  "bottom": 381.95,
+                  "left": 524.521,
+                  "width": 62.125,
+                  "height": 44
+                }
+              }
+            ],
+            "dialogPanel": [],
+            "menuPanel": [],
+            "settingsBody": [],
+            "folioCard": [
+              {
+                "nodeId": 3,
+                "tag": "a",
+                "transform": "none",
+                "rect": {
+                  "x": 602.362,
+                  "y": 908.713,
+                  "top": 908.713,
+                  "right": 1232.362,
+                  "bottom": 1461.825,
+                  "left": 602.362,
+                  "width": 630,
+                  "height": 553.112
+                },
+                "opacity": "1"
+              }
+            ]
+          }
+        },
+        {
+          "frameIndex": 13,
+          "performanceTimeMs": 65876.8,
+          "rafTimestampMs": 65876,
+          "intervalSincePreviousFrameMs": 6.1,
+          "reducedMotion": false,
+          "effectiveMotion": "full",
+          "observations": {
+            "segmentedIndicator": [
+              {
+                "nodeId": 1,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 0, 0)",
+                "rect": {
+                  "x": 929.35,
+                  "y": -15.15,
+                  "top": -15.15,
+                  "right": 1022.1,
+                  "bottom": 28.85,
+                  "left": 929.35,
+                  "width": 92.75,
+                  "height": 44
+                }
+              },
+              {
+                "nodeId": 2,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 55.5763, 0)",
+                "rect": {
+                  "x": 526.601,
+                  "y": 337.95,
+                  "top": 337.95,
+                  "right": 588.726,
+                  "bottom": 381.95,
+                  "left": 526.601,
+                  "width": 62.125,
+                  "height": 44
+                }
+              }
+            ],
+            "dialogPanel": [],
+            "menuPanel": [],
+            "settingsBody": [],
+            "folioCard": [
+              {
+                "nodeId": 3,
+                "tag": "a",
+                "transform": "none",
+                "rect": {
+                  "x": 602.362,
+                  "y": 908.713,
+                  "top": 908.713,
+                  "right": 1232.362,
+                  "bottom": 1461.825,
+                  "left": 602.362,
+                  "width": 630,
+                  "height": 553.112
+                },
+                "opacity": "1"
+              }
+            ]
+          }
+        },
+        {
+          "frameIndex": 14,
+          "performanceTimeMs": 65882.7,
+          "rafTimestampMs": 65881.8,
+          "intervalSincePreviousFrameMs": 5.9,
+          "reducedMotion": false,
+          "effectiveMotion": "full",
+          "observations": {
+            "segmentedIndicator": [
+              {
+                "nodeId": 1,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 0, 0)",
+                "rect": {
+                  "x": 929.35,
+                  "y": -15.15,
+                  "top": -15.15,
+                  "right": 1022.1,
+                  "bottom": 28.85,
+                  "left": 929.35,
+                  "width": 92.75,
+                  "height": 44
+                }
+              },
+              {
+                "nodeId": 2,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 57.1553, 0)",
+                "rect": {
+                  "x": 528.18,
+                  "y": 337.95,
+                  "top": 337.95,
+                  "right": 590.305,
+                  "bottom": 381.95,
+                  "left": 528.18,
+                  "width": 62.125,
+                  "height": 44
+                }
+              }
+            ],
+            "dialogPanel": [],
+            "menuPanel": [],
+            "settingsBody": [],
+            "folioCard": [
+              {
+                "nodeId": 3,
+                "tag": "a",
+                "transform": "none",
+                "rect": {
+                  "x": 602.362,
+                  "y": 908.713,
+                  "top": 908.713,
+                  "right": 1232.362,
+                  "bottom": 1461.825,
+                  "left": 602.362,
+                  "width": 630,
+                  "height": 553.112
+                },
+                "opacity": "1"
+              }
+            ]
+          }
+        },
+        {
+          "frameIndex": 15,
+          "performanceTimeMs": 65888.9,
+          "rafTimestampMs": 65888,
+          "intervalSincePreviousFrameMs": 6.2,
+          "reducedMotion": false,
+          "effectiveMotion": "full",
+          "observations": {
+            "segmentedIndicator": [
+              {
+                "nodeId": 1,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 0, 0)",
+                "rect": {
+                  "x": 929.35,
+                  "y": -15.15,
+                  "top": -15.15,
+                  "right": 1022.1,
+                  "bottom": 28.85,
+                  "left": 929.35,
+                  "width": 92.75,
+                  "height": 44
+                }
+              },
+              {
+                "nodeId": 2,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 58.5465, 0)",
+                "rect": {
+                  "x": 529.571,
+                  "y": 337.95,
+                  "top": 337.95,
+                  "right": 591.696,
+                  "bottom": 381.95,
+                  "left": 529.571,
+                  "width": 62.125,
+                  "height": 44
+                }
+              }
+            ],
+            "dialogPanel": [],
+            "menuPanel": [],
+            "settingsBody": [],
+            "folioCard": [
+              {
+                "nodeId": 3,
+                "tag": "a",
+                "transform": "none",
+                "rect": {
+                  "x": 602.362,
+                  "y": 908.713,
+                  "top": 908.713,
+                  "right": 1232.362,
+                  "bottom": 1461.825,
+                  "left": 602.362,
+                  "width": 630,
+                  "height": 553.112
+                },
+                "opacity": "1"
+              }
+            ]
+          }
+        },
+        {
+          "frameIndex": 16,
+          "performanceTimeMs": 65894.9,
+          "rafTimestampMs": 65894,
+          "intervalSincePreviousFrameMs": 6,
+          "reducedMotion": false,
+          "effectiveMotion": "full",
+          "observations": {
+            "segmentedIndicator": [
+              {
+                "nodeId": 1,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 0, 0)",
+                "rect": {
+                  "x": 929.35,
+                  "y": -15.15,
+                  "top": -15.15,
+                  "right": 1022.1,
+                  "bottom": 28.85,
+                  "left": 929.35,
+                  "width": 92.75,
+                  "height": 44
+                }
+              },
+              {
+                "nodeId": 2,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 59.65, 0)",
+                "rect": {
+                  "x": 530.675,
+                  "y": 337.95,
+                  "top": 337.95,
+                  "right": 592.8,
+                  "bottom": 381.95,
+                  "left": 530.675,
+                  "width": 62.125,
+                  "height": 44
+                }
+              }
+            ],
+            "dialogPanel": [],
+            "menuPanel": [],
+            "settingsBody": [],
+            "folioCard": [
+              {
+                "nodeId": 3,
+                "tag": "a",
+                "transform": "none",
+                "rect": {
+                  "x": 602.362,
+                  "y": 908.713,
+                  "top": 908.713,
+                  "right": 1232.362,
+                  "bottom": 1461.825,
+                  "left": 602.362,
+                  "width": 630,
+                  "height": 553.112
+                },
+                "opacity": "1"
+              }
+            ]
+          }
+        },
+        {
+          "frameIndex": 17,
+          "performanceTimeMs": 65900.8,
+          "rafTimestampMs": 65900,
+          "intervalSincePreviousFrameMs": 5.9,
+          "reducedMotion": false,
+          "effectiveMotion": "full",
+          "observations": {
+            "segmentedIndicator": [
+              {
+                "nodeId": 1,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 0, 0)",
+                "rect": {
+                  "x": 929.35,
+                  "y": -15.15,
+                  "top": -15.15,
+                  "right": 1022.1,
+                  "bottom": 28.85,
+                  "left": 929.35,
+                  "width": 92.75,
+                  "height": 44
+                }
+              },
+              {
+                "nodeId": 2,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 60.5555, 0)",
+                "rect": {
+                  "x": 531.581,
+                  "y": 337.95,
+                  "top": 337.95,
+                  "right": 593.706,
+                  "bottom": 381.95,
+                  "left": 531.581,
+                  "width": 62.125,
+                  "height": 44
+                }
+              }
+            ],
+            "dialogPanel": [],
+            "menuPanel": [],
+            "settingsBody": [],
+            "folioCard": [
+              {
+                "nodeId": 3,
+                "tag": "a",
+                "transform": "none",
+                "rect": {
+                  "x": 602.362,
+                  "y": 908.713,
+                  "top": 908.713,
+                  "right": 1232.362,
+                  "bottom": 1461.825,
+                  "left": 602.362,
+                  "width": 630,
+                  "height": 553.112
+                },
+                "opacity": "1"
+              }
+            ]
+          }
+        },
+        {
+          "frameIndex": 18,
+          "performanceTimeMs": 65907,
+          "rafTimestampMs": 65906.1,
+          "intervalSincePreviousFrameMs": 6.2,
+          "reducedMotion": false,
+          "effectiveMotion": "full",
+          "observations": {
+            "segmentedIndicator": [
+              {
+                "nodeId": 1,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 0, 0)",
+                "rect": {
+                  "x": 929.35,
+                  "y": -15.15,
+                  "top": -15.15,
+                  "right": 1022.1,
+                  "bottom": 28.85,
+                  "left": 929.35,
+                  "width": 92.75,
+                  "height": 44
+                }
+              },
+              {
+                "nodeId": 2,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 61.3079, 0)",
+                "rect": {
+                  "x": 532.333,
+                  "y": 337.95,
+                  "top": 337.95,
+                  "right": 594.458,
+                  "bottom": 381.95,
+                  "left": 532.333,
+                  "width": 62.125,
+                  "height": 44
+                }
+              }
+            ],
+            "dialogPanel": [],
+            "menuPanel": [],
+            "settingsBody": [],
+            "folioCard": [
+              {
+                "nodeId": 3,
+                "tag": "a",
+                "transform": "none",
+                "rect": {
+                  "x": 602.362,
+                  "y": 908.713,
+                  "top": 908.713,
+                  "right": 1232.362,
+                  "bottom": 1461.825,
+                  "left": 602.362,
+                  "width": 630,
+                  "height": 553.112
+                },
+                "opacity": "1"
+              }
+            ]
+          }
+        },
+        {
+          "frameIndex": 19,
+          "performanceTimeMs": 65913,
+          "rafTimestampMs": 65912.1,
+          "intervalSincePreviousFrameMs": 6,
+          "reducedMotion": false,
+          "effectiveMotion": "full",
+          "observations": {
+            "segmentedIndicator": [
+              {
+                "nodeId": 1,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 0, 0)",
+                "rect": {
+                  "x": 929.35,
+                  "y": -15.15,
+                  "top": -15.15,
+                  "right": 1022.1,
+                  "bottom": 28.85,
+                  "left": 929.35,
+                  "width": 92.75,
+                  "height": 44
+                }
+              },
+              {
+                "nodeId": 2,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 61.9106, 0)",
+                "rect": {
+                  "x": 532.936,
+                  "y": 337.95,
+                  "top": 337.95,
+                  "right": 595.061,
+                  "bottom": 381.95,
+                  "left": 532.936,
+                  "width": 62.125,
+                  "height": 44
+                }
+              }
+            ],
+            "dialogPanel": [],
+            "menuPanel": [],
+            "settingsBody": [],
+            "folioCard": [
+              {
+                "nodeId": 3,
+                "tag": "a",
+                "transform": "none",
+                "rect": {
+                  "x": 602.362,
+                  "y": 908.713,
+                  "top": 908.713,
+                  "right": 1232.362,
+                  "bottom": 1461.825,
+                  "left": 602.362,
+                  "width": 630,
+                  "height": 553.112
+                },
+                "opacity": "1"
+              }
+            ]
+          }
+        },
+        {
+          "frameIndex": 20,
+          "performanceTimeMs": 65919.1,
+          "rafTimestampMs": 65918.2,
+          "intervalSincePreviousFrameMs": 6.1,
+          "reducedMotion": false,
+          "effectiveMotion": "full",
+          "observations": {
+            "segmentedIndicator": [
+              {
+                "nodeId": 1,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 0, 0)",
+                "rect": {
+                  "x": 929.35,
+                  "y": -15.15,
+                  "top": -15.15,
+                  "right": 1022.1,
+                  "bottom": 28.85,
+                  "left": 929.35,
+                  "width": 92.75,
+                  "height": 44
+                }
+              },
+              {
+                "nodeId": 2,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 62.4077, 0)",
+                "rect": {
+                  "x": 533.433,
+                  "y": 337.95,
+                  "top": 337.95,
+                  "right": 595.558,
+                  "bottom": 381.95,
+                  "left": 533.433,
+                  "width": 62.125,
+                  "height": 44
+                }
+              }
+            ],
+            "dialogPanel": [],
+            "menuPanel": [],
+            "settingsBody": [],
+            "folioCard": [
+              {
+                "nodeId": 3,
+                "tag": "a",
+                "transform": "none",
+                "rect": {
+                  "x": 602.362,
+                  "y": 908.713,
+                  "top": 908.713,
+                  "right": 1232.362,
+                  "bottom": 1461.825,
+                  "left": 602.362,
+                  "width": 630,
+                  "height": 553.112
+                },
+                "opacity": "1"
+              }
+            ]
+          }
+        },
+        {
+          "frameIndex": 21,
+          "performanceTimeMs": 65925.2,
+          "rafTimestampMs": 65924.3,
+          "intervalSincePreviousFrameMs": 6.1,
+          "reducedMotion": false,
+          "effectiveMotion": "full",
+          "observations": {
+            "segmentedIndicator": [
+              {
+                "nodeId": 1,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 0, 0)",
+                "rect": {
+                  "x": 929.35,
+                  "y": -15.15,
+                  "top": -15.15,
+                  "right": 1022.1,
+                  "bottom": 28.85,
+                  "left": 929.35,
+                  "width": 92.75,
+                  "height": 44
+                }
+              },
+              {
+                "nodeId": 2,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 62.8082, 0)",
+                "rect": {
+                  "x": 533.833,
+                  "y": 337.95,
+                  "top": 337.95,
+                  "right": 595.958,
+                  "bottom": 381.95,
+                  "left": 533.833,
+                  "width": 62.125,
+                  "height": 44
+                }
+              }
+            ],
+            "dialogPanel": [],
+            "menuPanel": [],
+            "settingsBody": [],
+            "folioCard": [
+              {
+                "nodeId": 3,
+                "tag": "a",
+                "transform": "none",
+                "rect": {
+                  "x": 602.362,
+                  "y": 908.713,
+                  "top": 908.713,
+                  "right": 1232.362,
+                  "bottom": 1461.825,
+                  "left": 602.362,
+                  "width": 630,
+                  "height": 553.112
+                },
+                "opacity": "1"
+              }
+            ]
+          }
+        },
+        {
+          "frameIndex": 22,
+          "performanceTimeMs": 65931.3,
+          "rafTimestampMs": 65930.4,
+          "intervalSincePreviousFrameMs": 6.1,
+          "reducedMotion": false,
+          "effectiveMotion": "full",
+          "observations": {
+            "segmentedIndicator": [
+              {
+                "nodeId": 1,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 0, 0)",
+                "rect": {
+                  "x": 929.35,
+                  "y": -15.15,
+                  "top": -15.15,
+                  "right": 1022.1,
+                  "bottom": 28.85,
+                  "left": 929.35,
+                  "width": 92.75,
+                  "height": 44
+                }
+              },
+              {
+                "nodeId": 2,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 63.1288, 0)",
+                "rect": {
+                  "x": 534.154,
+                  "y": 337.95,
+                  "top": 337.95,
+                  "right": 596.279,
+                  "bottom": 381.95,
+                  "left": 534.154,
+                  "width": 62.125,
+                  "height": 44
+                }
+              }
+            ],
+            "dialogPanel": [],
+            "menuPanel": [],
+            "settingsBody": [],
+            "folioCard": [
+              {
+                "nodeId": 3,
+                "tag": "a",
+                "transform": "none",
+                "rect": {
+                  "x": 602.362,
+                  "y": 908.713,
+                  "top": 908.713,
+                  "right": 1232.362,
+                  "bottom": 1461.825,
+                  "left": 602.362,
+                  "width": 630,
+                  "height": 553.112
+                },
+                "opacity": "1"
+              }
+            ]
+          }
+        },
+        {
+          "frameIndex": 23,
+          "performanceTimeMs": 65937.2,
+          "rafTimestampMs": 65936.4,
+          "intervalSincePreviousFrameMs": 5.9,
+          "reducedMotion": false,
+          "effectiveMotion": "full",
+          "observations": {
+            "segmentedIndicator": [
+              {
+                "nodeId": 1,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 0, 0)",
+                "rect": {
+                  "x": 929.35,
+                  "y": -15.15,
+                  "top": -15.15,
+                  "right": 1022.1,
+                  "bottom": 28.85,
+                  "left": 929.35,
+                  "width": 92.75,
+                  "height": 44
+                }
+              },
+              {
+                "nodeId": 2,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 63.3796, 0)",
+                "rect": {
+                  "x": 534.405,
+                  "y": 337.95,
+                  "top": 337.95,
+                  "right": 596.53,
+                  "bottom": 381.95,
+                  "left": 534.405,
+                  "width": 62.125,
+                  "height": 44
+                }
+              }
+            ],
+            "dialogPanel": [],
+            "menuPanel": [],
+            "settingsBody": [],
+            "folioCard": [
+              {
+                "nodeId": 3,
+                "tag": "a",
+                "transform": "none",
+                "rect": {
+                  "x": 602.362,
+                  "y": 908.713,
+                  "top": 908.713,
+                  "right": 1232.362,
+                  "bottom": 1461.825,
+                  "left": 602.362,
+                  "width": 630,
+                  "height": 553.112
+                },
+                "opacity": "1"
+              }
+            ]
+          }
+        },
+        {
+          "frameIndex": 24,
+          "performanceTimeMs": 65943.2,
+          "rafTimestampMs": 65942.4,
+          "intervalSincePreviousFrameMs": 6,
+          "reducedMotion": false,
+          "effectiveMotion": "full",
+          "observations": {
+            "segmentedIndicator": [
+              {
+                "nodeId": 1,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 0, 0)",
+                "rect": {
+                  "x": 929.35,
+                  "y": -15.15,
+                  "top": -15.15,
+                  "right": 1022.1,
+                  "bottom": 28.85,
+                  "left": 929.35,
+                  "width": 92.75,
+                  "height": 44
+                }
+              },
+              {
+                "nodeId": 2,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 63.5776, 0)",
+                "rect": {
+                  "x": 534.603,
+                  "y": 337.95,
+                  "top": 337.95,
+                  "right": 596.728,
+                  "bottom": 381.95,
+                  "left": 534.603,
+                  "width": 62.125,
+                  "height": 44
+                }
+              }
+            ],
+            "dialogPanel": [],
+            "menuPanel": [],
+            "settingsBody": [],
+            "folioCard": [
+              {
+                "nodeId": 3,
+                "tag": "a",
+                "transform": "none",
+                "rect": {
+                  "x": 602.362,
+                  "y": 908.713,
+                  "top": 908.713,
+                  "right": 1232.362,
+                  "bottom": 1461.825,
+                  "left": 602.362,
+                  "width": 630,
+                  "height": 553.112
+                },
+                "opacity": "1"
+              }
+            ]
+          }
+        },
+        {
+          "frameIndex": 25,
+          "performanceTimeMs": 65949.5,
+          "rafTimestampMs": 65948.6,
+          "intervalSincePreviousFrameMs": 6.3,
+          "reducedMotion": false,
+          "effectiveMotion": "full",
+          "observations": {
+            "segmentedIndicator": [
+              {
+                "nodeId": 1,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 0, 0)",
+                "rect": {
+                  "x": 929.35,
+                  "y": -15.15,
+                  "top": -15.15,
+                  "right": 1022.1,
+                  "bottom": 28.85,
+                  "left": 929.35,
+                  "width": 92.75,
+                  "height": 44
+                }
+              },
+              {
+                "nodeId": 2,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 63.7364, 0)",
+                "rect": {
+                  "x": 534.761,
+                  "y": 337.95,
+                  "top": 337.95,
+                  "right": 596.886,
+                  "bottom": 381.95,
+                  "left": 534.761,
+                  "width": 62.125,
+                  "height": 44
+                }
+              }
+            ],
+            "dialogPanel": [],
+            "menuPanel": [],
+            "settingsBody": [],
+            "folioCard": [
+              {
+                "nodeId": 3,
+                "tag": "a",
+                "transform": "none",
+                "rect": {
+                  "x": 602.362,
+                  "y": 908.713,
+                  "top": 908.713,
+                  "right": 1232.362,
+                  "bottom": 1461.825,
+                  "left": 602.362,
+                  "width": 630,
+                  "height": 553.112
+                },
+                "opacity": "1"
+              }
+            ]
+          }
+        },
+        {
+          "frameIndex": 26,
+          "performanceTimeMs": 65955.4,
+          "rafTimestampMs": 65954.6,
+          "intervalSincePreviousFrameMs": 5.9,
+          "reducedMotion": false,
+          "effectiveMotion": "full",
+          "observations": {
+            "segmentedIndicator": [
+              {
+                "nodeId": 1,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 0, 0)",
+                "rect": {
+                  "x": 929.35,
+                  "y": -15.15,
+                  "top": -15.15,
+                  "right": 1022.1,
+                  "bottom": 28.85,
+                  "left": 929.35,
+                  "width": 92.75,
+                  "height": 44
+                }
+              },
+              {
+                "nodeId": 2,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 63.8539, 0)",
+                "rect": {
+                  "x": 534.879,
+                  "y": 337.95,
+                  "top": 337.95,
+                  "right": 597.004,
+                  "bottom": 381.95,
+                  "left": 534.879,
+                  "width": 62.125,
+                  "height": 44
+                }
+              }
+            ],
+            "dialogPanel": [],
+            "menuPanel": [],
+            "settingsBody": [],
+            "folioCard": [
+              {
+                "nodeId": 3,
+                "tag": "a",
+                "transform": "none",
+                "rect": {
+                  "x": 602.362,
+                  "y": 908.713,
+                  "top": 908.713,
+                  "right": 1232.362,
+                  "bottom": 1461.825,
+                  "left": 602.362,
+                  "width": 630,
+                  "height": 553.112
+                },
+                "opacity": "1"
+              }
+            ]
+          }
+        },
+        {
+          "frameIndex": 27,
+          "performanceTimeMs": 65961.5,
+          "rafTimestampMs": 65960.6,
+          "intervalSincePreviousFrameMs": 6.1,
+          "reducedMotion": false,
+          "effectiveMotion": "full",
+          "observations": {
+            "segmentedIndicator": [
+              {
+                "nodeId": 1,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 0, 0)",
+                "rect": {
+                  "x": 929.35,
+                  "y": -15.15,
+                  "top": -15.15,
+                  "right": 1022.1,
+                  "bottom": 28.85,
+                  "left": 929.35,
+                  "width": 92.75,
+                  "height": 44
+                }
+              },
+              {
+                "nodeId": 2,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 63.9423, 0)",
+                "rect": {
+                  "x": 534.967,
+                  "y": 337.95,
+                  "top": 337.95,
+                  "right": 597.092,
+                  "bottom": 381.95,
+                  "left": 534.967,
+                  "width": 62.125,
+                  "height": 44
+                }
+              }
+            ],
+            "dialogPanel": [],
+            "menuPanel": [],
+            "settingsBody": [],
+            "folioCard": [
+              {
+                "nodeId": 3,
+                "tag": "a",
+                "transform": "none",
+                "rect": {
+                  "x": 602.362,
+                  "y": 908.713,
+                  "top": 908.713,
+                  "right": 1232.362,
+                  "bottom": 1461.825,
+                  "left": 602.362,
+                  "width": 630,
+                  "height": 553.112
+                },
+                "opacity": "1"
+              }
+            ]
+          }
+        },
+        {
+          "frameIndex": 28,
+          "performanceTimeMs": 65967.7,
+          "rafTimestampMs": 65966.8,
+          "intervalSincePreviousFrameMs": 6.2,
+          "reducedMotion": false,
+          "effectiveMotion": "full",
+          "observations": {
+            "segmentedIndicator": [
+              {
+                "nodeId": 1,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 0, 0)",
+                "rect": {
+                  "x": 929.35,
+                  "y": -15.15,
+                  "top": -15.15,
+                  "right": 1022.1,
+                  "bottom": 28.85,
+                  "left": 929.35,
+                  "width": 92.75,
+                  "height": 44
+                }
+              },
+              {
+                "nodeId": 2,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 64.009, 0)",
+                "rect": {
+                  "x": 535.034,
+                  "y": 337.95,
+                  "top": 337.95,
+                  "right": 597.159,
+                  "bottom": 381.95,
+                  "left": 535.034,
+                  "width": 62.125,
+                  "height": 44
+                }
+              }
+            ],
+            "dialogPanel": [],
+            "menuPanel": [],
+            "settingsBody": [],
+            "folioCard": [
+              {
+                "nodeId": 3,
+                "tag": "a",
+                "transform": "none",
+                "rect": {
+                  "x": 602.362,
+                  "y": 908.713,
+                  "top": 908.713,
+                  "right": 1232.362,
+                  "bottom": 1461.825,
+                  "left": 602.362,
+                  "width": 630,
+                  "height": 553.112
+                },
+                "opacity": "1"
+              }
+            ]
+          }
+        },
+        {
+          "frameIndex": 29,
+          "performanceTimeMs": 65973.8,
+          "rafTimestampMs": 65972.7,
+          "intervalSincePreviousFrameMs": 6.1,
+          "reducedMotion": false,
+          "effectiveMotion": "full",
+          "observations": {
+            "segmentedIndicator": [
+              {
+                "nodeId": 1,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 0, 0)",
+                "rect": {
+                  "x": 929.35,
+                  "y": -15.15,
+                  "top": -15.15,
+                  "right": 1022.1,
+                  "bottom": 28.85,
+                  "left": 929.35,
+                  "width": 92.75,
+                  "height": 44
+                }
+              },
+              {
+                "nodeId": 2,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 64.054, 0)",
+                "rect": {
+                  "x": 535.079,
+                  "y": 337.95,
+                  "top": 337.95,
+                  "right": 597.204,
+                  "bottom": 381.95,
+                  "left": 535.079,
+                  "width": 62.125,
+                  "height": 44
+                }
+              }
+            ],
+            "dialogPanel": [],
+            "menuPanel": [],
+            "settingsBody": [],
+            "folioCard": [
+              {
+                "nodeId": 3,
+                "tag": "a",
+                "transform": "none",
+                "rect": {
+                  "x": 602.362,
+                  "y": 908.713,
+                  "top": 908.713,
+                  "right": 1232.362,
+                  "bottom": 1461.825,
+                  "left": 602.362,
+                  "width": 630,
+                  "height": 553.112
+                },
+                "opacity": "1"
+              }
+            ]
+          }
+        },
+        {
+          "frameIndex": 30,
+          "performanceTimeMs": 65979.6,
+          "rafTimestampMs": 65978.7,
+          "intervalSincePreviousFrameMs": 5.8,
+          "reducedMotion": false,
+          "effectiveMotion": "full",
+          "observations": {
+            "segmentedIndicator": [
+              {
+                "nodeId": 1,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 0, 0)",
+                "rect": {
+                  "x": 929.35,
+                  "y": -15.15,
+                  "top": -15.15,
+                  "right": 1022.1,
+                  "bottom": 28.85,
+                  "left": 929.35,
+                  "width": 92.75,
+                  "height": 44
+                }
+              },
+              {
+                "nodeId": 2,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 64.0852, 0)",
+                "rect": {
+                  "x": 535.11,
+                  "y": 337.95,
+                  "top": 337.95,
+                  "right": 597.235,
+                  "bottom": 381.95,
+                  "left": 535.11,
+                  "width": 62.125,
+                  "height": 44
+                }
+              }
+            ],
+            "dialogPanel": [],
+            "menuPanel": [],
+            "settingsBody": [],
+            "folioCard": [
+              {
+                "nodeId": 3,
+                "tag": "a",
+                "transform": "none",
+                "rect": {
+                  "x": 602.362,
+                  "y": 908.713,
+                  "top": 908.713,
+                  "right": 1232.362,
+                  "bottom": 1461.825,
+                  "left": 602.362,
+                  "width": 630,
+                  "height": 553.112
+                },
+                "opacity": "1"
+              }
+            ]
+          }
+        },
+        {
+          "frameIndex": 31,
+          "performanceTimeMs": 65985.8,
+          "rafTimestampMs": 65984.9,
+          "intervalSincePreviousFrameMs": 6.2,
+          "reducedMotion": false,
+          "effectiveMotion": "full",
+          "observations": {
+            "segmentedIndicator": [
+              {
+                "nodeId": 1,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 0, 0)",
+                "rect": {
+                  "x": 929.35,
+                  "y": -15.15,
+                  "top": -15.15,
+                  "right": 1022.1,
+                  "bottom": 28.85,
+                  "left": 929.35,
+                  "width": 92.75,
+                  "height": 44
+                }
+              },
+              {
+                "nodeId": 2,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 64.1057, 0)",
+                "rect": {
+                  "x": 535.131,
+                  "y": 337.95,
+                  "top": 337.95,
+                  "right": 597.256,
+                  "bottom": 381.95,
+                  "left": 535.131,
+                  "width": 62.125,
+                  "height": 44
+                }
+              }
+            ],
+            "dialogPanel": [],
+            "menuPanel": [],
+            "settingsBody": [],
+            "folioCard": [
+              {
+                "nodeId": 3,
+                "tag": "a",
+                "transform": "none",
+                "rect": {
+                  "x": 602.362,
+                  "y": 908.713,
+                  "top": 908.713,
+                  "right": 1232.362,
+                  "bottom": 1461.825,
+                  "left": 602.362,
+                  "width": 630,
+                  "height": 553.112
+                },
+                "opacity": "1"
+              }
+            ]
+          }
+        },
+        {
+          "frameIndex": 32,
+          "performanceTimeMs": 65991.8,
+          "rafTimestampMs": 65990.9,
+          "intervalSincePreviousFrameMs": 6,
+          "reducedMotion": false,
+          "effectiveMotion": "full",
+          "observations": {
+            "segmentedIndicator": [
+              {
+                "nodeId": 1,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 0, 0)",
+                "rect": {
+                  "x": 929.35,
+                  "y": -15.15,
+                  "top": -15.15,
+                  "right": 1022.1,
+                  "bottom": 28.85,
+                  "left": 929.35,
+                  "width": 92.75,
+                  "height": 44
+                }
+              },
+              {
+                "nodeId": 2,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 64.117, 0)",
+                "rect": {
+                  "x": 535.142,
+                  "y": 337.95,
+                  "top": 337.95,
+                  "right": 597.267,
+                  "bottom": 381.95,
+                  "left": 535.142,
+                  "width": 62.125,
+                  "height": 44
+                }
+              }
+            ],
+            "dialogPanel": [],
+            "menuPanel": [],
+            "settingsBody": [],
+            "folioCard": [
+              {
+                "nodeId": 3,
+                "tag": "a",
+                "transform": "none",
+                "rect": {
+                  "x": 602.362,
+                  "y": 908.713,
+                  "top": 908.713,
+                  "right": 1232.362,
+                  "bottom": 1461.825,
+                  "left": 602.362,
+                  "width": 630,
+                  "height": 553.112
+                },
+                "opacity": "1"
+              }
+            ]
+          }
+        },
+        {
+          "frameIndex": 33,
+          "performanceTimeMs": 65997.8,
+          "rafTimestampMs": 65997,
+          "intervalSincePreviousFrameMs": 6,
+          "reducedMotion": false,
+          "effectiveMotion": "full",
+          "observations": {
+            "segmentedIndicator": [
+              {
+                "nodeId": 1,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 0, 0)",
+                "rect": {
+                  "x": 929.35,
+                  "y": -15.15,
+                  "top": -15.15,
+                  "right": 1022.1,
+                  "bottom": 28.85,
+                  "left": 929.35,
+                  "width": 92.75,
+                  "height": 44
+                }
+              },
+              {
+                "nodeId": 2,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 64.1227, 0)",
+                "rect": {
+                  "x": 535.148,
+                  "y": 337.95,
+                  "top": 337.95,
+                  "right": 597.273,
+                  "bottom": 381.95,
+                  "left": 535.148,
+                  "width": 62.125,
+                  "height": 44
+                }
+              }
+            ],
+            "dialogPanel": [],
+            "menuPanel": [],
+            "settingsBody": [],
+            "folioCard": [
+              {
+                "nodeId": 3,
+                "tag": "a",
+                "transform": "none",
+                "rect": {
+                  "x": 602.362,
+                  "y": 908.713,
+                  "top": 908.713,
+                  "right": 1232.362,
+                  "bottom": 1461.825,
+                  "left": 602.362,
+                  "width": 630,
+                  "height": 553.112
+                },
+                "opacity": "1"
+              }
+            ]
+          }
+        },
+        {
+          "frameIndex": 34,
+          "performanceTimeMs": 66004.1,
+          "rafTimestampMs": 66003.1,
+          "intervalSincePreviousFrameMs": 6.3,
+          "reducedMotion": false,
+          "effectiveMotion": "full",
+          "observations": {
+            "segmentedIndicator": [
+              {
+                "nodeId": 1,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 0, 0)",
+                "rect": {
+                  "x": 929.35,
+                  "y": -15.15,
+                  "top": -15.15,
+                  "right": 1022.1,
+                  "bottom": 28.85,
+                  "left": 929.35,
+                  "width": 92.75,
+                  "height": 44
+                }
+              },
+              {
+                "nodeId": 2,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 64.1247, 0)",
+                "rect": {
+                  "x": 535.15,
+                  "y": 337.95,
+                  "top": 337.95,
+                  "right": 597.275,
+                  "bottom": 381.95,
+                  "left": 535.15,
+                  "width": 62.125,
+                  "height": 44
+                }
+              }
+            ],
+            "dialogPanel": [],
+            "menuPanel": [],
+            "settingsBody": [],
+            "folioCard": [
+              {
+                "nodeId": 3,
+                "tag": "a",
+                "transform": "none",
+                "rect": {
+                  "x": 602.362,
+                  "y": 908.713,
+                  "top": 908.713,
+                  "right": 1232.362,
+                  "bottom": 1461.825,
+                  "left": 602.362,
+                  "width": 630,
+                  "height": 553.112
+                },
+                "opacity": "1"
+              }
+            ]
+          }
+        },
+        {
+          "frameIndex": 35,
+          "performanceTimeMs": 66010.1,
+          "rafTimestampMs": 66009.1,
+          "intervalSincePreviousFrameMs": 6,
+          "reducedMotion": false,
+          "effectiveMotion": "full",
+          "observations": {
+            "segmentedIndicator": [
+              {
+                "nodeId": 1,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 0, 0)",
+                "rect": {
+                  "x": 929.35,
+                  "y": -15.15,
+                  "top": -15.15,
+                  "right": 1022.1,
+                  "bottom": 28.85,
+                  "left": 929.35,
+                  "width": 92.75,
+                  "height": 44
+                }
+              },
+              {
+                "nodeId": 2,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 64.125, 0)",
+                "rect": {
+                  "x": 535.15,
+                  "y": 337.95,
+                  "top": 337.95,
+                  "right": 597.275,
+                  "bottom": 381.95,
+                  "left": 535.15,
+                  "width": 62.125,
+                  "height": 44
+                }
+              }
+            ],
+            "dialogPanel": [],
+            "menuPanel": [],
+            "settingsBody": [],
+            "folioCard": [
+              {
+                "nodeId": 3,
+                "tag": "a",
+                "transform": "none",
+                "rect": {
+                  "x": 602.362,
+                  "y": 908.713,
+                  "top": 908.713,
+                  "right": 1232.362,
+                  "bottom": 1461.825,
+                  "left": 602.362,
+                  "width": 630,
+                  "height": 553.112
+                },
+                "opacity": "1"
+              }
+            ]
+          }
+        },
+        {
+          "frameIndex": 36,
+          "performanceTimeMs": 66016.3,
+          "rafTimestampMs": 66015.2,
+          "intervalSincePreviousFrameMs": 6.2,
+          "reducedMotion": false,
+          "effectiveMotion": "full",
+          "observations": {
+            "segmentedIndicator": [
+              {
+                "nodeId": 1,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 0, 0)",
+                "rect": {
+                  "x": 929.35,
+                  "y": -15.15,
+                  "top": -15.15,
+                  "right": 1022.1,
+                  "bottom": 28.85,
+                  "left": 929.35,
+                  "width": 92.75,
+                  "height": 44
+                }
+              },
+              {
+                "nodeId": 2,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 64.125, 0)",
+                "rect": {
+                  "x": 535.15,
+                  "y": 337.95,
+                  "top": 337.95,
+                  "right": 597.275,
+                  "bottom": 381.95,
+                  "left": 535.15,
+                  "width": 62.125,
+                  "height": 44
+                }
+              }
+            ],
+            "dialogPanel": [],
+            "menuPanel": [],
+            "settingsBody": [],
+            "folioCard": [
+              {
+                "nodeId": 3,
+                "tag": "a",
+                "transform": "none",
+                "rect": {
+                  "x": 602.362,
+                  "y": 908.713,
+                  "top": 908.713,
+                  "right": 1232.362,
+                  "bottom": 1461.825,
+                  "left": 602.362,
+                  "width": 630,
+                  "height": 553.112
+                },
+                "opacity": "1"
+              }
+            ]
+          }
+        },
+        {
+          "frameIndex": 37,
+          "performanceTimeMs": 66022.1,
+          "rafTimestampMs": 66021.2,
+          "intervalSincePreviousFrameMs": 5.8,
+          "reducedMotion": false,
+          "effectiveMotion": "full",
+          "observations": {
+            "segmentedIndicator": [
+              {
+                "nodeId": 1,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 0, 0)",
+                "rect": {
+                  "x": 929.35,
+                  "y": -15.15,
+                  "top": -15.15,
+                  "right": 1022.1,
+                  "bottom": 28.85,
+                  "left": 929.35,
+                  "width": 92.75,
+                  "height": 44
+                }
+              },
+              {
+                "nodeId": 2,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 64.125, 0)",
+                "rect": {
+                  "x": 535.15,
+                  "y": 337.95,
+                  "top": 337.95,
+                  "right": 597.275,
+                  "bottom": 381.95,
+                  "left": 535.15,
+                  "width": 62.125,
+                  "height": 44
+                }
+              }
+            ],
+            "dialogPanel": [],
+            "menuPanel": [],
+            "settingsBody": [],
+            "folioCard": [
+              {
+                "nodeId": 3,
+                "tag": "a",
+                "transform": "none",
+                "rect": {
+                  "x": 602.362,
+                  "y": 908.713,
+                  "top": 908.713,
+                  "right": 1232.362,
+                  "bottom": 1461.825,
+                  "left": 602.362,
+                  "width": 630,
+                  "height": 553.112
+                },
+                "opacity": "1"
+              }
+            ]
+          }
+        },
+        {
+          "frameIndex": 38,
+          "performanceTimeMs": 66028.2,
+          "rafTimestampMs": 66027.2,
+          "intervalSincePreviousFrameMs": 6.1,
+          "reducedMotion": false,
+          "effectiveMotion": "full",
+          "observations": {
+            "segmentedIndicator": [
+              {
+                "nodeId": 1,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 0, 0)",
+                "rect": {
+                  "x": 929.35,
+                  "y": -15.15,
+                  "top": -15.15,
+                  "right": 1022.1,
+                  "bottom": 28.85,
+                  "left": 929.35,
+                  "width": 92.75,
+                  "height": 44
+                }
+              },
+              {
+                "nodeId": 2,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 64.125, 0)",
+                "rect": {
+                  "x": 535.15,
+                  "y": 337.95,
+                  "top": 337.95,
+                  "right": 597.275,
+                  "bottom": 381.95,
+                  "left": 535.15,
+                  "width": 62.125,
+                  "height": 44
+                }
+              }
+            ],
+            "dialogPanel": [],
+            "menuPanel": [],
+            "settingsBody": [],
+            "folioCard": [
+              {
+                "nodeId": 3,
+                "tag": "a",
+                "transform": "none",
+                "rect": {
+                  "x": 602.362,
+                  "y": 908.713,
+                  "top": 908.713,
+                  "right": 1232.362,
+                  "bottom": 1461.825,
+                  "left": 602.362,
+                  "width": 630,
+                  "height": 553.112
+                },
+                "opacity": "1"
+              }
+            ]
+          }
+        },
+        {
+          "frameIndex": 39,
+          "performanceTimeMs": 66034.2,
+          "rafTimestampMs": 66033.3,
+          "intervalSincePreviousFrameMs": 6,
+          "reducedMotion": false,
+          "effectiveMotion": "full",
+          "observations": {
+            "segmentedIndicator": [
+              {
+                "nodeId": 1,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 0, 0)",
+                "rect": {
+                  "x": 929.35,
+                  "y": -15.15,
+                  "top": -15.15,
+                  "right": 1022.1,
+                  "bottom": 28.85,
+                  "left": 929.35,
+                  "width": 92.75,
+                  "height": 44
+                }
+              },
+              {
+                "nodeId": 2,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 64.125, 0)",
+                "rect": {
+                  "x": 535.15,
+                  "y": 337.95,
+                  "top": 337.95,
+                  "right": 597.275,
+                  "bottom": 381.95,
+                  "left": 535.15,
+                  "width": 62.125,
+                  "height": 44
+                }
+              }
+            ],
+            "dialogPanel": [],
+            "menuPanel": [],
+            "settingsBody": [],
+            "folioCard": [
+              {
+                "nodeId": 3,
+                "tag": "a",
+                "transform": "none",
+                "rect": {
+                  "x": 602.362,
+                  "y": 908.713,
+                  "top": 908.713,
+                  "right": 1232.362,
+                  "bottom": 1461.825,
+                  "left": 602.362,
+                  "width": 630,
+                  "height": 553.112
+                },
+                "opacity": "1"
+              }
+            ]
+          }
+        },
+        {
+          "frameIndex": 40,
+          "performanceTimeMs": 66040.3,
+          "rafTimestampMs": 66039.5,
+          "intervalSincePreviousFrameMs": 6.1,
+          "reducedMotion": false,
+          "effectiveMotion": "full",
+          "observations": {
+            "segmentedIndicator": [
+              {
+                "nodeId": 1,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 0, 0)",
+                "rect": {
+                  "x": 929.35,
+                  "y": -15.15,
+                  "top": -15.15,
+                  "right": 1022.1,
+                  "bottom": 28.85,
+                  "left": 929.35,
+                  "width": 92.75,
+                  "height": 44
+                }
+              },
+              {
+                "nodeId": 2,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 64.125, 0)",
+                "rect": {
+                  "x": 535.15,
+                  "y": 337.95,
+                  "top": 337.95,
+                  "right": 597.275,
+                  "bottom": 381.95,
+                  "left": 535.15,
+                  "width": 62.125,
+                  "height": 44
+                }
+              }
+            ],
+            "dialogPanel": [],
+            "menuPanel": [],
+            "settingsBody": [],
+            "folioCard": [
+              {
+                "nodeId": 3,
+                "tag": "a",
+                "transform": "none",
+                "rect": {
+                  "x": 602.362,
+                  "y": 908.713,
+                  "top": 908.713,
+                  "right": 1232.362,
+                  "bottom": 1461.825,
+                  "left": 602.362,
+                  "width": 630,
+                  "height": 553.112
+                },
+                "opacity": "1"
+              }
+            ]
+          }
+        },
+        {
+          "frameIndex": 41,
+          "performanceTimeMs": 66046.3,
+          "rafTimestampMs": 66045.4,
+          "intervalSincePreviousFrameMs": 6,
+          "reducedMotion": false,
+          "effectiveMotion": "full",
+          "observations": {
+            "segmentedIndicator": [
+              {
+                "nodeId": 1,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 0, 0)",
+                "rect": {
+                  "x": 929.35,
+                  "y": -15.15,
+                  "top": -15.15,
+                  "right": 1022.1,
+                  "bottom": 28.85,
+                  "left": 929.35,
+                  "width": 92.75,
+                  "height": 44
+                }
+              },
+              {
+                "nodeId": 2,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 64.125, 0)",
+                "rect": {
+                  "x": 535.15,
+                  "y": 337.95,
+                  "top": 337.95,
+                  "right": 597.275,
+                  "bottom": 381.95,
+                  "left": 535.15,
+                  "width": 62.125,
+                  "height": 44
+                }
+              }
+            ],
+            "dialogPanel": [],
+            "menuPanel": [],
+            "settingsBody": [],
+            "folioCard": [
+              {
+                "nodeId": 3,
+                "tag": "a",
+                "transform": "none",
+                "rect": {
+                  "x": 602.362,
+                  "y": 908.713,
+                  "top": 908.713,
+                  "right": 1232.362,
+                  "bottom": 1461.825,
+                  "left": 602.362,
+                  "width": 630,
+                  "height": 553.112
+                },
+                "opacity": "1"
+              }
+            ]
+          }
+        },
+        {
+          "frameIndex": 42,
+          "performanceTimeMs": 66052.7,
+          "rafTimestampMs": 66051.7,
+          "intervalSincePreviousFrameMs": 6.4,
+          "reducedMotion": false,
+          "effectiveMotion": "full",
+          "observations": {
+            "segmentedIndicator": [
+              {
+                "nodeId": 1,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 0, 0)",
+                "rect": {
+                  "x": 929.35,
+                  "y": -15.15,
+                  "top": -15.15,
+                  "right": 1022.1,
+                  "bottom": 28.85,
+                  "left": 929.35,
+                  "width": 92.75,
+                  "height": 44
+                }
+              },
+              {
+                "nodeId": 2,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 64.125, 0)",
+                "rect": {
+                  "x": 535.15,
+                  "y": 337.95,
+                  "top": 337.95,
+                  "right": 597.275,
+                  "bottom": 381.95,
+                  "left": 535.15,
+                  "width": 62.125,
+                  "height": 44
+                }
+              }
+            ],
+            "dialogPanel": [],
+            "menuPanel": [],
+            "settingsBody": [],
+            "folioCard": [
+              {
+                "nodeId": 3,
+                "tag": "a",
+                "transform": "none",
+                "rect": {
+                  "x": 602.362,
+                  "y": 908.713,
+                  "top": 908.713,
+                  "right": 1232.362,
+                  "bottom": 1461.825,
+                  "left": 602.362,
+                  "width": 630,
+                  "height": 553.112
+                },
+                "opacity": "1"
+              }
+            ]
+          }
+        },
+        {
+          "frameIndex": 43,
+          "performanceTimeMs": 66058.4,
+          "rafTimestampMs": 66057.5,
+          "intervalSincePreviousFrameMs": 5.7,
+          "reducedMotion": false,
+          "effectiveMotion": "full",
+          "observations": {
+            "segmentedIndicator": [
+              {
+                "nodeId": 1,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 0, 0)",
+                "rect": {
+                  "x": 929.35,
+                  "y": -15.15,
+                  "top": -15.15,
+                  "right": 1022.1,
+                  "bottom": 28.85,
+                  "left": 929.35,
+                  "width": 92.75,
+                  "height": 44
+                }
+              },
+              {
+                "nodeId": 2,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 64.125, 0)",
+                "rect": {
+                  "x": 535.15,
+                  "y": 337.95,
+                  "top": 337.95,
+                  "right": 597.275,
+                  "bottom": 381.95,
+                  "left": 535.15,
+                  "width": 62.125,
+                  "height": 44
+                }
+              }
+            ],
+            "dialogPanel": [],
+            "menuPanel": [],
+            "settingsBody": [],
+            "folioCard": [
+              {
+                "nodeId": 3,
+                "tag": "a",
+                "transform": "none",
+                "rect": {
+                  "x": 602.362,
+                  "y": 908.713,
+                  "top": 908.713,
+                  "right": 1232.362,
+                  "bottom": 1461.825,
+                  "left": 602.362,
+                  "width": 630,
+                  "height": 553.112
+                },
+                "opacity": "1"
+              }
+            ]
+          }
+        },
+        {
+          "frameIndex": 44,
+          "performanceTimeMs": 66064.5,
+          "rafTimestampMs": 66063.6,
+          "intervalSincePreviousFrameMs": 6.1,
+          "reducedMotion": false,
+          "effectiveMotion": "full",
+          "observations": {
+            "segmentedIndicator": [
+              {
+                "nodeId": 1,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 0, 0)",
+                "rect": {
+                  "x": 929.35,
+                  "y": -15.15,
+                  "top": -15.15,
+                  "right": 1022.1,
+                  "bottom": 28.85,
+                  "left": 929.35,
+                  "width": 92.75,
+                  "height": 44
+                }
+              },
+              {
+                "nodeId": 2,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 64.125, 0)",
+                "rect": {
+                  "x": 535.15,
+                  "y": 337.95,
+                  "top": 337.95,
+                  "right": 597.275,
+                  "bottom": 381.95,
+                  "left": 535.15,
+                  "width": 62.125,
+                  "height": 44
+                }
+              }
+            ],
+            "dialogPanel": [],
+            "menuPanel": [],
+            "settingsBody": [],
+            "folioCard": [
+              {
+                "nodeId": 3,
+                "tag": "a",
+                "transform": "none",
+                "rect": {
+                  "x": 602.362,
+                  "y": 908.713,
+                  "top": 908.713,
+                  "right": 1232.362,
+                  "bottom": 1461.825,
+                  "left": 602.362,
+                  "width": 630,
+                  "height": 553.112
+                },
+                "opacity": "1"
+              }
+            ]
+          }
+        },
+        {
+          "frameIndex": 45,
+          "performanceTimeMs": 66070.7,
+          "rafTimestampMs": 66069.7,
+          "intervalSincePreviousFrameMs": 6.2,
+          "reducedMotion": false,
+          "effectiveMotion": "full",
+          "observations": {
+            "segmentedIndicator": [
+              {
+                "nodeId": 1,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 0, 0)",
+                "rect": {
+                  "x": 929.35,
+                  "y": -15.15,
+                  "top": -15.15,
+                  "right": 1022.1,
+                  "bottom": 28.85,
+                  "left": 929.35,
+                  "width": 92.75,
+                  "height": 44
+                }
+              },
+              {
+                "nodeId": 2,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 64.125, 0)",
+                "rect": {
+                  "x": 535.15,
+                  "y": 337.95,
+                  "top": 337.95,
+                  "right": 597.275,
+                  "bottom": 381.95,
+                  "left": 535.15,
+                  "width": 62.125,
+                  "height": 44
+                }
+              }
+            ],
+            "dialogPanel": [],
+            "menuPanel": [],
+            "settingsBody": [],
+            "folioCard": [
+              {
+                "nodeId": 3,
+                "tag": "a",
+                "transform": "none",
+                "rect": {
+                  "x": 602.362,
+                  "y": 908.713,
+                  "top": 908.713,
+                  "right": 1232.362,
+                  "bottom": 1461.825,
+                  "left": 602.362,
+                  "width": 630,
+                  "height": 553.112
+                },
+                "opacity": "1"
+              }
+            ]
+          }
+        },
+        {
+          "frameIndex": 46,
+          "performanceTimeMs": 66076.5,
+          "rafTimestampMs": 66075.6,
+          "intervalSincePreviousFrameMs": 5.8,
+          "reducedMotion": false,
+          "effectiveMotion": "full",
+          "observations": {
+            "segmentedIndicator": [
+              {
+                "nodeId": 1,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 0, 0)",
+                "rect": {
+                  "x": 929.35,
+                  "y": -15.15,
+                  "top": -15.15,
+                  "right": 1022.1,
+                  "bottom": 28.85,
+                  "left": 929.35,
+                  "width": 92.75,
+                  "height": 44
+                }
+              },
+              {
+                "nodeId": 2,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 64.125, 0)",
+                "rect": {
+                  "x": 535.15,
+                  "y": 337.95,
+                  "top": 337.95,
+                  "right": 597.275,
+                  "bottom": 381.95,
+                  "left": 535.15,
+                  "width": 62.125,
+                  "height": 44
+                }
+              }
+            ],
+            "dialogPanel": [],
+            "menuPanel": [],
+            "settingsBody": [],
+            "folioCard": [
+              {
+                "nodeId": 3,
+                "tag": "a",
+                "transform": "none",
+                "rect": {
+                  "x": 602.362,
+                  "y": 908.713,
+                  "top": 908.713,
+                  "right": 1232.362,
+                  "bottom": 1461.825,
+                  "left": 602.362,
+                  "width": 630,
+                  "height": 553.112
+                },
+                "opacity": "1"
+              }
+            ]
+          }
+        },
+        {
+          "frameIndex": 47,
+          "performanceTimeMs": 66082.6,
+          "rafTimestampMs": 66081.8,
+          "intervalSincePreviousFrameMs": 6.1,
+          "reducedMotion": false,
+          "effectiveMotion": "full",
+          "observations": {
+            "segmentedIndicator": [
+              {
+                "nodeId": 1,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 0, 0)",
+                "rect": {
+                  "x": 929.35,
+                  "y": -15.15,
+                  "top": -15.15,
+                  "right": 1022.1,
+                  "bottom": 28.85,
+                  "left": 929.35,
+                  "width": 92.75,
+                  "height": 44
+                }
+              },
+              {
+                "nodeId": 2,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 64.125, 0)",
+                "rect": {
+                  "x": 535.15,
+                  "y": 337.95,
+                  "top": 337.95,
+                  "right": 597.275,
+                  "bottom": 381.95,
+                  "left": 535.15,
+                  "width": 62.125,
+                  "height": 44
+                }
+              }
+            ],
+            "dialogPanel": [],
+            "menuPanel": [],
+            "settingsBody": [],
+            "folioCard": [
+              {
+                "nodeId": 3,
+                "tag": "a",
+                "transform": "none",
+                "rect": {
+                  "x": 602.362,
+                  "y": 908.713,
+                  "top": 908.713,
+                  "right": 1232.362,
+                  "bottom": 1461.825,
+                  "left": 602.362,
+                  "width": 630,
+                  "height": 553.112
+                },
+                "opacity": "1"
+              }
+            ]
+          }
+        },
+        {
+          "frameIndex": 48,
+          "performanceTimeMs": 66088.8,
+          "rafTimestampMs": 66087.9,
+          "intervalSincePreviousFrameMs": 6.2,
+          "reducedMotion": false,
+          "effectiveMotion": "full",
+          "observations": {
+            "segmentedIndicator": [
+              {
+                "nodeId": 1,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 0, 0)",
+                "rect": {
+                  "x": 929.35,
+                  "y": -15.15,
+                  "top": -15.15,
+                  "right": 1022.1,
+                  "bottom": 28.85,
+                  "left": 929.35,
+                  "width": 92.75,
+                  "height": 44
+                }
+              },
+              {
+                "nodeId": 2,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 64.125, 0)",
+                "rect": {
+                  "x": 535.15,
+                  "y": 337.95,
+                  "top": 337.95,
+                  "right": 597.275,
+                  "bottom": 381.95,
+                  "left": 535.15,
+                  "width": 62.125,
+                  "height": 44
+                }
+              }
+            ],
+            "dialogPanel": [],
+            "menuPanel": [],
+            "settingsBody": [],
+            "folioCard": [
+              {
+                "nodeId": 3,
+                "tag": "a",
+                "transform": "none",
+                "rect": {
+                  "x": 602.362,
+                  "y": 908.713,
+                  "top": 908.713,
+                  "right": 1232.362,
+                  "bottom": 1461.825,
+                  "left": 602.362,
+                  "width": 630,
+                  "height": 553.112
+                },
+                "opacity": "1"
+              }
+            ]
+          }
+        },
+        {
+          "frameIndex": 49,
+          "performanceTimeMs": 66094.8,
+          "rafTimestampMs": 66094,
+          "intervalSincePreviousFrameMs": 6,
+          "reducedMotion": false,
+          "effectiveMotion": "full",
+          "observations": {
+            "segmentedIndicator": [
+              {
+                "nodeId": 1,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 0, 0)",
+                "rect": {
+                  "x": 929.35,
+                  "y": -15.15,
+                  "top": -15.15,
+                  "right": 1022.1,
+                  "bottom": 28.85,
+                  "left": 929.35,
+                  "width": 92.75,
+                  "height": 44
+                }
+              },
+              {
+                "nodeId": 2,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 64.125, 0)",
+                "rect": {
+                  "x": 535.15,
+                  "y": 337.95,
+                  "top": 337.95,
+                  "right": 597.275,
+                  "bottom": 381.95,
+                  "left": 535.15,
+                  "width": 62.125,
+                  "height": 44
+                }
+              }
+            ],
+            "dialogPanel": [],
+            "menuPanel": [],
+            "settingsBody": [],
+            "folioCard": [
+              {
+                "nodeId": 3,
+                "tag": "a",
+                "transform": "none",
+                "rect": {
+                  "x": 602.362,
+                  "y": 908.713,
+                  "top": 908.713,
+                  "right": 1232.362,
+                  "bottom": 1461.825,
+                  "left": 602.362,
+                  "width": 630,
+                  "height": 553.112
+                },
+                "opacity": "1"
+              }
+            ]
+          }
+        },
+        {
+          "frameIndex": 50,
+          "performanceTimeMs": 66100.8,
+          "rafTimestampMs": 66099.9,
+          "intervalSincePreviousFrameMs": 6,
+          "reducedMotion": false,
+          "effectiveMotion": "full",
+          "observations": {
+            "segmentedIndicator": [
+              {
+                "nodeId": 1,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 0, 0)",
+                "rect": {
+                  "x": 929.35,
+                  "y": -15.15,
+                  "top": -15.15,
+                  "right": 1022.1,
+                  "bottom": 28.85,
+                  "left": 929.35,
+                  "width": 92.75,
+                  "height": 44
+                }
+              },
+              {
+                "nodeId": 2,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 64.125, 0)",
+                "rect": {
+                  "x": 535.15,
+                  "y": 337.95,
+                  "top": 337.95,
+                  "right": 597.275,
+                  "bottom": 381.95,
+                  "left": 535.15,
+                  "width": 62.125,
+                  "height": 44
+                }
+              }
+            ],
+            "dialogPanel": [],
+            "menuPanel": [],
+            "settingsBody": [],
+            "folioCard": [
+              {
+                "nodeId": 3,
+                "tag": "a",
+                "transform": "none",
+                "rect": {
+                  "x": 602.362,
+                  "y": 908.713,
+                  "top": 908.713,
+                  "right": 1232.362,
+                  "bottom": 1461.825,
+                  "left": 602.362,
+                  "width": 630,
+                  "height": 553.112
+                },
+                "opacity": "1"
+              }
+            ]
+          }
+        },
+        {
+          "frameIndex": 51,
+          "performanceTimeMs": 66107.3,
+          "rafTimestampMs": 66106,
+          "intervalSincePreviousFrameMs": 6.5,
+          "reducedMotion": false,
+          "effectiveMotion": "full",
+          "observations": {
+            "segmentedIndicator": [
+              {
+                "nodeId": 1,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 0, 0)",
+                "rect": {
+                  "x": 929.35,
+                  "y": -15.15,
+                  "top": -15.15,
+                  "right": 1022.1,
+                  "bottom": 28.85,
+                  "left": 929.35,
+                  "width": 92.75,
+                  "height": 44
+                }
+              },
+              {
+                "nodeId": 2,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 64.125, 0)",
+                "rect": {
+                  "x": 535.15,
+                  "y": 337.95,
+                  "top": 337.95,
+                  "right": 597.275,
+                  "bottom": 381.95,
+                  "left": 535.15,
+                  "width": 62.125,
+                  "height": 44
+                }
+              }
+            ],
+            "dialogPanel": [],
+            "menuPanel": [],
+            "settingsBody": [],
+            "folioCard": [
+              {
+                "nodeId": 3,
+                "tag": "a",
+                "transform": "none",
+                "rect": {
+                  "x": 602.362,
+                  "y": 908.713,
+                  "top": 908.713,
+                  "right": 1232.362,
+                  "bottom": 1461.825,
+                  "left": 602.362,
+                  "width": 630,
+                  "height": 553.112
+                },
+                "opacity": "1"
+              }
+            ]
+          }
+        },
+        {
+          "frameIndex": 52,
+          "performanceTimeMs": 66113.1,
+          "rafTimestampMs": 66112.3,
+          "intervalSincePreviousFrameMs": 5.8,
+          "reducedMotion": false,
+          "effectiveMotion": "full",
+          "observations": {
+            "segmentedIndicator": [
+              {
+                "nodeId": 1,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 0, 0)",
+                "rect": {
+                  "x": 929.35,
+                  "y": -15.15,
+                  "top": -15.15,
+                  "right": 1022.1,
+                  "bottom": 28.85,
+                  "left": 929.35,
+                  "width": 92.75,
+                  "height": 44
+                }
+              },
+              {
+                "nodeId": 2,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 64.125, 0)",
+                "rect": {
+                  "x": 535.15,
+                  "y": 337.95,
+                  "top": 337.95,
+                  "right": 597.275,
+                  "bottom": 381.95,
+                  "left": 535.15,
+                  "width": 62.125,
+                  "height": 44
+                }
+              }
+            ],
+            "dialogPanel": [],
+            "menuPanel": [],
+            "settingsBody": [],
+            "folioCard": [
+              {
+                "nodeId": 3,
+                "tag": "a",
+                "transform": "none",
+                "rect": {
+                  "x": 602.362,
+                  "y": 908.713,
+                  "top": 908.713,
+                  "right": 1232.362,
+                  "bottom": 1461.825,
+                  "left": 602.362,
+                  "width": 630,
+                  "height": 553.112
+                },
+                "opacity": "1"
+              }
+            ]
+          }
+        },
+        {
+          "frameIndex": 53,
+          "performanceTimeMs": 66119.1,
+          "rafTimestampMs": 66118.2,
+          "intervalSincePreviousFrameMs": 6,
+          "reducedMotion": false,
+          "effectiveMotion": "full",
+          "observations": {
+            "segmentedIndicator": [
+              {
+                "nodeId": 1,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 0, 0)",
+                "rect": {
+                  "x": 929.35,
+                  "y": -15.15,
+                  "top": -15.15,
+                  "right": 1022.1,
+                  "bottom": 28.85,
+                  "left": 929.35,
+                  "width": 92.75,
+                  "height": 44
+                }
+              },
+              {
+                "nodeId": 2,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 64.125, 0)",
+                "rect": {
+                  "x": 535.15,
+                  "y": 337.95,
+                  "top": 337.95,
+                  "right": 597.275,
+                  "bottom": 381.95,
+                  "left": 535.15,
+                  "width": 62.125,
+                  "height": 44
+                }
+              }
+            ],
+            "dialogPanel": [],
+            "menuPanel": [],
+            "settingsBody": [],
+            "folioCard": [
+              {
+                "nodeId": 3,
+                "tag": "a",
+                "transform": "none",
+                "rect": {
+                  "x": 602.362,
+                  "y": 908.713,
+                  "top": 908.713,
+                  "right": 1232.362,
+                  "bottom": 1461.825,
+                  "left": 602.362,
+                  "width": 630,
+                  "height": 553.112
+                },
+                "opacity": "1"
+              }
+            ]
+          }
+        },
+        {
+          "frameIndex": 54,
+          "performanceTimeMs": 66125.2,
+          "rafTimestampMs": 66124.3,
+          "intervalSincePreviousFrameMs": 6.1,
+          "reducedMotion": false,
+          "effectiveMotion": "full",
+          "observations": {
+            "segmentedIndicator": [
+              {
+                "nodeId": 1,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 0, 0)",
+                "rect": {
+                  "x": 929.35,
+                  "y": -15.15,
+                  "top": -15.15,
+                  "right": 1022.1,
+                  "bottom": 28.85,
+                  "left": 929.35,
+                  "width": 92.75,
+                  "height": 44
+                }
+              },
+              {
+                "nodeId": 2,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 64.125, 0)",
+                "rect": {
+                  "x": 535.15,
+                  "y": 337.95,
+                  "top": 337.95,
+                  "right": 597.275,
+                  "bottom": 381.95,
+                  "left": 535.15,
+                  "width": 62.125,
+                  "height": 44
+                }
+              }
+            ],
+            "dialogPanel": [],
+            "menuPanel": [],
+            "settingsBody": [],
+            "folioCard": [
+              {
+                "nodeId": 3,
+                "tag": "a",
+                "transform": "none",
+                "rect": {
+                  "x": 602.362,
+                  "y": 908.713,
+                  "top": 908.713,
+                  "right": 1232.362,
+                  "bottom": 1461.825,
+                  "left": 602.362,
+                  "width": 630,
+                  "height": 553.112
+                },
+                "opacity": "1"
+              }
+            ]
+          }
+        },
+        {
+          "frameIndex": 55,
+          "performanceTimeMs": 66131.3,
+          "rafTimestampMs": 66130.4,
+          "intervalSincePreviousFrameMs": 6.1,
+          "reducedMotion": false,
+          "effectiveMotion": "full",
+          "observations": {
+            "segmentedIndicator": [
+              {
+                "nodeId": 1,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 0, 0)",
+                "rect": {
+                  "x": 929.35,
+                  "y": -15.15,
+                  "top": -15.15,
+                  "right": 1022.1,
+                  "bottom": 28.85,
+                  "left": 929.35,
+                  "width": 92.75,
+                  "height": 44
+                }
+              },
+              {
+                "nodeId": 2,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 64.125, 0)",
+                "rect": {
+                  "x": 535.15,
+                  "y": 337.95,
+                  "top": 337.95,
+                  "right": 597.275,
+                  "bottom": 381.95,
+                  "left": 535.15,
+                  "width": 62.125,
+                  "height": 44
+                }
+              }
+            ],
+            "dialogPanel": [],
+            "menuPanel": [],
+            "settingsBody": [],
+            "folioCard": [
+              {
+                "nodeId": 3,
+                "tag": "a",
+                "transform": "none",
+                "rect": {
+                  "x": 602.362,
+                  "y": 908.713,
+                  "top": 908.713,
+                  "right": 1232.362,
+                  "bottom": 1461.825,
+                  "left": 602.362,
+                  "width": 630,
+                  "height": 553.112
+                },
+                "opacity": "1"
+              }
+            ]
+          }
+        },
+        {
+          "frameIndex": 56,
+          "performanceTimeMs": 66137.1,
+          "rafTimestampMs": 66136.3,
+          "intervalSincePreviousFrameMs": 5.8,
+          "reducedMotion": false,
+          "effectiveMotion": "full",
+          "observations": {
+            "segmentedIndicator": [
+              {
+                "nodeId": 1,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 0, 0)",
+                "rect": {
+                  "x": 929.35,
+                  "y": -15.15,
+                  "top": -15.15,
+                  "right": 1022.1,
+                  "bottom": 28.85,
+                  "left": 929.35,
+                  "width": 92.75,
+                  "height": 44
+                }
+              },
+              {
+                "nodeId": 2,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 64.125, 0)",
+                "rect": {
+                  "x": 535.15,
+                  "y": 337.95,
+                  "top": 337.95,
+                  "right": 597.275,
+                  "bottom": 381.95,
+                  "left": 535.15,
+                  "width": 62.125,
+                  "height": 44
+                }
+              }
+            ],
+            "dialogPanel": [],
+            "menuPanel": [],
+            "settingsBody": [],
+            "folioCard": [
+              {
+                "nodeId": 3,
+                "tag": "a",
+                "transform": "none",
+                "rect": {
+                  "x": 602.362,
+                  "y": 908.713,
+                  "top": 908.713,
+                  "right": 1232.362,
+                  "bottom": 1461.825,
+                  "left": 602.362,
+                  "width": 630,
+                  "height": 553.112
+                },
+                "opacity": "1"
+              }
+            ]
+          }
+        },
+        {
+          "frameIndex": 57,
+          "performanceTimeMs": 66143.5,
+          "rafTimestampMs": 66142.3,
+          "intervalSincePreviousFrameMs": 6.4,
+          "reducedMotion": false,
+          "effectiveMotion": "full",
+          "observations": {
+            "segmentedIndicator": [
+              {
+                "nodeId": 1,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 0, 0)",
+                "rect": {
+                  "x": 929.35,
+                  "y": -15.15,
+                  "top": -15.15,
+                  "right": 1022.1,
+                  "bottom": 28.85,
+                  "left": 929.35,
+                  "width": 92.75,
+                  "height": 44
+                }
+              },
+              {
+                "nodeId": 2,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 64.125, 0)",
+                "rect": {
+                  "x": 535.15,
+                  "y": 337.95,
+                  "top": 337.95,
+                  "right": 597.275,
+                  "bottom": 381.95,
+                  "left": 535.15,
+                  "width": 62.125,
+                  "height": 44
+                }
+              }
+            ],
+            "dialogPanel": [],
+            "menuPanel": [],
+            "settingsBody": [],
+            "folioCard": [
+              {
+                "nodeId": 3,
+                "tag": "a",
+                "transform": "none",
+                "rect": {
+                  "x": 602.362,
+                  "y": 908.713,
+                  "top": 908.713,
+                  "right": 1232.362,
+                  "bottom": 1461.825,
+                  "left": 602.362,
+                  "width": 630,
+                  "height": 553.112
+                },
+                "opacity": "1"
+              }
+            ]
+          }
+        },
+        {
+          "frameIndex": 58,
+          "performanceTimeMs": 66149.4,
+          "rafTimestampMs": 66148.5,
+          "intervalSincePreviousFrameMs": 5.9,
+          "reducedMotion": false,
+          "effectiveMotion": "full",
+          "observations": {
+            "segmentedIndicator": [
+              {
+                "nodeId": 1,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 0, 0)",
+                "rect": {
+                  "x": 929.35,
+                  "y": -15.15,
+                  "top": -15.15,
+                  "right": 1022.1,
+                  "bottom": 28.85,
+                  "left": 929.35,
+                  "width": 92.75,
+                  "height": 44
+                }
+              },
+              {
+                "nodeId": 2,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 64.125, 0)",
+                "rect": {
+                  "x": 535.15,
+                  "y": 337.95,
+                  "top": 337.95,
+                  "right": 597.275,
+                  "bottom": 381.95,
+                  "left": 535.15,
+                  "width": 62.125,
+                  "height": 44
+                }
+              }
+            ],
+            "dialogPanel": [],
+            "menuPanel": [],
+            "settingsBody": [],
+            "folioCard": [
+              {
+                "nodeId": 3,
+                "tag": "a",
+                "transform": "none",
+                "rect": {
+                  "x": 602.362,
+                  "y": 908.713,
+                  "top": 908.713,
+                  "right": 1232.362,
+                  "bottom": 1461.825,
+                  "left": 602.362,
+                  "width": 630,
+                  "height": 553.112
+                },
+                "opacity": "1"
+              }
+            ]
+          }
+        },
+        {
+          "frameIndex": 59,
+          "performanceTimeMs": 66155.3,
+          "rafTimestampMs": 66154.5,
+          "intervalSincePreviousFrameMs": 5.9,
+          "reducedMotion": false,
+          "effectiveMotion": "full",
+          "observations": {
+            "segmentedIndicator": [
+              {
+                "nodeId": 1,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 0, 0)",
+                "rect": {
+                  "x": 929.35,
+                  "y": -15.15,
+                  "top": -15.15,
+                  "right": 1022.1,
+                  "bottom": 28.85,
+                  "left": 929.35,
+                  "width": 92.75,
+                  "height": 44
+                }
+              },
+              {
+                "nodeId": 2,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 64.125, 0)",
+                "rect": {
+                  "x": 535.15,
+                  "y": 337.95,
+                  "top": 337.95,
+                  "right": 597.275,
+                  "bottom": 381.95,
+                  "left": 535.15,
+                  "width": 62.125,
+                  "height": 44
+                }
+              }
+            ],
+            "dialogPanel": [],
+            "menuPanel": [],
+            "settingsBody": [],
+            "folioCard": [
+              {
+                "nodeId": 3,
+                "tag": "a",
+                "transform": "none",
+                "rect": {
+                  "x": 602.362,
+                  "y": 908.713,
+                  "top": 908.713,
+                  "right": 1232.362,
+                  "bottom": 1461.825,
+                  "left": 602.362,
+                  "width": 630,
+                  "height": 553.112
+                },
+                "opacity": "1"
+              }
+            ]
+          }
+        },
+        {
+          "frameIndex": 60,
+          "performanceTimeMs": 66161.4,
+          "rafTimestampMs": 66160.5,
+          "intervalSincePreviousFrameMs": 6.1,
+          "reducedMotion": false,
+          "effectiveMotion": "full",
+          "observations": {
+            "segmentedIndicator": [
+              {
+                "nodeId": 1,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 0, 0)",
+                "rect": {
+                  "x": 929.35,
+                  "y": -15.15,
+                  "top": -15.15,
+                  "right": 1022.1,
+                  "bottom": 28.85,
+                  "left": 929.35,
+                  "width": 92.75,
+                  "height": 44
+                }
+              },
+              {
+                "nodeId": 2,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 64.125, 0)",
+                "rect": {
+                  "x": 535.15,
+                  "y": 337.95,
+                  "top": 337.95,
+                  "right": 597.275,
+                  "bottom": 381.95,
+                  "left": 535.15,
+                  "width": 62.125,
+                  "height": 44
+                }
+              }
+            ],
+            "dialogPanel": [],
+            "menuPanel": [],
+            "settingsBody": [],
+            "folioCard": [
+              {
+                "nodeId": 3,
+                "tag": "a",
+                "transform": "none",
+                "rect": {
+                  "x": 602.362,
+                  "y": 908.713,
+                  "top": 908.713,
+                  "right": 1232.362,
+                  "bottom": 1461.825,
+                  "left": 602.362,
+                  "width": 630,
+                  "height": 553.112
+                },
+                "opacity": "1"
+              }
+            ]
+          }
+        },
+        {
+          "frameIndex": 61,
+          "performanceTimeMs": 66167.6,
+          "rafTimestampMs": 66166.7,
+          "intervalSincePreviousFrameMs": 6.2,
+          "reducedMotion": false,
+          "effectiveMotion": "full",
+          "observations": {
+            "segmentedIndicator": [
+              {
+                "nodeId": 1,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 0, 0)",
+                "rect": {
+                  "x": 929.35,
+                  "y": -15.15,
+                  "top": -15.15,
+                  "right": 1022.1,
+                  "bottom": 28.85,
+                  "left": 929.35,
+                  "width": 92.75,
+                  "height": 44
+                }
+              },
+              {
+                "nodeId": 2,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 64.125, 0)",
+                "rect": {
+                  "x": 535.15,
+                  "y": 337.95,
+                  "top": 337.95,
+                  "right": 597.275,
+                  "bottom": 381.95,
+                  "left": 535.15,
+                  "width": 62.125,
+                  "height": 44
+                }
+              }
+            ],
+            "dialogPanel": [],
+            "menuPanel": [],
+            "settingsBody": [],
+            "folioCard": [
+              {
+                "nodeId": 3,
+                "tag": "a",
+                "transform": "none",
+                "rect": {
+                  "x": 602.362,
+                  "y": 908.713,
+                  "top": 908.713,
+                  "right": 1232.362,
+                  "bottom": 1461.825,
+                  "left": 602.362,
+                  "width": 630,
+                  "height": 553.112
+                },
+                "opacity": "1"
+              }
+            ]
+          }
+        },
+        {
+          "frameIndex": 62,
+          "performanceTimeMs": 66173.5,
+          "rafTimestampMs": 66172.6,
+          "intervalSincePreviousFrameMs": 5.9,
+          "reducedMotion": false,
+          "effectiveMotion": "full",
+          "observations": {
+            "segmentedIndicator": [
+              {
+                "nodeId": 1,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 0, 0)",
+                "rect": {
+                  "x": 929.35,
+                  "y": -15.15,
+                  "top": -15.15,
+                  "right": 1022.1,
+                  "bottom": 28.85,
+                  "left": 929.35,
+                  "width": 92.75,
+                  "height": 44
+                }
+              },
+              {
+                "nodeId": 2,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 64.125, 0)",
+                "rect": {
+                  "x": 535.15,
+                  "y": 337.95,
+                  "top": 337.95,
+                  "right": 597.275,
+                  "bottom": 381.95,
+                  "left": 535.15,
+                  "width": 62.125,
+                  "height": 44
+                }
+              }
+            ],
+            "dialogPanel": [],
+            "menuPanel": [],
+            "settingsBody": [],
+            "folioCard": [
+              {
+                "nodeId": 3,
+                "tag": "a",
+                "transform": "none",
+                "rect": {
+                  "x": 602.362,
+                  "y": 908.713,
+                  "top": 908.713,
+                  "right": 1232.362,
+                  "bottom": 1461.825,
+                  "left": 602.362,
+                  "width": 630,
+                  "height": 553.112
+                },
+                "opacity": "1"
+              }
+            ]
+          }
+        },
+        {
+          "frameIndex": 63,
+          "performanceTimeMs": 66179.6,
+          "rafTimestampMs": 66178.7,
+          "intervalSincePreviousFrameMs": 6.1,
+          "reducedMotion": false,
+          "effectiveMotion": "full",
+          "observations": {
+            "segmentedIndicator": [
+              {
+                "nodeId": 1,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 0, 0)",
+                "rect": {
+                  "x": 929.35,
+                  "y": -15.15,
+                  "top": -15.15,
+                  "right": 1022.1,
+                  "bottom": 28.85,
+                  "left": 929.35,
+                  "width": 92.75,
+                  "height": 44
+                }
+              },
+              {
+                "nodeId": 2,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 64.125, 0)",
+                "rect": {
+                  "x": 535.15,
+                  "y": 337.95,
+                  "top": 337.95,
+                  "right": 597.275,
+                  "bottom": 381.95,
+                  "left": 535.15,
+                  "width": 62.125,
+                  "height": 44
+                }
+              }
+            ],
+            "dialogPanel": [],
+            "menuPanel": [],
+            "settingsBody": [],
+            "folioCard": [
+              {
+                "nodeId": 3,
+                "tag": "a",
+                "transform": "none",
+                "rect": {
+                  "x": 602.362,
+                  "y": 908.713,
+                  "top": 908.713,
+                  "right": 1232.362,
+                  "bottom": 1461.825,
+                  "left": 602.362,
+                  "width": 630,
+                  "height": 553.112
+                },
+                "opacity": "1"
+              }
+            ]
+          }
+        },
+        {
+          "frameIndex": 64,
+          "performanceTimeMs": 66185.7,
+          "rafTimestampMs": 66184.8,
+          "intervalSincePreviousFrameMs": 6.1,
+          "reducedMotion": false,
+          "effectiveMotion": "full",
+          "observations": {
+            "segmentedIndicator": [
+              {
+                "nodeId": 1,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 0, 0)",
+                "rect": {
+                  "x": 929.35,
+                  "y": -15.15,
+                  "top": -15.15,
+                  "right": 1022.1,
+                  "bottom": 28.85,
+                  "left": 929.35,
+                  "width": 92.75,
+                  "height": 44
+                }
+              },
+              {
+                "nodeId": 2,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 64.125, 0)",
+                "rect": {
+                  "x": 535.15,
+                  "y": 337.95,
+                  "top": 337.95,
+                  "right": 597.275,
+                  "bottom": 381.95,
+                  "left": 535.15,
+                  "width": 62.125,
+                  "height": 44
+                }
+              }
+            ],
+            "dialogPanel": [],
+            "menuPanel": [],
+            "settingsBody": [],
+            "folioCard": [
+              {
+                "nodeId": 3,
+                "tag": "a",
+                "transform": "none",
+                "rect": {
+                  "x": 602.362,
+                  "y": 908.713,
+                  "top": 908.713,
+                  "right": 1232.362,
+                  "bottom": 1461.825,
+                  "left": 602.362,
+                  "width": 630,
+                  "height": 553.112
+                },
+                "opacity": "1"
+              }
+            ]
+          }
+        },
+        {
+          "frameIndex": 65,
+          "performanceTimeMs": 66191.7,
+          "rafTimestampMs": 66190.8,
+          "intervalSincePreviousFrameMs": 6,
+          "reducedMotion": false,
+          "effectiveMotion": "full",
+          "observations": {
+            "segmentedIndicator": [
+              {
+                "nodeId": 1,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 0, 0)",
+                "rect": {
+                  "x": 929.35,
+                  "y": -15.15,
+                  "top": -15.15,
+                  "right": 1022.1,
+                  "bottom": 28.85,
+                  "left": 929.35,
+                  "width": 92.75,
+                  "height": 44
+                }
+              },
+              {
+                "nodeId": 2,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 64.125, 0)",
+                "rect": {
+                  "x": 535.15,
+                  "y": 337.95,
+                  "top": 337.95,
+                  "right": 597.275,
+                  "bottom": 381.95,
+                  "left": 535.15,
+                  "width": 62.125,
+                  "height": 44
+                }
+              }
+            ],
+            "dialogPanel": [],
+            "menuPanel": [],
+            "settingsBody": [],
+            "folioCard": [
+              {
+                "nodeId": 3,
+                "tag": "a",
+                "transform": "none",
+                "rect": {
+                  "x": 602.362,
+                  "y": 908.713,
+                  "top": 908.713,
+                  "right": 1232.362,
+                  "bottom": 1461.825,
+                  "left": 602.362,
+                  "width": 630,
+                  "height": 553.112
+                },
+                "opacity": "1"
+              }
+            ]
+          }
+        },
+        {
+          "frameIndex": 66,
+          "performanceTimeMs": 66197.7,
+          "rafTimestampMs": 66196.9,
+          "intervalSincePreviousFrameMs": 6,
+          "reducedMotion": false,
+          "effectiveMotion": "full",
+          "observations": {
+            "segmentedIndicator": [
+              {
+                "nodeId": 1,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 0, 0)",
+                "rect": {
+                  "x": 929.35,
+                  "y": -15.15,
+                  "top": -15.15,
+                  "right": 1022.1,
+                  "bottom": 28.85,
+                  "left": 929.35,
+                  "width": 92.75,
+                  "height": 44
+                }
+              },
+              {
+                "nodeId": 2,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 64.125, 0)",
+                "rect": {
+                  "x": 535.15,
+                  "y": 337.95,
+                  "top": 337.95,
+                  "right": 597.275,
+                  "bottom": 381.95,
+                  "left": 535.15,
+                  "width": 62.125,
+                  "height": 44
+                }
+              }
+            ],
+            "dialogPanel": [],
+            "menuPanel": [],
+            "settingsBody": [],
+            "folioCard": [
+              {
+                "nodeId": 3,
+                "tag": "a",
+                "transform": "none",
+                "rect": {
+                  "x": 602.362,
+                  "y": 908.713,
+                  "top": 908.713,
+                  "right": 1232.362,
+                  "bottom": 1461.825,
+                  "left": 602.362,
+                  "width": 630,
+                  "height": 553.112
+                },
+                "opacity": "1"
+              }
+            ]
+          }
+        },
+        {
+          "frameIndex": 67,
+          "performanceTimeMs": 66203.8,
+          "rafTimestampMs": 66202.9,
+          "intervalSincePreviousFrameMs": 6.1,
+          "reducedMotion": false,
+          "effectiveMotion": "full",
+          "observations": {
+            "segmentedIndicator": [
+              {
+                "nodeId": 1,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 0, 0)",
+                "rect": {
+                  "x": 929.35,
+                  "y": -15.15,
+                  "top": -15.15,
+                  "right": 1022.1,
+                  "bottom": 28.85,
+                  "left": 929.35,
+                  "width": 92.75,
+                  "height": 44
+                }
+              },
+              {
+                "nodeId": 2,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 64.125, 0)",
+                "rect": {
+                  "x": 535.15,
+                  "y": 337.95,
+                  "top": 337.95,
+                  "right": 597.275,
+                  "bottom": 381.95,
+                  "left": 535.15,
+                  "width": 62.125,
+                  "height": 44
+                }
+              }
+            ],
+            "dialogPanel": [],
+            "menuPanel": [],
+            "settingsBody": [],
+            "folioCard": [
+              {
+                "nodeId": 3,
+                "tag": "a",
+                "transform": "none",
+                "rect": {
+                  "x": 602.362,
+                  "y": 908.713,
+                  "top": 908.713,
+                  "right": 1232.362,
+                  "bottom": 1461.825,
+                  "left": 602.362,
+                  "width": 630,
+                  "height": 553.112
+                },
+                "opacity": "1"
+              }
+            ]
+          }
+        },
+        {
+          "frameIndex": 68,
+          "performanceTimeMs": 66210.1,
+          "rafTimestampMs": 66209.3,
+          "intervalSincePreviousFrameMs": 6.3,
+          "reducedMotion": false,
+          "effectiveMotion": "full",
+          "observations": {
+            "segmentedIndicator": [
+              {
+                "nodeId": 1,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 0, 0)",
+                "rect": {
+                  "x": 929.35,
+                  "y": -15.15,
+                  "top": -15.15,
+                  "right": 1022.1,
+                  "bottom": 28.85,
+                  "left": 929.35,
+                  "width": 92.75,
+                  "height": 44
+                }
+              },
+              {
+                "nodeId": 2,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 64.125, 0)",
+                "rect": {
+                  "x": 535.15,
+                  "y": 337.95,
+                  "top": 337.95,
+                  "right": 597.275,
+                  "bottom": 381.95,
+                  "left": 535.15,
+                  "width": 62.125,
+                  "height": 44
+                }
+              }
+            ],
+            "dialogPanel": [],
+            "menuPanel": [],
+            "settingsBody": [],
+            "folioCard": [
+              {
+                "nodeId": 3,
+                "tag": "a",
+                "transform": "none",
+                "rect": {
+                  "x": 602.362,
+                  "y": 908.713,
+                  "top": 908.713,
+                  "right": 1232.362,
+                  "bottom": 1461.825,
+                  "left": 602.362,
+                  "width": 630,
+                  "height": 553.112
+                },
+                "opacity": "1"
+              }
+            ]
+          }
+        },
+        {
+          "frameIndex": 69,
+          "performanceTimeMs": 66215.8,
+          "rafTimestampMs": 66215,
+          "intervalSincePreviousFrameMs": 5.7,
+          "reducedMotion": false,
+          "effectiveMotion": "full",
+          "observations": {
+            "segmentedIndicator": [
+              {
+                "nodeId": 1,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 0, 0)",
+                "rect": {
+                  "x": 929.35,
+                  "y": -15.15,
+                  "top": -15.15,
+                  "right": 1022.1,
+                  "bottom": 28.85,
+                  "left": 929.35,
+                  "width": 92.75,
+                  "height": 44
+                }
+              },
+              {
+                "nodeId": 2,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 64.125, 0)",
+                "rect": {
+                  "x": 535.15,
+                  "y": 337.95,
+                  "top": 337.95,
+                  "right": 597.275,
+                  "bottom": 381.95,
+                  "left": 535.15,
+                  "width": 62.125,
+                  "height": 44
+                }
+              }
+            ],
+            "dialogPanel": [],
+            "menuPanel": [],
+            "settingsBody": [],
+            "folioCard": [
+              {
+                "nodeId": 3,
+                "tag": "a",
+                "transform": "none",
+                "rect": {
+                  "x": 602.362,
+                  "y": 908.713,
+                  "top": 908.713,
+                  "right": 1232.362,
+                  "bottom": 1461.825,
+                  "left": 602.362,
+                  "width": 630,
+                  "height": 553.112
+                },
+                "opacity": "1"
+              }
+            ]
+          }
+        },
+        {
+          "frameIndex": 70,
+          "performanceTimeMs": 66222,
+          "rafTimestampMs": 66221.1,
+          "intervalSincePreviousFrameMs": 6.2,
+          "reducedMotion": false,
+          "effectiveMotion": "full",
+          "observations": {
+            "segmentedIndicator": [
+              {
+                "nodeId": 1,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 0, 0)",
+                "rect": {
+                  "x": 929.35,
+                  "y": -15.15,
+                  "top": -15.15,
+                  "right": 1022.1,
+                  "bottom": 28.85,
+                  "left": 929.35,
+                  "width": 92.75,
+                  "height": 44
+                }
+              },
+              {
+                "nodeId": 2,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 64.125, 0)",
+                "rect": {
+                  "x": 535.15,
+                  "y": 337.95,
+                  "top": 337.95,
+                  "right": 597.275,
+                  "bottom": 381.95,
+                  "left": 535.15,
+                  "width": 62.125,
+                  "height": 44
+                }
+              }
+            ],
+            "dialogPanel": [],
+            "menuPanel": [],
+            "settingsBody": [],
+            "folioCard": [
+              {
+                "nodeId": 3,
+                "tag": "a",
+                "transform": "none",
+                "rect": {
+                  "x": 602.362,
+                  "y": 908.713,
+                  "top": 908.713,
+                  "right": 1232.362,
+                  "bottom": 1461.825,
+                  "left": 602.362,
+                  "width": 630,
+                  "height": 553.112
+                },
+                "opacity": "1"
+              }
+            ]
+          }
+        },
+        {
+          "frameIndex": 71,
+          "performanceTimeMs": 66228,
+          "rafTimestampMs": 66227.2,
+          "intervalSincePreviousFrameMs": 6,
+          "reducedMotion": false,
+          "effectiveMotion": "full",
+          "observations": {
+            "segmentedIndicator": [
+              {
+                "nodeId": 1,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 0, 0)",
+                "rect": {
+                  "x": 929.35,
+                  "y": -15.15,
+                  "top": -15.15,
+                  "right": 1022.1,
+                  "bottom": 28.85,
+                  "left": 929.35,
+                  "width": 92.75,
+                  "height": 44
+                }
+              },
+              {
+                "nodeId": 2,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 64.125, 0)",
+                "rect": {
+                  "x": 535.15,
+                  "y": 337.95,
+                  "top": 337.95,
+                  "right": 597.275,
+                  "bottom": 381.95,
+                  "left": 535.15,
+                  "width": 62.125,
+                  "height": 44
+                }
+              }
+            ],
+            "dialogPanel": [],
+            "menuPanel": [],
+            "settingsBody": [],
+            "folioCard": [
+              {
+                "nodeId": 3,
+                "tag": "a",
+                "transform": "none",
+                "rect": {
+                  "x": 602.362,
+                  "y": 908.713,
+                  "top": 908.713,
+                  "right": 1232.362,
+                  "bottom": 1461.825,
+                  "left": 602.362,
+                  "width": 630,
+                  "height": 553.112
+                },
+                "opacity": "1"
+              }
+            ]
+          }
+        },
+        {
+          "frameIndex": 72,
+          "performanceTimeMs": 66234.2,
+          "rafTimestampMs": 66233.3,
+          "intervalSincePreviousFrameMs": 6.2,
+          "reducedMotion": false,
+          "effectiveMotion": "full",
+          "observations": {
+            "segmentedIndicator": [
+              {
+                "nodeId": 1,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 0, 0)",
+                "rect": {
+                  "x": 929.35,
+                  "y": -15.15,
+                  "top": -15.15,
+                  "right": 1022.1,
+                  "bottom": 28.85,
+                  "left": 929.35,
+                  "width": 92.75,
+                  "height": 44
+                }
+              },
+              {
+                "nodeId": 2,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 64.125, 0)",
+                "rect": {
+                  "x": 535.15,
+                  "y": 337.95,
+                  "top": 337.95,
+                  "right": 597.275,
+                  "bottom": 381.95,
+                  "left": 535.15,
+                  "width": 62.125,
+                  "height": 44
+                }
+              }
+            ],
+            "dialogPanel": [],
+            "menuPanel": [],
+            "settingsBody": [],
+            "folioCard": [
+              {
+                "nodeId": 3,
+                "tag": "a",
+                "transform": "none",
+                "rect": {
+                  "x": 602.362,
+                  "y": 908.713,
+                  "top": 908.713,
+                  "right": 1232.362,
+                  "bottom": 1461.825,
+                  "left": 602.362,
+                  "width": 630,
+                  "height": 553.112
+                },
+                "opacity": "1"
+              }
+            ]
+          }
+        },
+        {
+          "frameIndex": 73,
+          "performanceTimeMs": 66240.2,
+          "rafTimestampMs": 66239.4,
+          "intervalSincePreviousFrameMs": 6,
+          "reducedMotion": false,
+          "effectiveMotion": "full",
+          "observations": {
+            "segmentedIndicator": [
+              {
+                "nodeId": 1,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 0, 0)",
+                "rect": {
+                  "x": 929.35,
+                  "y": -15.15,
+                  "top": -15.15,
+                  "right": 1022.1,
+                  "bottom": 28.85,
+                  "left": 929.35,
+                  "width": 92.75,
+                  "height": 44
+                }
+              },
+              {
+                "nodeId": 2,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 64.125, 0)",
+                "rect": {
+                  "x": 535.15,
+                  "y": 337.95,
+                  "top": 337.95,
+                  "right": 597.275,
+                  "bottom": 381.95,
+                  "left": 535.15,
+                  "width": 62.125,
+                  "height": 44
+                }
+              }
+            ],
+            "dialogPanel": [],
+            "menuPanel": [],
+            "settingsBody": [],
+            "folioCard": [
+              {
+                "nodeId": 3,
+                "tag": "a",
+                "transform": "none",
+                "rect": {
+                  "x": 602.362,
+                  "y": 908.713,
+                  "top": 908.713,
+                  "right": 1232.362,
+                  "bottom": 1461.825,
+                  "left": 602.362,
+                  "width": 630,
+                  "height": 553.112
+                },
+                "opacity": "1"
+              }
+            ]
+          }
+        },
+        {
+          "frameIndex": 74,
+          "performanceTimeMs": 66246.1,
+          "rafTimestampMs": 66245.3,
+          "intervalSincePreviousFrameMs": 5.9,
+          "reducedMotion": false,
+          "effectiveMotion": "full",
+          "observations": {
+            "segmentedIndicator": [
+              {
+                "nodeId": 1,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 0, 0)",
+                "rect": {
+                  "x": 929.35,
+                  "y": -15.15,
+                  "top": -15.15,
+                  "right": 1022.1,
+                  "bottom": 28.85,
+                  "left": 929.35,
+                  "width": 92.75,
+                  "height": 44
+                }
+              },
+              {
+                "nodeId": 2,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 64.125, 0)",
+                "rect": {
+                  "x": 535.15,
+                  "y": 337.95,
+                  "top": 337.95,
+                  "right": 597.275,
+                  "bottom": 381.95,
+                  "left": 535.15,
+                  "width": 62.125,
+                  "height": 44
+                }
+              }
+            ],
+            "dialogPanel": [],
+            "menuPanel": [],
+            "settingsBody": [],
+            "folioCard": [
+              {
+                "nodeId": 3,
+                "tag": "a",
+                "transform": "none",
+                "rect": {
+                  "x": 602.362,
+                  "y": 908.713,
+                  "top": 908.713,
+                  "right": 1232.362,
+                  "bottom": 1461.825,
+                  "left": 602.362,
+                  "width": 630,
+                  "height": 553.112
+                },
+                "opacity": "1"
+              }
+            ]
+          }
+        },
+        {
+          "frameIndex": 75,
+          "performanceTimeMs": 66252.4,
+          "rafTimestampMs": 66251.6,
+          "intervalSincePreviousFrameMs": 6.3,
+          "reducedMotion": false,
+          "effectiveMotion": "full",
+          "observations": {
+            "segmentedIndicator": [
+              {
+                "nodeId": 1,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 0, 0)",
+                "rect": {
+                  "x": 929.35,
+                  "y": -15.15,
+                  "top": -15.15,
+                  "right": 1022.1,
+                  "bottom": 28.85,
+                  "left": 929.35,
+                  "width": 92.75,
+                  "height": 44
+                }
+              },
+              {
+                "nodeId": 2,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 64.125, 0)",
+                "rect": {
+                  "x": 535.15,
+                  "y": 337.95,
+                  "top": 337.95,
+                  "right": 597.275,
+                  "bottom": 381.95,
+                  "left": 535.15,
+                  "width": 62.125,
+                  "height": 44
+                }
+              }
+            ],
+            "dialogPanel": [],
+            "menuPanel": [],
+            "settingsBody": [],
+            "folioCard": [
+              {
+                "nodeId": 3,
+                "tag": "a",
+                "transform": "none",
+                "rect": {
+                  "x": 602.362,
+                  "y": 908.713,
+                  "top": 908.713,
+                  "right": 1232.362,
+                  "bottom": 1461.825,
+                  "left": 602.362,
+                  "width": 630,
+                  "height": 553.112
+                },
+                "opacity": "1"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

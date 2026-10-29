@@ -1,0 +1,66 @@
+---
+// 服务端截图渲染页：加载 .ibe 并渲染为隐藏谱面（供 Playwright 截图）
+const file = Astro.url.searchParams.get('file') ?? '';
+if (!file.startsWith('/storage/')) {
+  return new Response('forbidden', { status: 403 });
+}
+const scale = Number(Astro.url.searchParams.get('scale') ?? '1.1');
+const width = Number(Astro.url.searchParams.get('width') ?? '1200');
+---
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <title>score-render</title>
+    <style>
+      html, body { margin: 0; padding: 0; background: #fff; }
+      #score { position: fixed; top: 0; left: 0; background: #fff; }
+    </style>
+  </head>
+  <body>
+    <div id="score"></div>
+    <script>
+      import { AlphaTabApi, model, PlayerMode } from '@coderline/alphatab';
+      import { installBrowserAr } from '../lib/ar.browser';
+      import { decodeIbeToJsonBrowser } from '../lib/ibe.browser';
+      import { createScoreSettings } from '../lib/playerSettings';
+      import { addLyricsTopSpacer } from '../lib/scoreLyricsLayout.mjs';
+
+      installBrowserAr();
+      const file = new URLSearchParams(location.search).get('file') || '';
+      if (!file.startsWith('/storage/')) throw new Error('forbidden path');
+      const scale = Number(new URLSearchParams(location.search).get('scale') || '1.1');
+      const width = Number(new URLSearchParams(location.search).get('width') || '1200');
+      const container = document.querySelector('#score') as HTMLDivElement;
+      container.style.width = width + 'px';
+
+      async function main() {
+        const res = await fetch(file);
+        if (!res.ok) throw new Error('fetch ' + res.status);
+        const buf = await res.arrayBuffer();
+        const json = await decodeIbeToJsonBrowser(new Uint8Array(buf));
+        const settings = createScoreSettings();
+        settings.display.scale = scale;
+        settings.player.enablePlayer = false;
+        settings.player.playerMode = PlayerMode.Disabled;
+        settings.player.scrollElement = '#score';
+        settings.player.enableCursor = false;
+        settings.player.enableAnimatedBeatCursor = false;
+        settings.player.enableElementHighlighting = false;
+        settings.player.enableUserInteraction = false;
+        const renderJson = JSON.parse(JSON.stringify(json));
+        addLyricsTopSpacer(renderJson);
+        const score = model.JsonConverter.jsonToScore(JSON.stringify(renderJson), settings);
+        const api = new AlphaTabApi(container, settings);
+        // Keep this diagnostic renderer on the same code path as ScorePlayer:
+        // AlphaTab 1.8.4 needs the explicit visible-track list for multi-track
+        // scores, otherwise its layout pass can receive a null renderer.
+        api.renderScore(score, score.tracks.map((_, index) => index));
+      }
+      main().catch((e) => {
+        document.title = 'RENDER_ERR: ' + e.message;
+        container.textContent = 'RENDER_ERR: ' + e.message;
+      });
+    </script>
+  </body>
+</html>

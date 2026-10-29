@@ -1,0 +1,371 @@
+{
+  "note": "Local test iframe observations only; this does not establish constant FPS.",
+  "durationTargetMs": 450,
+  "maxRetainedRuns": 3,
+  "observationSpecs": [
+    {
+      "key": "segmentedIndicator",
+      "selector": ".motion-segmented-control__indicator",
+      "includeOpacity": false
+    },
+    {
+      "key": "dialogPanel",
+      "selector": ".motion-dialog-panel",
+      "includeOpacity": true
+    },
+    {
+      "key": "menuPanel",
+      "selector": "#mobile-navigation-menu > *",
+      "includeOpacity": true
+    },
+    {
+      "key": "settingsBody",
+      "selector": ".experience__settings-body",
+      "includeOpacity": true
+    }
+  ],
+  "recentRuns": [
+    {
+      "id": 1,
+      "source": {
+        "type": "click",
+        "key": null,
+        "isTrusted": true,
+        "eventTimeStampMs": 1347.6,
+        "observedAtPerformanceMs": 1348.5
+      },
+      "startedAtPerformanceMs": 1348.5,
+      "reducedMotionAtStart": false,
+      "firstFrameDelayMs": 405.2,
+      "targetDurationMs": 450,
+      "status": "complete",
+      "summary": {
+        "sampleCount": 11,
+        "distinctTransformCount": 11,
+        "maxFrameIntervalMs": 1002,
+        "actualElapsedMs": 1460.6
+      },
+      "samples": [
+        {
+          "frameIndex": 0,
+          "performanceTimeMs": 1753.7,
+          "rafTimestampMs": 1751.9,
+          "intervalSincePreviousFrameMs": null,
+          "reducedMotion": false,
+          "observations": {
+            "segmentedIndicator": [
+              {
+                "nodeId": 1,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 0, 0)",
+                "rect": {
+                  "x": 438.325,
+                  "y": 338.2,
+                  "top": 338.2,
+                  "right": 500.45,
+                  "bottom": 382.2,
+                  "left": 438.325,
+                  "width": 62.125,
+                  "height": 44
+                }
+              }
+            ],
+            "dialogPanel": [],
+            "menuPanel": [],
+            "settingsBody": []
+          }
+        },
+        {
+          "frameIndex": 1,
+          "performanceTimeMs": 1758.6,
+          "rafTimestampMs": 1758,
+          "intervalSincePreviousFrameMs": 4.9,
+          "reducedMotion": false,
+          "observations": {
+            "segmentedIndicator": [
+              {
+                "nodeId": 1,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 17.1567, 0)",
+                "rect": {
+                  "x": 455.482,
+                  "y": 338.2,
+                  "top": 338.2,
+                  "right": 517.607,
+                  "bottom": 382.2,
+                  "left": 455.482,
+                  "width": 62.125,
+                  "height": 44
+                }
+              }
+            ],
+            "dialogPanel": [],
+            "menuPanel": [],
+            "settingsBody": []
+          }
+        },
+        {
+          "frameIndex": 2,
+          "performanceTimeMs": 1764.7,
+          "rafTimestampMs": 1764,
+          "intervalSincePreviousFrameMs": 6.1,
+          "reducedMotion": false,
+          "observations": {
+            "segmentedIndicator": [
+              {
+                "nodeId": 1,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 32.8653, 0)",
+                "rect": {
+                  "x": 471.19,
+                  "y": 338.2,
+                  "top": 338.2,
+                  "right": 533.315,
+                  "bottom": 382.2,
+                  "left": 471.19,
+                  "width": 62.125,
+                  "height": 44
+                }
+              }
+            ],
+            "dialogPanel": [],
+            "menuPanel": [],
+            "settingsBody": []
+          }
+        },
+        {
+          "frameIndex": 3,
+          "performanceTimeMs": 1770.7,
+          "rafTimestampMs": 1770.1,
+          "intervalSincePreviousFrameMs": 6,
+          "reducedMotion": false,
+          "observations": {
+            "segmentedIndicator": [
+              {
+                "nodeId": 1,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 47.3988, 0)",
+                "rect": {
+                  "x": 485.724,
+                  "y": 338.2,
+                  "top": 338.2,
+                  "right": 547.849,
+                  "bottom": 382.2,
+                  "left": 485.724,
+                  "width": 62.125,
+                  "height": 44
+                }
+              }
+            ],
+            "dialogPanel": [],
+            "menuPanel": [],
+            "settingsBody": []
+          }
+        },
+        {
+          "frameIndex": 4,
+          "performanceTimeMs": 1776.8,
+          "rafTimestampMs": 1776.2,
+          "intervalSincePreviousFrameMs": 6.1,
+          "reducedMotion": false,
+          "observations": {
+            "segmentedIndicator": [
+              {
+                "nodeId": 1,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 60.3604, 0)",
+                "rect": {
+                  "x": 498.685,
+                  "y": 338.2,
+                  "top": 338.2,
+                  "right": 560.81,
+                  "bottom": 382.2,
+                  "left": 498.685,
+                  "width": 62.125,
+                  "height": 44
+                }
+              }
+            ],
+            "dialogPanel": [],
+            "menuPanel": [],
+            "settingsBody": []
+          }
+        },
+        {
+          "frameIndex": 5,
+          "performanceTimeMs": 1783.1,
+          "rafTimestampMs": 1782.2,
+          "intervalSincePreviousFrameMs": 6.3,
+          "reducedMotion": false,
+          "observations": {
+            "segmentedIndicator": [
+              {
+                "nodeId": 1,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 71.5336, 0)",
+                "rect": {
+                  "x": 509.859,
+                  "y": 338.2,
+                  "top": 338.2,
+                  "right": 571.984,
+                  "bottom": 382.2,
+                  "left": 509.859,
+                  "width": 62.125,
+                  "height": 44
+                }
+              }
+            ],
+            "dialogPanel": [],
+            "menuPanel": [],
+            "settingsBody": []
+          }
+        },
+        {
+          "frameIndex": 6,
+          "performanceTimeMs": 1789.4,
+          "rafTimestampMs": 1788.3,
+          "intervalSincePreviousFrameMs": 6.3,
+          "reducedMotion": false,
+          "observations": {
+            "segmentedIndicator": [
+              {
+                "nodeId": 1,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 81.3277, 0)",
+                "rect": {
+                  "x": 519.653,
+                  "y": 338.2,
+                  "top": 338.2,
+                  "right": 581.778,
+                  "bottom": 382.2,
+                  "left": 519.653,
+                  "width": 62.125,
+                  "height": 44
+                }
+              }
+            ],
+            "dialogPanel": [],
+            "menuPanel": [],
+            "settingsBody": []
+          }
+        },
+        {
+          "frameIndex": 7,
+          "performanceTimeMs": 1795,
+          "rafTimestampMs": 1794.4,
+          "intervalSincePreviousFrameMs": 5.6,
+          "reducedMotion": false,
+          "observations": {
+            "segmentedIndicator": [
+              {
+                "nodeId": 1,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 89.6465, 0)",
+                "rect": {
+                  "x": 527.972,
+                  "y": 338.2,
+                  "top": 338.2,
+                  "right": 590.097,
+                  "bottom": 382.2,
+                  "left": 527.972,
+                  "width": 62.125,
+                  "height": 44
+                }
+              }
+            ],
+            "dialogPanel": [],
+            "menuPanel": [],
+            "settingsBody": []
+          }
+        },
+        {
+          "frameIndex": 8,
+          "performanceTimeMs": 1801.2,
+          "rafTimestampMs": 1800.4,
+          "intervalSincePreviousFrameMs": 6.2,
+          "reducedMotion": false,
+          "observations": {
+            "segmentedIndicator": [
+              {
+                "nodeId": 1,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 96.532, 0)",
+                "rect": {
+                  "x": 534.857,
+                  "y": 338.2,
+                  "top": 338.2,
+                  "right": 596.982,
+                  "bottom": 382.2,
+                  "left": 534.857,
+                  "width": 62.125,
+                  "height": 44
+                }
+              }
+            ],
+            "dialogPanel": [],
+            "menuPanel": [],
+            "settingsBody": []
+          }
+        },
+        {
+          "frameIndex": 9,
+          "performanceTimeMs": 1807.1,
+          "rafTimestampMs": 1806.5,
+          "intervalSincePreviousFrameMs": 5.9,
+          "reducedMotion": false,
+          "observations": {
+            "segmentedIndicator": [
+              {
+                "nodeId": 1,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 102.377, 0)",
+                "rect": {
+                  "x": 540.702,
+                  "y": 338.2,
+                  "top": 338.2,
+                  "right": 602.827,
+                  "bottom": 382.2,
+                  "left": 540.702,
+                  "width": 62.125,
+                  "height": 44
+                }
+              }
+            ],
+            "dialogPanel": [],
+            "menuPanel": [],
+            "settingsBody": []
+          }
+        },
+        {
+          "frameIndex": 10,
+          "performanceTimeMs": 2809.1,
+          "rafTimestampMs": 2807.8,
+          "intervalSincePreviousFrameMs": 1002,
+          "reducedMotion": false,
+          "observations": {
+            "segmentedIndicator": [
+              {
+                "nodeId": 1,
+                "tag": "span",
+                "transform": "matrix(1, 0, 0, 1, 128.25, 0)",
+                "rect": {
+                  "x": 566.575,
+                  "y": 338.2,
+                  "top": 338.2,
+                  "right": 628.7,
+                  "bottom": 382.2,
+                  "left": 566.575,
+                  "width": 62.125,
+                  "height": 44
+                }
+              }
+            ],
+            "dialogPanel": [],
+            "menuPanel": [],
+            "settingsBody": []
+          }
+        }
+      ]
+    }
+  ]
+}

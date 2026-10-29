@@ -1,0 +1,12 @@
+{
+  "samePreviouslyFailingTabRecovered": {
+    "alerts": [],
+    "playEnabled": true,
+    "svgs": 47,
+    "url": "http://127.0.0.1:4336/tabs/1sdc49P3eKm",
+    "vectorPages": 21
+  },
+  "recoveryStart": "2026-10-19T15:49:27.461Z",
+  "newErrors": [],
+  "note": "Existing tab used its already loaded client bundle; restored resources recover it without reload. Candidate verified the new error-handling bundle separately."
+}

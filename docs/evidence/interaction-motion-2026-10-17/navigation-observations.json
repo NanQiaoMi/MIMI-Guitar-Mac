@@ -1,0 +1,23 @@
+{
+  "sequence": [
+    "motion",
+    "library",
+    "practice",
+    "settings/data",
+    "back to practice",
+    "forward to settings/data"
+  ],
+  "backState": {
+    "bodyOverflow": "",
+    "dialogs": 0,
+    "playLabel": "播放",
+    "progressMax": "61440",
+    "title": "我的练习 · MIMI Guitar"
+  },
+  "forwardState": {
+    "bodyOverflow": "",
+    "dialogs": 0,
+    "title": "数据与备份 · MIMI Guitar"
+  },
+  "limits": "Route/end states checked; no route animation frame timing, downloads or unsaved Studio navigation tested in this round"
+}

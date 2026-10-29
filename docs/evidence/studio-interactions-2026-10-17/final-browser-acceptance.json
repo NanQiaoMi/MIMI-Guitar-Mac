@@ -1,0 +1,374 @@
+{
+  "scope": "Final local production build; Chromium responsive emulation only",
+  "viewportChecks": [
+    {
+      "dialog": {
+        "height": 710.5750122070312,
+        "width": 290.3000183105469,
+        "x": 7.25,
+        "y": 14.71250057220459
+      },
+      "dialogName": "studio-open-lyrics",
+      "documentWidth": 305,
+      "shortControls": [],
+      "view": [
+        320,
+        740
+      ]
+    },
+    {
+      "dialog": {
+        "height": 681.2250366210938,
+        "width": 360.4500122070313,
+        "x": 7.375,
+        "y": 81.38750457763672
+      },
+      "dialogName": "studio-open-lyrics",
+      "documentWidth": 375,
+      "shortControls": [],
+      "view": [
+        390,
+        844
+      ]
+    },
+    {
+      "dialog": {
+        "height": 654.6875,
+        "width": 578.7125244140625,
+        "x": 87.05000305175781,
+        "y": 184.65000915527344
+      },
+      "dialogName": "studio-open-lyrics",
+      "documentWidth": 753,
+      "shortControls": [],
+      "view": [
+        768,
+        1024
+      ]
+    },
+    {
+      "dialog": {
+        "height": 685.6500244140625,
+        "width": 610.9625244140625,
+        "x": 198.9250030517578,
+        "y": 41.17499923706055
+      },
+      "dialogName": "studio-open-lyrics",
+      "documentWidth": 1009,
+      "shortControls": [],
+      "view": [
+        1024,
+        768
+      ]
+    },
+    {
+      "dialog": {
+        "height": 704.0250244140625,
+        "width": 630,
+        "x": 360.6000061035156,
+        "y": 97.9875030517578
+      },
+      "dialogName": "studio-open-lyrics",
+      "documentWidth": 1351,
+      "shortControls": [],
+      "view": [
+        1366,
+        900
+      ]
+    },
+    {
+      "dialog": {
+        "height": 710.5750122070312,
+        "width": 290.3000183105469,
+        "x": 7.25,
+        "y": 14.71250057220459
+      },
+      "dialogName": "studio-open-shortcuts",
+      "documentWidth": 305,
+      "shortControls": [],
+      "view": [
+        320,
+        740
+      ]
+    },
+    {
+      "dialog": {
+        "height": 814.0875244140625,
+        "width": 360.4500122070313,
+        "x": 7.375,
+        "y": 14.949999809265137
+      },
+      "dialogName": "studio-open-shortcuts",
+      "documentWidth": 375,
+      "shortControls": [],
+      "view": [
+        390,
+        844
+      ]
+    },
+    {
+      "dialog": {
+        "height": 991.4375,
+        "width": 675.1625366210938,
+        "x": 38.82500076293945,
+        "y": 16.274999618530273
+      },
+      "dialogName": "studio-open-shortcuts",
+      "documentWidth": 753,
+      "shortControls": [],
+      "view": [
+        768,
+        1024
+      ]
+    },
+    {
+      "dialog": {
+        "height": 733.6500244140625,
+        "width": 712.7999877929688,
+        "x": 148,
+        "y": 17.17500114440918
+      },
+      "dialogName": "studio-open-shortcuts",
+      "documentWidth": 1009,
+      "shortControls": [],
+      "view": [
+        1024,
+        768
+      ]
+    },
+    {
+      "dialog": {
+        "height": 864.6000366210938,
+        "width": 735,
+        "x": 308.1000061035156,
+        "y": 17.700000762939453
+      },
+      "dialogName": "studio-open-shortcuts",
+      "documentWidth": 1351,
+      "shortControls": [],
+      "view": [
+        1366,
+        900
+      ]
+    },
+    {
+      "dialog": {
+        "height": 710.5750122070312,
+        "width": 290.3000183105469,
+        "x": 7.25,
+        "y": 14.71250057220459
+      },
+      "dialogName": "studio-open-guide",
+      "documentWidth": 305,
+      "shortControls": [],
+      "view": [
+        320,
+        740
+      ]
+    },
+    {
+      "dialog": {
+        "height": 814.0875244140625,
+        "width": 360.4500122070313,
+        "x": 7.375,
+        "y": 14.949999809265137
+      },
+      "dialogName": "studio-open-guide",
+      "documentWidth": 375,
+      "shortControls": [],
+      "view": [
+        390,
+        844
+      ]
+    },
+    {
+      "dialog": {
+        "height": 991.4375,
+        "width": 697.4249877929688,
+        "x": 20.087499618530273,
+        "y": 20.087499618530273
+      },
+      "dialogName": "studio-open-guide",
+      "documentWidth": 753,
+      "shortControls": [],
+      "view": [
+        768,
+        1024
+      ]
+    },
+    {
+      "dialog": {
+        "height": 733.6500244140625,
+        "width": 814.625,
+        "x": 89.48750305175781,
+        "y": 21.212499618530273
+      },
+      "dialogName": "studio-open-guide",
+      "documentWidth": 1009,
+      "shortControls": [],
+      "view": [
+        1024,
+        768
+      ]
+    },
+    {
+      "dialog": {
+        "height": 864.6000366210938,
+        "width": 840,
+        "x": 248,
+        "y": 21.875
+      },
+      "dialogName": "studio-open-guide",
+      "documentWidth": 1351,
+      "shortControls": [],
+      "view": [
+        1366,
+        900
+      ]
+    },
+    {
+      "dialog": {
+        "height": 539.4625244140625,
+        "width": 283.0500183105469,
+        "x": 10.875,
+        "y": 100.26250457763672
+      },
+      "dialogName": "studio-open-drafts",
+      "documentWidth": 305,
+      "shortControls": [],
+      "view": [
+        320,
+        740
+      ]
+    },
+    {
+      "dialog": {
+        "height": 527.0750122070312,
+        "width": 318.0249938964844,
+        "x": 28.587499618530273,
+        "y": 158.46250915527344
+      },
+      "dialogName": "studio-open-drafts",
+      "documentWidth": 375,
+      "shortControls": [],
+      "view": [
+        390,
+        844
+      ]
+    },
+    {
+      "dialog": {
+        "height": 422.0500183105469,
+        "width": 427.5625,
+        "x": 162.625,
+        "y": 300.9750061035156
+      },
+      "dialogName": "studio-open-drafts",
+      "documentWidth": 753,
+      "shortControls": [],
+      "view": [
+        768,
+        1024
+      ]
+    },
+    {
+      "dialog": {
+        "height": 442.75,
+        "width": 451.1625061035156,
+        "x": 278.82501220703125,
+        "y": 162.625
+      },
+      "dialogName": "studio-open-drafts",
+      "documentWidth": 1009,
+      "shortControls": [],
+      "view": [
+        1024,
+        768
+      ]
+    },
+    {
+      "dialog": {
+        "height": 455.0874938964844,
+        "width": 465.1375122070313,
+        "x": 443.0375061035156,
+        "y": 222.4499969482422
+      },
+      "dialogName": "studio-open-drafts",
+      "documentWidth": 1351,
+      "shortControls": [],
+      "view": [
+        1366,
+        900
+      ]
+    }
+  ],
+  "mobileEntries": [
+    {
+      "focusInside": true,
+      "id": "studio-open-lyrics",
+      "label": "打开歌词智能对齐",
+      "open": 1
+    },
+    {
+      "focusInside": true,
+      "id": "studio-open-shortcuts",
+      "label": "打开快捷键速查",
+      "open": 1
+    },
+    {
+      "focusInside": true,
+      "id": "studio-open-guide",
+      "label": "打开制谱教程、格式说明和常见问题",
+      "open": 1
+    },
+    {
+      "focusInside": true,
+      "id": "studio-open-drafts",
+      "label": "打开本地草稿箱",
+      "open": 1
+    },
+    {
+      "case": "mobile new menu",
+      "pageWidth": 305,
+      "right": 274.99999809265137,
+      "width": 245.1999969482422,
+      "x": 29.80000114440918
+    },
+    {
+      "case": "mobile export menu",
+      "pageWidth": 305,
+      "right": 274.99999809265137,
+      "width": 245.1999969482422,
+      "x": 29.80000114440918
+    }
+  ],
+  "reducedMotion": [
+    {
+      "opacity": "0.516336",
+      "step": "normal intro sampled",
+      "transform": "matrix(0.992745, 0, 0, 0.992745, 0, 5.80396)"
+    },
+    {
+      "opacity": "1",
+      "step": "reduce during intro",
+      "transform": "none"
+    },
+    {
+      "focus": "studio-open-shortcuts",
+      "open": 0,
+      "overflow": "",
+      "step": "reduced close settled"
+    }
+  ],
+  "guideContrast": {
+    "background": "rgb(44, 40, 37)",
+    "color": "rgb(251, 249, 244)"
+  },
+  "finalState": {
+    "bodyOverflow": "",
+    "dialogs": 0,
+    "exportMenuInert": "",
+    "newMenuInert": "",
+    "title": "工坊验收 · 版本更改"
+  }
+}

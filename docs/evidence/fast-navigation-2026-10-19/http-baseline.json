@@ -1,0 +1,114 @@
+[
+  {
+    "route": "/practice",
+    "run": 1,
+    "ms": 254.0,
+    "status": 200,
+    "bytes": 22179
+  },
+  {
+    "route": "/practice",
+    "run": 2,
+    "ms": 8.0,
+    "status": 200,
+    "bytes": 22179
+  },
+  {
+    "route": "/library",
+    "run": 1,
+    "ms": 8.0,
+    "status": 200,
+    "bytes": 19234
+  },
+  {
+    "route": "/library",
+    "run": 2,
+    "ms": 4.0,
+    "status": 200,
+    "bytes": 19234
+  },
+  {
+    "route": "/motion",
+    "run": 1,
+    "ms": 5.0,
+    "status": 200,
+    "bytes": 40606
+  },
+  {
+    "route": "/motion",
+    "run": 2,
+    "ms": 3.0,
+    "status": 200,
+    "bytes": 40606
+  },
+  {
+    "route": "/studio",
+    "run": 1,
+    "ms": 13.0,
+    "status": 200,
+    "bytes": 158314
+  },
+  {
+    "route": "/studio",
+    "run": 2,
+    "ms": 7.0,
+    "status": 200,
+    "bytes": 158314
+  },
+  {
+    "route": "/",
+    "run": 1,
+    "ms": 2027.0,
+    "status": 200,
+    "bytes": 149342
+  },
+  {
+    "route": "/",
+    "run": 2,
+    "ms": 2023.0,
+    "status": 200,
+    "bytes": 149342
+  },
+  {
+    "route": "/tabs",
+    "run": 1,
+    "ms": 2011.0,
+    "status": 200,
+    "bytes": 122942
+  },
+  {
+    "route": "/tabs",
+    "run": 2,
+    "ms": 2021.0,
+    "status": 200,
+    "bytes": 122942
+  },
+  {
+    "route": "/ukulele",
+    "run": 1,
+    "ms": 2016.0,
+    "status": 200,
+    "bytes": 35686
+  },
+  {
+    "route": "/ukulele",
+    "run": 2,
+    "ms": 2008.0,
+    "status": 200,
+    "bytes": 35686
+  },
+  {
+    "route": "/article",
+    "run": 1,
+    "ms": 2014.0,
+    "status": 200,
+    "bytes": 20803
+  },
+  {
+    "route": "/article",
+    "run": 2,
+    "ms": 2008.0,
+    "status": 200,
+    "bytes": 20803
+  }
+]

@@ -1,0 +1,7 @@
+---
+// /search?q= 重定向到 /searchResults（原站搜索路由）
+const q = (Astro.url.searchParams.get('q') ?? '').trim();
+const qs = new URLSearchParams({ type: 'guitar' });
+if (q) qs.set('searchValue', q);
+return Astro.redirect('/searchResults?' + qs.toString(), 302);
+---

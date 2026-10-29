@@ -1,0 +1,41 @@
+---
+import Base from '../../layouts/Base.astro';
+import AccountNav from '../../components/AccountNav.astro';
+import FavoriteList from '../../components/FavoriteList.svelte';
+import { currentUser } from '../../lib/api';
+import { db } from '../../lib/db';
+
+const user = await currentUser(Astro.cookies);
+let favs: any[] = [];
+let legacyUnavailable = false;
+if (user) {
+  try {
+    favs = await db.favorite.findMany({
+      where: { userId: user.id },
+      orderBy: { createdAt: 'desc' },
+      include: {
+        tab: {
+          select: {
+            id: true, title: true, artist: true, category: true, key: true,
+            sheetForm: true, difficulty: true, heat: true, screenshotUrl: true,
+          },
+        },
+      },
+    });
+  } catch {
+    legacyUnavailable = true;
+  }
+}
+const tabs = favs.map((f) => f.tab);
+---
+
+<Base title="我的收藏 - MIMI Guitar">
+  <div class="flex items-baseline gap-6">
+    <h1 class="font-display text-heading">我的收藏</h1>
+    <a href="/tabs" class="ml-auto text-caption text-signal hover:opacity-70">← 继续找谱</a>
+  </div>
+  <div class="mt-4"><AccountNav /></div>
+  <div class="mt-6">
+    <FavoriteList client:load initial={tabs} legacyEnabled={Boolean(user)} {legacyUnavailable} />
+  </div>
+</Base>

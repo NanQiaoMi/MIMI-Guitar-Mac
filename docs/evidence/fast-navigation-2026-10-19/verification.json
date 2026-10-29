@@ -1,0 +1,79 @@
+{
+  "date": "2026-10-19",
+  "branch": "feature/fast-page-navigation",
+  "base": "939cf5f7",
+  "sourceCommit": "1cda02f4",
+  "candidate": {
+    "tests": {
+      "command": "npm test",
+      "exitCode": 0,
+      "total": 419,
+      "passed": 412,
+      "skipped": 7,
+      "failed": 0
+    },
+    "build": {
+      "command": "npm run build",
+      "exitCode": 0,
+      "seconds": 38.87
+    },
+    "typecheck": {
+      "command": "npm run typecheck",
+      "exitCode": 0,
+      "errors": 0,
+      "svelteWarnings": 57,
+      "svelteWarningFiles": 18,
+      "astroHints": 40
+    },
+    "browser": {
+      "confirmedPrefetchedNavigationMs": 410,
+      "fullFallbackSeconds": 0.28,
+      "fullOpacitySamples": [
+        0.929143,
+        0.939704
+      ],
+      "gentleSeconds": 0.14,
+      "offAnimation": "none",
+      "nativeSkipAlsoObservedOnStableBaseline": true,
+      "studioFixtureRestored": true,
+      "authenticNativeErrorLogSuppression": false
+    },
+    "protected": {
+      "files": 1023,
+      "hashDifferences": 0,
+      "statusRows": 402,
+      "statusDifferences": 0
+    }
+  },
+  "limitations": [
+    "7 database tests skipped; real database recovery not executed",
+    "real Safari/iOS/Android devices not executed",
+    "no frame-rate proof; native browser transition can skip and uses content fallback",
+    "pending/error browser fault injection not executed; behavioral save-boundary tests cover these states"
+  ],
+  "delivery": {
+    "status": "verified-local-master",
+    "masterCommit": "f605bd98ee8b1e26adcf59994cdec1e1c86f129f",
+    "masterCommitScope": "source-and-candidate-evidence merge; subsequent delivery update is documentation only",
+    "regression": {
+      "tests": {"command": "npm test", "exitCode": 0, "total": 419, "passed": 412, "skipped": 7, "failed": 0},
+      "build": {"command": "npm run build", "exitCode": 0, "seconds": 11.66},
+      "typecheck": {"command": "npm run typecheck", "exitCode": 0, "errors": 0, "svelteWarnings": 57, "svelteWarningFiles": 18, "astroHints": 40},
+      "httpEvidence": "http-master.json"
+    },
+    "previewPort": 4336,
+    "health": {"httpStatus": 200, "status": "alive"},
+    "readiness": {"httpStatus": 503, "status": "not_ready", "database": "unavailable", "catalog": "unavailable", "soundfontsRequired": 3, "soundfontsPresent": 3},
+    "pageStatus": {"/practice": 200, "/studio": 200, "/motion": 200, "/tabs": 200},
+    "soundfonts": [
+      {"name": "acoustic_guitar_fast.sf2", "httpStatus": 200, "bytes": 1205140},
+      {"name": "ukulele_fast.sf2", "httpStatus": 200, "bytes": 1205140},
+      {"name": "0.sf2", "httpStatus": 200, "bytes": 400880}
+    ],
+    "anonymousNavigationPolicyPresent": true,
+    "cookieCacheControl": "no-store",
+    "qaCleanup": true,
+    "qaCleanupDetails": "own tabs closed and viewport overrides reset; temporary 4338 service stopped; user tab not refreshed; stable 4336 service left running",
+    "originalProtectionFinal": {"files": 1023, "hashDifferences": 0, "statusRows": 402, "statusDifferences": 0}
+  }
+}

@@ -1,0 +1,42 @@
+node_modules/
+dist/
+.astro/
+.env
+.env.*
+!.env.example
+*.log
+.DS_Store
+data/
+prisma/*.db
+prisma/*.db-journal
+pgdata/
+tools/.cache/
+public/storage/
+
+tools/*.log
+
+# M7 crawl transient
+/tools/migrate-state.json
+/tools/migrate-state-*.json
+/tools/migrate-candidates.json
+/tools/*.log
+
+# sf2 mono conversion backup
+/tools/sf2-backup-*/
+
+# Public source distribution: local builds, data and unlicensed fonts
+.build/
+.swiftpm/
+*.xcuserstate
+xcuserdata/
+*.dmg
+*.app/
+*.sqlite
+*.sqlite3
+*.sqlite-shm
+*.sqlite-wal
+/public/font/FZXiaoBiaoSong.*
+!native-macos/Data/
+!native-macos/Data/README.md
+
+/node_modules

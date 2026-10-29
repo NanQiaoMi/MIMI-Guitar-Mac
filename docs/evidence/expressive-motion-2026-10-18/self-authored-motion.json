@@ -1,0 +1,2202 @@
+{
+  "schemaVersion": 1,
+  "id": "expressive-motion-acceptance-20261018",
+  "title": "动效与工具验收 · 自写十六小节",
+  "artist": "MIMI 本地测试",
+  "album": "",
+  "words": "",
+  "music": "",
+  "tabber": "MIMI Guitar 琴友",
+  "key": "C",
+  "initialTempo": 60,
+  "timeSignatureNumerator": 4,
+  "timeSignatureDenominator": 4,
+  "tracks": [
+    {
+      "id": "acceptance-track-a",
+      "name": "旋律 A",
+      "program": 25,
+      "tuning": [
+        64,
+        59,
+        55,
+        50,
+        45,
+        40
+      ],
+      "tuningName": "标准吉他 (E A D G B E)",
+      "capo": 0,
+      "volume": 1,
+      "pan": 0,
+      "mute": false,
+      "solo": false
+    },
+    {
+      "id": "acceptance-track-b",
+      "name": "旋律 B",
+      "program": 25,
+      "tuning": [
+        64,
+        59,
+        55,
+        50,
+        45,
+        40
+      ],
+      "tuningName": "标准吉他 (E A D G B E)",
+      "capo": 0,
+      "volume": 1,
+      "pan": 0,
+      "mute": false,
+      "solo": false
+    }
+  ],
+  "bars": [
+    {
+      "id": "motion-0-bar_dg8zqcb_mvc2a8m4",
+      "index": 0,
+      "timeSignatureNumerator": 4,
+      "timeSignatureDenominator": 4,
+      "tempo": 60,
+      "section": "自写验收练习",
+      "trackBeats": {
+        "acceptance-track-a": [
+          {
+            "id": "motion-0-beat_6zc6rem_mvc2a8m4",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 0
+              }
+            ],
+            "chordName": null,
+            "lyrics": null
+          },
+          {
+            "id": "motion-0-beat_z4x0hf0_mvc2a8m4",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 1
+              }
+            ],
+            "chordName": null,
+            "lyrics": null
+          },
+          {
+            "id": "motion-0-beat_xooefq3_mvc2a8m4",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 2
+              }
+            ],
+            "chordName": null,
+            "lyrics": null
+          },
+          {
+            "id": "motion-0-beat_rlg5bdy_mvc2a8m4",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 3
+              }
+            ],
+            "chordName": null,
+            "lyrics": null
+          }
+        ],
+        "acceptance-track-b": [
+          {
+            "id": "motion-0-bar_dg8zqcb_mvc2a8m4-b-0",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 0
+              }
+            ],
+            "chordName": null,
+            "lyrics": "原词"
+          },
+          {
+            "id": "motion-0-bar_dg8zqcb_mvc2a8m4-b-1",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 1
+              }
+            ],
+            "chordName": null,
+            "lyrics": null
+          },
+          {
+            "id": "motion-0-bar_dg8zqcb_mvc2a8m4-b-2",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 2
+              }
+            ],
+            "chordName": null,
+            "lyrics": null
+          },
+          {
+            "id": "motion-0-bar_dg8zqcb_mvc2a8m4-b-3",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 3
+              }
+            ],
+            "chordName": null,
+            "lyrics": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "motion-1-bar_6ttbj9n_mvc2a8m4",
+      "index": 1,
+      "timeSignatureNumerator": 4,
+      "timeSignatureDenominator": 4,
+      "tempo": 60,
+      "section": "",
+      "trackBeats": {
+        "acceptance-track-a": [
+          {
+            "id": "motion-1-beat_8rkvnfc_mvc2a8m4",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 4
+              }
+            ],
+            "chordName": null,
+            "lyrics": null
+          },
+          {
+            "id": "motion-1-beat_5f7dyv7_mvc2a8m4",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 5
+              }
+            ],
+            "chordName": null,
+            "lyrics": null
+          },
+          {
+            "id": "motion-1-beat_9wpqw7j_mvc2a8m4",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 6
+              }
+            ],
+            "chordName": null,
+            "lyrics": null
+          },
+          {
+            "id": "motion-1-beat_lbm9ucx_mvc2a8m4",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 0
+              }
+            ],
+            "chordName": null,
+            "lyrics": null
+          }
+        ],
+        "acceptance-track-b": [
+          {
+            "id": "motion-1-bar_6ttbj9n_mvc2a8m4-b-0",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 4
+              }
+            ],
+            "chordName": null,
+            "lyrics": "原词"
+          },
+          {
+            "id": "motion-1-bar_6ttbj9n_mvc2a8m4-b-1",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 5
+              }
+            ],
+            "chordName": null,
+            "lyrics": null
+          },
+          {
+            "id": "motion-1-bar_6ttbj9n_mvc2a8m4-b-2",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 6
+              }
+            ],
+            "chordName": null,
+            "lyrics": null
+          },
+          {
+            "id": "motion-1-bar_6ttbj9n_mvc2a8m4-b-3",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 0
+              }
+            ],
+            "chordName": null,
+            "lyrics": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "motion-2-bar_dg8zqcb_mvc2a8m4",
+      "index": 2,
+      "timeSignatureNumerator": 4,
+      "timeSignatureDenominator": 4,
+      "tempo": 60,
+      "section": "",
+      "trackBeats": {
+        "acceptance-track-a": [
+          {
+            "id": "motion-2-beat_6zc6rem_mvc2a8m4",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 0
+              }
+            ],
+            "chordName": null,
+            "lyrics": null
+          },
+          {
+            "id": "motion-2-beat_z4x0hf0_mvc2a8m4",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 1
+              }
+            ],
+            "chordName": null,
+            "lyrics": null
+          },
+          {
+            "id": "motion-2-beat_xooefq3_mvc2a8m4",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 2
+              }
+            ],
+            "chordName": null,
+            "lyrics": null
+          },
+          {
+            "id": "motion-2-beat_rlg5bdy_mvc2a8m4",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 3
+              }
+            ],
+            "chordName": null,
+            "lyrics": null
+          }
+        ],
+        "acceptance-track-b": [
+          {
+            "id": "motion-2-bar_dg8zqcb_mvc2a8m4-b-0",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 0
+              }
+            ],
+            "chordName": null,
+            "lyrics": "原词"
+          },
+          {
+            "id": "motion-2-bar_dg8zqcb_mvc2a8m4-b-1",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 1
+              }
+            ],
+            "chordName": null,
+            "lyrics": null
+          },
+          {
+            "id": "motion-2-bar_dg8zqcb_mvc2a8m4-b-2",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 2
+              }
+            ],
+            "chordName": null,
+            "lyrics": null
+          },
+          {
+            "id": "motion-2-bar_dg8zqcb_mvc2a8m4-b-3",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 3
+              }
+            ],
+            "chordName": null,
+            "lyrics": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "motion-3-bar_6ttbj9n_mvc2a8m4",
+      "index": 3,
+      "timeSignatureNumerator": 4,
+      "timeSignatureDenominator": 4,
+      "tempo": 60,
+      "section": "",
+      "trackBeats": {
+        "acceptance-track-a": [
+          {
+            "id": "motion-3-beat_8rkvnfc_mvc2a8m4",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 4
+              }
+            ],
+            "chordName": null,
+            "lyrics": null
+          },
+          {
+            "id": "motion-3-beat_5f7dyv7_mvc2a8m4",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 5
+              }
+            ],
+            "chordName": null,
+            "lyrics": null
+          },
+          {
+            "id": "motion-3-beat_9wpqw7j_mvc2a8m4",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 6
+              }
+            ],
+            "chordName": null,
+            "lyrics": null
+          },
+          {
+            "id": "motion-3-beat_lbm9ucx_mvc2a8m4",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 0
+              }
+            ],
+            "chordName": null,
+            "lyrics": null
+          }
+        ],
+        "acceptance-track-b": [
+          {
+            "id": "motion-3-bar_6ttbj9n_mvc2a8m4-b-0",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 4
+              }
+            ],
+            "chordName": null,
+            "lyrics": "原词"
+          },
+          {
+            "id": "motion-3-bar_6ttbj9n_mvc2a8m4-b-1",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 5
+              }
+            ],
+            "chordName": null,
+            "lyrics": null
+          },
+          {
+            "id": "motion-3-bar_6ttbj9n_mvc2a8m4-b-2",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 6
+              }
+            ],
+            "chordName": null,
+            "lyrics": null
+          },
+          {
+            "id": "motion-3-bar_6ttbj9n_mvc2a8m4-b-3",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 0
+              }
+            ],
+            "chordName": null,
+            "lyrics": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "motion-4-bar_dg8zqcb_mvc2a8m4",
+      "index": 4,
+      "timeSignatureNumerator": 4,
+      "timeSignatureDenominator": 4,
+      "tempo": 60,
+      "section": "",
+      "trackBeats": {
+        "acceptance-track-a": [
+          {
+            "id": "motion-4-beat_6zc6rem_mvc2a8m4",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 0
+              }
+            ],
+            "chordName": null,
+            "lyrics": null
+          },
+          {
+            "id": "motion-4-beat_z4x0hf0_mvc2a8m4",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 1
+              }
+            ],
+            "chordName": null,
+            "lyrics": null
+          },
+          {
+            "id": "motion-4-beat_xooefq3_mvc2a8m4",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 2
+              }
+            ],
+            "chordName": null,
+            "lyrics": null
+          },
+          {
+            "id": "motion-4-beat_rlg5bdy_mvc2a8m4",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 3
+              }
+            ],
+            "chordName": null,
+            "lyrics": null
+          }
+        ],
+        "acceptance-track-b": [
+          {
+            "id": "motion-4-bar_dg8zqcb_mvc2a8m4-b-0",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 0
+              }
+            ],
+            "chordName": null,
+            "lyrics": "原词"
+          },
+          {
+            "id": "motion-4-bar_dg8zqcb_mvc2a8m4-b-1",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 1
+              }
+            ],
+            "chordName": null,
+            "lyrics": null
+          },
+          {
+            "id": "motion-4-bar_dg8zqcb_mvc2a8m4-b-2",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 2
+              }
+            ],
+            "chordName": null,
+            "lyrics": null
+          },
+          {
+            "id": "motion-4-bar_dg8zqcb_mvc2a8m4-b-3",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 3
+              }
+            ],
+            "chordName": null,
+            "lyrics": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "motion-5-bar_6ttbj9n_mvc2a8m4",
+      "index": 5,
+      "timeSignatureNumerator": 4,
+      "timeSignatureDenominator": 4,
+      "tempo": 60,
+      "section": "",
+      "trackBeats": {
+        "acceptance-track-a": [
+          {
+            "id": "motion-5-beat_8rkvnfc_mvc2a8m4",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 4
+              }
+            ],
+            "chordName": null,
+            "lyrics": null
+          },
+          {
+            "id": "motion-5-beat_5f7dyv7_mvc2a8m4",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 5
+              }
+            ],
+            "chordName": null,
+            "lyrics": null
+          },
+          {
+            "id": "motion-5-beat_9wpqw7j_mvc2a8m4",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 6
+              }
+            ],
+            "chordName": null,
+            "lyrics": null
+          },
+          {
+            "id": "motion-5-beat_lbm9ucx_mvc2a8m4",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 0
+              }
+            ],
+            "chordName": null,
+            "lyrics": null
+          }
+        ],
+        "acceptance-track-b": [
+          {
+            "id": "motion-5-bar_6ttbj9n_mvc2a8m4-b-0",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 4
+              }
+            ],
+            "chordName": null,
+            "lyrics": "原词"
+          },
+          {
+            "id": "motion-5-bar_6ttbj9n_mvc2a8m4-b-1",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 5
+              }
+            ],
+            "chordName": null,
+            "lyrics": null
+          },
+          {
+            "id": "motion-5-bar_6ttbj9n_mvc2a8m4-b-2",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 6
+              }
+            ],
+            "chordName": null,
+            "lyrics": null
+          },
+          {
+            "id": "motion-5-bar_6ttbj9n_mvc2a8m4-b-3",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 0
+              }
+            ],
+            "chordName": null,
+            "lyrics": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "motion-6-bar_dg8zqcb_mvc2a8m4",
+      "index": 6,
+      "timeSignatureNumerator": 4,
+      "timeSignatureDenominator": 4,
+      "tempo": 60,
+      "section": "",
+      "trackBeats": {
+        "acceptance-track-a": [
+          {
+            "id": "motion-6-beat_6zc6rem_mvc2a8m4",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 0
+              }
+            ],
+            "chordName": null,
+            "lyrics": null
+          },
+          {
+            "id": "motion-6-beat_z4x0hf0_mvc2a8m4",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 1
+              }
+            ],
+            "chordName": null,
+            "lyrics": null
+          },
+          {
+            "id": "motion-6-beat_xooefq3_mvc2a8m4",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 2
+              }
+            ],
+            "chordName": null,
+            "lyrics": null
+          },
+          {
+            "id": "motion-6-beat_rlg5bdy_mvc2a8m4",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 3
+              }
+            ],
+            "chordName": null,
+            "lyrics": null
+          }
+        ],
+        "acceptance-track-b": [
+          {
+            "id": "motion-6-bar_dg8zqcb_mvc2a8m4-b-0",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 0
+              }
+            ],
+            "chordName": null,
+            "lyrics": "原词"
+          },
+          {
+            "id": "motion-6-bar_dg8zqcb_mvc2a8m4-b-1",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 1
+              }
+            ],
+            "chordName": null,
+            "lyrics": null
+          },
+          {
+            "id": "motion-6-bar_dg8zqcb_mvc2a8m4-b-2",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 2
+              }
+            ],
+            "chordName": null,
+            "lyrics": null
+          },
+          {
+            "id": "motion-6-bar_dg8zqcb_mvc2a8m4-b-3",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 3
+              }
+            ],
+            "chordName": null,
+            "lyrics": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "motion-7-bar_6ttbj9n_mvc2a8m4",
+      "index": 7,
+      "timeSignatureNumerator": 4,
+      "timeSignatureDenominator": 4,
+      "tempo": 60,
+      "section": "",
+      "trackBeats": {
+        "acceptance-track-a": [
+          {
+            "id": "motion-7-beat_8rkvnfc_mvc2a8m4",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 4
+              }
+            ],
+            "chordName": null,
+            "lyrics": null
+          },
+          {
+            "id": "motion-7-beat_5f7dyv7_mvc2a8m4",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 5
+              }
+            ],
+            "chordName": null,
+            "lyrics": null
+          },
+          {
+            "id": "motion-7-beat_9wpqw7j_mvc2a8m4",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 6
+              }
+            ],
+            "chordName": null,
+            "lyrics": null
+          },
+          {
+            "id": "motion-7-beat_lbm9ucx_mvc2a8m4",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 0
+              }
+            ],
+            "chordName": null,
+            "lyrics": null
+          }
+        ],
+        "acceptance-track-b": [
+          {
+            "id": "motion-7-bar_6ttbj9n_mvc2a8m4-b-0",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 4
+              }
+            ],
+            "chordName": null,
+            "lyrics": "原词"
+          },
+          {
+            "id": "motion-7-bar_6ttbj9n_mvc2a8m4-b-1",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 5
+              }
+            ],
+            "chordName": null,
+            "lyrics": null
+          },
+          {
+            "id": "motion-7-bar_6ttbj9n_mvc2a8m4-b-2",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 6
+              }
+            ],
+            "chordName": null,
+            "lyrics": null
+          },
+          {
+            "id": "motion-7-bar_6ttbj9n_mvc2a8m4-b-3",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 0
+              }
+            ],
+            "chordName": null,
+            "lyrics": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "motion-8-bar_dg8zqcb_mvc2a8m4",
+      "index": 8,
+      "timeSignatureNumerator": 4,
+      "timeSignatureDenominator": 4,
+      "tempo": 60,
+      "section": "",
+      "trackBeats": {
+        "acceptance-track-a": [
+          {
+            "id": "motion-8-beat_6zc6rem_mvc2a8m4",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 0
+              }
+            ],
+            "chordName": null,
+            "lyrics": null
+          },
+          {
+            "id": "motion-8-beat_z4x0hf0_mvc2a8m4",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 1
+              }
+            ],
+            "chordName": null,
+            "lyrics": null
+          },
+          {
+            "id": "motion-8-beat_xooefq3_mvc2a8m4",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 2
+              }
+            ],
+            "chordName": null,
+            "lyrics": null
+          },
+          {
+            "id": "motion-8-beat_rlg5bdy_mvc2a8m4",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 3
+              }
+            ],
+            "chordName": null,
+            "lyrics": null
+          }
+        ],
+        "acceptance-track-b": [
+          {
+            "id": "motion-8-bar_dg8zqcb_mvc2a8m4-b-0",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 0
+              }
+            ],
+            "chordName": null,
+            "lyrics": "原词"
+          },
+          {
+            "id": "motion-8-bar_dg8zqcb_mvc2a8m4-b-1",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 1
+              }
+            ],
+            "chordName": null,
+            "lyrics": null
+          },
+          {
+            "id": "motion-8-bar_dg8zqcb_mvc2a8m4-b-2",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 2
+              }
+            ],
+            "chordName": null,
+            "lyrics": null
+          },
+          {
+            "id": "motion-8-bar_dg8zqcb_mvc2a8m4-b-3",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 3
+              }
+            ],
+            "chordName": null,
+            "lyrics": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "motion-9-bar_6ttbj9n_mvc2a8m4",
+      "index": 9,
+      "timeSignatureNumerator": 4,
+      "timeSignatureDenominator": 4,
+      "tempo": 60,
+      "section": "",
+      "trackBeats": {
+        "acceptance-track-a": [
+          {
+            "id": "motion-9-beat_8rkvnfc_mvc2a8m4",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 4
+              }
+            ],
+            "chordName": null,
+            "lyrics": null
+          },
+          {
+            "id": "motion-9-beat_5f7dyv7_mvc2a8m4",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 5
+              }
+            ],
+            "chordName": null,
+            "lyrics": null
+          },
+          {
+            "id": "motion-9-beat_9wpqw7j_mvc2a8m4",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 6
+              }
+            ],
+            "chordName": null,
+            "lyrics": null
+          },
+          {
+            "id": "motion-9-beat_lbm9ucx_mvc2a8m4",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 0
+              }
+            ],
+            "chordName": null,
+            "lyrics": null
+          }
+        ],
+        "acceptance-track-b": [
+          {
+            "id": "motion-9-bar_6ttbj9n_mvc2a8m4-b-0",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 4
+              }
+            ],
+            "chordName": null,
+            "lyrics": "原词"
+          },
+          {
+            "id": "motion-9-bar_6ttbj9n_mvc2a8m4-b-1",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 5
+              }
+            ],
+            "chordName": null,
+            "lyrics": null
+          },
+          {
+            "id": "motion-9-bar_6ttbj9n_mvc2a8m4-b-2",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 6
+              }
+            ],
+            "chordName": null,
+            "lyrics": null
+          },
+          {
+            "id": "motion-9-bar_6ttbj9n_mvc2a8m4-b-3",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 0
+              }
+            ],
+            "chordName": null,
+            "lyrics": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "motion-10-bar_dg8zqcb_mvc2a8m4",
+      "index": 10,
+      "timeSignatureNumerator": 4,
+      "timeSignatureDenominator": 4,
+      "tempo": 60,
+      "section": "",
+      "trackBeats": {
+        "acceptance-track-a": [
+          {
+            "id": "motion-10-beat_6zc6rem_mvc2a8m4",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 0
+              }
+            ],
+            "chordName": null,
+            "lyrics": null
+          },
+          {
+            "id": "motion-10-beat_z4x0hf0_mvc2a8m4",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 1
+              }
+            ],
+            "chordName": null,
+            "lyrics": null
+          },
+          {
+            "id": "motion-10-beat_xooefq3_mvc2a8m4",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 2
+              }
+            ],
+            "chordName": null,
+            "lyrics": null
+          },
+          {
+            "id": "motion-10-beat_rlg5bdy_mvc2a8m4",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 3
+              }
+            ],
+            "chordName": null,
+            "lyrics": null
+          }
+        ],
+        "acceptance-track-b": [
+          {
+            "id": "motion-10-bar_dg8zqcb_mvc2a8m4-b-0",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 0
+              }
+            ],
+            "chordName": null,
+            "lyrics": "原词"
+          },
+          {
+            "id": "motion-10-bar_dg8zqcb_mvc2a8m4-b-1",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 1
+              }
+            ],
+            "chordName": null,
+            "lyrics": null
+          },
+          {
+            "id": "motion-10-bar_dg8zqcb_mvc2a8m4-b-2",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 2
+              }
+            ],
+            "chordName": null,
+            "lyrics": null
+          },
+          {
+            "id": "motion-10-bar_dg8zqcb_mvc2a8m4-b-3",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 3
+              }
+            ],
+            "chordName": null,
+            "lyrics": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "motion-11-bar_6ttbj9n_mvc2a8m4",
+      "index": 11,
+      "timeSignatureNumerator": 4,
+      "timeSignatureDenominator": 4,
+      "tempo": 60,
+      "section": "",
+      "trackBeats": {
+        "acceptance-track-a": [
+          {
+            "id": "motion-11-beat_8rkvnfc_mvc2a8m4",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 4
+              }
+            ],
+            "chordName": null,
+            "lyrics": null
+          },
+          {
+            "id": "motion-11-beat_5f7dyv7_mvc2a8m4",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 5
+              }
+            ],
+            "chordName": null,
+            "lyrics": null
+          },
+          {
+            "id": "motion-11-beat_9wpqw7j_mvc2a8m4",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 6
+              }
+            ],
+            "chordName": null,
+            "lyrics": null
+          },
+          {
+            "id": "motion-11-beat_lbm9ucx_mvc2a8m4",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 0
+              }
+            ],
+            "chordName": null,
+            "lyrics": null
+          }
+        ],
+        "acceptance-track-b": [
+          {
+            "id": "motion-11-bar_6ttbj9n_mvc2a8m4-b-0",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 4
+              }
+            ],
+            "chordName": null,
+            "lyrics": "原词"
+          },
+          {
+            "id": "motion-11-bar_6ttbj9n_mvc2a8m4-b-1",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 5
+              }
+            ],
+            "chordName": null,
+            "lyrics": null
+          },
+          {
+            "id": "motion-11-bar_6ttbj9n_mvc2a8m4-b-2",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 6
+              }
+            ],
+            "chordName": null,
+            "lyrics": null
+          },
+          {
+            "id": "motion-11-bar_6ttbj9n_mvc2a8m4-b-3",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 0
+              }
+            ],
+            "chordName": null,
+            "lyrics": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "motion-12-bar_dg8zqcb_mvc2a8m4",
+      "index": 12,
+      "timeSignatureNumerator": 4,
+      "timeSignatureDenominator": 4,
+      "tempo": 60,
+      "section": "",
+      "trackBeats": {
+        "acceptance-track-a": [
+          {
+            "id": "motion-12-beat_6zc6rem_mvc2a8m4",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 0
+              }
+            ],
+            "chordName": null,
+            "lyrics": null
+          },
+          {
+            "id": "motion-12-beat_z4x0hf0_mvc2a8m4",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 1
+              }
+            ],
+            "chordName": null,
+            "lyrics": null
+          },
+          {
+            "id": "motion-12-beat_xooefq3_mvc2a8m4",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 2
+              }
+            ],
+            "chordName": null,
+            "lyrics": null
+          },
+          {
+            "id": "motion-12-beat_rlg5bdy_mvc2a8m4",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 3
+              }
+            ],
+            "chordName": null,
+            "lyrics": null
+          }
+        ],
+        "acceptance-track-b": [
+          {
+            "id": "motion-12-bar_dg8zqcb_mvc2a8m4-b-0",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 0
+              }
+            ],
+            "chordName": null,
+            "lyrics": "原词"
+          },
+          {
+            "id": "motion-12-bar_dg8zqcb_mvc2a8m4-b-1",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 1
+              }
+            ],
+            "chordName": null,
+            "lyrics": null
+          },
+          {
+            "id": "motion-12-bar_dg8zqcb_mvc2a8m4-b-2",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 2
+              }
+            ],
+            "chordName": null,
+            "lyrics": null
+          },
+          {
+            "id": "motion-12-bar_dg8zqcb_mvc2a8m4-b-3",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 3
+              }
+            ],
+            "chordName": null,
+            "lyrics": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "motion-13-bar_6ttbj9n_mvc2a8m4",
+      "index": 13,
+      "timeSignatureNumerator": 4,
+      "timeSignatureDenominator": 4,
+      "tempo": 60,
+      "section": "",
+      "trackBeats": {
+        "acceptance-track-a": [
+          {
+            "id": "motion-13-beat_8rkvnfc_mvc2a8m4",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 4
+              }
+            ],
+            "chordName": null,
+            "lyrics": null
+          },
+          {
+            "id": "motion-13-beat_5f7dyv7_mvc2a8m4",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 5
+              }
+            ],
+            "chordName": null,
+            "lyrics": null
+          },
+          {
+            "id": "motion-13-beat_9wpqw7j_mvc2a8m4",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 6
+              }
+            ],
+            "chordName": null,
+            "lyrics": null
+          },
+          {
+            "id": "motion-13-beat_lbm9ucx_mvc2a8m4",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 0
+              }
+            ],
+            "chordName": null,
+            "lyrics": null
+          }
+        ],
+        "acceptance-track-b": [
+          {
+            "id": "motion-13-bar_6ttbj9n_mvc2a8m4-b-0",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 4
+              }
+            ],
+            "chordName": null,
+            "lyrics": "原词"
+          },
+          {
+            "id": "motion-13-bar_6ttbj9n_mvc2a8m4-b-1",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 5
+              }
+            ],
+            "chordName": null,
+            "lyrics": null
+          },
+          {
+            "id": "motion-13-bar_6ttbj9n_mvc2a8m4-b-2",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 6
+              }
+            ],
+            "chordName": null,
+            "lyrics": null
+          },
+          {
+            "id": "motion-13-bar_6ttbj9n_mvc2a8m4-b-3",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 0
+              }
+            ],
+            "chordName": null,
+            "lyrics": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "motion-14-bar_dg8zqcb_mvc2a8m4",
+      "index": 14,
+      "timeSignatureNumerator": 4,
+      "timeSignatureDenominator": 4,
+      "tempo": 60,
+      "section": "",
+      "trackBeats": {
+        "acceptance-track-a": [
+          {
+            "id": "motion-14-beat_6zc6rem_mvc2a8m4",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 0
+              }
+            ],
+            "chordName": null,
+            "lyrics": null
+          },
+          {
+            "id": "motion-14-beat_z4x0hf0_mvc2a8m4",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 1
+              }
+            ],
+            "chordName": null,
+            "lyrics": null
+          },
+          {
+            "id": "motion-14-beat_xooefq3_mvc2a8m4",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 2
+              }
+            ],
+            "chordName": null,
+            "lyrics": null
+          },
+          {
+            "id": "motion-14-beat_rlg5bdy_mvc2a8m4",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 3
+              }
+            ],
+            "chordName": null,
+            "lyrics": null
+          }
+        ],
+        "acceptance-track-b": [
+          {
+            "id": "motion-14-bar_dg8zqcb_mvc2a8m4-b-0",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 0
+              }
+            ],
+            "chordName": null,
+            "lyrics": "原词"
+          },
+          {
+            "id": "motion-14-bar_dg8zqcb_mvc2a8m4-b-1",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 1
+              }
+            ],
+            "chordName": null,
+            "lyrics": null
+          },
+          {
+            "id": "motion-14-bar_dg8zqcb_mvc2a8m4-b-2",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 2
+              }
+            ],
+            "chordName": null,
+            "lyrics": null
+          },
+          {
+            "id": "motion-14-bar_dg8zqcb_mvc2a8m4-b-3",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 3
+              }
+            ],
+            "chordName": null,
+            "lyrics": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "motion-15-bar_6ttbj9n_mvc2a8m4",
+      "index": 15,
+      "timeSignatureNumerator": 4,
+      "timeSignatureDenominator": 4,
+      "tempo": 60,
+      "section": "",
+      "trackBeats": {
+        "acceptance-track-a": [
+          {
+            "id": "motion-15-beat_8rkvnfc_mvc2a8m4",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 4
+              }
+            ],
+            "chordName": null,
+            "lyrics": null
+          },
+          {
+            "id": "motion-15-beat_5f7dyv7_mvc2a8m4",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 5
+              }
+            ],
+            "chordName": null,
+            "lyrics": null
+          },
+          {
+            "id": "motion-15-beat_9wpqw7j_mvc2a8m4",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 6
+              }
+            ],
+            "chordName": null,
+            "lyrics": null
+          },
+          {
+            "id": "motion-15-beat_lbm9ucx_mvc2a8m4",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 0
+              }
+            ],
+            "chordName": null,
+            "lyrics": null
+          }
+        ],
+        "acceptance-track-b": [
+          {
+            "id": "motion-15-bar_6ttbj9n_mvc2a8m4-b-0",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 4
+              }
+            ],
+            "chordName": null,
+            "lyrics": "原词"
+          },
+          {
+            "id": "motion-15-bar_6ttbj9n_mvc2a8m4-b-1",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 5
+              }
+            ],
+            "chordName": null,
+            "lyrics": null
+          },
+          {
+            "id": "motion-15-bar_6ttbj9n_mvc2a8m4-b-2",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 6
+              }
+            ],
+            "chordName": null,
+            "lyrics": null
+          },
+          {
+            "id": "motion-15-bar_6ttbj9n_mvc2a8m4-b-3",
+            "duration": 4,
+            "isRest": false,
+            "dot": false,
+            "triplet": false,
+            "notes": [
+              {
+                "string": 1,
+                "fret": 0
+              }
+            ],
+            "chordName": null,
+            "lyrics": null
+          }
+        ]
+      }
+    }
+  ],
+  "createdAt": 1792221293596,
+  "updatedAt": 1792221293596
+}

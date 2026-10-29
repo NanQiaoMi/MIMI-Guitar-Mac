@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; connect-src 'self'; media-src 'self' blob:; worker-src blob:; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none'">
+    <title>MIMI Guitar Studio Score</title>
+    <link rel="stylesheet" href="/studio.css">
+  </head>
+  <body>
+    <main id="studio-score-scroll" aria-label="工坊谱面">
+      <div id="studio-score" tabindex="0" aria-label="谱面编辑区"></div>
+      <div id="studio-error" role="alert" hidden></div>
+    </main>
+    <script src="/alphaTab.js"></script>
+    <script src="/ar.es.js"></script>
+    <script src="/studio-runtime.bundle.js"></script>
+    <script src="/guitar-audio.bundle.js"></script>
+    <script src="/studio.js"></script>
+  </body>
+</html>
