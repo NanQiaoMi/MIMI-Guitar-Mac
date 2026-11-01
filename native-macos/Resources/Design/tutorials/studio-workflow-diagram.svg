@@ -1,0 +1,156 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 480" width="100%" height="100%">
+  <defs>
+    <filter id="studio-shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#483620" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+
+  <!-- Canvas Background -->
+  <rect x="8" y="8" width="844" height="464" rx="16" fill="#FEFFFC" stroke="#E5DDD0" stroke-width="1.5" filter="url(#studio-shadow)"/>
+  <rect x="14" y="14" width="832" height="452" rx="12" fill="none" stroke="#F0E9DE" stroke-width="1" stroke-dasharray="4,4"/>
+
+  <!-- Top Title -->
+  <g transform="translate(32, 28)">
+    <rect x="0" y="0" width="144" height="24" rx="4" fill="#C49A45" fill-opacity="0.15" stroke="#C49A45" stroke-width="1"/>
+    <text x="72" y="16" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="bold" fill="#8F6B28" text-anchor="middle" letter-spacing="1">制谱工坊 PRO 工作台</text>
+    <text x="160" y="17" font-family="'Fraunces', serif" font-size="14" font-weight="600" fill="#24201D">从音符录入到结构编配全流程</text>
+    <text x="790" y="16" font-family="monospace" font-size="11" fill="#8C7C6B" text-anchor="end">FIG. 02 · STUDIO WORKFLOW</text>
+  </g>
+
+  <!-- Left Main Workspace (65% width) -->
+  <g transform="translate(32, 64)">
+    <!-- Top Studio Toolbar -->
+    <rect x="0" y="0" width="520" height="44" rx="8" fill="#F8F5EE" stroke="#E2DACD" stroke-width="1"/>
+    <text x="16" y="27" font-family="'Fraunces', serif" font-size="14" font-weight="bold" fill="#24201D">晴天 (Fingerstyle ver.)</text>
+    <rect x="200" y="10" width="60" height="24" rx="12" fill="#EAE3D5"/>
+    <text x="230" y="26" font-family="monospace" font-size="11" fill="#584A3B" text-anchor="middle">4/4拍</text>
+    <rect x="270" y="10" width="70" height="24" rx="12" fill="#EAE3D5"/>
+    <text x="305" y="26" font-family="monospace" font-size="11" fill="#584A3B" text-anchor="middle">BPM 82</text>
+    <rect x="350" y="10" width="64" height="24" rx="12" fill="#EAE3D5"/>
+    <text x="382" y="26" font-family="monospace" font-size="11" fill="#584A3B" text-anchor="middle">G Major</text>
+
+    <!-- Section Blueprints (Intro / Verse / Chorus) -->
+    <g transform="translate(0, 54)">
+      <rect x="0" y="0" width="520" height="34" rx="6" fill="#F4EFE6" stroke="#D8CEBD" stroke-width="1"/>
+      <rect x="6" y="5" width="80" height="24" rx="4" fill="#C49A45" fill-opacity="0.3"/>
+      <text x="46" y="21" font-family="sans-serif" font-size="10" font-weight="bold" fill="#584A3B" text-anchor="middle">Intro 前奏</text>
+      <rect x="92" y="5" width="140" height="24" rx="4" fill="#C84B31" fill-opacity="0.2"/>
+      <text x="162" y="21" font-family="sans-serif" font-size="10" font-weight="bold" fill="#C84B31" text-anchor="middle">Verse 主歌 (第5-12小节)</text>
+      <rect x="238" y="5" width="160" height="24" rx="4" fill="#41A1CF" fill-opacity="0.2"/>
+      <text x="318" y="21" font-family="sans-serif" font-size="10" font-weight="bold" fill="#2E6B8A" text-anchor="middle">Chorus 副歌 (第13-20小节)</text>
+      <rect x="404" y="5" width="110" height="24" rx="4" fill="#8C7C6B" fill-opacity="0.2"/>
+      <text x="459" y="21" font-family="sans-serif" font-size="10" font-weight="bold" fill="#584A3B" text-anchor="middle">Outro 尾奏</text>
+    </g>
+
+    <!-- Score Editing Sheet -->
+    <g transform="translate(0, 98)">
+      <rect x="0" y="0" width="520" height="180" rx="8" fill="#FFFFFF" stroke="#E2DACD" stroke-width="1"/>
+      <!-- Stave lines -->
+      <line x1="20" y1="50" x2="500" y2="50" stroke="#D8CEBD" stroke-width="1"/>
+      <line x1="20" y1="70" x2="500" y2="70" stroke="#D8CEBD" stroke-width="1"/>
+      <line x1="20" y1="90" x2="500" y2="90" stroke="#D8CEBD" stroke-width="1"/>
+      <line x1="20" y1="110" x2="500" y2="110" stroke="#D8CEBD" stroke-width="1"/>
+      <line x1="20" y1="130" x2="500" y2="130" stroke="#D8CEBD" stroke-width="1"/>
+      <line x1="20" y1="150" x2="500" y2="150" stroke="#D8CEBD" stroke-width="1"/>
+
+      <!-- Measures -->
+      <line x1="180" y1="50" x2="180" y2="150" stroke="#8C7C6B" stroke-width="1.5"/>
+      <line x1="340" y1="50" x2="340" y2="150" stroke="#8C7C6B" stroke-width="1.5"/>
+
+      <!-- Active Cursor Box -->
+      <rect x="240" y="82" width="28" height="24" rx="4" fill="#C84B31" fill-opacity="0.15" stroke="#C84B31" stroke-width="1.5"/>
+      <text x="254" y="99" font-family="monospace" font-size="14" font-weight="bold" fill="#C84B31" text-anchor="middle">2</text>
+      <!-- Cursor pulse line -->
+      <line x1="244" y1="102" x2="264" y2="102" stroke="#C84B31" stroke-width="2"/>
+
+      <!-- Chords on top of measures -->
+      <text x="40" y="32" font-family="sans-serif" font-size="12" font-weight="bold" fill="#6E5D48">Em7</text>
+      <text x="200" y="32" font-family="sans-serif" font-size="12" font-weight="bold" fill="#6E5D48">Cadd9</text>
+      <text x="360" y="32" font-family="sans-serif" font-size="12" font-weight="bold" fill="#6E5D48">G</text>
+
+      <!-- Notes -->
+      <text x="60" y="154" font-family="monospace" font-size="13" font-weight="bold" fill="#24201D">0</text>
+      <text x="90" y="114" font-family="monospace" font-size="13" font-weight="bold" fill="#24201D">2</text>
+      <text x="120" y="94" font-family="monospace" font-size="13" font-weight="bold" fill="#24201D">0</text>
+      <text x="150" y="54" font-family="monospace" font-size="13" font-weight="bold" fill="#24201D">3</text>
+
+      <!-- Lyric beneath measure -->
+      <text x="200" y="172" font-family="'Songti SC', serif" font-size="11" fill="#8C7C6B">故事的小黄花 从出生那年就飘着</text>
+    </g>
+
+    <!-- Bottom Lyrics Drawer & Track Mixer preview -->
+    <g transform="translate(0, 288)">
+      <rect x="0" y="0" width="520" height="96" rx="8" fill="#F8F5EE" stroke="#E2DACD" stroke-width="1"/>
+      <text x="16" y="24" font-family="sans-serif" font-size="11" font-weight="bold" fill="#6E5D48">歌词抽屉 &amp; 多轨混音（Lyrics &amp; Multi-Tracks）</text>
+      <!-- Track 1: Acoustic Guitar -->
+      <rect x="16" y="36" width="488" height="24" rx="4" fill="#FFFFFF" stroke="#E5DDD0" stroke-width="1"/>
+      <circle cx="28" cy="48" r="4" fill="#2E7D32"/>
+      <text x="40" y="52" font-family="sans-serif" font-size="10" fill="#24201D">主音吉他 (Steel Guitar)</text>
+      <text x="360" y="52" font-family="monospace" font-size="10" fill="#8C7C6B">VOL 85% · PAN C</text>
+      <!-- Track 2: Fingerstyle Bass -->
+      <rect x="16" y="64" width="488" height="24" rx="4" fill="#FFFFFF" stroke="#E5DDD0" stroke-width="1"/>
+      <circle cx="28" cy="76" r="4" fill="#C49A45"/>
+      <text x="40" y="80" font-family="sans-serif" font-size="10" fill="#24201D">低音伴奏 (Acoustic Bass)</text>
+      <text x="360" y="80" font-family="monospace" font-size="10" fill="#8C7C6B">VOL 70% · PAN L15</text>
+    </g>
+  </g>
+
+  <!-- Right Sidebar: Chord Palette & Shortcuts (35% width) -->
+  <g transform="translate(568, 64)">
+    <!-- Chord Palette Panel -->
+    <rect x="0" y="0" width="260" height="194" rx="8" fill="#F4EFE6" stroke="#D8CEBD" stroke-width="1"/>
+    <text x="16" y="24" font-family="sans-serif" font-size="12" font-weight="bold" fill="#584A3B">和弦调色板 (Chord Palette)</text>
+    <text x="16" y="40" font-family="sans-serif" font-size="10" fill="#8C7C6B">点击或拖拽至谱面小节直接套用</text>
+
+    <!-- Chord Pills Grid -->
+    <g transform="translate(16, 50)">
+      <rect x="0" y="0" width="68" height="28" rx="6" fill="#FFFFFF" stroke="#E2DACD"/>
+      <text x="34" y="18" font-family="sans-serif" font-size="11" font-weight="bold" fill="#24201D" text-anchor="middle">G (320003)</text>
+
+      <rect x="76" y="0" width="72" height="28" rx="6" fill="#FFFFFF" stroke="#E2DACD"/>
+      <text x="112" y="18" font-family="sans-serif" font-size="11" font-weight="bold" fill="#24201D" text-anchor="middle">Em7 (022033)</text>
+
+      <rect x="156" y="0" width="72" height="28" rx="6" fill="#FFFFFF" stroke="#E2DACD"/>
+      <text x="192" y="18" font-family="sans-serif" font-size="11" font-weight="bold" fill="#24201D" text-anchor="middle">Cadd9</text>
+
+      <rect x="0" y="36" width="68" height="28" rx="6" fill="#FFFFFF" stroke="#E2DACD"/>
+      <text x="34" y="54" font-family="sans-serif" font-size="11" font-weight="bold" fill="#24201D" text-anchor="middle">Dsus4</text>
+
+      <rect x="76" y="36" width="72" height="28" rx="6" fill="#FFFFFF" stroke="#E2DACD"/>
+      <text x="112" y="54" font-family="sans-serif" font-size="11" font-weight="bold" fill="#24201D" text-anchor="middle">Am7</text>
+
+      <rect x="156" y="36" width="72" height="28" rx="6" fill="#FFFFFF" stroke="#E2DACD"/>
+      <text x="192" y="54" font-family="sans-serif" font-size="11" font-weight="bold" fill="#24201D" text-anchor="middle">Bm7</text>
+
+      <rect x="0" y="72" width="68" height="28" rx="6" fill="#FFFFFF" stroke="#E2DACD"/>
+      <text x="34" y="90" font-family="sans-serif" font-size="11" font-weight="bold" fill="#24201D" text-anchor="middle">D/F#</text>
+
+      <rect x="76" y="72" width="72" height="28" rx="6" fill="#FFFFFF" stroke="#E2DACD"/>
+      <text x="112" y="90" font-family="sans-serif" font-size="11" font-weight="bold" fill="#24201D" text-anchor="middle">Fmaj7</text>
+
+      <rect x="156" y="72" width="72" height="28" rx="6" fill="#FFFFFF" stroke="#E2DACD"/>
+      <text x="192" y="90" font-family="sans-serif" font-size="11" font-weight="bold" fill="#24201D" text-anchor="middle">+ 自定义</text>
+    </g>
+
+    <!-- Shortcut Matrix Box -->
+    <g transform="translate(0, 206)">
+      <rect x="0" y="0" width="260" height="178" rx="8" fill="#F8F5EE" stroke="#E2DACD" stroke-width="1"/>
+      <text x="16" y="24" font-family="sans-serif" font-size="12" font-weight="bold" fill="#584A3B">⚡ 核心快捷键速查</text>
+
+      <text x="16" y="50" font-family="monospace" font-size="11" fill="#C84B31" font-weight="bold">1 ~ 6</text>
+      <text x="76" y="50" font-family="system-ui, sans-serif" font-size="11" fill="#584A3B">切换时值 (全/二/四/八/16/32)</text>
+
+      <text x="16" y="74" font-family="monospace" font-size="11" fill="#C84B31" font-weight="bold">0 ~ 24</text>
+      <text x="76" y="74" font-family="system-ui, sans-serif" font-size="11" fill="#584A3B">光标弦输入对应品数</text>
+
+      <text x="16" y="98" font-family="monospace" font-size="11" fill="#C84B31" font-weight="bold">Space</text>
+      <text x="76" y="98" font-family="system-ui, sans-serif" font-size="11" fill="#584A3B">空格即时音频试听/暂停</text>
+
+      <text x="16" y="122" font-family="monospace" font-size="11" fill="#C84B31" font-weight="bold">Del / ⌫</text>
+      <text x="76" y="122" font-family="system-ui, sans-serif" font-size="11" fill="#584A3B">删除音符并置为休止符</text>
+
+      <text x="16" y="146" font-family="monospace" font-size="11" fill="#C84B31" font-weight="bold">⌘ + S</text>
+      <text x="76" y="146" font-family="system-ui, sans-serif" font-size="11" fill="#584A3B">本地秒级保存工程草稿</text>
+    </g>
+  </g>
+</svg>

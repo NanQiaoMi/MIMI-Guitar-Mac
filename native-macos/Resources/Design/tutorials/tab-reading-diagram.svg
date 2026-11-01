@@ -1,0 +1,130 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 480" width="100%" height="100%">
+  <defs>
+    <filter id="tab-shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#483620" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect x="8" y="8" width="844" height="464" rx="16" fill="#FEFFFC" stroke="#E5DDD0" stroke-width="1.5" filter="url(#tab-shadow)"/>
+  <rect x="14" y="14" width="832" height="452" rx="12" fill="none" stroke="#F0E9DE" stroke-width="1" stroke-dasharray="4,4"/>
+
+  <!-- Top Title -->
+  <g transform="translate(32, 28)">
+    <rect x="0" y="0" width="138" height="24" rx="4" fill="#41A1CF" fill-opacity="0.15" stroke="#41A1CF" stroke-width="1"/>
+    <text x="69" y="16" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="bold" fill="#2E6B8A" text-anchor="middle" letter-spacing="1">吉他六线谱解构图</text>
+    <text x="154" y="17" font-family="'Fraunces', serif" font-size="14" font-weight="600" fill="#24201D">从琴弦物理映射到演奏技巧记号</text>
+    <text x="790" y="16" font-family="monospace" font-size="11" fill="#8C7C6B" text-anchor="end">FIG. 03 · TAB ANATOMY</text>
+  </g>
+
+  <!-- Stave with Left Explanations -->
+  <g transform="translate(32, 68)">
+    <!-- 6 TAB Lines with String Labels -->
+    <g transform="translate(140, 20)">
+      <!-- Line 1: High E -->
+      <line x1="0" y1="20" x2="650" y2="20" stroke="#8C7C6B" stroke-width="1.2"/>
+      <text x="-16" y="24" font-family="system-ui, sans-serif" font-size="12" font-weight="bold" fill="#C84B31" text-anchor="end">1 弦 (高音 E · 最细)</text>
+
+      <!-- Line 2: B -->
+      <line x1="0" y1="50" x2="650" y2="50" stroke="#8C7C6B" stroke-width="1.2"/>
+      <text x="-16" y="54" font-family="system-ui, sans-serif" font-size="12" fill="#584A3B" text-anchor="end">2 弦 (B 音)</text>
+
+      <!-- Line 3: G -->
+      <line x1="0" y1="80" x2="650" y2="80" stroke="#8C7C6B" stroke-width="1.2"/>
+      <text x="-16" y="84" font-family="system-ui, sans-serif" font-size="12" fill="#584A3B" text-anchor="end">3 弦 (G 音)</text>
+
+      <!-- Line 4: D -->
+      <line x1="0" y1="110" x2="650" y2="110" stroke="#8C7C6B" stroke-width="1.5"/>
+      <text x="-16" y="114" font-family="system-ui, sans-serif" font-size="12" fill="#584A3B" text-anchor="end">4 弦 (D 音)</text>
+
+      <!-- Line 5: A -->
+      <line x1="0" y1="140" x2="650" y2="140" stroke="#8C7C6B" stroke-width="1.8"/>
+      <text x="-16" y="144" font-family="system-ui, sans-serif" font-size="12" fill="#584A3B" text-anchor="end">5 弦 (A 音)</text>
+
+      <!-- Line 6: Low E -->
+      <line x1="0" y1="170" x2="650" y2="170" stroke="#584A3B" stroke-width="2.2"/>
+      <text x="-16" y="174" font-family="system-ui, sans-serif" font-size="12" font-weight="bold" fill="#C84B31" text-anchor="end">6 弦 (低音 E · 最粗)</text>
+
+      <!-- Vertical bar lines -->
+      <line x1="180" y1="20" x2="180" y2="170" stroke="#584A3B" stroke-width="1.8"/>
+      <line x1="400" y1="20" x2="400" y2="170" stroke="#584A3B" stroke-width="1.8"/>
+
+      <!-- Demo Measure 1: Basic numbers -->
+      <text x="40" y="175" font-family="monospace" font-size="15" font-weight="bold" fill="#24201D">0</text>
+      <text x="80" y="115" font-family="monospace" font-size="15" font-weight="bold" fill="#24201D">2</text>
+      <text x="120" y="85" font-family="monospace" font-size="15" font-weight="bold" fill="#24201D">0</text>
+      <!-- Annotation for Single Note -->
+      <path d="M 80,100 Q 80,80 95,70" fill="none" stroke="#C84B31" stroke-width="1.5"/>
+      <rect x="90" y="55" width="80" height="20" rx="4" fill="#C84B31" fill-opacity="0.1"/>
+      <text x="130" y="69" font-family="sans-serif" font-size="10" fill="#C84B31" text-anchor="middle">按4弦2品弹响</text>
+
+      <!-- Demo Measure 2: Techniques (Hammer / Pull / Slide) -->
+      <!-- Hammer-on 0h2 -->
+      <text x="210" y="115" font-family="monospace" font-size="15" font-weight="bold" fill="#24201D">0</text>
+      <path d="M 220,105 Q 235,95 250,105" fill="none" stroke="#2E6B8A" stroke-width="1.5"/>
+      <text x="235" y="96" font-family="sans-serif" font-size="10" font-weight="bold" fill="#2E6B8A" text-anchor="middle">h</text>
+      <text x="250" y="115" font-family="monospace" font-size="15" font-weight="bold" fill="#24201D">2</text>
+
+      <!-- Slide 2/4 -->
+      <text x="290" y="85" font-family="monospace" font-size="15" font-weight="bold" fill="#24201D">2</text>
+      <line x1="305" y1="88" x2="320" y2="82" stroke="#C49A45" stroke-width="2"/>
+      <text x="312" y="76" font-family="sans-serif" font-size="9" fill="#8F6B28" text-anchor="middle">slide</text>
+      <text x="325" y="85" font-family="monospace" font-size="15" font-weight="bold" fill="#24201D">4</text>
+
+      <!-- Pull-off 3p0 -->
+      <text x="355" y="55" font-family="monospace" font-size="15" font-weight="bold" fill="#24201D">3</text>
+      <path d="M 365,45 Q 375,35 385,45" fill="none" stroke="#2E6B8A" stroke-width="1.5"/>
+      <text x="375" y="38" font-family="sans-serif" font-size="10" font-weight="bold" fill="#2E6B8A" text-anchor="middle">p</text>
+      <text x="385" y="55" font-family="monospace" font-size="15" font-weight="bold" fill="#24201D">0</text>
+
+      <!-- Demo Measure 3: Vertical Chord Strumming -->
+      <rect x="435" y="10" width="46" height="170" rx="6" fill="#C49A45" fill-opacity="0.1" stroke="#C49A45" stroke-width="1" stroke-dasharray="3,3"/>
+      <text x="458" y="25" font-family="monospace" font-size="15" font-weight="bold" fill="#24201D" text-anchor="middle">3</text>
+      <text x="458" y="55" font-family="monospace" font-size="15" font-weight="bold" fill="#24201D" text-anchor="middle">0</text>
+      <text x="458" y="85" font-family="monospace" font-size="15" font-weight="bold" fill="#24201D" text-anchor="middle">0</text>
+      <text x="458" y="115" font-family="monospace" font-size="15" font-weight="bold" fill="#24201D" text-anchor="middle">0</text>
+      <text x="458" y="145" font-family="monospace" font-size="15" font-weight="bold" fill="#24201D" text-anchor="middle">2</text>
+      <text x="458" y="175" font-family="monospace" font-size="15" font-weight="bold" fill="#24201D" text-anchor="middle">3</text>
+      <text x="458" y="200" font-family="sans-serif" font-size="10" font-weight="bold" fill="#8F6B28" text-anchor="middle">竖向同列 = G 和弦同时弹响</text>
+    </g>
+  </g>
+
+  <!-- Bottom 3 Cheatsheet Boxes -->
+  <g transform="translate(32, 290)">
+    <!-- Box 1 -->
+    <rect x="0" y="0" width="254" height="136" rx="8" fill="#F8F5EE" stroke="#E2DACD" stroke-width="1"/>
+    <text x="16" y="24" font-family="sans-serif" font-size="12" font-weight="bold" fill="#584A3B">① 击弦 (h) 与勾弦 (p)</text>
+    <text x="16" y="48" font-family="sans-serif" font-size="11" fill="#6E5D48" line-height="1.5">
+      h = Hammer-on (击弦)
+    </text>
+    <text x="16" y="66" font-family="sans-serif" font-size="10" fill="#8C7C6B">右手拨一次弦，左手手指如锤击品。</text>
+    <text x="16" y="92" font-family="sans-serif" font-size="11" fill="#6E5D48">
+      p = Pull-off (勾弦)
+    </text>
+    <text x="16" y="110" font-family="sans-serif" font-size="10" fill="#8C7C6B">手指斜下勾离琴弦，发出空弦或后音。</text>
+
+    <!-- Box 2 -->
+    <rect x="270" y="0" width="254" height="136" rx="8" fill="#F8F5EE" stroke="#E2DACD" stroke-width="1"/>
+    <text x="286" y="24" font-family="sans-serif" font-size="12" font-weight="bold" fill="#584A3B">② 滑音 (/) 与推弦 (b)</text>
+    <text x="286" y="48" font-family="sans-serif" font-size="11" fill="#6E5D48">
+      / 或 \ = Slide (滑音)
+    </text>
+    <text x="286" y="66" font-family="sans-serif" font-size="10" fill="#8C7C6B">按弦不松，手指沿琴品丝快速滑行。</text>
+    <text x="286" y="92" font-family="sans-serif" font-size="11" fill="#6E5D48">
+      b = Bend (推弦)
+    </text>
+    <text x="286" y="110" font-family="sans-serif" font-size="10" fill="#8C7C6B">手指向上推弦，音高平滑升高半音/全音。</text>
+
+    <!-- Box 3 -->
+    <rect x="540" y="0" width="254" height="136" rx="8" fill="#F8F5EE" stroke="#E2DACD" stroke-width="1"/>
+    <text x="556" y="24" font-family="sans-serif" font-size="12" font-weight="bold" fill="#584A3B">③ 泛音 (&lt;&gt;) 与颤音 (~)</text>
+    <text x="556" y="48" font-family="sans-serif" font-size="11" fill="#6E5D48">
+      &lt;12&gt; = Harmonic (自然泛音)
+    </text>
+    <text x="556" y="66" font-family="sans-serif" font-size="10" fill="#8C7C6B">指腹轻触品丝正上方，拨弦后瞬间离弦。</text>
+    <text x="556" y="92" font-family="sans-serif" font-size="11" fill="#6E5D48">
+      ~ = Vibrato (揉弦)
+    </text>
+    <text x="556" y="110" font-family="sans-serif" font-size="10" fill="#8C7C6B">手指在品格内微幅揉动，赋予音符生命。</text>
+  </g>
+</svg>

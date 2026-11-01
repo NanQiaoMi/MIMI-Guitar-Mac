@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 480" width="100%" height="100%">
+  <defs>
+    <filter id="capo-shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#483620" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+
+  <!-- Background Paper -->
+  <rect x="8" y="8" width="844" height="464" rx="16" fill="#FEFFFC" stroke="#E5DDD0" stroke-width="1.5" filter="url(#capo-shadow)"/>
+  <rect x="14" y="14" width="832" height="452" rx="12" fill="none" stroke="#F0E9DE" stroke-width="1" stroke-dasharray="4,4"/>
+
+  <!-- Top Title -->
+  <g transform="translate(32, 28)">
+    <rect x="0" y="0" width="148" height="24" rx="4" fill="#C84B31" fill-opacity="0.12" stroke="#C84B31" stroke-width="1"/>
+    <text x="74" y="16" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="bold" fill="#C84B31" text-anchor="middle" letter-spacing="1">变调夹定调速查矩阵</text>
+    <text x="164" y="17" font-family="'Fraunces', serif" font-size="14" font-weight="600" fill="#24201D">人声黄金换 Key 与指法对应表</text>
+    <text x="790" y="16" font-family="monospace" font-size="11" fill="#8C7C6B" text-anchor="end">FIG. 04 · CAPO TRANSPOSITION</text>
+  </g>
+
+  <!-- Transposition Matrix Table -->
+  <g transform="translate(32, 68)">
+    <!-- Header Row -->
+    <rect x="0" y="0" width="796" height="38" rx="6" fill="#F4EFE6" stroke="#D8CEBD" stroke-width="1"/>
+    <text x="70" y="24" font-family="sans-serif" font-size="12" font-weight="bold" fill="#584A3B" text-anchor="middle">原曲目标调</text>
+    <text x="210" y="24" font-family="sans-serif" font-size="12" font-weight="bold" fill="#584A3B" text-anchor="middle">推荐采用指法</text>
+    <text x="350" y="24" font-family="sans-serif" font-size="12" font-weight="bold" fill="#C84B31" text-anchor="middle">变调夹夹品</text>
+    <text x="500" y="24" font-family="sans-serif" font-size="12" font-weight="bold" fill="#584A3B" text-anchor="middle">常用骨干和弦级数</text>
+    <text x="690" y="24" font-family="sans-serif" font-size="12" font-weight="bold" fill="#584A3B" text-anchor="middle">音色适用场景</text>
+
+    <!-- Row 1: C key -->
+    <g transform="translate(0, 44)">
+      <rect x="0" y="0" width="796" height="34" fill="#FFFFFF" stroke="#EAE3D5" stroke-width="0.8"/>
+      <text x="70" y="22" font-family="'Fraunces', serif" font-size="13" font-weight="bold" fill="#24201D" text-anchor="middle">C 调</text>
+      <text x="210" y="22" font-family="sans-serif" font-size="12" fill="#584A3B" text-anchor="middle">C 调指法</text>
+      <rect x="310" y="6" width="80" height="22" rx="11" fill="#F0E9DE"/>
+      <text x="350" y="21" font-family="monospace" font-size="11" font-weight="bold" fill="#8C7C6B" text-anchor="middle">Capo 0 (不夹)</text>
+      <text x="500" y="22" font-family="sans-serif" font-size="11" fill="#24201D" text-anchor="middle">C - G - Am - Em - F - G7</text>
+      <text x="690" y="22" font-family="sans-serif" font-size="11" fill="#6E5D48" text-anchor="middle">最基础流行弹唱</text>
+    </g>
+
+    <!-- Row 2: D key -->
+    <g transform="translate(0, 80)">
+      <rect x="0" y="0" width="796" height="34" fill="#FDFBF7" stroke="#EAE3D5" stroke-width="0.8"/>
+      <text x="70" y="22" font-family="'Fraunces', serif" font-size="13" font-weight="bold" fill="#24201D" text-anchor="middle">D 调</text>
+      <text x="210" y="22" font-family="sans-serif" font-size="12" fill="#584A3B" text-anchor="middle">C 调指法</text>
+      <rect x="310" y="6" width="80" height="22" rx="11" fill="#C84B31" fill-opacity="0.15"/>
+      <text x="350" y="21" font-family="monospace" font-size="11" font-weight="bold" fill="#C84B31" text-anchor="middle">Capo 2 品</text>
+      <text x="500" y="22" font-family="sans-serif" font-size="11" fill="#24201D" text-anchor="middle">按 C 发 D 音（整体高 2 半音）</text>
+      <text x="690" y="22" font-family="sans-serif" font-size="11" fill="#6E5D48" text-anchor="middle">温暖明快中音区</text>
+    </g>
+
+    <!-- Row 3: Eb / E key -->
+    <g transform="translate(0, 116)">
+      <rect x="0" y="0" width="796" height="34" fill="#FFFFFF" stroke="#EAE3D5" stroke-width="0.8"/>
+      <text x="70" y="22" font-family="'Fraunces', serif" font-size="13" font-weight="bold" fill="#24201D" text-anchor="middle">E 调</text>
+      <text x="210" y="22" font-family="sans-serif" font-size="12" fill="#584A3B" text-anchor="middle">C 调指法 / D 调指法</text>
+      <rect x="310" y="6" width="80" height="22" rx="11" fill="#C84B31" fill-opacity="0.15"/>
+      <text x="350" y="21" font-family="monospace" font-size="11" font-weight="bold" fill="#C84B31" text-anchor="middle">Capo 4品 / 2品</text>
+      <text x="500" y="22" font-family="sans-serif" font-size="11" fill="#24201D" text-anchor="middle">清澈泛音突出</text>
+      <text x="690" y="22" font-family="sans-serif" font-size="11" fill="#6E5D48" text-anchor="middle">适合民谣女声高音</text>
+    </g>
+
+    <!-- Row 4: F key -->
+    <g transform="translate(0, 152)">
+      <rect x="0" y="0" width="796" height="34" fill="#FDFBF7" stroke="#EAE3D5" stroke-width="0.8"/>
+      <text x="70" y="22" font-family="'Fraunces', serif" font-size="13" font-weight="bold" fill="#24201D" text-anchor="middle">F 调</text>
+      <text x="210" y="22" font-family="sans-serif" font-size="12" fill="#584A3B" text-anchor="middle">C 调指法</text>
+      <rect x="310" y="6" width="80" height="22" rx="11" fill="#C84B31" fill-opacity="0.25"/>
+      <text x="350" y="21" font-family="monospace" font-size="11" font-weight="bold" fill="#C84B31" text-anchor="middle">Capo 5 品 ★</text>
+      <text x="500" y="22" font-family="sans-serif" font-size="11" fill="#24201D" text-anchor="middle">彻底免除大横按 F 和弦困扰</text>
+      <text x="690" y="22" font-family="sans-serif" font-size="11" font-weight="bold" fill="#C84B31" text-anchor="middle">女生翻唱男生歌首选</text>
+    </g>
+
+    <!-- Row 5: G key -->
+    <g transform="translate(0, 188)">
+      <rect x="0" y="0" width="796" height="34" fill="#FFFFFF" stroke="#EAE3D5" stroke-width="0.8"/>
+      <text x="70" y="22" font-family="'Fraunces', serif" font-size="13" font-weight="bold" fill="#24201D" text-anchor="middle">G 调</text>
+      <text x="210" y="22" font-family="sans-serif" font-size="12" fill="#584A3B" text-anchor="middle">G 调指法</text>
+      <rect x="310" y="6" width="80" height="22" rx="11" fill="#F0E9DE"/>
+      <text x="350" y="21" font-family="monospace" font-size="11" font-weight="bold" fill="#8C7C6B" text-anchor="middle">Capo 0 (不夹)</text>
+      <text x="500" y="22" font-family="sans-serif" font-size="11" fill="#24201D" text-anchor="middle">G - Em - C - D - D/F#</text>
+      <text x="690" y="22" font-family="sans-serif" font-size="11" fill="#6E5D48" text-anchor="middle">通透扫弦、弹唱神调</text>
+    </g>
+
+    <!-- Row 6: A key -->
+    <g transform="translate(0, 224)">
+      <rect x="0" y="0" width="796" height="34" fill="#FDFBF7" stroke="#EAE3D5" stroke-width="0.8"/>
+      <text x="70" y="22" font-family="'Fraunces', serif" font-size="13" font-weight="bold" fill="#24201D" text-anchor="middle">A 调</text>
+      <text x="210" y="22" font-family="sans-serif" font-size="12" fill="#584A3B" text-anchor="middle">G 调指法</text>
+      <rect x="310" y="6" width="80" height="22" rx="11" fill="#C84B31" fill-opacity="0.15"/>
+      <text x="350" y="21" font-family="monospace" font-size="11" font-weight="bold" fill="#C84B31" text-anchor="middle">Capo 2 品</text>
+      <text x="500" y="22" font-family="sans-serif" font-size="11" fill="#24201D" text-anchor="middle">按 G 发 A 音</text>
+      <text x="690" y="22" font-family="sans-serif" font-size="11" fill="#6E5D48" text-anchor="middle">轻快跳跃流行感</text>
+    </g>
+  </g>
+
+  <!-- Bottom Tip Banner -->
+  <g transform="translate(32, 340)">
+    <rect x="0" y="0" width="796" height="72" rx="10" fill="#F4EFE6" stroke="#D8CEBD" stroke-width="1"/>
+    <!-- Stamp Badge -->
+    <rect x="16" y="14" width="70" height="22" rx="4" fill="#C49A45"/>
+    <text x="51" y="29" font-family="sans-serif" font-size="10" font-weight="bold" fill="#FFFFFF" text-anchor="middle">琴房秘诀</text>
+    <text x="96" y="30" font-family="system-ui, sans-serif" font-size="12" font-weight="bold" fill="#24201D">夹持物理位置：紧靠品丝 2mm，拒绝中间打品！</text>
+    <text x="16" y="56" font-family="system-ui, sans-serif" font-size="11" fill="#6E5D48">
+      变调夹装好后，琴弦张力会产生微量偏移，请务必在 MIMI 详情页开启试听校音，保证每一次登台或练琴音准纯净如水晶。
+    </text>
+  </g>
+</svg>

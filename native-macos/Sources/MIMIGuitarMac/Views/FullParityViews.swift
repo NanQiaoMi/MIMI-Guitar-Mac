@@ -1866,42 +1866,77 @@ struct ArticleListView: View {
     @EnvironmentObject private var model: AppModel
     var isSearchResults = false
 
-    private var rows: [CatalogArticle] { isSearchResults ? model.searchArticles : model.articles }
-    private var title: String { isSearchResults ? "文章搜索结果" : "文章" }
+    @State private var selectedCategory: String = "全部"
+    private let categories = ["全部", "软件教程", "演奏技巧", "乐理视奏", "琴房心得", "选琴指南"]
+
+    private var rawRows: [CatalogArticle] { isSearchResults ? model.searchArticles : model.articles }
+
+    private var cleanRows: [CatalogArticle] {
+        rawRows.filter { a in
+            let isClean = !a.title.hasPrefix("测试文章") && !a.title.hasPrefix("M7 验收文章")
+            if selectedCategory == "全部" {
+                return isClean
+            } else {
+                return isClean && (a.category == selectedCategory)
+            }
+        }
+    }
+
+    private var headlineArticle: CatalogArticle? {
+        guard !isSearchResults, model.articlePage == 1, selectedCategory == "全部" else { return nil }
+        return cleanRows.first(where: { $0.id == "art-player" }) ?? cleanRows.first
+    }
+
+    private var gridRows: [CatalogArticle] {
+        if let headline = headlineArticle {
+            return cleanRows.filter { $0.id != headline.id }
+        }
+        return cleanRows
+    }
+
     private var pageCount: Int { max(1, Int(ceil(Double(model.articleTotal) / 9))) }
     private var searchQuery: String { isSearchResults ? model.searchText : model.articleSearch }
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 0) {
-            VStack(alignment: .leading, spacing: 8) {
-                Text("Editorial · Notes")
-                    .font(.system(size: 13, weight: .medium, design: .monospaced))
-                    .tracking(2.6).foregroundStyle(Color(hex: 0x8A7151))
-                Text(title).font(MIMITheme.displayFont(size: 44, weight: .medium)).tracking(-0.88).foregroundStyle(MIMITheme.ink)
-                Text("从零基础入门到进阶技巧，把练琴路上的经验整理成一篇篇短文。")
-                    .font(MIMITheme.bodyFont(size: 15)).foregroundStyle(MIMITheme.bodyInk)
-                    .lineSpacing(5).fixedSize(horizontal: false, vertical: true).frame(maxWidth: 560, alignment: .leading)
-                HStack(spacing: 12) {
-                    if isSearchResults {
-                        HStack(spacing: 9) {
-                            Image(systemName: "magnifyingglass").foregroundStyle(MIMITheme.mutedInk)
-                            TextField("搜索文章标题或正文", text: $model.searchText)
-                                .textFieldStyle(.plain).onSubmit { model.searchArticlesDidChange() }
+        VStack(alignment: .leading, spacing: 24) {
+            // 1. Newspaper Editorial Masthead
+            ArticleNewspaperMasthead(
+                selectedCategory: $selectedCategory,
+                categories: categories,
+                totalArticles: cleanRows.count
+            )
+
+            // 2. Action Controls Bar (Search / Sort / Publish)
+            HStack(spacing: 12) {
+                HStack(spacing: 9) {
+                    Image(systemName: "magnifyingglass").foregroundStyle(MIMITheme.mutedInk)
+                    TextField(isSearchResults ? "搜索文章标题或正文" : "在专栏文章中快速检索…", text: isSearchResults ? $model.searchText : $model.articleSearch)
+                        .textFieldStyle(.plain)
+                        .onSubmit {
+                            if isSearchResults { model.searchArticlesDidChange() }
+                            else { model.searchArticlesDidChange() }
                         }
-                        .padding(.horizontal, 14).frame(width: 300, height: 44)
-                        .background(MIMITheme.paperWhite, in: RoundedRectangle(cornerRadius: 12))
-                        .overlay(RoundedRectangle(cornerRadius: 12).stroke(MIMITheme.softBorder, lineWidth: 1))
-                    }
-                    articleSortControl
-                    Spacer(minLength: 8)
-                    if model.articleListIsLoading { ProgressView().controlSize(.small) }
-                    Button { model.navigate(.publishArticle) } label: { Label("发布文章", systemImage: "square.and.pencil") }
-                        .buttonStyle(PaperProminentButtonStyle())
                 }
-                .padding(.top, 12)
+                .padding(.horizontal, 14).frame(width: 320, height: 40)
+                .background(MIMITheme.paperWhite, in: RoundedRectangle(cornerRadius: 10))
+                .overlay(RoundedRectangle(cornerRadius: 10).stroke(MIMITheme.softBorder, lineWidth: 1))
+
+                articleSortControl
+
+                Spacer(minLength: 8)
+
+                if model.articleListIsLoading {
+                    ProgressView().controlSize(.small)
+                }
+
+                Button {
+                    model.navigate(.publishArticle)
+                } label: {
+                    Label("发布文章", systemImage: "square.and.pencil")
+                }
+                .buttonStyle(PaperProminentButtonStyle())
             }
-            .padding(.bottom, 32)
-            .overlay(alignment: .bottom) { Rectangle().fill(MIMITheme.softBorder).frame(height: 1) }
+
             if let message = model.articleListMessage {
                 HStack(alignment: .top, spacing: 12) {
                     Label(message, systemImage: "exclamationmark.triangle.fill")
@@ -1913,24 +1948,71 @@ struct ArticleListView: View {
                 .padding(14).frame(maxWidth: .infinity, alignment: .leading)
                 .background(MIMITheme.terracotta.opacity(0.07), in: RoundedRectangle(cornerRadius: 14))
                 .overlay(RoundedRectangle(cornerRadius: 14).stroke(MIMITheme.terracotta.opacity(0.2), lineWidth: 1))
-                .accessibilityElement(children: .contain).padding(.top, 20)
+                .accessibilityElement(children: .contain)
             }
-            if model.articleListIsLoading && rows.isEmpty {
+
+            // 3. Featured Headline Story (Broadsheet Hero)
+            if let headline = headlineArticle {
+                ArticleHeadlineHeroView(article: headline) { id in
+                    model.navigate(.article(id: id))
+                }
+            }
+
+            // 4. Blackboard / Bulletin Board Sticky Cheatsheet Wall
+            if !isSearchResults && model.articlePage == 1 {
+                ArticleBulletinBoardSection { id in
+                    model.navigate(.article(id: id))
+                }
+            }
+
+            // 5. Editorial Articles Grid Header
+            HStack(spacing: 8) {
+                Capsule().fill(Color(hex: 0xC49A45)).frame(width: 4, height: 18)
+                Text(selectedCategory == "全部" ? "专栏精选 · EDITORIAL ARTICLES" : "\(selectedCategory) · 专栏列表")
+                    .font(MIMITheme.displayFont(size: 19, weight: .bold))
+                    .foregroundStyle(MIMITheme.ink)
+                Spacer()
+                Text("共 \(gridRows.count) 篇文章")
+                    .font(.system(size: 11, design: .monospaced))
+                    .foregroundStyle(MIMITheme.mutedInk)
+            }
+            .padding(.top, 8)
+
+            // 6. Articles Grid
+            if model.articleListIsLoading && gridRows.isEmpty {
                 VStack(spacing: 10) {
                     ProgressView().controlSize(.regular)
                     Text("正在载入文章…").font(MIMITheme.bodyFont(size: 13, weight: .medium))
                     Text("正在读取本机文章索引。网络发布功能使用单独的账号服务。")
                         .font(MIMITheme.bodyFont(size: 11)).foregroundStyle(MIMITheme.mutedInk)
-                }.frame(maxWidth: .infinity, minHeight: 160).mimiCard(radius: 24, fill: MIMITheme.paperWhite).padding(.top, 32)
-            } else if rows.isEmpty && model.articleListMessage == nil {
-                Text(searchQuery.isEmpty ? "文章整理中，敬请期待" : "没有找到相关文章")
-                    .font(MIMITheme.bodyFont(size: 14)).foregroundStyle(MIMITheme.mutedInk)
-                    .frame(maxWidth: .infinity, minHeight: 160).mimiCard(radius: 24, fill: MIMITheme.paperWhite).padding(.top, 32)
-            } else if !rows.isEmpty {
-                LazyVGrid(columns: [GridItem(.flexible(), spacing: 17), GridItem(.flexible(), spacing: 17), GridItem(.flexible(), spacing: 17)], spacing: 17) {
-                    ForEach(rows) { article in articleCard(article) }
-                }.padding(.top, 32)
+                }
+                .frame(maxWidth: .infinity, minHeight: 160)
+                .mimiCard(radius: 20, fill: MIMITheme.paperWhite)
+            } else if gridRows.isEmpty && model.articleListMessage == nil {
+                VStack(spacing: 10) {
+                    Image(systemName: "doc.text.magnifyingglass")
+                        .font(.system(size: 28))
+                        .foregroundStyle(MIMITheme.mutedInk)
+                    Text(searchQuery.isEmpty ? "该分类暂无文章，敬请期待" : "没有找到与「\(searchQuery)」相关的文章")
+                        .font(MIMITheme.bodyFont(size: 14)).foregroundStyle(MIMITheme.mutedInk)
+                }
+                .frame(maxWidth: .infinity, minHeight: 160)
+                .mimiCard(radius: 20, fill: MIMITheme.paperWhite)
+            } else {
+                LazyVGrid(columns: [
+                    GridItem(.flexible(), spacing: 16),
+                    GridItem(.flexible(), spacing: 16),
+                    GridItem(.flexible(), spacing: 16)
+                ], spacing: 16) {
+                    ForEach(gridRows) { article in
+                        ArticlePaperCardView(article: article) { id in
+                            model.navigate(.article(id: id))
+                        }
+                    }
+                }
             }
+
+            // Pagination Controls
             if pageCount > 1 {
                 HStack(spacing: 9) {
                     if model.articlePage > 1 {
@@ -1942,7 +2024,9 @@ struct ArticleListView: View {
                     if model.articlePage < pageCount {
                         Button("下一页") { model.setArticlePage(model.articlePage + 1) }.buttonStyle(PaperSecondaryButtonStyle())
                     }
-                }.frame(maxWidth: .infinity).padding(.top, 32)
+                }
+                .frame(maxWidth: .infinity)
+                .padding(.top, 16)
             }
         }
         .frame(maxWidth: .infinity, alignment: .top)
@@ -1972,38 +2056,6 @@ struct ArticleListView: View {
             .buttonStyle(.plain)
     }
 
-    private func articleCard(_ article: CatalogArticle) -> some View {
-        Button { model.navigate(.article(id: article.id)) } label: {
-            VStack(alignment: .leading, spacing: 8) {
-                Text("\(article.category ?? "乐谱知识") · \(articleDate(article.createdAt)) · \(articleHeat(article.views)) 热度")
-                    .font(MIMITheme.bodyFont(size: 12)).foregroundStyle(MIMITheme.mutedInk).lineLimit(1)
-                Text(article.title).font(MIMITheme.displayFont(size: 19, weight: .medium)).tracking(-0.19).foregroundStyle(MIMITheme.ink).lineLimit(2).frame(maxWidth: .infinity, alignment: .leading)
-                Text(articleExcerpt(article.content)).font(MIMITheme.bodyFont(size: 15)).foregroundStyle(MIMITheme.bodyInk).lineLimit(3).multilineTextAlignment(.leading).frame(maxWidth: .infinity, alignment: .leading)
-            }
-            .padding(24).frame(maxWidth: .infinity, alignment: .topLeading).background(MIMITheme.paperWhite, in: RoundedRectangle(cornerRadius: 24))
-            .overlay(RoundedRectangle(cornerRadius: 24).stroke(MIMITheme.softBorder, lineWidth: 1))
-        }.buttonStyle(.plain)
-    }
-    private func articleDate(_ value: String?) -> String {
-        guard let value, !value.isEmpty else { return "日期未标注" }
-        return String(value.prefix(10))
-    }
-
-    private func articleHeat(_ views: Int) -> String {
-        guard views >= 10_000 else { return String(views) }
-        return String(format: "%.1f万", locale: Locale(identifier: "en_US_POSIX"), Double(views) / 10_000)
-    }
-
-    private func articleExcerpt(_ value: String) -> String {
-        let snippet = value.prefix(200)
-        let normalized = snippet
-            .replacingOccurrences(of: "\r\n", with: " ")
-            .replacingOccurrences(of: "\n", with: " ")
-            .replacingOccurrences(of: "\r", with: " ")
-            .trimmingCharacters(in: .whitespacesAndNewlines)
-        return String(normalized.prefix(96)) + "…"
-    }
-
     private func retryArticleList() {
         if model.bootstrapMessage != nil || model.contentRoot == nil { model.retryBootstrap() }
         else if isSearchResults { model.searchArticlesDidChange() }
@@ -2014,28 +2066,158 @@ struct ArticleListView: View {
 struct ArticleDetailView: View {
     @EnvironmentObject private var model: AppModel
     let articleID: String
+
+    private var relatedArticles: [CatalogArticle] {
+        model.articles.filter { $0.id != articleID && !$0.title.hasPrefix("测试") && !$0.title.hasPrefix("M7") }.prefix(3).map { $0 }
+    }
+
     var body: some View {
         Group {
             if let article = model.selectedArticle, article.id == articleID {
                 VStack(alignment: .leading, spacing: 0) {
-                    Text("\(article.category ?? "乐谱知识") · \(articleDate(article.createdAt))")
-                        .font(MIMITheme.bodyFont(size: 13)).foregroundStyle(MIMITheme.mutedInk)
-                    Text(article.title).font(MIMITheme.displayFont(size: 44, weight: .medium)).tracking(-0.88).foregroundStyle(MIMITheme.ink)
-                        .fixedSize(horizontal: false, vertical: true).padding(.top, 8)
-                    Divider().overlay(MIMITheme.softBorder).padding(.top, 24).padding(.bottom, 32)
-                    Text(article.content).font(MIMITheme.bodyFont(size: 15)).foregroundStyle(MIMITheme.bodyInk)
-                        .lineSpacing(12).fixedSize(horizontal: false, vertical: true).textSelection(.enabled)
-                    Divider().overlay(MIMITheme.softBorder).padding(.top, 40).padding(.bottom, 24)
-                    HStack(spacing: 10) {
-                        Button { returnToArticleList() } label: { Label("返回文章列表", systemImage: "arrow.left") }.buttonStyle(PaperSecondaryButtonStyle())
-                        Button("分享文章") { shareArticle(article) }.buttonStyle(PaperSecondaryButtonStyle())
-                        Button("复制标题") { copyArticleTitle(article.title) }.buttonStyle(PaperSecondaryButtonStyle())
+                    // Top navigation and action header
+                    HStack {
+                        Button { returnToArticleList() } label: {
+                            Label("返回文章列表", systemImage: "arrow.left")
+                        }
+                        .buttonStyle(PaperSecondaryButtonStyle())
+
                         Spacer()
-                        Text("MIMI Guitar").font(MIMITheme.bodyFont(size: 11)).foregroundStyle(MIMITheme.mutedInk)
+
+                        Text("纸本琴声 · 琴房墨卷")
+                            .font(MIMITheme.proseFont(size: 13, weight: .semibold))
+                            .foregroundStyle(Color(hex: 0x8A7151))
+
+                        Spacer()
+
+                        Button("分享墨卷") { shareArticle(article) }.buttonStyle(PaperSecondaryButtonStyle())
+                        Button("复制标题") { copyArticleTitle(article.title) }.buttonStyle(PaperSecondaryButtonStyle())
+                    }
+                    .padding(.bottom, 20)
+
+                    // Open Book Manuscript Page Container
+                    VStack(alignment: .leading, spacing: 0) {
+                        // Header metadata & title
+                        VStack(alignment: .leading, spacing: 12) {
+                            HStack(alignment: .center, spacing: 8) {
+                                Text(article.category ?? "软件教程")
+                                    .font(.system(size: 11, weight: .bold))
+                                    .foregroundStyle(Color(hex: 0xC84B31))
+                                    .padding(.horizontal, 9)
+                                    .padding(.vertical, 3.5)
+                                    .background(Color(hex: 0xC84B31).opacity(0.1), in: RoundedRectangle(cornerRadius: 4))
+
+                                Text("出刊日期: \(articleDate(article.createdAt))")
+                                    .font(.system(size: 11, design: .monospaced))
+                                    .foregroundStyle(MIMITheme.mutedInk)
+
+                                Spacer()
+
+                                Text("已阅览 \(articleHeat(article.views)) 次 · MIMI 琴房编配组")
+                                    .font(.system(size: 11, weight: .medium, design: .monospaced))
+                                    .foregroundStyle(Color(hex: 0x6E5D48))
+                            }
+
+                            Text(article.title)
+                                .font(MIMITheme.displayFont(size: 34, weight: .bold))
+                                .tracking(-0.5)
+                                .foregroundStyle(MIMITheme.ink)
+                                .lineSpacing(6)
+                                .fixedSize(horizontal: false, vertical: true)
+
+                            // Double ornamental divider line
+                            VStack(spacing: 2) {
+                                Rectangle().fill(MIMITheme.softBorder).frame(height: 1.5)
+                                Rectangle().fill(MIMITheme.faintBorder).frame(height: 0.8)
+                            }
+                            .padding(.top, 8)
+                        }
+                        .padding(.bottom, 28)
+
+                        // Rich Editorial Content Body
+                        ArticleEditorialContent(articleID: article.id, content: article.content)
+                            .padding(.bottom, 36)
+
+                        // Bottom Signature / Seal Stamp
+                        VStack(spacing: 16) {
+                            VStack(spacing: 2) {
+                                Rectangle().fill(MIMITheme.faintBorder).frame(height: 0.8)
+                                Rectangle().fill(MIMITheme.softBorder).frame(height: 1.5)
+                            }
+
+                            HStack(alignment: .center) {
+                                HStack(spacing: 8) {
+                                    Circle()
+                                        .strokeBorder(Color(hex: 0xC84B31), lineWidth: 1.5)
+                                        .background(Circle().fill(Color(hex: 0xC84B31).opacity(0.08)))
+                                        .frame(width: 44, height: 44)
+                                        .overlay(
+                                            Text("琴房\n墨印")
+                                                .font(.system(size: 9, weight: .bold))
+                                                .foregroundStyle(Color(hex: 0xC84B31))
+                                                .multilineTextAlignment(.center)
+                                        )
+
+                                    VStack(alignment: .leading, spacing: 2) {
+                                        Text("MIMI GUITAR · 纸本墨韵")
+                                            .font(.system(size: 11, weight: .bold, design: .monospaced))
+                                            .foregroundStyle(Color(hex: 0x8A7151))
+                                        Text("数字工坊独家原创教程 · 规范版权保护")
+                                            .font(MIMITheme.proseFont(size: 12))
+                                            .foregroundStyle(MIMITheme.mutedInk)
+                                    }
+                                }
+
+                                Spacer()
+
+                                HStack(spacing: 10) {
+                                    Button { returnToArticleList() } label: {
+                                        Label("返回文章列表", systemImage: "arrow.left")
+                                    }
+                                    .buttonStyle(PaperSecondaryButtonStyle())
+
+                                    Button("分享文章") { shareArticle(article) }
+                                        .buttonStyle(PaperSecondaryButtonStyle())
+                                }
+                            }
+                        }
+                        .padding(.top, 10)
+                    }
+                    .padding(36)
+                    .background(MIMITheme.paperWhite, in: RoundedRectangle(cornerRadius: 20))
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 20)
+                            .stroke(Color(hex: 0xD8CEBD), lineWidth: 1.5)
+                    )
+                    .shadow(color: Color(hex: 0x483620).opacity(0.04), radius: 4, x: 0, y: 2)
+
+                    // Related Reading Section
+                    if !relatedArticles.isEmpty {
+                        VStack(alignment: .leading, spacing: 14) {
+                            HStack(spacing: 8) {
+                                Capsule().fill(Color(hex: 0xC49A45)).frame(width: 4, height: 18)
+                                Text("相关专栏导读")
+                                    .font(MIMITheme.displayFont(size: 18, weight: .bold))
+                                    .foregroundStyle(MIMITheme.ink)
+                                Spacer()
+                            }
+                            .padding(.top, 36)
+
+                            LazyVGrid(columns: [
+                                GridItem(.flexible(), spacing: 14),
+                                GridItem(.flexible(), spacing: 14),
+                                GridItem(.flexible(), spacing: 14)
+                            ], spacing: 14) {
+                                ForEach(relatedArticles) { rel in
+                                    ArticlePaperCardView(article: rel) { id in
+                                        model.navigate(.article(id: id))
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
-                .padding(40).frame(maxWidth: .infinity, alignment: .leading)
-                .mimiCard(radius: 24, fill: MIMITheme.paperWhite, border: MIMITheme.softBorder, shadowOpacity: 0.025)
+                .frame(maxWidth: .infinity, alignment: .leading)
             } else if model.articleDetailIsLoading {
                 VStack(spacing: 12) {
                     ProgressView()
@@ -2068,6 +2250,11 @@ struct ArticleDetailView: View {
     private func articleDate(_ value: String?) -> String {
         guard let value, !value.isEmpty else { return "日期未标注" }
         return String(value.prefix(10))
+    }
+
+    private func articleHeat(_ views: Int) -> String {
+        guard views >= 10_000 else { return "\(views)" }
+        return String(format: "%.1f万", locale: Locale(identifier: "en_US_POSIX"), Double(views) / 10_000)
     }
 
     private func returnToArticleList() {

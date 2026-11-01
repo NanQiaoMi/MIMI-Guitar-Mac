@@ -13,7 +13,6 @@ try {
   article = await withCatalogRead(() => db.article.findUnique({ where: { id: id ?? '' } }));
 } catch (error) {
   catalogUnavailable = error instanceof CatalogReadUnavailableError;
-  // Offline fallback
 }
 
 if (!article) {
@@ -22,31 +21,284 @@ if (!article) {
 }
 
 if (!article) {
-  return new Response(catalogUnavailable
-    ? '文章曲库暂时不可用，当前无法确认这篇文章。请稍后重试。'
-    : '未找到这篇文章。请检查文章编号，或返回文章列表重新选择。', {
-    status: catalogUnavailable ? 503 : 404,
-    headers: {
-      'content-type': 'text/plain; charset=utf-8',
-      'cache-control': 'no-store',
-    },
+  return new Response(
+    catalogUnavailable
+      ? '文章曲库暂时不可用，当前无法确认这篇文章。请稍后重试。'
+      : '未找到这篇文章。请检查文章编号，或返回文章列表重新选择。',
+    {
+      status: catalogUnavailable ? 503 : 404,
+      headers: {
+        'content-type': 'text/plain; charset=utf-8',
+        'cache-control': 'no-store',
+      },
+    }
+  );
+}
+
+// Find related articles (excluding current and temporary test articles)
+const relatedArticles = DEMO_ARTICLES.filter(
+  (a) => a.id !== id && !a.title.startsWith('测试文章') && !a.title.startsWith('M7 验收文章')
+).slice(0, 3);
+
+// Map diagram based on article ID
+const diagramMap: Record<string, { src: string; caption: string }> = {
+  'art-player': {
+    src: '/images/tutorials/player-guide-diagram.svg',
+    caption: 'FIG. 01 · 交互播放器四大交互视窗协同体系结构',
+  },
+  'art-studio': {
+    src: '/images/tutorials/studio-workflow-diagram.svg',
+    caption: 'FIG. 02 · 制谱工坊 PRO 工作台与全键盘驱动体系',
+  },
+  'art-tab': {
+    src: '/images/tutorials/tab-reading-diagram.svg',
+    caption: 'FIG. 03 · 吉他六线谱（TAB）物理映射与技巧符号解构',
+  },
+  'art-capo': {
+    src: '/images/tutorials/capo-chart-diagram.svg',
+    caption: 'FIG. 04 · 变调夹（Capo）常用定调换算速查表',
+  },
+};
+
+const diagram = diagramMap[article.id] ?? null;
+
+function heatText(v: number): string {
+  if (v >= 10000) return (v / 10000).toFixed(1) + '万';
+  return String(v);
+}
+
+// Parse markdown sections
+function parseMarkdown(text: string) {
+  const paragraphs = text.split('\n\n');
+  return paragraphs.map((p) => {
+    const trimmed = p.trim();
+    if (trimmed === '---') return { type: 'divider' };
+    if (trimmed.startsWith('# ')) return { type: 'h1', text: trimmed.slice(2) };
+    if (trimmed.startsWith('## ')) return { type: 'h2', text: trimmed.slice(3) };
+    if (trimmed.startsWith('### ')) return { type: 'h3', text: trimmed.slice(4) };
+    if (trimmed.startsWith('> [!TIP]')) return { type: 'tip', text: trimmed.replace('> [!TIP]', '').trim() };
+    if (trimmed.startsWith('> [!NOTE]')) return { type: 'note', text: trimmed.replace('> [!NOTE]', '').trim() };
+    return { type: 'p', text: trimmed };
   });
 }
+
+const blocks = parseMarkdown(article.content);
 ---
 
-<Base title={`${article.title} - MIMI Guitar`}>
-  <article class="card p-6 sm:p-10">
-    <header class="border-b hairline pb-6 mb-8">
-      {isDemoArticle && <p class="mb-3 inline-flex rounded-lg border border-amber-300 bg-amber-50 px-2.5 py-1 text-xs font-medium text-amber-800">内置演示文章 · 曲库离线回退</p>}
-      <p class="text-caption text-ash">{article.category ?? '乐谱知识'} · {article.createdAt.toISOString().slice(0, 10)}</p>
-      <h1 class="font-display text-heading leading-[1.15] mt-2">{article.title}</h1>
-    </header>
-    <div class="whitespace-pre-line text-body-sm leading-[1.9] text-charcoal">
-      {article.content}
+<Base title={`${article.title} - MIMI Guitar 琴房专栏`}>
+  <div class="max-w-4xl mx-auto py-6">
+    <!-- Top Return & Action Bar -->
+    <div class="flex items-center justify-between gap-4 mb-6 text-xs">
+      <a href="/article" class="btn text-xs py-1.5 inline-flex items-center gap-1.5">
+        <span>←</span>
+        <span>返回文章列表</span>
+      </a>
+
+      <span class="font-serif font-semibold text-[#8A7151]">纸本琴声 · 琴房墨卷</span>
+
+      <div class="flex items-center gap-2">
+        <button
+          type="button"
+          id="copy-title-btn"
+          data-title={article.title}
+          class="px-3 py-1.5 rounded-lg border border-[#E5DDD0] bg-white text-[#584A3B] hover:bg-[#FBF8F2] transition"
+        >
+          复制标题
+        </button>
+      </div>
     </div>
-    <div class="mt-10 border-t hairline pt-6 flex items-center justify-between text-caption text-ash">
-      <a href="/article" class="text-signal hover:opacity-70">← 返回文章列表</a>
-      <span>MIMI Guitar</span>
-    </div>
-  </article>
+
+    <!-- Main Manuscript Book Page Container -->
+    <article class="p-6 sm:p-12 rounded-3xl bg-[#FEFFFC] border-1.5 border-[#D8CEBD] shadow-sm relative overflow-hidden">
+      <!-- Decorative Book Spine Stitch Accents -->
+      <div class="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-[#C49A45] via-[#C84B31] to-[#C49A45] opacity-40"></div>
+
+      <!-- Article Header -->
+      <header class="border-b border-[#E5DDD0] pb-8 mb-8">
+        {isDemoArticle && (
+          <p class="mb-3 inline-flex rounded-lg border border-amber-300 bg-amber-50 px-2.5 py-1 text-xs font-medium text-amber-800">
+            内置演示文章 · 曲库离线回退
+          </p>
+        )}
+
+        <div class="flex flex-wrap items-center justify-between gap-3 text-xs">
+          <div class="flex items-center gap-2">
+            <span class="px-2.5 py-1 rounded-md text-[11px] font-bold bg-[#C84B31]/10 text-[#C84B31] border border-[#C84B31]/20">
+              {article.category ?? '软件教程'}
+            </span>
+            <span class="font-mono text-[#8C7C6B]">
+              出刊日期: {article.createdAt.toISOString().slice(0, 10)}
+            </span>
+          </div>
+
+          <span class="font-mono text-[#6E5D48] text-xs">
+            已阅览 {heatText(article.views)} 次 · MIMI 琴房编配组
+          </span>
+        </div>
+
+        <h1 class="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-[#24201D] mt-4 leading-tight">
+          {article.title}
+        </h1>
+
+        <!-- Double ornamental divider -->
+        <div class="space-y-0.5 mt-6">
+          <div class="h-0.5 bg-[#E5DDD0]"></div>
+          <div class="h-px bg-[#F0E9DE]"></div>
+        </div>
+      </header>
+
+      <!-- Embedded Vector Illustration / Diagram (if available for this tutorial) -->
+      {diagram && (
+        <div class="my-8 p-4 sm:p-6 rounded-2xl bg-[#F8F5EE] border border-[#E2DACD] shadow-2xs">
+          <img
+            src={diagram.src}
+            alt={article.title}
+            class="w-full h-auto rounded-xl border border-[#E5DDD0] shadow-xs"
+            loading="eager"
+          />
+          <p class="mt-3 text-center font-mono text-xs font-bold text-[#8A7151]">
+            {diagram.caption}
+          </p>
+        </div>
+      )}
+
+      <!-- Structured Markdown Body -->
+      <div class="space-y-6 text-[#584A3B]">
+        {blocks.map((block) => {
+          if (block.type === 'divider') {
+            return (
+              <div class="flex items-center gap-3 my-8">
+                <div class="flex-1 h-px bg-[#F0E9DE]"></div>
+                <span class="text-xs text-[#8C7C6B] font-serif">❖ ❖ ❖</span>
+                <div class="flex-1 h-px bg-[#F0E9DE]"></div>
+              </div>
+            );
+          }
+          if (block.type === 'h1') {
+            return (
+              <div class="pt-6 pb-2">
+                <h2 class="font-display text-2xl sm:text-3xl font-bold text-[#24201D]">
+                  {block.text}
+                </h2>
+                <div class="w-12 h-1 bg-[#C49A45] rounded-full mt-2"></div>
+              </div>
+            );
+          }
+          if (block.type === 'h2') {
+            return (
+              <div class="pt-4 flex items-center gap-2.5">
+                <span class="w-1.5 h-5 rounded-full bg-[#C84B31]"></span>
+                <h3 class="font-display text-xl sm:text-2xl font-bold text-[#24201D]">
+                  {block.text}
+                </h3>
+              </div>
+            );
+          }
+          if (block.type === 'h3') {
+            return (
+              <h4 class="font-display text-lg font-bold text-[#6E5D48] pt-2">
+                {block.text}
+              </h4>
+            );
+          }
+          if (block.type === 'tip') {
+            return (
+              <div class="p-5 rounded-xl bg-[#FFFBEA] border border-[#E8DEB5] shadow-2xs flex items-start gap-3 my-4">
+                <span class="text-base text-[#C49A45] mt-0.5">💡</span>
+                <div class="space-y-1">
+                  <p class="text-xs font-bold text-[#8A7151]">琴房手账贴士</p>
+                  <p class="font-serif text-sm leading-relaxed text-[#584A3B]">{block.text}</p>
+                </div>
+              </div>
+            );
+          }
+          if (block.type === 'note') {
+            return (
+              <div class="p-5 rounded-xl bg-[#F3F9FC] border border-[#D0E5F0] shadow-2xs flex items-start gap-3 my-4">
+                <span class="text-base text-[#2E6B8A] mt-0.5">ℹ️</span>
+                <div class="space-y-1">
+                  <p class="text-xs font-bold text-[#2E6B8A]">重要说明</p>
+                  <p class="font-serif text-sm leading-relaxed text-[#584A3B]">{block.text}</p>
+                </div>
+              </div>
+            );
+          }
+          return (
+            <p class="font-serif text-base leading-[2.0] text-[#44382C] whitespace-pre-line">
+              {block.text}
+            </p>
+          );
+        })}
+      </div>
+
+      <!-- Signature & Wax Seal Stamp -->
+      <footer class="mt-14 pt-8 border-t-2 border-[#E5DDD0] flex flex-col sm:flex-row items-center justify-between gap-6">
+        <div class="flex items-center gap-4">
+          <div class="w-12 h-12 rounded-full border-1.5 border-[#C84B31] bg-[#C84B31]/10 flex items-center justify-center text-center font-bold text-[10px] text-[#C84B31] leading-tight shadow-xs">
+            琴房<br />墨印
+          </div>
+          <div>
+            <p class="font-mono text-xs font-bold text-[#8A7151]">MIMI GUITAR · 纸本墨韵</p>
+            <p class="font-serif text-xs text-[#8C7C6B] mt-0.5">数字工坊独家原创教程 · 规范版权保护</p>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-3">
+          <a href="/article" class="btn text-xs py-1.5">
+            ← 返回文章列表
+          </a>
+        </div>
+      </footer>
+    </article>
+
+    <!-- Related Articles Section -->
+    {relatedArticles.length > 0 && (
+      <section class="mt-12">
+        <div class="flex items-center gap-2 mb-4">
+          <span class="w-1 h-5 rounded-full bg-[#C49A45]"></span>
+          <h3 class="font-display text-xl font-bold text-[#24201D]">相关专栏导读</h3>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          {relatedArticles.map((rel) => (
+            <a
+              href={`/article/${rel.id}`}
+              class="p-5 rounded-2xl bg-white border border-[#E5DDD0] hover:border-[#C49A45] hover:shadow-sm transition-all flex flex-col justify-between"
+            >
+              <div>
+                <span class="text-[11px] font-bold text-[#C84B31] bg-[#C84B31]/10 px-2 py-0.5 rounded">
+                  {rel.category}
+                </span>
+                <h4 class="font-display font-bold text-sm text-[#24201D] mt-2 line-clamp-2">
+                  {rel.title}
+                </h4>
+              </div>
+              <span class="mt-4 text-xs font-bold text-[#8A7151] inline-flex items-center gap-1">
+                阅读全文 →
+              </span>
+            </a>
+          ))}
+        </div>
+      </section>
+    )}
+  </div>
+
+  <script>
+    const btn = document.getElementById('copy-title-btn');
+    if (btn) {
+      btn.addEventListener('click', async () => {
+        const title = btn.getAttribute('data-title') ?? '';
+        try {
+          await navigator.clipboard.writeText(title);
+          const orig = btn.textContent;
+          btn.textContent = '已复制！';
+          setTimeout(() => {
+            btn.textContent = orig;
+          }, 2000);
+        } catch {
+          alert('未能访问剪贴板，请手动复制。');
+        }
+      });
+    }
+  </script>
 </Base>
