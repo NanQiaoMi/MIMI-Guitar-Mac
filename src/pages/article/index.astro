@@ -5,19 +5,24 @@ import { DEMO_ARTICLES } from '../../lib/demoData';
 import { withCatalogRead } from '../../lib/catalogReadGate';
 
 const sort = Astro.url.searchParams.get('sort') === 'hot' ? 'hot' : 'new';
+const cat = Astro.url.searchParams.get('cat') ?? '全部';
 const rawPage = Astro.url.searchParams.get('page') ?? '1';
 const parsedPage = /^\d+$/.test(rawPage) ? Number(rawPage) : 1;
 let page = Number.isSafeInteger(parsedPage) && parsedPage > 0 ? parsedPage : 1;
 const PAGE_SIZE = 9;
 let total = 0;
-let articles: any[] = [];
+let rawArticles: any[] = [];
 let articleSource: 'catalog' | 'demo' = 'catalog';
+
+const categories = ['全部', '软件教程', '演奏技巧', '乐理视奏', '琴房心得', '选琴指南'];
 
 try {
   const orderBy = sort === 'hot' ? { views: 'desc' as const } : { createdAt: 'desc' as const };
+  const where = cat !== '全部' ? { category: cat } : {};
   const [countResult, rowsResult] = await Promise.allSettled([
-    withCatalogRead(() => db.article.count()),
+    withCatalogRead(() => db.article.count({ where })),
     withCatalogRead(() => db.article.findMany({
+      where,
       orderBy,
       skip: (page - 1) * PAGE_SIZE,
       take: PAGE_SIZE,
@@ -28,7 +33,8 @@ try {
   total = countResult.value;
   const catalogPageCount = Math.max(1, Math.ceil(total / PAGE_SIZE));
   const clampedPage = Math.min(page, catalogPageCount);
-  articles = clampedPage === page ? rowsResult.value : await withCatalogRead(() => db.article.findMany({
+  rawArticles = clampedPage === page ? rowsResult.value : await withCatalogRead(() => db.article.findMany({
+    where,
     orderBy,
     skip: (clampedPage - 1) * PAGE_SIZE,
     take: PAGE_SIZE,
@@ -36,67 +42,338 @@ try {
   page = clampedPage;
 } catch {
   articleSource = 'demo';
-  const sorted = [...DEMO_ARTICLES];
+  let sorted = [...DEMO_ARTICLES];
+  if (cat !== '全部') {
+    sorted = sorted.filter((a) => a.category === cat);
+  }
   if (sort === 'hot') sorted.sort((a, b) => b.views - a.views);
   else sorted.sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime());
   total = sorted.length;
   const demoPageCount = Math.max(1, Math.ceil(total / PAGE_SIZE));
   page = Math.min(page, demoPageCount);
-  articles = sorted.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
+  rawArticles = sorted.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
 }
+
+// Clean temporary test articles from display
+const cleanArticles = rawArticles.filter(
+  (a) => !a.title.startsWith('测试文章') && !a.title.startsWith('M7 验收文章')
+);
+
+// Headline featured article for page 1 when category is 全部
+const headlineArticle =
+  page === 1 && cat === '全部'
+    ? cleanArticles.find((a) => a.id === 'art-player') ?? cleanArticles[0]
+    : null;
+
+const gridArticles = headlineArticle
+  ? cleanArticles.filter((a) => a.id !== headlineArticle.id)
+  : cleanArticles;
 
 const pageCount = Math.max(1, Math.ceil(total / PAGE_SIZE));
 
 function excerpt(content: string): string {
-  return content.replace(/\n+/g, ' ').trim();
+  return content
+    .replace(/#/g, '')
+    .replace(/> \[!(TIP|NOTE)\]/g, '')
+    .replace(/\n+/g, ' ')
+    .trim();
 }
 function heatText(v: number): string {
   if (v >= 10000) return (v / 10000).toFixed(1) + '万';
   return String(v);
 }
-const pageHref = (p: number, s: string) => `/article?sort=${s}&page=${p}`;
+const catHref = (c: string) => `/article?cat=${encodeURIComponent(c)}&sort=${sort}&page=1`;
+const sortHref = (s: string) => `/article?cat=${encodeURIComponent(cat)}&sort=${s}&page=1`;
+const pageHref = (p: number) => `/article?cat=${encodeURIComponent(cat)}&sort=${sort}&page=${p}`;
 ---
-<Base title="文章 - MIMI Guitar">
-  <section class="border-b hairline pb-8">
-    {articleSource === 'demo' && <p role="status" class="mb-4 rounded-xl border border-amber-200 bg-amber-50 p-3 text-sm text-amber-900">文章曲库暂时不可用，当前显示内置演示内容。</p>}
-    <p class="text-caption tracking-[0.2em] uppercase text-ash">Editorial · Notes</p>
-    <h1 class="font-display text-heading mt-2">文章</h1>
-    <p class="mt-3 max-w-xl text-body-sm leading-relaxed text-charcoal">
-      从零基础入门到进阶技巧，把练琴路上的经验整理成一篇篇短文。
-    </p>
-    <div class="mt-5 flex flex-wrap items-center gap-3">
-      <div class="flex gap-2">
-        <a href={pageHref(1, 'new')} class={"chip " + (sort === 'new' ? 'chip-active' : '')}>最新</a>
-        <a href={pageHref(1, 'hot')} class={"chip " + (sort === 'hot' ? 'chip-active' : '')}>最热</a>
-      </div>
-      <a href="/publishArticle" class="btn ml-auto">发布文章</a>
-    </div>
-  </section>
 
-  {articles.length > 0 ? (
+<Base title="专栏文章 · 琴房板报 - MIMI Guitar">
+  <!-- 1. Vintage Newspaper Masthead -->
+  <header class="py-6 border-b-2 border-[#24201D]">
+    {articleSource === 'demo' && (
+      <p role="status" class="mb-4 rounded-xl border border-amber-200 bg-amber-50 p-3 text-sm text-amber-900">
+        文章曲库暂时不可用，当前显示内置演示内容。
+      </p>
+    )}
+
+    <!-- Top double rules -->
+    <div class="space-y-0.5 mb-4">
+      <div class="h-0.5 bg-[#24201D]"></div>
+      <div class="h-px bg-[#24201D]/40"></div>
+    </div>
+
+    <!-- Masthead Main Row -->
+    <div class="flex flex-col md:flex-row items-center justify-between gap-4 py-2">
+      <div class="text-left w-full md:w-44">
+        <p class="font-mono text-[10px] font-bold text-[#8A7151] uppercase tracking-wider">VOL. 26 · ISSUE 08</p>
+        <p class="font-serif text-sm font-semibold text-[#584A3B]">纸本琴声周刊</p>
+      </div>
+
+      <div class="text-center flex-1">
+        <p class="font-mono text-xs font-bold tracking-[0.3em] uppercase text-[#8A7151]">MIMI GUITAR EDITORIAL</p>
+        <h1 class="font-display text-4xl sm:text-5xl font-bold tracking-tight text-[#24201D] mt-1">
+          琴房板报 · 专栏特辑
+        </h1>
+      </div>
+
+      <div class="text-right w-full md:w-52">
+        <p class="font-serif text-xs text-[#584A3B]">慢练即是快 · 执琴有道</p>
+        <p class="font-mono text-[10px] text-[#8C7C6B] mt-0.5">晴 · 适宜练琴 · 共收录 {total} 篇</p>
+      </div>
+    </div>
+
+    <!-- Dateline bar -->
+    <div class="flex items-center gap-3 my-4">
+      <div class="flex-1 h-px bg-[#E5DDD0]"></div>
+      <span class="text-xs font-medium text-[#8A7151] font-serif">❖ 每日精选 · 乐理视奏 · 演奏技巧 · 软件手账 ❖</span>
+      <div class="flex-1 h-px bg-[#E5DDD0]"></div>
+    </div>
+
+    <!-- Category Tabs & Controls -->
+    <div class="flex flex-wrap items-center justify-between gap-3 pt-2">
+      <nav class="flex flex-wrap gap-2" aria-label="文章分类">
+        {categories.map((c) => {
+          const isSelected = cat === c;
+          return (
+            <a
+              href={catHref(c)}
+              class={
+                "px-3.5 py-1.5 rounded-lg text-xs font-medium transition-all " +
+                (isSelected
+                  ? "bg-[#F4EFE6] text-[#24201D] font-bold border border-[#C49A45] shadow-xs"
+                  : "bg-white text-[#584A3B] border border-[#E5DDD0] hover:bg-[#FBF8F2]")
+              }
+            >
+              {isSelected && <span class="inline-block w-1.5 h-1.5 rounded-full bg-[#C84B31] mr-1.5 align-middle"></span>}
+              {c}
+            </a>
+          );
+        })}
+      </nav>
+
+      <div class="flex items-center gap-3 ml-auto">
+        <div class="flex gap-1.5 bg-[#F2ECE0] p-1 rounded-full text-xs">
+          <a
+            href={sortHref('new')}
+            class={"px-3 py-1 rounded-full transition " + (sort === 'new' ? 'bg-[#24201D] text-white font-medium' : 'text-[#584A3B] hover:text-black')}
+          >
+            最新
+          </a>
+          <a
+            href={sortHref('hot')}
+            class={"px-3 py-1 rounded-full transition " + (sort === 'hot' ? 'bg-[#24201D] text-white font-medium' : 'text-[#584A3B] hover:text-black')}
+          >
+            最热
+          </a>
+        </div>
+        <a href="/publishArticle" class="btn text-xs py-1.5">发布文章</a>
+      </div>
+    </div>
+
+    <!-- Bottom double rules -->
+    <div class="space-y-0.5 mt-4">
+      <div class="h-px bg-[#24201D]/40"></div>
+      <div class="h-0.5 bg-[#24201D]"></div>
+    </div>
+  </header>
+
+  <!-- 2. Headline Featured Broadsheet (Page 1 && Cat 全部) -->
+  {headlineArticle && (
+    <section class="mt-8">
+      <a
+        href={`/article/${headlineArticle.id}`}
+        class="group block p-6 sm:p-8 rounded-2xl bg-[#FEFFFC] border-1.5 border-[#D8CEBD] shadow-xs transition hover:shadow-md hover:border-[#C49A45]"
+      >
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div class="lg:col-span-8 space-y-3">
+            <div class="flex items-center gap-2">
+              <span class="px-2 py-0.5 rounded text-[11px] font-bold bg-[#C84B31]/10 text-[#C84B31]">★ 今日头条特稿</span>
+              <span class="text-xs font-semibold text-[#8A7151]">{headlineArticle.category ?? '软件教程'}</span>
+              <span class="text-xs text-[#8C7C6B] ml-auto">⏱ 约 5 分钟深度阅读</span>
+            </div>
+
+            <h2 class="font-display text-2xl sm:text-3xl font-bold text-[#24201D] group-hover:text-[#C84B31] transition-colors leading-snug">
+              {headlineArticle.title}
+            </h2>
+
+            <p class="font-serif text-sm leading-relaxed text-[#584A3B] line-clamp-3">
+              {excerpt(headlineArticle.content).slice(0, 160)}…
+            </p>
+
+            <div class="pt-2 flex flex-wrap items-center justify-between gap-3 text-xs">
+              <div class="flex items-center gap-2 text-[#6E5D48]">
+                <span class="font-medium text-[#8C7C6B]">亮点:</span>
+                <span class="font-semibold bg-[#F4EFE6] px-2 py-0.5 rounded border border-[#E5DDD0]">AlphaTab 60FPS</span>
+                <span class="font-semibold bg-[#F4EFE6] px-2 py-0.5 rounded border border-[#E5DDD0]">A-B循环攻坚</span>
+                <span class="font-semibold bg-[#F4EFE6] px-2 py-0.5 rounded border border-[#E5DDD0]">实时变调夹试听</span>
+              </div>
+              <span class="font-bold text-[#C84B31] group-hover:translate-x-1 transition-transform inline-flex items-center gap-1">
+                阅读全版特稿 ↗
+              </span>
+            </div>
+          </div>
+
+          <div class="lg:col-span-4 bg-[#F8F5EE] rounded-xl p-4 border border-[#E2DACD] text-center space-y-2">
+            <img
+              src="/images/tutorials/player-guide-diagram.svg"
+              alt="MIMI 播放器工作台全景"
+              class="w-full h-auto rounded-lg shadow-2xs border border-[#E5DDD0]"
+              loading="lazy"
+            />
+            <p class="font-mono text-[10px] font-bold text-[#8A7151]">FIG. 01 · 交互播放器工作台四大视窗协同</p>
+          </div>
+        </div>
+      </a>
+    </section>
+  )}
+
+  <!-- 3. Blackboard / Bulletin Board Sticky Cheatsheet Wall -->
+  {page === 1 && cat === '全部' && (
+    <section class="mt-8 p-6 rounded-2xl bg-[#FBF8F2] border border-[#E5DDD0]">
+      <div class="flex items-center gap-2 mb-5">
+        <span class="text-base text-[#C84B31]">📌</span>
+        <h3 class="font-display text-lg font-bold text-[#24201D]">琴房板报 · 每日速查便签与指弹手账</h3>
+        <span class="font-mono text-[10px] font-bold tracking-widest text-[#8A7151] uppercase ml-2">CHEATSHEET WALL</span>
+        <span class="text-xs text-[#8C7C6B] ml-auto">点击便签直达详解</span>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <!-- Sticky Note 1 -->
+        <a
+          href="/article/art-capo"
+          class="relative block p-4 rounded-xl bg-[#FFFBEA] border border-[#E8DEB5] shadow-sm transform -rotate-1 hover:rotate-0 hover:scale-102 transition-transform duration-200"
+        >
+          <div class="absolute -top-2 left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-[#C84B31] border border-white shadow-xs"></div>
+          <p class="text-[10px] font-bold text-[#8A7151] mt-1">演奏技巧</p>
+          <h4 class="font-display font-bold text-sm text-[#24201D] mt-1">变调夹换调速查</h4>
+          <ul class="mt-2 space-y-1 font-serif text-xs text-[#584A3B]">
+            <li>• D调夹2品 · F调夹5品</li>
+            <li>• 紧靠品丝2mm安装</li>
+            <li>• 女生翻唱男生歌首选</li>
+          </ul>
+          <span class="block mt-3 text-right text-[11px] font-bold text-[#C84B31]">查看技巧 →</span>
+        </a>
+
+        <!-- Sticky Note 2 -->
+        <a
+          href="/article/art-studio"
+          class="relative block p-4 rounded-xl bg-[#F3F9F4] border border-[#D0E5D5] shadow-sm transform rotate-1 hover:rotate-0 hover:scale-102 transition-transform duration-200"
+        >
+          <div class="absolute -top-2 left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-[#2E7D32] border border-white shadow-xs"></div>
+          <p class="text-[10px] font-bold text-[#8A7151] mt-1">软件手账</p>
+          <h4 class="font-display font-bold text-sm text-[#24201D] mt-1">工坊极速键盘录入</h4>
+          <ul class="mt-2 space-y-1 font-serif text-xs text-[#584A3B]">
+            <li>• 1~6 快捷切换时值</li>
+            <li>• 0~24 键入琴弦品位</li>
+            <li>• 空格试听 · ⌘S保存</li>
+          </ul>
+          <span class="block mt-3 text-right text-[11px] font-bold text-[#2E7D32]">查看技巧 →</span>
+        </a>
+
+        <!-- Sticky Note 3 -->
+        <a
+          href="/article/art-tab"
+          class="relative block p-4 rounded-xl bg-[#FFF4EE] border border-[#F0D2C5] shadow-sm transform -rotate-1 hover:rotate-0 hover:scale-102 transition-transform duration-200"
+        >
+          <div class="absolute -top-2 left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-[#41A1CF] border border-white shadow-xs"></div>
+          <p class="text-[10px] font-bold text-[#8A7151] mt-1">乐理视奏</p>
+          <h4 class="font-display font-bold text-sm text-[#24201D] mt-1">六线谱符号解构</h4>
+          <ul class="mt-2 space-y-1 font-serif text-xs text-[#584A3B]">
+            <li>• h击弦 · p勾弦 · /滑音</li>
+            <li>• b推弦 · ~揉弦颤音</li>
+            <li>• 上细下粗低头弹弦</li>
+          </ul>
+          <span class="block mt-3 text-right text-[11px] font-bold text-[#2E6B8A]">查看技巧 →</span>
+        </a>
+
+        <!-- Sticky Note 4 -->
+        <a
+          href="/article/art-practice"
+          class="relative block p-4 rounded-xl bg-[#F6F2EB] border border-[#DDD4C5] shadow-sm transform rotate-0.5 hover:rotate-0 hover:scale-102 transition-transform duration-200"
+        >
+          <div class="absolute -top-2 left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-[#C49A45] border border-white shadow-xs"></div>
+          <p class="text-[10px] font-bold text-[#8A7151] mt-1">琴房心得</p>
+          <h4 class="font-display font-bold text-sm text-[#24201D] mt-1">A-B循环攻坚心法</h4>
+          <ul class="mt-2 space-y-1 font-serif text-xs text-[#584A3B]">
+            <li>• 难点小节精准切片</li>
+            <li>• 50%慢速起步爬阶梯</li>
+            <li>• 每日稳定递增+5 BPM</li>
+          </ul>
+          <span class="block mt-3 text-right text-[11px] font-bold text-[#8F6B28]">查看技巧 →</span>
+        </a>
+      </div>
+    </section>
+  )}
+
+  <!-- 4. Column Grid Header -->
+  <div class="mt-10 flex items-center justify-between">
+    <div class="flex items-center gap-2">
+      <span class="w-1 h-5 rounded-full bg-[#C49A45]"></span>
+      <h3 class="font-display text-xl font-bold text-[#24201D]">
+        {cat === '全部' ? '专栏精选 · EDITORIAL ARTICLES' : `${cat} · 专栏文章`}
+      </h3>
+    </div>
+    <span class="font-mono text-xs text-[#8C7C6B]">共 {gridArticles.length} 篇文章</span>
+  </div>
+
+  <!-- 5. Editorial Articles Grid -->
+  {gridArticles.length > 0 ? (
     <>
-      <ul class="mt-8 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-        {articles.map((a) => (
+      <ul class="mt-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {gridArticles.map((a) => (
           <li>
-            <a href={`/article/${a.id}`} class="card group block p-6 transition hover:opacity-80">
-              <p class="text-caption text-ash">{a.category ?? '乐谱知识'} · {a.createdAt.toISOString().slice(0, 10)} · {heatText(a.views)} 热度</p>
-              <h2 class="font-display text-subheading mt-2 leading-snug group-hover:text-signal">{a.title}</h2>
-              <p class="mt-3 text-body-sm text-charcoal line-clamp-3">{excerpt(a.content).slice(0, 96)}…</p>
+            <a
+              href={`/article/${a.id}`}
+              class="group flex flex-col justify-between h-full p-6 rounded-2xl bg-[#FEFFFC] border border-[#E5DDD0] shadow-xs hover:shadow-md hover:border-[#C49A45] transition-all"
+            >
+              <div>
+                <div class="flex items-center justify-between gap-2">
+                  <span class="px-2 py-0.5 rounded text-[11px] font-bold bg-[#C84B31]/10 text-[#C84B31]">
+                    {a.category ?? '乐谱知识'}
+                  </span>
+                  <span class="font-mono text-xs text-[#8C7C6B]">
+                    {a.createdAt.toISOString().slice(0, 10)}
+                  </span>
+                  <span class="ml-auto flex items-center gap-1 font-mono text-xs text-[#6E5D48]">
+                    <span class="text-[#C49A45]">🔥</span>
+                    {heatText(a.views)}
+                  </span>
+                </div>
+
+                <h3 class="font-display text-lg font-bold text-[#24201D] mt-3 group-hover:text-[#C84B31] transition-colors leading-snug">
+                  {a.title}
+                </h3>
+
+                <p class="font-serif text-xs leading-relaxed text-[#584A3B] mt-2.5 line-clamp-3">
+                  {excerpt(a.content).slice(0, 96)}…
+                </p>
+              </div>
+
+              <div class="pt-4 mt-4 border-t border-[#F0E9DE] flex items-center justify-between text-xs">
+                <span class="text-[#8C7C6B]">⏱ 约 4 分钟阅读</span>
+                <span class="font-bold text-[#24201D] group-hover:text-[#C84B31] inline-flex items-center gap-1">
+                  阅读全文 →
+                </span>
+              </div>
             </a>
           </li>
         ))}
       </ul>
+
       {pageCount > 1 && (
-        <nav class="mt-8 flex items-center justify-center gap-2">
-          {page > 1 && <a href={pageHref(page - 1, sort)} class="chip">上一页</a>}
+        <nav class="mt-10 flex items-center justify-center gap-2" aria-label="分页导航">
+          {page > 1 && <a href={pageHref(page - 1)} class="chip">上一页</a>}
           {Array.from({ length: pageCount }, (_, i) => i + 1).map((p) => (
-            <a href={pageHref(p, sort)} class={"chip " + (p === page ? 'chip-active' : '')}>{p}</a>
+            <a href={pageHref(p)} class={"chip " + (p === page ? 'chip-active' : '')}>{p}</a>
           ))}
-          {page < pageCount && <a href={pageHref(page + 1, sort)} class="chip">下一页</a>}
+          {page < pageCount && <a href={pageHref(page + 1)} class="chip">下一页</a>}
         </nav>
       )}
     </>
   ) : (
-    <div class="card mt-8 flex h-40 items-center justify-center text-ash">文章整理中，敬请期待</div>
+    <div class="card mt-8 flex flex-col items-center justify-center h-48 text-[#8C7C6B]">
+      <p class="text-base font-medium">该分类暂无文章</p>
+      <a href="/article" class="mt-2 text-xs text-[#C84B31] hover:underline">返回全部文章</a>
+    </div>
   )}
 </Base>

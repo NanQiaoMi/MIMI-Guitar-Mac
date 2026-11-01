@@ -1,0 +1,170 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 480" width="100%" height="100%">
+  <defs>
+    <filter id="paper-shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#483620" flood-opacity="0.08"/>
+    </filter>
+    <linearGradient id="waveform-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#C49A45" stop-opacity="0.2"/>
+      <stop offset="35%" stop-color="#C84B31" stop-opacity="0.6"/>
+      <stop offset="65%" stop-color="#C49A45" stop-opacity="0.7"/>
+      <stop offset="100%" stop-color="#8A7151" stop-opacity="0.3"/>
+    </linearGradient>
+    <pattern id="fret-wood" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M0,20 Q10,18 20,20 T40,20" fill="none" stroke="#ECE4D8" stroke-width="0.5"/>
+    </pattern>
+  </defs>
+
+  <!-- Canvas Background: Textured Paper Card -->
+  <rect x="8" y="8" width="844" height="464" rx="16" fill="#FEFFFC" stroke="#E5DDD0" stroke-width="1.5" filter="url(#paper-shadow)"/>
+  <rect x="14" y="14" width="832" height="452" rx="12" fill="none" stroke="#F0E9DE" stroke-width="1" stroke-dasharray="4,4"/>
+
+  <!-- Top Title & Vintage Stamp -->
+  <g transform="translate(32, 28)">
+    <rect x="0" y="0" width="138" height="24" rx="4" fill="#C84B31" fill-opacity="0.1" stroke="#C84B31" stroke-width="1"/>
+    <text x="69" y="16" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="bold" fill="#C84B31" text-anchor="middle" letter-spacing="1">MIMI 播放器构造全景</text>
+    <text x="154" y="17" font-family="'Fraunces', serif" font-size="14" font-weight="600" fill="#24201D">交互工作台四大视窗协同</text>
+    <text x="790" y="16" font-family="monospace" font-size="11" fill="#8C7C6B" text-anchor="end">FIG. 01 · PLAYER ARCHITECTURE</text>
+  </g>
+
+  <!-- 1. Waveform Preview Bar -->
+  <g transform="translate(32, 64)">
+    <rect x="0" y="0" width="796" height="52" rx="10" fill="#F8F5EE" stroke="#E2DACD" stroke-width="1"/>
+    <!-- Waveform simulated bars -->
+    <path d="M 20,26 L 30,16 L 40,36 L 50,12 L 60,40 L 70,18 L 80,34 L 90,8 L 100,44 L 110,20 L 120,32 L 130,14 L 140,38 L 150,22 L 160,30 L 170,10 L 180,42 L 190,16 L 200,36 L 210,12 L 220,40 L 230,18 L 240,34 L 250,14 L 260,38 L 270,22 L 280,30 L 290,10 L 300,42 L 310,16 L 320,36 L 330,26 L 340,34 L 350,18 L 360,38 L 370,12 L 380,40 L 390,20 L 400,32 L 410,14 L 420,38 L 430,22 L 440,30 L 450,10 L 460,42 L 470,16 L 480,36 L 490,24 L 500,34 L 510,18 L 520,38 L 530,12 L 540,40 L 550,20 L 560,32 L 570,14 L 580,38 L 590,22 L 600,30 L 610,10 L 620,42 L 630,16 L 640,36 L 650,26 L 660,34 L 670,18 L 680,38 L 690,12 L 700,40 L 710,20 L 720,32 L 730,14 L 740,38 L 750,22 L 760,30 L 770,26" fill="none" stroke="url(#waveform-grad)" stroke-width="2.5" stroke-linecap="round"/>
+    <!-- Current Playhead Needle -->
+    <line x1="280" y1="4" x2="280" y2="48" stroke="#C84B31" stroke-width="2"/>
+    <circle cx="280" cy="8" r="4" fill="#C84B31"/>
+    <!-- Pin annotation -->
+    <rect x="294" y="6" width="116" height="20" rx="4" fill="#24201D" fill-opacity="0.85"/>
+    <text x="352" y="19" font-family="system-ui, sans-serif" font-size="10" fill="#FFFFFF" text-anchor="middle">① 流体波形条与进度针</text>
+  </g>
+
+  <!-- 2. Main Sheet Area (AlphaTab Continuous Follow-Scroll) -->
+  <g transform="translate(32, 128)">
+    <rect x="0" y="0" width="796" height="174" rx="10" fill="#FFFFFF" stroke="#E2DACD" stroke-width="1"/>
+    <!-- 6 TAB Lines -->
+    <line x1="24" y1="44" x2="772" y2="44" stroke="#D8CEBD" stroke-width="1"/>
+    <line x1="24" y1="62" x2="772" y2="62" stroke="#D8CEBD" stroke-width="1"/>
+    <line x1="24" y1="80" x2="772" y2="80" stroke="#D8CEBD" stroke-width="1"/>
+    <line x1="24" y1="98" x2="772" y2="98" stroke="#D8CEBD" stroke-width="1"/>
+    <line x1="24" y1="116" x2="772" y2="116" stroke="#D8CEBD" stroke-width="1"/>
+    <line x1="24" y1="134" x2="772" y2="134" stroke="#D8CEBD" stroke-width="1"/>
+
+    <!-- Bar lines -->
+    <line x1="240" y1="44" x2="240" y2="134" stroke="#8C7C6B" stroke-width="1.5"/>
+    <line x1="510" y1="44" x2="510" y2="134" stroke="#8C7C6B" stroke-width="1.5"/>
+
+    <!-- TAB clef -->
+    <text x="36" y="70" font-family="'Fraunces', serif" font-size="18" font-weight="700" fill="#6E5D48">T</text>
+    <text x="36" y="96" font-family="'Fraunces', serif" font-size="18" font-weight="700" fill="#6E5D48">A</text>
+    <text x="36" y="122" font-family="'Fraunces', serif" font-size="18" font-weight="700" fill="#6E5D48">B</text>
+
+    <!-- Notes on TAB -->
+    <!-- Measure 1 -->
+    <text x="90" y="138" font-family="monospace" font-size="14" font-weight="bold" fill="#24201D">3</text>
+    <text x="130" y="102" font-family="monospace" font-size="14" font-weight="bold" fill="#24201D">0</text>
+    <text x="170" y="84" font-family="monospace" font-size="14" font-weight="bold" fill="#24201D">0</text>
+    <text x="210" y="48" font-family="monospace" font-size="14" font-weight="bold" fill="#24201D">3</text>
+
+    <!-- Measure 2 (Loop A-B Highlighted Active Region) -->
+    <rect x="240" y="38" width="270" height="102" fill="#C49A45" fill-opacity="0.12" rx="6" stroke="#C49A45" stroke-width="1.5" stroke-dasharray="4,3"/>
+    <!-- Loop Marker Flags -->
+    <polygon points="240,24 256,24 248,38 240,38" fill="#C84B31"/>
+    <text x="248" y="20" font-family="sans-serif" font-size="10" font-weight="bold" fill="#C84B31" text-anchor="middle">A</text>
+    <polygon points="502,24 518,24 510,38 502,38" fill="#C84B31"/>
+    <text x="510" y="20" font-family="sans-serif" font-size="10" font-weight="bold" fill="#C84B31" text-anchor="middle">B</text>
+
+    <!-- Notes in Measure 2 -->
+    <text x="290" y="120" font-family="monospace" font-size="14" font-weight="bold" fill="#24201D">0</text>
+    <!-- Active note halo -->
+    <circle cx="350" cy="98" r="14" fill="#C84B31" fill-opacity="0.2"/>
+    <text x="350" y="102" font-family="monospace" font-size="14" font-weight="bold" fill="#C84B31" text-anchor="middle">2</text>
+    <text x="410" y="84" font-family="monospace" font-size="14" font-weight="bold" fill="#24201D">2</text>
+    <text x="470" y="66" font-family="monospace" font-size="14" font-weight="bold" fill="#24201D">0</text>
+
+    <!-- Measure 3 -->
+    <text x="560" y="120" font-family="monospace" font-size="14" font-weight="bold" fill="#24201D">3</text>
+    <text x="620" y="84" font-family="monospace" font-size="14" font-weight="bold" fill="#24201D">0</text>
+    <text x="680" y="66" font-family="monospace" font-size="14" font-weight="bold" fill="#24201D">1</text>
+    <text x="730" y="48" font-family="monospace" font-size="14" font-weight="bold" fill="#24201D">0</text>
+
+    <!-- Annotation badge for Follow-Scroll & Loop -->
+    <g transform="translate(530, 10)">
+      <rect x="0" y="0" width="246" height="24" rx="6" fill="#F4EFE6" stroke="#D8CEBD" stroke-width="1"/>
+      <text x="123" y="16" font-family="system-ui, sans-serif" font-size="11" fill="#584A3B" text-anchor="middle">② 60FPS 跟谱滚动 + A-B 攻坚循环区</text>
+    </g>
+  </g>
+
+  <!-- 3. Floating Player HUD (Controls) -->
+  <g transform="translate(32, 314)">
+    <rect x="0" y="0" width="796" height="48" rx="24" fill="#24201D" filter="url(#paper-shadow)"/>
+    <!-- Play button -->
+    <circle cx="36" cy="24" r="16" fill="#C49A45"/>
+    <polygon points="32,17 44,24 32,31" fill="#FFFFFF"/>
+
+    <!-- Speed pill -->
+    <rect x="68" y="11" width="94" height="26" rx="13" fill="#38322E"/>
+    <text x="115" y="28" font-family="monospace" font-size="12" fill="#E5DDD0" text-anchor="middle">0.85x 慢速</text>
+
+    <!-- Metronome pill -->
+    <rect x="170" y="11" width="80" height="26" rx="13" fill="#38322E"/>
+    <text x="210" y="28" font-family="system-ui, sans-serif" font-size="11" fill="#E5DDD0" text-anchor="middle">节拍器 开启</text>
+
+    <!-- Count-in pill -->
+    <rect x="258" y="11" width="76" height="26" rx="13" fill="#38322E"/>
+    <text x="296" y="28" font-family="system-ui, sans-serif" font-size="11" fill="#E5DDD0" text-anchor="middle">预备拍 4/4</text>
+
+    <!-- Capo badge -->
+    <rect x="342" y="11" width="84" height="26" rx="13" fill="#C84B31" fill-opacity="0.8"/>
+    <text x="384" y="28" font-family="system-ui, sans-serif" font-size="11" font-weight="bold" fill="#FFFFFF" text-anchor="middle">Capo 2 品</text>
+
+    <!-- Loop Active Button -->
+    <rect x="434" y="11" width="88" height="26" rx="13" fill="#C49A45"/>
+    <text x="478" y="28" font-family="system-ui, sans-serif" font-size="11" font-weight="bold" fill="#24201D" text-anchor="middle">循环 A-B 激活</text>
+
+    <!-- Volume & Mixer -->
+    <rect x="680" y="11" width="100" height="26" rx="13" fill="#38322E"/>
+    <text x="730" y="28" font-family="system-ui, sans-serif" font-size="11" fill="#C49A45" text-anchor="middle">③ 浮动控制舱</text>
+  </g>
+
+  <!-- 4. Virtual Wooden Fretboard -->
+  <g transform="translate(32, 374)">
+    <rect x="0" y="0" width="796" height="78" rx="8" fill="#F4EFE6" stroke="#D8CEBD" stroke-width="1"/>
+    <!-- Nut (0 fret bone) -->
+    <rect x="60" y="6" width="8" height="66" fill="#ECE4D8" stroke="#8C7C6B" stroke-width="1"/>
+    <text x="30" y="44" font-family="system-ui, sans-serif" font-size="11" font-weight="bold" fill="#8C7C6B">琴头</text>
+
+    <!-- Frets 1 to 7 -->
+    <line x1="160" y1="6" x2="160" y2="72" stroke="#B0A494" stroke-width="2"/>
+    <line x1="255" y1="6" x2="255" y2="72" stroke="#B0A494" stroke-width="2"/>
+    <line x1="345" y1="6" x2="345" y2="72" stroke="#B0A494" stroke-width="2"/>
+    <line x1="430" y1="6" x2="430" y2="72" stroke="#B0A494" stroke-width="2"/>
+    <line x1="510" y1="6" x2="510" y2="72" stroke="#B0A494" stroke-width="2"/>
+    <line x1="585" y1="6" x2="585" y2="72" stroke="#B0A494" stroke-width="2"/>
+    <line x1="655" y1="6" x2="655" y2="72" stroke="#B0A494" stroke-width="2"/>
+
+    <!-- Fret numbers at bottom -->
+    <text x="110" y="76" font-family="monospace" font-size="10" fill="#A89B88" text-anchor="middle">1品</text>
+    <text x="207" y="76" font-family="monospace" font-size="10" fill="#A89B88" text-anchor="middle">2品</text>
+    <text x="300" y="76" font-family="monospace" font-size="10" fill="#A89B88" text-anchor="middle">3品 ●</text>
+    <text x="387" y="76" font-family="monospace" font-size="10" fill="#A89B88" text-anchor="middle">4品</text>
+    <text x="470" y="76" font-family="monospace" font-size="10" fill="#A89B88" text-anchor="middle">5品 ●</text>
+
+    <!-- Strings across fretboard -->
+    <line x1="68" y1="14" x2="780" y2="14" stroke="#8C7C6B" stroke-width="1"/>
+    <line x1="68" y1="24" x2="780" y2="24" stroke="#8C7C6B" stroke-width="1.2"/>
+    <line x1="68" y1="34" x2="780" y2="34" stroke="#8C7C6B" stroke-width="1.5"/>
+    <line x1="68" y1="44" x2="780" y2="44" stroke="#6E5D48" stroke-width="1.8"/>
+    <line x1="68" y1="54" x2="780" y2="54" stroke="#6E5D48" stroke-width="2.2"/>
+    <line x1="68" y1="64" x2="780" y2="64" stroke="#584A3B" stroke-width="2.6"/>
+
+    <!-- Note spark indicators on fretboard (Active note on 4th string 2nd fret) -->
+    <circle cx="207" cy="44" r="8" fill="#C84B31"/>
+    <circle cx="207" cy="44" r="14" fill="none" stroke="#C84B31" stroke-width="1.5" stroke-dasharray="3,2"/>
+    <text x="207" y="47" font-family="sans-serif" font-size="9" font-weight="bold" fill="#FFFFFF" text-anchor="middle">E</text>
+
+    <!-- Annotation badge for Virtual Fretboard -->
+    <rect x="668" y="24" width="118" height="24" rx="6" fill="#F8F5EE" stroke="#D8CEBD" stroke-width="1"/>
+    <text x="727" y="40" font-family="system-ui, sans-serif" font-size="10" fill="#584A3B" text-anchor="middle">④ 虚拟指板实时指位</text>
+  </g>
+</svg>
