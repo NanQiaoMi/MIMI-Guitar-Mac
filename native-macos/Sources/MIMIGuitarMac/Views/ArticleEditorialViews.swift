@@ -1063,9 +1063,303 @@ struct CapoTranspositionDiagramView: View {
     }
 }
 
+// MARK: - Rich Article Editorial Markdown Content Components
+
+/// Physical keyboard keycap badge component
+struct EditorialKeycapView: View {
+    let key: String
+
+    var body: some View {
+        Text(key)
+            .font(.system(size: 11, weight: .bold, design: .monospaced))
+            .foregroundStyle(Color(hex: 0x332B24))
+            .padding(.horizontal, 7)
+            .padding(.vertical, 3.5)
+            .background(
+                RoundedRectangle(cornerRadius: 5)
+                    .fill(LinearGradient(colors: [Color.white, Color(hex: 0xF7F4EC)], startPoint: .top, endPoint: .bottom))
+            )
+            .overlay(
+                RoundedRectangle(cornerRadius: 5)
+                    .stroke(Color(hex: 0xD0C8BA), lineWidth: 1)
+            )
+            .shadow(color: Color.black.opacity(0.06), radius: 1, x: 0, y: 1)
+    }
+}
+
+/// Rich inline markdown text renderer that strips raw syntax (**bold**, `code`) and renders styled text
+struct EditorialFormattedText: View {
+    let markdown: String
+    let fontSize: CGFloat
+    let color: Color
+    let isBoldDefault: Bool
+
+    init(_ markdown: String, fontSize: CGFloat = 14.5, color: Color = MIMITheme.bodyInk, isBoldDefault: Bool = false) {
+        self.markdown = markdown
+        self.fontSize = fontSize
+        self.color = color
+        self.isBoldDefault = isBoldDefault
+    }
+
+    var body: some View {
+        if let attr = try? AttributedString(markdown: markdown, options: .init(interpretedSyntax: .inlineOnlyPreservingWhitespace)) {
+            Text(attr)
+                .font(isBoldDefault ? MIMITheme.displayFont(size: fontSize, weight: .bold) : MIMITheme.proseFont(size: fontSize))
+                .foregroundStyle(color)
+                .lineSpacing(6)
+                .fixedSize(horizontal: false, vertical: true)
+        } else {
+            Text(markdown)
+                .font(isBoldDefault ? MIMITheme.displayFont(size: fontSize, weight: .bold) : MIMITheme.proseFont(size: fontSize))
+                .foregroundStyle(color)
+                .lineSpacing(6)
+                .fixedSize(horizontal: false, vertical: true)
+        }
+    }
+}
+
+/// Single cell renderer supporting keycap pills and rich text
+struct EditorialTableCellView: View {
+    let text: String
+
+    var body: some View {
+        let keycaps = parseKeycaps(text)
+        if keycaps.count > 1 || (keycaps.first?.isKey == true) {
+            HStack(spacing: 4) {
+                ForEach(0..<keycaps.count, id: \.self) { idx in
+                    let item = keycaps[idx]
+                    if item.isKey {
+                        EditorialKeycapView(key: item.text)
+                    } else {
+                        EditorialFormattedText(item.text, fontSize: 13, color: MIMITheme.bodyInk)
+                    }
+                }
+            }
+        } else {
+            EditorialFormattedText(text, fontSize: 13.5, color: MIMITheme.bodyInk)
+        }
+    }
+
+    private func parseKeycaps(_ raw: String) -> [(isKey: Bool, text: String)] {
+        guard raw.contains("`") else { return [(isKey: false, text: raw)] }
+        var result: [(isKey: Bool, text: String)] = []
+        let parts = raw.components(separatedBy: "`")
+        for (i, part) in parts.enumerated() {
+            if part.isEmpty { continue }
+            result.append((isKey: i % 2 == 1, text: part))
+        }
+        return result
+    }
+}
+
+/// Rich tutorial table view with aesthetic header, zebra striping, and keycaps
+struct EditorialTableView: View {
+    let headers: [String]
+    let rows: [[String]]
+
+    var body: some View {
+        VStack(spacing: 0) {
+            // Header Row
+            HStack(spacing: 12) {
+                ForEach(0..<headers.count, id: \.self) { colIdx in
+                    let h = headers[colIdx]
+                    Text(h)
+                        .font(MIMITheme.displayFont(size: 13, weight: .bold))
+                        .foregroundStyle(Color(hex: 0x3D3225))
+                        .frame(maxWidth: colIdx == headers.count - 1 ? .infinity : columnWidth(colIdx, total: headers.count), alignment: .leading)
+                }
+            }
+            .padding(.horizontal, 16)
+            .padding(.vertical, 11)
+            .background(Color(hex: 0xF2ECE1))
+
+            Divider().background(Color(hex: 0xE2DACD))
+
+            // Body Rows
+            ForEach(0..<rows.count, id: \.self) { rowIdx in
+                let row = rows[rowIdx]
+                let isEven = rowIdx % 2 == 1
+                HStack(spacing: 12) {
+                    ForEach(0..<row.count, id: \.self) { colIdx in
+                        let cell = row[colIdx]
+                        EditorialTableCellView(text: cell)
+                            .frame(maxWidth: colIdx == row.count - 1 ? .infinity : columnWidth(colIdx, total: row.count), alignment: .leading)
+                    }
+                }
+                .padding(.horizontal, 16)
+                .padding(.vertical, 10)
+                .background(isEven ? Color(hex: 0xFBF9F5) : Color(hex: 0xFFFEFC))
+
+                if rowIdx < rows.count - 1 {
+                    Divider().background(Color(hex: 0xEBE4D8).opacity(0.7))
+                }
+            }
+        }
+        .clipShape(RoundedRectangle(cornerRadius: 12))
+        .overlay(
+            RoundedRectangle(cornerRadius: 12)
+                .stroke(Color(hex: 0xDDD4C5), lineWidth: 1.2)
+        )
+        .shadow(color: Color.black.opacity(0.03), radius: 3, x: 0, y: 1.5)
+        .padding(.vertical, 6)
+    }
+
+    private func columnWidth(_ idx: Int, total: Int) -> CGFloat? {
+        if total == 3 {
+            if idx == 0 { return 110 }
+            if idx == 1 { return 150 }
+            return nil
+        } else if total == 4 {
+            if idx == 0 { return 90 }
+            if idx == 1 { return 130 }
+            if idx == 2 { return 120 }
+            return nil
+        }
+        return 120
+    }
+}
+
+/// Structured list item data model
+struct EditorialListItem: Identifiable {
+    let id = UUID()
+    let level: Int
+    let term: String?
+    let text: String
+    let keycaps: [(isKey: Bool, text: String)]
+}
+
+/// Rich list view supporting indent levels, custom bullets, bold term highlights, and keycaps
+struct EditorialListView: View {
+    let items: [EditorialListItem]
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 9) {
+            ForEach(items) { item in
+                HStack(alignment: .top, spacing: 8) {
+                    if item.level == 0 {
+                        Text("❖")
+                            .font(.system(size: 8))
+                            .foregroundStyle(Color(hex: 0xC49A45))
+                            .padding(.top, 5)
+                            .frame(width: 14, alignment: .center)
+                    } else {
+                        Spacer().frame(width: 20)
+                        Text("–")
+                            .font(.system(size: 11, weight: .bold))
+                            .foregroundStyle(Color(hex: 0x8A7151))
+                            .padding(.top, 3)
+                            .frame(width: 14, alignment: .center)
+                    }
+
+                    if let term = item.term {
+                        VStack(alignment: .leading, spacing: 2) {
+                            Text(term)
+                                .font(MIMITheme.displayFont(size: 14.5, weight: .bold))
+                                .foregroundStyle(Color(hex: 0x24201D))
+                            EditorialFormattedText(item.text, fontSize: 14, color: MIMITheme.bodyInk)
+                        }
+                    } else if item.keycaps.count > 1 || (item.keycaps.first?.isKey == true) {
+                        HStack(spacing: 5) {
+                            ForEach(0..<item.keycaps.count, id: \.self) { kIdx in
+                                let kc = item.keycaps[kIdx]
+                                if kc.isKey {
+                                    EditorialKeycapView(key: kc.text)
+                                } else {
+                                    EditorialFormattedText(kc.text, fontSize: 14, color: MIMITheme.bodyInk)
+                                }
+                            }
+                        }
+                    } else {
+                        EditorialFormattedText(item.text, fontSize: 14, color: MIMITheme.bodyInk)
+                    }
+                }
+            }
+        }
+        .padding(.vertical, 3)
+    }
+}
+
+/// Step header component with badge and SF Symbol icon
+struct EditorialStepHeaderView: View {
+    let step: String
+    let title: String
+    let icon: String
+
+    var body: some View {
+        HStack(alignment: .center, spacing: 10) {
+            HStack(spacing: 5) {
+                Image(systemName: icon)
+                    .font(.system(size: 12, weight: .bold))
+                Text(step)
+                    .font(.system(size: 12, weight: .bold, design: .monospaced))
+            }
+            .foregroundStyle(Color(hex: 0xC84B31))
+            .padding(.horizontal, 9)
+            .padding(.vertical, 4.5)
+            .background(Color(hex: 0xC84B31).opacity(0.1), in: RoundedRectangle(cornerRadius: 6))
+            .overlay(RoundedRectangle(cornerRadius: 6).stroke(Color(hex: 0xC84B31).opacity(0.25), lineWidth: 1))
+
+            if !title.isEmpty {
+                Text(title)
+                    .font(MIMITheme.displayFont(size: 17, weight: .bold))
+                    .foregroundStyle(MIMITheme.ink)
+            }
+        }
+        .padding(.top, 10)
+    }
+}
+
+/// Callout card view stripping leading `>` and rendering clean iconography and text
+struct EditorialCalloutView: View {
+    let isTip: Bool
+    let title: String
+    let lines: [String]
+
+    var body: some View {
+        HStack(alignment: .top, spacing: 12) {
+            Image(systemName: isTip ? "lightbulb.fill" : "info.circle.fill")
+                .font(.system(size: 16))
+                .foregroundStyle(isTip ? Color(hex: 0xC49A45) : Color(hex: 0x2E6B8A))
+                .padding(.top, 2)
+
+            VStack(alignment: .leading, spacing: 6) {
+                Text(title)
+                    .font(.system(size: 13, weight: .bold))
+                    .foregroundStyle(isTip ? Color(hex: 0x8A7151) : Color(hex: 0x2E6B8A))
+
+                ForEach(0..<lines.count, id: \.self) { idx in
+                    let l = lines[idx]
+                    if l.hasPrefix("- ") || l.hasPrefix("* ") {
+                        HStack(alignment: .top, spacing: 6) {
+                            Text("•")
+                                .font(.system(size: 12, weight: .bold))
+                                .foregroundStyle(isTip ? Color(hex: 0xC49A45) : Color(hex: 0x2E6B8A))
+                            EditorialFormattedText(String(l.dropFirst(2)).trimmingCharacters(in: .whitespaces), fontSize: 13.5, color: MIMITheme.bodyInk)
+                        }
+                    } else {
+                        EditorialFormattedText(l, fontSize: 13.5, color: MIMITheme.bodyInk)
+                    }
+                }
+            }
+        }
+        .padding(16)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(
+            RoundedRectangle(cornerRadius: 12)
+                .fill(isTip ? Color(hex: 0xFFFBEA) : Color(hex: 0xF3F9FC))
+        )
+        .overlay(
+            RoundedRectangle(cornerRadius: 12)
+                .stroke(isTip ? Color(hex: 0xE8DEB5) : Color(hex: 0xD0E5F0), lineWidth: 1.2)
+        )
+        .shadow(color: Color.black.opacity(0.02), radius: 2, x: 0, y: 1)
+        .padding(.vertical, 4)
+    }
+}
+
 // MARK: - Rich Article Editorial Markdown Content Renderer
 
-/// Structured editorial renderer that renders headings, callout boxes, diagrams, and paragraphs
+/// Structured editorial renderer that renders headings, callout boxes, diagrams, tables, and lists
 struct ArticleEditorialContent: View {
     let articleID: String
     let content: String
@@ -1087,7 +1381,7 @@ struct ArticleEditorialContent: View {
                     .padding(.bottom, 8)
             }
 
-            // Parse content into sections
+            // Parse content into rich sections
             ForEach(parseSections(content), id: \.id) { block in
                 switch block.kind {
                 case .h1(let text):
@@ -1102,11 +1396,17 @@ struct ArticleEditorialContent: View {
                 case .h2(let text):
                     HStack(spacing: 8) {
                         Capsule().fill(Color(hex: 0xC84B31)).frame(width: 4, height: 18)
+                        Image(systemName: h2Icon(for: text))
+                            .font(.system(size: 15, weight: .bold))
+                            .foregroundStyle(Color(hex: 0xC84B31))
                         Text(text)
                             .font(MIMITheme.displayFont(size: 20, weight: .bold))
                             .foregroundStyle(MIMITheme.ink)
                     }
                     .padding(.top, 14)
+
+                case .step(let step, let title, let icon):
+                    EditorialStepHeaderView(step: step, title: title, icon: icon)
 
                 case .h3(let text):
                     Text(text)
@@ -1114,73 +1414,70 @@ struct ArticleEditorialContent: View {
                         .foregroundStyle(Color(hex: 0x6E5D48))
                         .padding(.top, 8)
 
-                case .tip(let text):
-                    HStack(alignment: .top, spacing: 10) {
-                        Image(systemName: "lightbulb.fill")
-                            .font(.system(size: 14))
-                            .foregroundStyle(Color(hex: 0xC49A45))
-                            .padding(.top, 2)
-                        VStack(alignment: .leading, spacing: 4) {
-                            Text("琴房手账贴士")
-                                .font(.system(size: 11, weight: .bold))
-                                .foregroundStyle(Color(hex: 0x8A7151))
-                            Text(text)
-                                .font(MIMITheme.proseFont(size: 13.5))
-                                .foregroundStyle(MIMITheme.bodyInk)
-                                .lineSpacing(5)
-                        }
-                    }
-                    .padding(14)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .background(Color(hex: 0xFFFBEA), in: RoundedRectangle(cornerRadius: 10))
-                    .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color(hex: 0xE8DEB5), lineWidth: 1))
+                case .table(let headers, let rows):
+                    EditorialTableView(headers: headers, rows: rows)
 
-                case .note(let text):
-                    HStack(alignment: .top, spacing: 10) {
-                        Image(systemName: "info.circle.fill")
-                            .font(.system(size: 14))
-                            .foregroundStyle(Color(hex: 0x2E6B8A))
-                            .padding(.top, 2)
-                        VStack(alignment: .leading, spacing: 4) {
-                            Text("重要说明")
-                                .font(.system(size: 11, weight: .bold))
-                                .foregroundStyle(Color(hex: 0x2E6B8A))
-                            Text(text)
-                                .font(MIMITheme.proseFont(size: 13.5))
-                                .foregroundStyle(MIMITheme.bodyInk)
-                                .lineSpacing(5)
-                        }
-                    }
-                    .padding(14)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .background(Color(hex: 0xF3F9FC), in: RoundedRectangle(cornerRadius: 10))
-                    .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color(hex: 0xD0E5F0), lineWidth: 1))
+                case .list(let items):
+                    EditorialListView(items: items)
+
+                case .tip(let title, let lines):
+                    EditorialCalloutView(isTip: true, title: title, lines: lines)
+
+                case .note(let title, let lines):
+                    EditorialCalloutView(isTip: false, title: title, lines: lines)
 
                 case .paragraph(let text):
-                    Text(text)
-                        .font(MIMITheme.proseFont(size: 15))
-                        .foregroundStyle(MIMITheme.bodyInk)
-                        .lineSpacing(8)
-                        .fixedSize(horizontal: false, vertical: true)
+                    EditorialFormattedText(text, fontSize: 15, color: MIMITheme.bodyInk)
 
                 case .divider:
                     HStack(spacing: 8) {
                         Rectangle().fill(MIMITheme.faintBorder).frame(height: 1)
-                        Text("❖").font(.system(size: 9)).foregroundStyle(MIMITheme.mutedInk)
+                        Text("❖ ❖ ❖").font(.system(size: 9)).foregroundStyle(MIMITheme.mutedInk)
                         Rectangle().fill(MIMITheme.faintBorder).frame(height: 1)
                     }
-                    .padding(.vertical, 6)
+                    .padding(.vertical, 8)
                 }
             }
         }
+    }
+
+    private func h2Icon(for title: String) -> String {
+        if title.contains("快捷键") || title.contains("键盘") || title.contains("按键") {
+            return "keyboard.fill"
+        }
+        if title.contains("流程") || title.contains("指引") || title.contains("上手") || title.contains("步骤") {
+            return "list.bullet.rectangle.portrait.fill"
+        }
+        if title.contains("和弦") || title.contains("调式") || title.contains("乐理") {
+            return "music.quarternote.3"
+        }
+        if title.contains("六线谱") || title.contains("TAB") || title.contains("琴弦") {
+            return "guitars.fill"
+        }
+        if title.contains("变调夹") || title.contains("Capo") || title.contains("横按") {
+            return "tuningfork"
+        }
+        if title.contains("攻坚") || title.contains("练习") || title.contains("片段") {
+            return "flag.fill"
+        }
+        if title.contains("？") || title.contains("?") || title.contains("为什么") {
+            return "questionmark.circle.fill"
+        }
+        if title.contains("符号") || title.contains("解构") || title.contains("准则") {
+            return "character.book.closed.fill"
+        }
+        return "bookmark.fill"
     }
 
     private enum BlockKind {
         case h1(String)
         case h2(String)
         case h3(String)
-        case tip(String)
-        case note(String)
+        case step(step: String, title: String, icon: String)
+        case table(headers: [String], rows: [[String]])
+        case list(items: [EditorialListItem])
+        case tip(title: String, lines: [String])
+        case note(title: String, lines: [String])
         case paragraph(String)
         case divider
     }
@@ -1191,42 +1488,201 @@ struct ArticleEditorialContent: View {
     }
 
     private func parseSections(_ raw: String) -> [ContentBlock] {
+        let lines = raw.components(separatedBy: "\n")
         var blocks: [ContentBlock] = []
-        let paragraphs = raw.components(separatedBy: "\n\n")
         var idCounter = 0
+        var i = 0
+        let n = lines.count
 
-        for p in paragraphs {
-            let trimmed = p.trimmingCharacters(in: .whitespacesAndNewlines)
-            if trimmed.isEmpty { continue }
+        while i < n {
+            let line = lines[i]
+            let trimmed = line.trimmingCharacters(in: .whitespaces)
+
+            if trimmed.isEmpty {
+                i += 1
+                continue
+            }
 
             if trimmed == "---" {
                 blocks.append(ContentBlock(id: idCounter, kind: .divider))
                 idCounter += 1
-            } else if trimmed.hasPrefix("# ") {
+                i += 1
+                continue
+            }
+
+            if trimmed.hasPrefix("# ") {
                 let text = String(trimmed.dropFirst(2)).trimmingCharacters(in: .whitespaces)
                 blocks.append(ContentBlock(id: idCounter, kind: .h1(text)))
                 idCounter += 1
-            } else if trimmed.hasPrefix("## ") {
+                i += 1
+                continue
+            }
+
+            if trimmed.hasPrefix("## ") {
                 let text = String(trimmed.dropFirst(3)).trimmingCharacters(in: .whitespaces)
                 blocks.append(ContentBlock(id: idCounter, kind: .h2(text)))
                 idCounter += 1
-            } else if trimmed.hasPrefix("### ") {
-                let text = String(trimmed.dropFirst(4)).trimmingCharacters(in: .whitespaces)
-                blocks.append(ContentBlock(id: idCounter, kind: .h3(text)))
+                i += 1
+                continue
+            }
+
+            if trimmed.hasPrefix("### ") {
+                let h3Text = String(trimmed.dropFirst(4)).trimmingCharacters(in: .whitespaces)
+                if h3Text.hasPrefix("第") && h3Text.contains("步") {
+                    let parts = h3Text.components(separatedBy: "：")
+                    let stepStr = parts[0]
+                    let titleStr = parts.count > 1 ? parts.dropFirst().joined(separator: "：") : ""
+                    var icon = "star.fill"
+                    if stepStr.contains("一") || stepStr.contains("1") { icon = "slider.horizontal.3" }
+                    else if stepStr.contains("二") || stepStr.contains("2") { icon = "keyboard.fill" }
+                    else if stepStr.contains("三") || stepStr.contains("3") { icon = "pianokeys" }
+                    else if stepStr.contains("四") || stepStr.contains("4") { icon = "text.quote" }
+                    blocks.append(ContentBlock(id: idCounter, kind: .step(step: stepStr, title: titleStr, icon: icon)))
+                } else if let fc = h3Text.first, fc.isNumber, let dot = h3Text.firstIndex(of: ".") {
+                    let num = String(h3Text[..<dot])
+                    let titleStr = String(h3Text[h3Text.index(after: dot)...]).trimmingCharacters(in: .whitespaces)
+                    var icon = "star.fill"
+                    if num == "1" { icon = "scissors" }
+                    else if num == "2" { icon = "chart.line.uptrend.xyaxis" }
+                    else if num == "3" { icon = "clock.arrow.circlepath" }
+                    blocks.append(ContentBlock(id: idCounter, kind: .step(step: "步骤 \(num)", title: titleStr, icon: icon)))
+                } else {
+                    blocks.append(ContentBlock(id: idCounter, kind: .h3(h3Text)))
+                }
                 idCounter += 1
-            } else if trimmed.hasPrefix("> [!TIP]") {
-                let text = trimmed.replacingOccurrences(of: "> [!TIP]", with: "").trimmingCharacters(in: .whitespacesAndNewlines)
-                blocks.append(ContentBlock(id: idCounter, kind: .tip(text)))
+                i += 1
+                continue
+            }
+
+            if trimmed.hasPrefix(">") {
+                var calloutLines: [String] = []
+                while i < n && lines[i].trimmingCharacters(in: .whitespaces).hasPrefix(">") {
+                    var l = lines[i].trimmingCharacters(in: .whitespaces)
+                    while l.hasPrefix(">") {
+                        l = l.dropFirst().trimmingCharacters(in: .whitespaces)
+                    }
+                    if !l.isEmpty { calloutLines.append(l) }
+                    i += 1
+                }
+                var isTip = false
+                var title = "重要说明"
+                var startIdx = 0
+                if !calloutLines.isEmpty {
+                    let first = calloutLines[0]
+                    if first.hasPrefix("[!TIP]") {
+                        isTip = true
+                        title = String(first.dropFirst(6)).trimmingCharacters(in: .whitespaces)
+                        if title.isEmpty { title = "琴房手账贴士" }
+                        startIdx = 1
+                    } else if first.hasPrefix("[!NOTE]") {
+                        isTip = false
+                        title = String(first.dropFirst(7)).trimmingCharacters(in: .whitespaces)
+                        if title.isEmpty { title = "重要说明" }
+                        startIdx = 1
+                    }
+                }
+                let bodyLines = Array(calloutLines[startIdx...])
+                let kind: BlockKind = isTip ? .tip(title: title, lines: bodyLines) : .note(title: title, lines: bodyLines)
+                blocks.append(ContentBlock(id: idCounter, kind: kind))
                 idCounter += 1
-            } else if trimmed.hasPrefix("> [!NOTE]") {
-                let text = trimmed.replacingOccurrences(of: "> [!NOTE]", with: "").trimmingCharacters(in: .whitespacesAndNewlines)
-                blocks.append(ContentBlock(id: idCounter, kind: .note(text)))
+                continue
+            }
+
+            if trimmed.hasPrefix("|") && trimmed.contains("|") {
+                var tableLines: [String] = []
+                while i < n && lines[i].trimmingCharacters(in: .whitespaces).hasPrefix("|") {
+                    tableLines.append(lines[i].trimmingCharacters(in: .whitespaces))
+                    i += 1
+                }
+                func parseRow(_ l: String) -> [String] {
+                    var r = l
+                    if r.hasPrefix("|") { r.removeFirst() }
+                    if r.hasSuffix("|") { r.removeLast() }
+                    return r.components(separatedBy: "|").map { $0.trimmingCharacters(in: .whitespaces) }
+                }
+                if tableLines.count >= 2 {
+                    let headers = parseRow(tableLines[0])
+                    var rows: [[String]] = []
+                    for tl in tableLines.dropFirst() {
+                        if tl.contains("---") { continue }
+                        rows.append(parseRow(tl))
+                    }
+                    blocks.append(ContentBlock(id: idCounter, kind: .table(headers: headers, rows: rows)))
+                    idCounter += 1
+                }
+                continue
+            }
+
+            if trimmed.hasPrefix("- ") || trimmed.hasPrefix("* ") {
+                var listItems: [EditorialListItem] = []
+                while i < n {
+                    let cur = lines[i]
+                    let t = cur.trimmingCharacters(in: .whitespaces)
+                    if t.isEmpty {
+                        if i + 1 < n && (lines[i+1].trimmingCharacters(in: .whitespaces).hasPrefix("- ") || lines[i+1].trimmingCharacters(in: .whitespaces).hasPrefix("* ")) {
+                            i += 1
+                            continue
+                        } else {
+                            break
+                        }
+                    }
+                    if t.hasPrefix("- ") || t.hasPrefix("* ") {
+                        let indent = cur.prefix(while: { $0 == " " || $0 == "\t" }).count
+                        let level = indent >= 2 ? 1 : 0
+                        let c = String(t.dropFirst(2)).trimmingCharacters(in: .whitespaces)
+                        listItems.append(parseListItem(c, level: level))
+                        i += 1
+                    } else {
+                        break
+                    }
+                }
+                blocks.append(ContentBlock(id: idCounter, kind: .list(items: listItems)))
                 idCounter += 1
-            } else {
-                blocks.append(ContentBlock(id: idCounter, kind: .paragraph(trimmed)))
+                continue
+            }
+
+            // Normal paragraph
+            var pLines: [String] = []
+            while i < n {
+                let cur = lines[i]
+                let t = cur.trimmingCharacters(in: .whitespaces)
+                if t.isEmpty || t == "---" || t.hasPrefix("#") || t.hasPrefix(">") || t.hasPrefix("|") || t.hasPrefix("- ") || t.hasPrefix("* ") {
+                    break
+                }
+                pLines.append(t)
+                i += 1
+            }
+            if !pLines.isEmpty {
+                blocks.append(ContentBlock(id: idCounter, kind: .paragraph(pLines.joined(separator: "\n"))))
                 idCounter += 1
             }
         }
         return blocks
+    }
+
+    private func parseListItem(_ raw: String, level: Int) -> EditorialListItem {
+        let s = raw.trimmingCharacters(in: .whitespaces)
+        if s.hasPrefix("**") {
+            if let endIdx = s.range(of: "**", range: s.index(s.startIndex, offsetBy: 2)..<s.endIndex) {
+                let term = String(s[s.index(s.startIndex, offsetBy: 2)..<endIdx.lowerBound])
+                var remainder = String(s[endIdx.upperBound...]).trimmingCharacters(in: .whitespaces)
+                if remainder.hasPrefix("：") || remainder.hasPrefix(":") {
+                    remainder = String(remainder.dropFirst()).trimmingCharacters(in: .whitespaces)
+                }
+                return EditorialListItem(level: level, term: term, text: remainder, keycaps: parseKeycaps(remainder))
+            }
+        }
+        return EditorialListItem(level: level, term: nil, text: s, keycaps: parseKeycaps(s))
+    }
+
+    private func parseKeycaps(_ text: String) -> [(isKey: Bool, text: String)] {
+        guard text.contains("`") else { return [(isKey: false, text: text)] }
+        var result: [(isKey: Bool, text: String)] = []
+        let parts = text.components(separatedBy: "`")
+        for (i, part) in parts.enumerated() {
+            if part.isEmpty { continue }
+            result.append((isKey: i % 2 == 1, text: part))
+        }
+        return result
     }
 }

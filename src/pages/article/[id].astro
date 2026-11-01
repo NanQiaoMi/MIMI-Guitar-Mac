@@ -67,19 +67,200 @@ function heatText(v: number): string {
   return String(v);
 }
 
-// Parse markdown sections
+// Helper to choose contextual icon for H2 sections
+function h2Icon(title: string): string {
+  if (title.includes('快捷键') || title.includes('键盘') || title.includes('按键')) return '⌨️';
+  if (title.includes('流程') || title.includes('指引') || title.includes('上手') || title.includes('步骤')) return '📋';
+  if (title.includes('和弦') || title.includes('调式') || title.includes('乐理')) return '🎵';
+  if (title.includes('六线谱') || title.includes('TAB') || title.includes('琴弦')) return '🎸';
+  if (title.includes('变调夹') || title.includes('Capo') || title.includes('横按')) return '🔧';
+  if (title.includes('攻坚') || title.includes('练习') || title.includes('片段')) return '🚩';
+  if (title.includes('？') || title.includes('?') || title.includes('为什么')) return '❓';
+  if (title.includes('符号') || title.includes('解构') || title.includes('准则')) return '📖';
+  return '📌';
+}
+
+function parseStep(h3Text: string): { isStep: boolean; step: string; title: string; icon: string } {
+  if (h3Text.startsWith('第') && h3Text.includes('步')) {
+    const parts = h3Text.split('：');
+    const step = parts[0];
+    const title = parts.slice(1).join('：');
+    let icon = '⭐️';
+    if (step.includes('一') || step.includes('1')) icon = '⚙️';
+    else if (step.includes('二') || step.includes('2')) icon = '⌨️';
+    else if (step.includes('三') || step.includes('3')) icon = '🎹';
+    else if (step.includes('四') || step.includes('4')) icon = '📝';
+    return { isStep: true, step, title, icon };
+  }
+  const match = h3Text.match(/^(\d+)\.\s*(.*)/);
+  if (match) {
+    const num = match[1];
+    const title = match[2];
+    let icon = '⭐️';
+    if (num === '1') icon = '✂️';
+    else if (num === '2') icon = '📈';
+    else if (num === '3') icon = '⏱️';
+    return { isStep: true, step: `步骤 ${num}`, title, icon };
+  }
+  return { isStep: false, step: '', title: h3Text, icon: '' };
+}
+
+function parseListItem(raw: string, level: number) {
+  let s = raw.trim();
+  const boldMatch = s.match(/^\*\*([^*]+)\*\*[:：]?\s*(.*)/);
+  if (boldMatch) {
+    return { level, term: boldMatch[1], body: boldMatch[2] };
+  }
+  return { level, term: null, body: s };
+}
+
+// Robust line-by-line Markdown block parser
 function parseMarkdown(text: string) {
-  const paragraphs = text.split('\n\n');
-  return paragraphs.map((p) => {
-    const trimmed = p.trim();
-    if (trimmed === '---') return { type: 'divider' };
-    if (trimmed.startsWith('# ')) return { type: 'h1', text: trimmed.slice(2) };
-    if (trimmed.startsWith('## ')) return { type: 'h2', text: trimmed.slice(3) };
-    if (trimmed.startsWith('### ')) return { type: 'h3', text: trimmed.slice(4) };
-    if (trimmed.startsWith('> [!TIP]')) return { type: 'tip', text: trimmed.replace('> [!TIP]', '').trim() };
-    if (trimmed.startsWith('> [!NOTE]')) return { type: 'note', text: trimmed.replace('> [!NOTE]', '').trim() };
-    return { type: 'p', text: trimmed };
-  });
+  const lines = text.split('\n');
+  const blocks: any[] = [];
+  let i = 0;
+  const n = lines.length;
+
+  while (i < n) {
+    const line = lines[i];
+    const trimmed = line.trim();
+
+    if (!trimmed) {
+      i++;
+      continue;
+    }
+
+    if (trimmed === '---') {
+      blocks.push({ type: 'divider' });
+      i++;
+      continue;
+    }
+
+    if (trimmed.startsWith('# ')) {
+      blocks.push({ type: 'h1', text: trimmed.slice(2).trim() });
+      i++;
+      continue;
+    }
+
+    if (trimmed.startsWith('## ')) {
+      const h2Text = trimmed.slice(3).trim();
+      blocks.push({ type: 'h2', text: h2Text, icon: h2Icon(h2Text) });
+      i++;
+      continue;
+    }
+
+    if (trimmed.startsWith('### ')) {
+      const h3Text = trimmed.slice(4).trim();
+      const stepInfo = parseStep(h3Text);
+      if (stepInfo.isStep) {
+        blocks.push({ type: 'step', step: stepInfo.step, title: stepInfo.title, icon: stepInfo.icon });
+      } else {
+        blocks.push({ type: 'h3', text: h3Text });
+      }
+      i++;
+      continue;
+    }
+
+    if (trimmed.startsWith('>')) {
+      const calloutLines: string[] = [];
+      while (i < n && lines[i].trim().startsWith('>')) {
+        let l = lines[i].trim();
+        while (l.startsWith('>')) {
+          l = l.slice(1).trim();
+        }
+        if (l) calloutLines.push(l);
+        i++;
+      }
+      let isTip = false;
+      let title = '重要说明';
+      let startIdx = 0;
+      if (calloutLines.length > 0) {
+        if (calloutLines[0].startsWith('[!TIP]')) {
+          isTip = true;
+          title = calloutLines[0].replace('[!TIP]', '').trim() || '琴房手账贴士';
+          startIdx = 1;
+        } else if (calloutLines[0].startsWith('[!NOTE]')) {
+          isTip = false;
+          title = calloutLines[0].replace('[!NOTE]', '').trim() || '重要说明';
+          startIdx = 1;
+        }
+      }
+      blocks.push({
+        type: isTip ? 'tip' : 'note',
+        title,
+        lines: calloutLines.slice(startIdx)
+      });
+      continue;
+    }
+
+    if (trimmed.startsWith('|') && trimmed.includes('|')) {
+      const tableLines: string[] = [];
+      while (i < n && lines[i].trim().startsWith('|')) {
+        tableLines.push(lines[i].trim());
+        i++;
+      }
+      const parseRow = (l: string) => l.replace(/^\|/, '').replace(/\|$/, '').split('|').map(c => c.trim());
+      if (tableLines.length >= 2) {
+        const headers = parseRow(tableLines[0]);
+        const rows: string[][] = [];
+        for (let rowIdx = 1; rowIdx < tableLines.length; rowIdx++) {
+          if (tableLines[rowIdx].includes('---')) continue;
+          rows.push(parseRow(tableLines[rowIdx]));
+        }
+        blocks.push({ type: 'table', headers, rows });
+      }
+      continue;
+    }
+
+    if (trimmed.startsWith('- ') || trimmed.startsWith('* ')) {
+      const items: any[] = [];
+      while (i < n) {
+        const cur = lines[i];
+        const t = cur.trim();
+        if (!t) {
+          if (i + 1 < n && (lines[i+1].trim().startsWith('- ') || lines[i+1].trim().startsWith('* '))) {
+            i++;
+            continue;
+          } else {
+            break;
+          }
+        }
+        if (t.startsWith('- ') || t.startsWith('* ')) {
+          const indent = cur.search(/\S/);
+          const level = indent >= 2 ? 1 : 0;
+          const c = t.slice(2).trim();
+          items.push(parseListItem(c, level));
+          i++;
+        } else {
+          break;
+        }
+      }
+      blocks.push({ type: 'list', items });
+      continue;
+    }
+
+    // Normal paragraph
+    const pLines: string[] = [];
+    while (i < n) {
+      const cur = lines[i];
+      const t = cur.trim();
+      if (!t || t === '---' || t.startsWith('#') || t.startsWith('>') || t.startsWith('|') || t.startsWith('- ') || t.startsWith('* ')) {
+        break;
+      }
+      pLines.push(t);
+      i++;
+    }
+    if (pLines.length > 0) {
+      blocks.push({ type: 'p', text: pLines.join('\n') });
+    }
+  }
+  return blocks;
+}
+
+function formatInlineHtml(str: string): string {
+  return str
+    .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+    .replace(/`([^`]+)`/g, '<kbd class="inline-block px-1.5 py-0.5 rounded border border-[#D0C8BA] bg-white font-mono text-xs font-bold text-[#332B24] shadow-2xs">$1</kbd>');
 }
 
 const blocks = parseMarkdown(article.content);
@@ -186,11 +367,27 @@ const blocks = parseMarkdown(article.content);
           }
           if (block.type === 'h2') {
             return (
-              <div class="pt-4 flex items-center gap-2.5">
+              <div class="pt-6 flex items-center gap-2.5">
                 <span class="w-1.5 h-5 rounded-full bg-[#C84B31]"></span>
+                <span class="text-lg">{block.icon}</span>
                 <h3 class="font-display text-xl sm:text-2xl font-bold text-[#24201D]">
                   {block.text}
                 </h3>
+              </div>
+            );
+          }
+          if (block.type === 'step') {
+            return (
+              <div class="pt-4 flex items-center gap-3">
+                <span class="px-2.5 py-1 rounded-md text-xs font-bold font-mono bg-[#C84B31]/10 text-[#C84B31] border border-[#C84B31]/25 inline-flex items-center gap-1.5">
+                  <span>{block.icon}</span>
+                  <span>{block.step}</span>
+                </span>
+                {block.title && (
+                  <h4 class="font-display text-base sm:text-lg font-bold text-[#24201D]">
+                    {block.title}
+                  </h4>
+                )}
               </div>
             );
           }
@@ -201,13 +398,70 @@ const blocks = parseMarkdown(article.content);
               </h4>
             );
           }
+          if (block.type === 'table') {
+            return (
+              <div class="my-6 overflow-x-auto rounded-xl border border-[#DDD4C5] shadow-2xs">
+                <table class="w-full text-left border-collapse bg-white">
+                  <thead>
+                    <tr class="bg-[#F2ECE1] border-b border-[#E2DACD]">
+                      {block.headers.map((h: string) => (
+                        <th class="py-3 px-4 font-display text-xs sm:text-sm font-bold text-[#3D3225]">
+                          {h}
+                        </th>
+                      ))}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {block.rows.map((row: string[], rIdx: number) => (
+                      <tr class={`border-b border-[#EBE4D8]/70 ${rIdx % 2 === 1 ? 'bg-[#FBF9F5]' : 'bg-white'}`}>
+                        {row.map((cell: string) => (
+                          <td class="py-3 px-4 text-xs sm:text-sm text-[#44382C]">
+                            <span set:html={formatInlineHtml(cell)} />
+                          </td>
+                        ))}
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            );
+          }
+          if (block.type === 'list') {
+            return (
+              <ul class="space-y-2.5 my-3">
+                {block.items.map((item: any) => (
+                  <li class={`flex items-start gap-2 text-sm sm:text-base text-[#44382C] ${item.level > 0 ? 'ml-6' : ''}`}>
+                    {item.level === 0 ? (
+                      <span class="text-[#C49A45] text-xs mt-1">❖</span>
+                    ) : (
+                      <span class="text-[#8A7151] font-bold text-xs mt-0.5">–</span>
+                    )}
+                    <div class="flex-1">
+                      {item.term ? (
+                        <div>
+                          <strong class="font-display font-bold text-[#24201D] block sm:inline mr-1">{item.term}：</strong>
+                          <span set:html={formatInlineHtml(item.body)} />
+                        </div>
+                      ) : (
+                        <span set:html={formatInlineHtml(item.body)} />
+                      )}
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            );
+          }
           if (block.type === 'tip') {
             return (
               <div class="p-5 rounded-xl bg-[#FFFBEA] border border-[#E8DEB5] shadow-2xs flex items-start gap-3 my-4">
                 <span class="text-base text-[#C49A45] mt-0.5">💡</span>
-                <div class="space-y-1">
-                  <p class="text-xs font-bold text-[#8A7151]">琴房手账贴士</p>
-                  <p class="font-serif text-sm leading-relaxed text-[#584A3B]">{block.text}</p>
+                <div class="space-y-1.5 flex-1">
+                  <p class="text-xs font-bold text-[#8A7151]">{block.title}</p>
+                  {block.lines.map((line: string) => (
+                    <p class="font-serif text-sm leading-relaxed text-[#584A3B]">
+                      <span set:html={formatInlineHtml(line)} />
+                    </p>
+                  ))}
                 </div>
               </div>
             );
@@ -216,36 +470,35 @@ const blocks = parseMarkdown(article.content);
             return (
               <div class="p-5 rounded-xl bg-[#F3F9FC] border border-[#D0E5F0] shadow-2xs flex items-start gap-3 my-4">
                 <span class="text-base text-[#2E6B8A] mt-0.5">ℹ️</span>
-                <div class="space-y-1">
-                  <p class="text-xs font-bold text-[#2E6B8A]">重要说明</p>
-                  <p class="font-serif text-sm leading-relaxed text-[#584A3B]">{block.text}</p>
+                <div class="space-y-1.5 flex-1">
+                  <p class="text-xs font-bold text-[#2E6B8A]">{block.title}</p>
+                  {block.lines.map((line: string) => (
+                    <p class="font-serif text-sm leading-relaxed text-[#584A3B]">
+                      <span set:html={formatInlineHtml(line)} />
+                    </p>
+                  ))}
                 </div>
               </div>
             );
           }
           return (
-            <p class="font-serif text-base leading-[2.0] text-[#44382C] whitespace-pre-line">
-              {block.text}
+            <p class="font-serif text-base leading-[2.0] text-[#44382C]">
+              <span set:html={formatInlineHtml(block.text)} />
             </p>
           );
         })}
       </div>
 
-      <!-- Signature & Wax Seal Stamp -->
-      <footer class="mt-14 pt-8 border-t-2 border-[#E5DDD0] flex flex-col sm:flex-row items-center justify-between gap-6">
-        <div class="flex items-center gap-4">
-          <div class="w-12 h-12 rounded-full border-1.5 border-[#C84B31] bg-[#C84B31]/10 flex items-center justify-center text-center font-bold text-[10px] text-[#C84B31] leading-tight shadow-xs">
-            琴房<br />墨印
-          </div>
-          <div>
-            <p class="font-mono text-xs font-bold text-[#8A7151]">MIMI GUITAR · 纸本墨韵</p>
-            <p class="font-serif text-xs text-[#8C7C6B] mt-0.5">数字工坊独家原创教程 · 规范版权保护</p>
-          </div>
-        </div>
+      <!-- Bottom Navigation Bar (Seal stamp removed per UX feedback) -->
+      <footer class="mt-14 pt-8 border-t border-[#E5DDD0] flex flex-col sm:flex-row items-center justify-between gap-4">
+        <p class="font-display text-xs text-[#8C7C6B]">
+          MIMI GUITAR · 专栏教程
+        </p>
 
         <div class="flex items-center gap-3">
-          <a href="/article" class="btn text-xs py-1.5">
-            ← 返回文章列表
+          <a href="/article" class="btn text-xs py-1.5 inline-flex items-center gap-1.5">
+            <span>←</span>
+            <span>返回文章列表</span>
           </a>
         </div>
       </footer>
