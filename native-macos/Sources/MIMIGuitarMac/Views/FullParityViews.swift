@@ -2138,35 +2138,14 @@ struct ArticleDetailView: View {
                         ArticleEditorialContent(articleID: article.id, content: article.content)
                             .padding(.bottom, 36)
 
-                        // Bottom Signature / Seal Stamp
+                        // Bottom Navigation Bar (Seal stamp removed per UX feedback)
                         VStack(spacing: 16) {
-                            VStack(spacing: 2) {
-                                Rectangle().fill(MIMITheme.faintBorder).frame(height: 0.8)
-                                Rectangle().fill(MIMITheme.softBorder).frame(height: 1.5)
-                            }
+                            Rectangle().fill(MIMITheme.faintBorder).frame(height: 1)
 
                             HStack(alignment: .center) {
-                                HStack(spacing: 8) {
-                                    Circle()
-                                        .strokeBorder(Color(hex: 0xC84B31), lineWidth: 1.5)
-                                        .background(Circle().fill(Color(hex: 0xC84B31).opacity(0.08)))
-                                        .frame(width: 44, height: 44)
-                                        .overlay(
-                                            Text("琴房\n墨印")
-                                                .font(.system(size: 9, weight: .bold))
-                                                .foregroundStyle(Color(hex: 0xC84B31))
-                                                .multilineTextAlignment(.center)
-                                        )
-
-                                    VStack(alignment: .leading, spacing: 2) {
-                                        Text("MIMI GUITAR · 纸本墨韵")
-                                            .font(.system(size: 11, weight: .bold, design: .monospaced))
-                                            .foregroundStyle(Color(hex: 0x8A7151))
-                                        Text("数字工坊独家原创教程 · 规范版权保护")
-                                            .font(MIMITheme.proseFont(size: 12))
-                                            .foregroundStyle(MIMITheme.mutedInk)
-                                    }
-                                }
+                                Text("MIMI GUITAR · 专栏教程")
+                                    .font(MIMITheme.displayFont(size: 13, weight: .medium))
+                                    .foregroundStyle(MIMITheme.mutedInk)
 
                                 Spacer()
 
@@ -2176,12 +2155,19 @@ struct ArticleDetailView: View {
                                     }
                                     .buttonStyle(PaperSecondaryButtonStyle())
 
-                                    Button("分享文章") { shareArticle(article) }
-                                        .buttonStyle(PaperSecondaryButtonStyle())
+                                    Button { shareArticle(article) } label: {
+                                        Label("分享文章", systemImage: "square.and.arrow.up")
+                                    }
+                                    .buttonStyle(PaperSecondaryButtonStyle())
+
+                                    Button { copyArticleTitle(article.title) } label: {
+                                        Label("复制标题", systemImage: "doc.on.doc")
+                                    }
+                                    .buttonStyle(PaperSecondaryButtonStyle())
                                 }
                             }
                         }
-                        .padding(.top, 10)
+                        .padding(.top, 14)
                     }
                     .padding(36)
                     .background(MIMITheme.paperWhite, in: RoundedRectangle(cornerRadius: 20))
