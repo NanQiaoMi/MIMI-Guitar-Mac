@@ -4,8 +4,23 @@ import PersonalPractice from '../components/PersonalPractice.svelte';
 ---
 
 <Base title="我的练习 · MIMI Guitar">
-  <section class="mx-auto my-6 max-w-[1240px] space-y-5 px-4 sm:my-10 sm:px-6">
-    <header class="space-y-2"><p class="text-xs font-semibold uppercase tracking-[0.18em] text-[#8c6d46]">个人练习</p><h1 class="font-display text-heading">继续练习</h1><p class="max-w-2xl text-sm leading-6 text-ash">从本设备待练曲目中选择一首。个人谱只在本地读取；曲库谱需要联网。</p></header>
+  <section class="mx-auto my-6 max-w-[1240px] space-y-6 px-4 sm:my-10 sm:px-6">
+    <header class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between border-b border-[#ebd8bc]/50 pb-5">
+      <div class="space-y-2">
+        <div class="inline-flex items-center gap-2 rounded-full bg-[#f5ede0] px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-[#8c6d46]">
+          <span class="inline-block h-2 w-2 rounded-full bg-[#c49a45]"></span>
+          <span>MIMI Practice Studio · 琴房练习室</span>
+        </div>
+        <h1 class="font-display text-heading text-[#24201d]">琴房练习</h1>
+        <p class="max-w-2xl text-sm leading-6 text-ash">静心倾听指尖触弦的共鸣 · 慢练是通往流畅唯一的阶梯，日进有功。</p>
+      </div>
+      <div class="rounded-xl border hairline bg-paper p-3 text-xs text-ash shadow-sm">
+        <div class="flex items-center gap-2 text-[#8c6d38] font-semibold">
+          <span>💡 每日琴房箴言</span>
+        </div>
+        <p class="mt-1 max-w-sm text-[#584a3b]">慢练是通往飞速的唯一捷径：在 50% 速度下确保每个音清晰饱满，肌肉记忆自会成倍加速。</p>
+      </div>
+    </header>
     <PersonalPractice client:load />
   </section>
 </Base>

@@ -386,7 +386,175 @@
     {#if selectedScore && playableUrl}
       {#key playerMountKey}<ScorePlayer scoreUrl={playableUrl} title={selectedScore.title} artist={selectedScore.artist} category={selectedScore.category} practiceScore={selectedScore} onPracticeScoreVerified={practiceScoreVerifiedHandler(playerSelectionGeneration)} onRegisterPracticeLeaveGuard={leaveGuards.register} />{/key}
     {:else if scoreChoices.length === 0}
-      <div class="card space-y-3 p-8 text-center"><p class="font-medium">待练列表还是空的</p><p class="text-sm text-ash">先从曲库收藏或导入一份谱，随后加入待练。</p><a class="btn btn-signal" href="/library">打开我的谱</a></div>
+      <!-- 琴房启航中心 (空态深度激活) -->
+      <div class="space-y-6">
+        <!-- 主迎新卡片 -->
+        <div class="card space-y-4 p-8 text-center sm:p-10">
+          <div class="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-[#f4ece0] text-3xl text-[#8c6d38] shadow-inner">
+            🎸
+          </div>
+          <div class="space-y-1">
+            <h2 class="font-display text-xl font-semibold text-[#24201d]">琴房已就绪 · 开启你的今日练习</h2>
+            <p class="mx-auto max-w-xl text-sm leading-6 text-ash">
+              挑选一首心仪的曲谱加入待练，在这里你可以慢速跟弹、圈定小节循环击破卡点，伴奏时段将实时自动沉淀为练习记录。
+            </p>
+          </div>
+          <div class="flex flex-wrap items-center justify-center gap-3 pt-2">
+            <a class="btn btn-signal min-h-[42px] px-5" href="/tabs">✨ 探索精选曲库</a>
+            <a class="btn btn-ghost min-h-[42px] px-5" href="/library">📥 导入本地吉他谱</a>
+            <a class="btn btn-ghost min-h-[42px] px-5" href="/article">📖 阅读指弹技巧</a>
+          </div>
+        </div>
+
+        <!-- 经典热身与精选练习曲推荐 -->
+        <div class="card space-y-4 p-6 sm:p-7">
+          <div class="flex flex-wrap items-baseline justify-between gap-2 border-b border-[#ebd8bc]/40 pb-3">
+            <div>
+              <h3 class="font-display text-base font-semibold text-[#24201d]">⭐ 经典热身与精选练习曲推荐</h3>
+              <p class="text-xs text-ash">不知道练什么？试试这几首广受好评的练手曲谱，点击即可直接去曲库开启</p>
+            </div>
+            <a href="/tabs" class="text-xs font-medium text-[#8c6d38] hover:underline">浏览全部曲库 →</a>
+          </div>
+
+          <div class="grid gap-4 sm:grid-cols-2">
+            <div class="rounded-xl border hairline bg-[#fcfaf7] p-4 transition-all hover:border-[#c49a45]/50 hover:shadow-sm">
+              <div class="flex items-start justify-between">
+                <div>
+                  <div class="flex items-center gap-2">
+                    <span class="rounded bg-[#f0e6d6] px-1.5 py-0.5 text-[10px] font-medium text-[#7d5e2d]">和弦分解</span>
+                    <span class="font-mono text-xs text-ash">D大调 · 75 BPM</span>
+                  </div>
+                  <h4 class="mt-1 font-display text-base font-semibold text-[#24201d]">卡农 (Canon in D)</h4>
+                  <p class="text-xs text-ash">帕赫贝尔</p>
+                </div>
+                <div class="text-xs text-[#c49a45]">★★★☆☆</div>
+              </div>
+              <p class="mt-2 text-xs leading-5 text-[#584a3b]">黄金和弦走向与右手琶音轮指经典练习，培养双手声部呼吸感。</p>
+              <div class="mt-3 flex items-center gap-2">
+                <a href="/tabs?q=卡农" class="btn btn-signal min-h-[34px] !px-3 text-xs">去曲库练这首</a>
+              </div>
+            </div>
+
+            <div class="rounded-xl border hairline bg-[#fcfaf7] p-4 transition-all hover:border-[#c49a45]/50 hover:shadow-sm">
+              <div class="flex items-start justify-between">
+                <div>
+                  <div class="flex items-center gap-2">
+                    <span class="rounded bg-[#f0e6d6] px-1.5 py-0.5 text-[10px] font-medium text-[#7d5e2d]">古典指弹</span>
+                    <span class="font-mono text-xs text-ash">G大调 · 84 BPM</span>
+                  </div>
+                  <h4 class="mt-1 font-display text-base font-semibold text-[#24201d]">G大调小步舞曲</h4>
+                  <p class="text-xs text-ash">巴赫</p>
+                </div>
+                <div class="text-xs text-[#c49a45]">★★☆☆☆</div>
+              </div>
+              <p class="mt-2 text-xs leading-5 text-[#584a3b]">复调独立旋律线条，训练左手指尖独立力量与把位移动平稳性。</p>
+              <div class="mt-3 flex items-center gap-2">
+                <a href="/tabs?q=小步舞曲" class="btn btn-signal min-h-[34px] !px-3 text-xs">去曲库练这首</a>
+              </div>
+            </div>
+
+            <div class="rounded-xl border hairline bg-[#fcfaf7] p-4 transition-all hover:border-[#c49a45]/50 hover:shadow-sm">
+              <div class="flex items-start justify-between">
+                <div>
+                  <div class="flex items-center gap-2">
+                    <span class="rounded bg-[#f0e6d6] px-1.5 py-0.5 text-[10px] font-medium text-[#7d5e2d]">轮指抒情</span>
+                    <span class="font-mono text-xs text-ash">Em调 · 66 BPM</span>
+                  </div>
+                  <h4 class="mt-1 font-display text-base font-semibold text-[#24201d]">爱的罗曼史 (Romance)</h4>
+                  <p class="text-xs text-ash">西班牙名曲</p>
+                </div>
+                <div class="text-xs text-[#c49a45]">★★☆☆☆</div>
+              </div>
+              <p class="mt-2 text-xs leading-5 text-[#584a3b]">高低音声部呼应，练习右手连弹的力度层次与圆润温和的音色控制。</p>
+              <div class="mt-3 flex items-center gap-2">
+                <a href="/tabs?q=爱的罗曼史" class="btn btn-signal min-h-[34px] !px-3 text-xs">去曲库练这首</a>
+              </div>
+            </div>
+
+            <div class="rounded-xl border hairline bg-[#fcfaf7] p-4 transition-all hover:border-[#c49a45]/50 hover:shadow-sm">
+              <div class="flex items-start justify-between">
+                <div>
+                  <div class="flex items-center gap-2">
+                    <span class="rounded bg-[#f0e6d6] px-1.5 py-0.5 text-[10px] font-medium text-[#7d5e2d]">流行指弹</span>
+                    <span class="font-mono text-xs text-ash">Am调 · 68 BPM</span>
+                  </div>
+                  <h4 class="mt-1 font-display text-base font-semibold text-[#24201d]">天空之城 (Carrying You)</h4>
+                  <p class="text-xs text-ash">久石让</p>
+                </div>
+                <div class="text-xs text-[#c49a45]">★★☆☆☆</div>
+              </div>
+              <p class="mt-2 text-xs leading-5 text-[#584a3b]">优美动听的旋律与基础和弦结合，适合慢弹感受每一个音符的延展。</p>
+              <div class="mt-3 flex items-center gap-2">
+                <a href="/tabs?q=天空之城" class="btn btn-signal min-h-[34px] !px-3 text-xs">去曲库练这首</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 基础和弦转换热身卡 -->
+        <div class="card space-y-4 p-6 sm:p-7">
+          <div class="flex items-baseline justify-between gap-2 border-b border-[#ebd8bc]/40 pb-3">
+            <div>
+              <h3 class="font-display text-base font-semibold text-[#24201d]">🖐️ 开琴 5 分钟 · 基础核心和弦转换热身</h3>
+              <p class="text-xs text-ash">每天弹唱与指弹前，顺畅转换这组万能和弦，快速唤醒左手指尖肌肉记忆</p>
+            </div>
+          </div>
+          <div class="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-6">
+            <div class="rounded-xl border hairline bg-[#faf7f0] p-3 text-left">
+              <div class="font-display text-xl font-bold text-[#24201d]">C</div>
+              <div class="mt-1 font-mono text-[11px] font-medium text-[#8c6d38]">X 3 2 0 1 0</div>
+              <p class="mt-1 text-[11px] text-ash">主和弦 · 明净开阔</p>
+            </div>
+            <div class="rounded-xl border hairline bg-[#faf7f0] p-3 text-left">
+              <div class="font-display text-xl font-bold text-[#24201d]">G</div>
+              <div class="mt-1 font-mono text-[11px] font-medium text-[#8c6d38]">3 2 0 0 0 3</div>
+              <p class="mt-1 text-[11px] text-ash">属和弦 · 宏亮饱满</p>
+            </div>
+            <div class="rounded-xl border hairline bg-[#faf7f0] p-3 text-left">
+              <div class="font-display text-xl font-bold text-[#24201d]">Am</div>
+              <div class="mt-1 font-mono text-[11px] font-medium text-[#8c6d38]">X 0 2 2 1 0</div>
+              <p class="mt-1 text-[11px] text-ash">小调柔和 · 抒情灵魂</p>
+            </div>
+            <div class="rounded-xl border hairline bg-[#faf7f0] p-3 text-left">
+              <div class="font-display text-xl font-bold text-[#24201d]">Em</div>
+              <div class="mt-1 font-mono text-[11px] font-medium text-[#8c6d38]">0 2 2 0 0 0</div>
+              <p class="mt-1 text-[11px] text-ash">空灵低沉 · 指弹基石</p>
+            </div>
+            <div class="rounded-xl border hairline bg-[#faf7f0] p-3 text-left">
+              <div class="font-display text-xl font-bold text-[#24201d]">Fmaj7</div>
+              <div class="mt-1 font-mono text-[11px] font-medium text-[#8c6d38]">X X 3 2 1 0</div>
+              <p class="mt-1 text-[11px] text-ash">优雅色彩 · 大横按替代</p>
+            </div>
+            <div class="rounded-xl border hairline bg-[#faf7f0] p-3 text-left">
+              <div class="font-display text-xl font-bold text-[#24201d]">Dm</div>
+              <div class="mt-1 font-mono text-[11px] font-medium text-[#8c6d38]">X X 0 2 3 1</div>
+              <p class="mt-1 text-[11px] text-ash">细腻过渡 · 指距跨越</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 练琴好搭档与科学方法论 -->
+        <div class="grid gap-4 md:grid-cols-2">
+          <div class="card space-y-2 p-5">
+            <h4 class="font-display text-sm font-semibold text-[#24201d]">⏱ 常见节拍速度参考 (BPM)</h4>
+            <p class="text-xs text-ash">选曲或慢练时，根据 BPM 预估律动与按弦难度：</p>
+            <div class="flex flex-wrap gap-2 pt-1">
+              <span class="rounded-lg bg-[#f5ede0] px-3 py-1.5 text-xs text-[#584a3b]"><strong class="text-[#24201d]">60 BPM</strong> 抒情慢板</span>
+              <span class="rounded-lg bg-[#f5ede0] px-3 py-1.5 text-xs text-[#584a3b]"><strong class="text-[#24201d]">80 BPM</strong> 流行中速</span>
+              <span class="rounded-lg bg-[#f5ede0] px-3 py-1.5 text-xs text-[#584a3b]"><strong class="text-[#24201d]">100 BPM</strong> 动感扫弦</span>
+              <span class="rounded-lg bg-[#f5ede0] px-3 py-1.5 text-xs text-[#584a3b]"><strong class="text-[#24201d]">120 BPM</strong> 快速轻快</span>
+            </div>
+          </div>
+          <div class="card space-y-2 p-5">
+            <h4 class="font-display text-sm font-semibold text-[#24201d]">🎯 科学慢练三步法</h4>
+            <ul class="space-y-1 text-xs text-[#584a3b]">
+              <li><strong>1. 听觉记忆：</strong>先原速完整听一遍伴奏，找准旋律呼吸感</li>
+              <li><strong>2. 难点切片：</strong>圈定卡手小节开启 2 节循环慢练跟弹</li>
+              <li><strong>3. 梯形提速：</strong>从 50% 速度起步，连弹 3 遍无失误再 +5 BPM</li>
+            </ul>
+          </div>
+        </div>
+      </div>
     {/if}
     <PracticeReview {data} />
   {/if}
