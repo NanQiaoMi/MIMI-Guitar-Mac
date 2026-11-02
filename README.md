@@ -1,273 +1,167 @@
 # MIMI Guitar
 
 <p align="center">
-  <strong>🎸 现代吉他与尤克里里乐谱互动演练系统 · 跨平台桌面端与 Web 体验</strong>
+  <strong>专为吉他与尤克里里乐手、创作者打造的高性能互动乐谱系统与跨平台桌面应用</strong>
 </p>
 
 <p align="center">
-  <a href="https://github.com/NanQiaoMi/MIMI-Guitar-Mac/releases"><img src="https://img.shields.io/badge/Release-v0.2.4%20(Universal%202)-teal.svg" alt="Latest Release" /></a>
-  <a href="#系统架构与技术选型"><img src="https://img.shields.io/badge/Platforms-macOS%2013+%20%7C%20Web-blue.svg" alt="Supported Platforms" /></a>
-  <a href="#核心功能特性"><img src="https://img.shields.io/badge/Catalog-16%2C233%20Tabs%20Offline-orange.svg" alt="Built-in Catalog" /></a>
-  <a href="#核心功能特性"><img src="https://img.shields.io/badge/Engine-AlphaTab%201.8.4%20Custom-emerald.svg" alt="Score Engine" /></a>
-  <a href="#技术栈"><img src="https://img.shields.io/badge/Web-Astro%205%20%7C%20Svelte%205%20%7C%20Tailwind%20v4-purple.svg" alt="Web Stack" /></a>
-  <a href="#技术栈"><img src="https://img.shields.io/badge/Native-SwiftUI%20%7C%20AppKit%20%7C%20SQLite3-red.svg" alt="Native Stack" /></a>
+  <a href="https://github.com/NanQiaoMi/MIMI-Guitar-Mac/releases"><img src="https://img.shields.io/badge/Release-v0.2.4%20(Universal%202)-0969da.svg" alt="Latest Release" /></a>
+  <img src="https://img.shields.io/badge/macOS-13.0+-black.svg" alt="macOS 13.0+" />
+  <img src="https://img.shields.io/badge/Architecture-Universal%202%20(Apple%20Silicon%20%2B%20Intel)-6f42c1.svg" alt="Universal 2" />
+  <img src="https://img.shields.io/badge/Web-Astro%205%20%2B%20Svelte%205-1a7f37.svg" alt="Web Stack" />
+  <img src="https://img.shields.io/badge/License-MIT-gray.svg" alt="License" />
+</p>
+
+<p align="center">
+  <a href="#-核心功能">核心功能</a> •
+  <a href="#-系统架构">系统架构</a> •
+  <a href="#-快速开始">快速开始</a> •
+  <a href="#-macos-原生构建">原生构建</a> •
+  <a href="#-开源许可">开源许可</a>
 </p>
 
 ---
 
-## 📖 项目概览 (Overview)
+## 📌 项目介绍
 
-**MIMI Guitar** 是一款专为吉他、尤克里里爱好者与创作者打造的高性能互动式乐谱平台与个人演练系统。项目从底层音频引擎、渲染管线到交互界面全部自研落地并进行现代化深度重构：
-- **设计哲学**：深度融合 Refero「General Intelligence Company」经典编辑排版风与温润纸张质感，结合 Apple / Claude 的呼吸感微动效。
-- **渲染引擎**：深度定制 AlphaTab 1.8.4 高性能渲染管线与 Web Audio 音频合成架构，攻坚解决了播放指针高频抖动、重绘闪烁与跳帧问题，实现 60 FPS 连续平滑跟谱（Continuous Follow-Scroll）。
-- **双端同构**：提供基于 **Astro 5 + Svelte 5 + Tailwind CSS v4** 的现代化 SSR/岛屿 Web 站点，以及基于 **SwiftUI + AppKit + WebKit + SQLite** 的原生 macOS 桌面应用程序。
-- **离线与数据完全自主**：原生 macOS 版开箱内置 **16,233 首曲谱**、**8 篇深度专栏文章** 与完整 **SONiVOX GM 音源**，无需依赖 Node.js/Docker 即可秒开离线运行；网页版采用本地优先（Local-First）机制，免登录即开即练，支持符合规范的完整个人资料分卷备份迁移。
+**MIMI Guitar** 是一套面向吉他与尤克里里演奏者、乐理学习者和制谱创作者的数字乐谱解决方案。项目采用现代化的软件工程架构与优雅的纸质书卷视觉风格，提供 **Web 端应用** 与 **macOS 原生桌面端** 双重体验：
 
----
-
-## ✨ 核心功能特性 (Key Features)
-
-### 🎼 1. 全功能专业乐谱引擎 (Score & Audio Player)
-- **多格式全兼容**：
-  - 深度支持自研高压缩 `.ibe` 乐谱；
-  - 广泛兼容主流 Guitar Pro 格式（`.gp`, `.gp3`, `.gp4`, `.gp5`, `.gpx`, `.gp8`）；
-  - 支持标准 MusicXML 导入与 XHE 文本和弦谱渲染。
-- **交互式吉他与尤克里里指板 (Fretboard)**：
-  - 琴颈位置随乐谱实时动态点亮当前小节与音符；
-  - 和弦指法多维对照图谱与即时触控试听；
-  - 音符拨动粒子火花（Note Spark Trails）沉浸式动效反馈。
-- **高保真音频合成与混音控制**：
-  - 集成 SONiVOX 经典 GM 采样音源；
-  - 独立多音轨混音器（各音轨 Volume、Solo、Mute 实时调控）；
-  - 变调夹（Capo）智能移调与节拍器（Metronome）同步伴奏；
-  - 50% ~ 200% 高保真无级变速播放，音高锁定不变调。
-- **丝滑自动跟谱与视图控制**：
-  - 针对原生 macOS 与 WebKit 优化的连续平滑滚动（Continuous Follow-Scroll），杜绝切小节时的突跳；
-  - 矢量高精谱面卷轴（Vector Manuscript Roll），自适应纸张纹理与暗色/浅色排版；
-  - 完整全屏演练视图，支持快捷键一键切换沉浸练习。
-
-### ⏱️ 2. 个人智能练琴套件 (Practice Suite)
-- **A-B 循环攻坚片段**：
-  - 针对高难乐句自由框选 A 点与 B 点；
-  - 支持保存为命名练习片段（带独立练习备注），收录进个人片段库。
-- **渐进式提速训练器 (Speed Trainer)**：
-  - 设定循环次数与每次递增的速度步距（例如每循环 2 次自动提速 5%）；
-  - 科学肌肉记忆强化，平稳突破指法速度瓶颈。
-- **练琴会话记录与续练守护**：
-  - 会话时长、速度进度与完成度自动留痕；
-  - 退出防误触守护（Practice Leave Guard），重新进入一键“继续上次”不断档。
-
-### 🛠️ 3. 所见即所得制谱工坊 (Score Studio)
-- **直观六线谱编曲排版**：
-  - 支持键盘快捷键与虚拟指板双向快速键入品位音符；
-  - 动态小节扩容、拍号与节奏设定、连音线与技巧符号支持。
-- **和弦调色板与歌词抽屉**：
-  - 预设常用大调/小调和弦库，一键插入与微调；
-  - 双轨对齐的歌词编辑抽屉，精准锚定小节与拍位。
-- **本地高可靠草稿持久化**：
-  - 防丢失本地安全存储隔离区，实时自动保存草稿；
-  - 支持乐谱导出与系统级 CoreGraphics 高清矢量 A4 PDF 打印。
-
-### 📰 4. 音乐专栏与编辑风资讯 (Editorial Columns)
-- **Refero 编辑风格美学排版**：
-  - 现代报刊栅格、经典衬线字体排印与沉浸式阅读空间；
-  - 深度支持 Markdown 富文本、多列对比表格、图文排版与教程索引。
-- **曲库智能检索与难度矩阵**：
-  - 支持曲名、音乐人、调性、拍号、谱型（弹唱/指弹/独奏）多维筛选；
-  - 动态工艺徽章（Craft Badges）与难度仪表盘（Difficulty Matrix）量化指引。
-
-### 🔒 5. 本地优先与数据主权 (Local-First Architecture)
-- **零门槛即开即用**：全功能本地运行，无需强制注册或联网验证；
-- **全量分卷备份体系**：
-  - 支持生成符合规范的个人资料备份包（单个清单 JSON + 最多 128 个二进制分卷，附件总量支持至 927 MiB）；
-  - 练习片段、收藏夹、待练清单、录音草稿完全归属用户，支持设备间无损迁移。
-
-### 🍎 6. 原生 macOS 桌面深度优化 (Native Desktop App)
-- **纯原生 SwiftUI + AppKit 架构**：原生窗口管理、主菜单集成、触控板惯性手势深度适配；
-- **专有方案加载与无网络依赖**：
-  - 采用自定义 `mimiplayer:` 协议直接读取本地资源，秒级加载；
-  - 内置 16,233 首离线曲谱 SQLite 数据库与完整音源，脱机可用；
-- **Universal 2 架构**：单一安装包原生支持 Apple Silicon（M1/M2/M3/M4 系列）与 Intel x86_64 双架构。
+- **高性能乐谱引擎**：基于深度定制的 AlphaTab 与 Web Audio API，实现毫秒级时钟调度与连续平滑自动滚屏（Continuous Follow-Scroll），彻底告别切小节跳帧与指针微抖。
+- **全格式与音频合成**：支持 Guitar Pro 全系列、MusicXML 及自研高压缩乐谱格式；内置经典 GM 采样音源，支持各声部独立混音、Capo 变调与 50%~200% 高保真无级变速。
+- **专业演练套件**：专为突破指法瓶颈打造的 A-B 循环攻坚、渐进式递增提速训练器（Speed Trainer）以及练习日志留痕。
+- **全离线与本地优先**：原生 macOS 版开箱内置 16,000+ 首曲目数据库，不依赖网络与外部服务即可离线秒开；个人数据支持符合规范的分卷备份与跨设备无损迁移。
 
 ---
 
-## 🏗️ 系统架构与技术选型 (Architecture & Tech Stack)
+## 🌟 核心功能
 
-```mermaid
-flowchart TD
-    subgraph Web_Platform["🌐 Web 端 (Astro 5 + Svelte 5)"]
-        Astro[Astro 5 SSR 框架]
-        SvelteIslands[Svelte 5 交互岛屿 / Runes]
-        Tailwind[Tailwind CSS v4 样式系统]
-        Prisma[Prisma 6 ORM]
-        Postgres[(PostgreSQL 16 数据库)]
-        Astro --> SvelteIslands
-        Astro --> Tailwind
-        Astro --> Prisma
-        Prisma --> Postgres
-    end
+### 1. 交互式乐谱播放器
+- **全格式解析**：支持 Guitar Pro（`.gp`, `.gp3`–`.gp8`, `.gpx`）、`.musicxml`、自研 `.ibe` 矢量谱及 `.xhe` 和弦谱。
+- **声学合成与混音**：各音轨独立控制（音量 / 静音 / 独奏）、实时节拍器对拍伴奏、Capo 变调夹移调运算。
+- **自适应视觉卷轴**：高清晰度矢量乐谱排版，配合纸质墨韵底纹，支持全屏沉浸演练模式。
 
-    subgraph Native_Desktop["🍎 macOS 原生桌面端 (SwiftUI + AppKit)"]
-        SwiftUIViews[SwiftUI / AppKit 原生窗口与导航]
-        WKEngine[WebKit 自定义 mimiplayer:// 协议桥]
-        LocalSQLite[(内置 catalog.sqlite 曲库数据)]
-        SwiftUIViews --> WKEngine
-        SwiftUIViews --> LocalSQLite
-    end
+### 2. 动态指板与和弦系统
+- **动态指法映射**：播放时琴颈位置毫秒级同步点亮当前声部所处品位与音符。
+- **和弦库与即时试听**：内置常用大调、小调与扩展和弦图谱，点击指板或和弦卡片即可触控发声对照。
 
-    subgraph Shared_Engine["🎼 核心音频与排版引擎"]
-        AlphaTabCore[定制化 AlphaTab 1.8.4 引擎]
-        BlobWorkers[Blob Web Workers 音频合成]
-        WebAudio[Web Audio API 混音与无损变速]
-        FretboardUI[交互指板与平滑自动跟谱控制器]
-        AlphaTabCore --> BlobWorkers
-        BlobWorkers --> WebAudio
-        AlphaTabCore --> FretboardUI
-    end
+### 3. 个人智能练琴套件 (Practice Suite)
+- **A-B 循环攻坚**：自由选定乐句小节设置循环区间，支持保存为命名练习片段与独立备忘。
+- **阶梯式提速训练器**：设定循环遍数与速度步进（例如每练习 2 次平稳提速 5%），科学建立肌肉记忆。
+- **练琴历史与续练**：自动记录各曲目累计练琴时长与速度达成度，防误触退出保护，一键“继续上次”。
 
-    SvelteIslands --> Shared_Engine
-    WKEngine --> Shared_Engine
+### 4. 制谱工坊与排版导出 (Score Studio)
+- **交互式制谱**：支持电脑键盘与虚拟指板双向录入音符，实时校验小节节拍与音值。
+- **多轨混音与歌词排版**：双轨对齐的歌词抽屉，和弦调色板快捷插拔，本地草稿实时容灾暂存。
+- **高清矢量导出**：支持标准乐谱格式导出及 CoreGraphics 高清矢量 A4 PDF 打印。
+
+### 5. 原生 macOS 桌面深度优化
+- **双架构支持**：Universal 2 架构，原生适配 Apple Silicon (M1/M2/M3/M4) 与 Intel 芯片。
+- **极速离线体验**：内置 SQLite 曲库索引与随包媒体，采用专有方案本地解析，脱离网络秒级响应。
+
+---
+
+## 🏗️ 系统架构
+
+```
+┌──────────────────────────────────────────────────────────────┐
+│                       MIMI Guitar 核心                       │
+├──────────────────────────────┬───────────────────────────────┤
+│       🌐 Web 端架构           │       🍎 macOS 原生桌面端      │
+│  • Astro 5 (SSR / 路由)      │  • SwiftUI / AppKit 窗口系统  │
+│  • Svelte 5 (Runes 交互岛屿) │  • WebKit 自定义协议方案桥    │
+│  • Tailwind CSS v4 样式系统  │  • 原生菜单 / 手势 / 打印     │
+│  • Prisma ORM + PostgreSQL   │  • 内置 SQLite 离线曲库       │
+├──────────────────────────────┴───────────────────────────────┤
+│                   🎼 共享乐谱与音频处理中枢                   │
+│  • 定制 AlphaTab 1.8.4 渲染管线 (Canvas / SVG 矢量排版)       │
+│  • Web Audio API + Blob Worker 多音轨采样实时合成             │
+│  • rAF 驱动的平滑连续跟谱控制器与动态虚拟指板                 │
+│  • 本地数据存储与 RFC 标准分卷备份/恢复引擎                   │
+└──────────────────────────────────────────────────────────────┘
 ```
 
-### 技术栈选型明细
+### 技术选型矩阵
 
-| 模块类别 | 选型技术 | 核心功用与版本 |
+| 维度 | 技术栈 | 作用与特点 |
 | :--- | :--- | :--- |
-| **Web 核心框架** | `Astro 5.18.2` | 极速服务端渲染 (SSR)、静态资源流水线与混合页面路由 |
-| **交互组件层** | `Svelte 5.56.8` | 采用 Svelte 5 Runes 响应式原语，实现极致轻量零开销组件岛屿 |
-| **视觉样式系统** | `Tailwind CSS 4.3.3` | 新一代 CSS 引擎，搭配 `@fontsource/fraunces` 与 `@fontsource/inter` 编辑排版字体 |
-| **乐谱排版引擎** | `@coderline/alphatab 1.8.4` | 定制底座，支持 IBE / GP / MusicXML 解析与 Canvas/SVG 乐谱渲染 |
-| **音频合成管线** | `Web Audio API` + `Blob Worker` | 多音轨即时合成、无损变速变调、离线音色缓存 |
-| **原生 macOS 桌面** | `SwiftUI` + `AppKit` + `WebKit` | 原生双架构 macOS 13+ 桌面程序，集成专有 `mimiplayer:` 资源调度桥 |
-| **离线数据存储** | `SQLite 3` (原生) / `PostgreSQL 16` (Web) | 本地 16,233 首曲库毫秒级检索，配合 Prisma 6.19.3 ORM |
-| **乐谱导出打印** | `CoreGraphics` / `jsPDF 4.2.1` | 原生高精矢量 A4 乐谱导出与高清制谱打印 |
+| **前端框架** | Astro 5 + Svelte 5 | 兼顾 SSR 首屏极速加载与 Svelte Runes 响应式零运行时交互开销 |
+| **样式与设计** | Tailwind CSS v4 | 极简书卷质感排印，支持标准减弱动效（prefers-reduced-motion） |
+| **乐谱引擎** | AlphaTab 1.8.4 (Custom) | 深度定制排版流水线，消除切节抖动与重绘性能瓶颈 |
+| **音频管线** | Web Audio API + SONiVOX | 支持独立音轨混音、Capo 变调、50%~200% 无级变速与 Blob Worker 合成 |
+| **桌面运行时** | SwiftUI + AppKit + WebKit | 纯原生窗口外壳与系统事件分发，Universal 2 双架构支持 |
+| **数据存储** | SQLite 3 (原生) / PostgreSQL (Web) | 原生内置曲库毫秒级全文检索，网页端采用 Prisma 6 ORM |
 
 ---
 
-## 🚀 快速上手 (Getting Started)
+## 🚀 快速开始
 
-### 方案 A：下载安装 macOS 原生桌面版（推荐）
+### 方式一：下载 macOS 原生桌面版（推荐）
 
-适合希望即装即用、离线练琴演练的 Mac 用户：
+直接下载预编译好的 Universal 2 DMG 镜像，无需任何开发环境依赖：
 
-1. 前往 [GitHub Releases](https://github.com/NanQiaoMi/MIMI-Guitar-Mac/releases) 下载最新的 Universal 2 安装镜像：`MIMI-Guitar-macOS-universal2.dmg`。
-2. 双击打开 DMG，将 `MIMI Guitar.app` 拖入 `Applications`（应用程序）文件夹。
-3. 从 Launchpad 或应用程序打开 MIMI Guitar 即可开始使用。
+1. 从 [GitHub Releases](https://github.com/NanQiaoMi/MIMI-Guitar-Mac/releases) 下载最新版本 `MIMI-Guitar-macOS-universal2.dmg`。
+2. 双击打开镜像，将 `MIMI Guitar.app` 拖入 `Applications` 文件夹即可完成安装。
 
-> [!NOTE]
-> **关于 macOS Gatekeeper 安全提示**：
-> 本安装包采用本地 ad-hoc 签名（未进行 Apple 商业公证）。若首次打开出现安全阻止提示，请打开 **访达 (Finder) -> 应用程序**，按住 `Control` 键单击 `MIMI Guitar.app`，在弹出菜单中点击 **“打开”** 并确认即可正常运行。无需关闭系统安全保护。
+> [!TIP]
+> **macOS 安全提示**：如初次打开提示未经验证，请在访达（Finder）中按住 `Control` 键单击应用并选择“打开”。
 
-### 方案 B：本地开发与运行 Web 端
+---
 
-适合希望参与功能二次开发或本地启动 Web 站点的开发者：
+### 方式二：本地运行 Web 开发环境
 
-#### 1. 环境准备
-- 运行环境：**Node.js 24.x**（Apple Silicon 推荐 arm64，Intel 推荐 x64）
-- 容器支持：Docker Desktop（用于运行本地开发曲库 PostgreSQL）
+#### 1. 前置要求
+- **Node.js**：`>= 24.0.0`
+- **Docker Desktop**（可选，用于运行本地 PostgreSQL 曲库服务）
 
-#### 2. 安装依赖与初始化
+#### 2. 安装与启动
 ```bash
 # 进入工程目录
 cd project
 
-# 安装锁定依赖
+# 安装依赖
 npm ci
 
-# 生成 Prisma Client
+# 生成 Prisma 客户端
 npm run prisma:generate
-```
 
-#### 3. 启动本地开发服务
-```bash
-# 启动 Astro 本地热更新开发服务器 (默认端口 4321)
+# 启动本地开发服务 (http://localhost:4321)
 npm run dev
-# 浏览器访问: http://localhost:4321
 ```
 
-#### 4. 本地完整曲库恢复（可选）
-若需要恢复完整包含 16,233 首曲目的本地 PostgreSQL 数据库：
+#### 3. 生产环境构建与验证
 ```bash
-# 运行 Mac 开发环境快速引导助手 (绑定 127.0.0.1:15433)
-node tools/mac-bootstrap.mjs doctor
-node tools/mac-bootstrap.mjs install
-node tools/mac-bootstrap.mjs restore-catalog
+# 静态类型检查
+npm run typecheck
 
-# 以生产验证模式启动完整服务 (默认端口 4336)
-node tools/mac-bootstrap.mjs start
-# 浏览器访问: http://127.0.0.1:4336
+# 单元测试运行
+npm test
+
+# 生产环境打包
+npm run build
 ```
 
 ---
 
-## 🔨 原生 macOS 构建与打包 (Native Build)
+## 🔨 macOS 原生构建
 
-工程已提供全自动化构建与打包脚本，支持在 macOS 主机上编译生成 Universal 2（双架构通用）应用程序及 DMG 分发镜像：
+若需从源码构建 macOS 原生 Universal 2 应用程序与 DMG 安装包：
 
 ```bash
 cd project
 
-# 1. 编译乐谱渲染核心前端 Bundle (包含设置、AlphaTab 与和弦补丁)
+# 1. 编译乐谱渲染核心 Bundle
 node native-macos/tools/build_score_rendering_bundle.mjs
 
-# 2. 生成多尺寸原生应用图标 AppIcon.icns (可选)
-swift native-macos/tools/generate_app_icon.swift
-
-# 3. 编译单架构或 Universal 2 应用程序与 DMG
-# 默认输出至 outputs/Native-Mac-<版本号>/
+# 2. 编译 Universal 2 原生 App 与 DMG 镜像
+# 构建脚本直接调用 swiftc 交叉编译 x86_64 与 arm64，产物输出至 outputs/Native-Mac-<版本>/
 bash native-macos/tools/build_macos_universal_app.sh --replace
 ```
 
-- **编译产物**：
-  - `MIMI Guitar.app`（Universal 2 可执行体）
-  - `MIMI-Guitar-macOS-universal2.dmg`（只读挂载式分发镜像）
-  - `BUILD-MANIFEST.txt`（包含 32,600+ 文件的 SHA-256 完整性清单）
-
 ---
 
-## 🧪 质量验证与安全防线 (Verification & Quality Assurance)
+## 📄 开源许可
 
-项目实施严格的质量保障与规范生命周期：
-
-- **自动化单测套件**：涵盖乐谱解码、数据契约、播放生命周期与练习进度持久化：
-  ```bash
-  npm test
-  ```
-- **全项目静态类型检查**：联动 TypeScript、Astro 与 Svelte Check：
-  ```bash
-  npm run typecheck
-  ```
-- **系统可用性探针**：
-  - `/api/health`：快速心跳探测；
-  - `/api/readiness`：数据库、音源文件与抽样乐谱就绪性健康检查。
-- **凭据与敏感数据扫描**：严格杜绝任何数据库密码、密钥或个人凭据入库，生产配置强制依赖环境变量隔离。
-
----
-
-## 📦 版本发布记录 (Release Notes)
-
-### 🏷️ v0.2.4 (Current Release)
-- **渲染与播放体验深度重构**：
-  - 根治播放指针在切小节、暂停恢复时的微闪烁与坐标突跳；
-  - 引入 60 FPS rAF 丝滑连续跟谱逻辑，降低视口推进抖动；
-  - 缩减头部与播放控制栏冗余留白，提升窄屏与全屏沉浸度。
-- **专栏与文章美学升级**：
-  - 全新报纸排印风文章详情页，支持丰富的 Markdown 表格、引用块与代码高亮；
-  - 修复多端全屏自适应与响应式断点表现。
-- **通用架构交付**：
-  - 发布正式版 Universal 2 DMG，完整内置 16,233 首离线曲谱与音色库。
-
----
-
-## 📄 开源许可与致谢 (License & Acknowledgments)
-
-- **核心代码库**：采用 [MIT License](LICENSE) 协议开源。
-- **乐谱引擎**：感谢 [@coderline/alphatab](https://github.com/CoderLine/alphaTab) 团队提供的出色开源乐谱渲染技术底座。
-- **内置音源**：集成的标准 GM 音源遵循 SONiVOX 开放许可（详见 `docs/third-party/sonivox-soundfont/`）。
-- **设计风格**：视觉与交互排版参考并融入 [Refero Design](https://refero.design/) 现代编辑设计系统规范。
-
----
-
-<p align="center">
-  Made with ❤️ for Musicians, Guitarists & Developers.
-</p>
+- **项目源码**：采用 [MIT License](LICENSE) 协议开源。
+- **乐谱底层**：感谢 [@coderline/alphatab](https://github.com/CoderLine/alphaTab) 开源社区的技术底座支持。
+- **音源资产**：集成采样音源遵循开放分发许可规范（详见 `docs/third-party/`）。
+- **设计规范**：视觉排版遵循现代编辑设计系统规范。
