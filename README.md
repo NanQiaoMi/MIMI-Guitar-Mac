@@ -17,9 +17,7 @@
 
 ## 📖 项目概览 (Overview)
 
-**MIMI Guitar** 是一款专为吉他、尤克里里爱好者与创作者打造的高性能互动式乐谱平台与个人演练系统。
-
-项目最早复刻并学习自经典的在线乐谱网站「谱全了」（[guistudy.com](https://guistudy.com/)），在此基础上进行了全方位的现代化重构与架构升级：
+**MIMI Guitar** 是一款专为吉他、尤克里里爱好者与创作者打造的高性能互动式乐谱平台与个人演练系统。项目从底层音频引擎、渲染管线到交互界面全部自研落地并进行现代化深度重构：
 - **设计哲学**：深度融合 Refero「General Intelligence Company」经典编辑排版风与温润纸张质感，结合 Apple / Claude 的呼吸感微动效。
 - **渲染引擎**：深度定制 AlphaTab 1.8.4 高性能渲染管线与 Web Audio 音频合成架构，攻坚解决了播放指针高频抖动、重绘闪烁与跳帧问题，实现 60 FPS 连续平滑跟谱（Continuous Follow-Scroll）。
 - **双端同构**：提供基于 **Astro 5 + Svelte 5 + Tailwind CSS v4** 的现代化 SSR/岛屿 Web 站点，以及基于 **SwiftUI + AppKit + WebKit + SQLite** 的原生 macOS 桌面应用程序。
@@ -266,7 +264,7 @@ bash native-macos/tools/build_macos_universal_app.sh --replace
 - **核心代码库**：采用 [MIT License](LICENSE) 协议开源。
 - **乐谱引擎**：感谢 [@coderline/alphatab](https://github.com/CoderLine/alphaTab) 团队提供的出色开源乐谱渲染技术底座。
 - **内置音源**：集成的标准 GM 音源遵循 SONiVOX 开放许可（详见 `docs/third-party/sonivox-soundfont/`）。
-- **设计启发**：视觉与交互设计启发自 [guistudy.com](https://guistudy.com/) 以及 [Refero Design](https://refero.design/) 现代设计规范。
+- **设计风格**：视觉与交互排版参考并融入 [Refero Design](https://refero.design/) 现代编辑设计系统规范。
 
 ---
 
