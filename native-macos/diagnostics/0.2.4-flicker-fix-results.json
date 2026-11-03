@@ -1,0 +1,223 @@
+{
+  "version": "0.2.4-flicker-fix-1",
+  "date": "2026-10-27",
+  "host": {
+    "arch": "x86_64",
+    "macOS": "13.7.8",
+    "display": "Retina 2x"
+  },
+  "baselineResources": {
+    "player.js": "1d98b62b2c3ee2b31818ce99d7c9e425be9e13b7c578cbb2f6c564a90b8816e7",
+    "player.css": "38bb7565b6695095dfadb28aa52dcecbf668f4f6906096174c258a681bc61e36"
+  },
+  "fixedResources": {
+    "player.js": "7ace38c1dcd5cce0ac41b55a5030756e739488c8bf918df6265b39322ed19e38",
+    "player.css": "812be5df6b150cbfae14c1e4834542ff241f662aa5b1c824c93c62155dda6c22"
+  },
+  "verificationProtocol": {
+    "case": "player-ux",
+    "diagnosticsApp": "project/.build/flicker-audit/MIMIRuntimeDiagnostics.app",
+    "contentRoot": "outputs/Native-Mac-0.2.4/MIMI Guitar.app/Contents/Resources/Content",
+    "baselinePlayerRoot": "outputs/Native-Mac-0.2.4/MIMI Guitar.app/Contents/Resources/Player (pre-fix)",
+    "fixedPlayerRoot": "staging copy of the same Player resources overlaid with the fixed player.js/player.css",
+    "window": "1280x800",
+    "notes": "Same diagnostics binary and same product content resources; the only difference is the two patched Player files. Raw per-rAF cursor frames come from RuntimePlayerUXDiagnostics.cursorTraceScript (60 Hz inside the WKWebView)."
+  },
+  "checks": {
+    "baseline": {
+      "U01": {
+        "status": "pass",
+        "reason": null
+      },
+      "U03": {
+        "status": "pass",
+        "reason": null
+      },
+      "U07": {
+        "status": "pass",
+        "reason": null
+      },
+      "U08": {
+        "status": "notRun",
+        "reason": "real_escape_green_button_and_menu_input_are_not_driven_by_diagnostic_ui_automation"
+      },
+      "U09": {
+        "status": "pass",
+        "reason": null
+      },
+      "U12": {
+        "status": "notRun",
+        "reason": "current_reduce_motion_configuration_does_not_cover_full_system_matrix"
+      }
+    },
+    "fixed": {
+      "U01": {
+        "status": "pass",
+        "reason": null
+      },
+      "U03": {
+        "status": "pass",
+        "reason": null
+      },
+      "U07": {
+        "status": "pass",
+        "reason": null
+      },
+      "U08": {
+        "status": "notRun",
+        "reason": "real_escape_green_button_and_menu_input_are_not_driven_by_diagnostic_ui_automation"
+      },
+      "U09": {
+        "status": "pass",
+        "reason": null
+      },
+      "U12": {
+        "status": "notRun",
+        "reason": "current_reduce_motion_configuration_does_not_cover_full_system_matrix"
+      }
+    }
+  },
+  "cursorTrace": {
+    "baselineSteadyAfterSeek": {
+      "frames": 1316,
+      "rAFIntervalMsP50": 17,
+      "rAFIntervalMsP95": 19,
+      "rAFIntervalMsMax": 43,
+      "forcedCursorPlaces": 1,
+      "backwardCursorJumps": 0,
+      "invisibleCursorFrames": 4,
+      "invisibleGapsMs": [
+        66
+      ],
+      "scrollTopJumpsOver1pt": 15
+    },
+    "fixedSteadyAfterSeek": {
+      "frames": 1317,
+      "rAFIntervalMsP50": 17.0,
+      "rAFIntervalMsP95": 18,
+      "rAFIntervalMsMax": 34,
+      "forcedCursorPlaces": 1,
+      "backwardCursorJumps": 0,
+      "invisibleCursorFrames": 3,
+      "invisibleGapsMs": [
+        50
+      ],
+      "scrollTopJumpsOver1pt": 9
+    },
+    "baselineSeekStartup": {
+      "frames": 27,
+      "rAFIntervalMsP50": 17.0,
+      "rAFIntervalMsP95": 56,
+      "rAFIntervalMsMax": 176,
+      "forcedCursorPlaces": 2,
+      "backwardCursorJumps": 0,
+      "invisibleCursorFrames": 10,
+      "invisibleGapsMs": [
+        128
+      ],
+      "scrollTopJumpsOver1pt": 20
+    },
+    "fixedSeekStartup": {
+      "frames": 41,
+      "rAFIntervalMsP50": 16.5,
+      "rAFIntervalMsP95": 18,
+      "rAFIntervalMsMax": 25,
+      "forcedCursorPlaces": 1,
+      "backwardCursorJumps": 0,
+      "invisibleCursorFrames": 12,
+      "invisibleGapsMs": [],
+      "scrollTopJumpsOver1pt": 12
+    }
+  },
+  "pauseResumeSubchecks": {
+    "baseline": {
+      "continuousCursor": {
+        "status": "pass",
+        "reason": null
+      },
+      "crossRowFollowScroll": {
+        "status": "pass",
+        "reason": null
+      },
+      "crossRowLoop": {
+        "status": "pass",
+        "reason": null
+      },
+      "halfAndDoubleSpeed": {
+        "status": "pass",
+        "reason": null
+      },
+      "pause": {
+        "status": "pass",
+        "reason": null,
+        "cursorRangeXPt": 3.27081298828125,
+        "cursorTailRangeXPt": 0,
+        "sampleCount": 42,
+        "currentTimeAtPauseMs": 182935.63707333524
+      },
+      "resume": {
+        "status": "pass",
+        "reason": null,
+        "cursorRangeXPt": 25.9560546875,
+        "cursorTailRangeXPt": 25.9560546875,
+        "sampleCount": 40,
+        "timeAtResumeMs": 182870.26515151517,
+        "timeAfter900msMs": 183808.93181818194,
+        "transportContinued": true,
+        "transportPlaying": true
+      },
+      "seek": {
+        "status": "pass",
+        "reason": null
+      }
+    },
+    "fixed": {
+      "continuousCursor": {
+        "status": "pass",
+        "reason": null
+      },
+      "crossRowFollowScroll": {
+        "status": "pass",
+        "reason": null
+      },
+      "crossRowLoop": {
+        "status": "pass",
+        "reason": null
+      },
+      "halfAndDoubleSpeed": {
+        "status": "pass",
+        "reason": null
+      },
+      "pause": {
+        "status": "pass",
+        "reason": null,
+        "cursorRangeXPt": 1.86474609375,
+        "cursorTailRangeXPt": 0,
+        "sampleCount": 41,
+        "currentTimeAtPauseMs": 183156.91241266907
+      },
+      "resume": {
+        "status": "pass",
+        "reason": null,
+        "cursorRangeXPt": 25.94696044921875,
+        "cursorTailRangeXPt": 25.94696044921875,
+        "sampleCount": 40,
+        "timeAtResumeMs": 183125.946969697,
+        "timeAfter900msMs": 184064.61363636376,
+        "transportContinued": true,
+        "transportPlaying": true
+      },
+      "seek": {
+        "status": "pass",
+        "reason": null
+      }
+    }
+  },
+  "boundaries": [
+    "U08 (真实 Esc/绿灯/菜单输入) 与 U12 (系统减少动态效果完整矩阵) 在两轮都未执行，overall 因此仍为 partial。",
+    "raw cursor trace 只能证明 DOM/CSS 状态，不能直接证明合成器层面 1-2 帧的可见闪烁；本轮以“被迫 place 次数、rAF 停顿、指针不可见帧/间隙、滚动重启次数”作为代理指标。",
+    "未执行窗口拖拽/全屏转场期间的连续帧捕获对比；相关代码（resizeRender 合并）按机制修复但无逐帧视觉证据。",
+    "交付应用为 ad-hoc 签名，修改资源后已重新 ad-hoc 签名并通过 codesign --verify；该应用与 outputs/Native-Mac-0.2.4 的 DMG/BUILD-MANIFEST 已不一致（DMG 未重建）。",
+    "没有重新构建 Universal 2 二进制：本轮只改了运行时复制的 Resources/Player 两个文本文件，构建脚本会把源码副本带入以后的构建。"
+  ]
+}

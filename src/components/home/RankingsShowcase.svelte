@@ -108,106 +108,192 @@
     </div>
   </div>
 
-  <!-- Rankings 2-Column Calligraphy Bookmark List -->
+  <!-- Rankings Layout: Top 3 Grand Podium + Ranks 04-10 Dual Column -->
   {#key activeTab}
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-3.5 sm:gap-4" use:registerMotionSurface in:fadeMotion={{ kind: 'panel', duration: 180 }}>
-    {#each currentList.slice(0, 10) as tab, index (tab.id)}
-      {@const rank = index + 1}
-      {@const diff = getDiffBadge(tab.difficulty)}
-      {@const isPlaying = audition.isPlaying && audition.currentTabId === tab.id}
-      {@const isLoading = audition.isLoading && audition.currentTabId === tab.id}
-      {@const hasPlayableScore = typeof tab.scoreUrl === 'string' && tab.scoreUrl.trim().length > 0}
-      {@const auditionError = audition.currentTabId === tab.id ? audition.error : null}
+  {@const topThree = currentList.slice(0, 3)}
+  {@const restList = currentList.slice(3, 10)}
+  <div use:registerMotionSurface in:fadeMotion={{ kind: 'panel', duration: 180 }}>
+    <!-- 1. Top 3 Grand Podium (冠亚季军荣誉席) -->
+    {#if topThree.length > 0}
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+        {#each topThree as tab, index (tab.id)}
+          {@const rank = index + 1}
+          {@const diff = getDiffBadge(tab.difficulty)}
+          {@const isPlaying = audition.isPlaying && audition.currentTabId === tab.id}
+          {@const isLoading = audition.isLoading && audition.currentTabId === tab.id}
+          {@const hasPlayableScore = typeof tab.scoreUrl === 'string' && tab.scoreUrl.trim().length > 0}
+          {@const medalInfo = rank === 1 ? { title: '🥇 榜首 · 金榜荣光', ribbon: 'ribbon-gold', border: 'border-[#dfc99b]', bg: 'bg-gradient-to-b from-[#ffffff] via-[#fffdfa] to-[#faf5eb]' } : rank === 2 ? { title: '🥈 亚军 · 银榜雅韵', ribbon: 'ribbon-silver', border: 'border-[#d0d7de]', bg: 'bg-gradient-to-b from-[#ffffff] to-[#f8f9fa]' } : { title: '🥉 季军 · 铜榜华章', ribbon: 'ribbon-bronze', border: 'border-[#e4c9b8]', bg: 'bg-gradient-to-b from-[#ffffff] to-[#faf6f2]' }}
 
-      <article
-        class="bookmark-card group relative flex flex-wrap items-center justify-between rounded-2xl border p-3 sm:p-3.5 bg-[#ffffff] shadow-[0_2px_10px_rgba(76,59,43,0.04)] hover:shadow-[0_8px_24px_rgba(140,105,50,0.12)] {rank <= 3 ? 'border-[#dfc99b] bg-gradient-to-r from-[#ffffff] via-[#fffdf9] to-[#faf5eb]' : 'border-[#e8e2d4]'}"
-      >
-        <!-- Left: Bookmark Rank Ribbon & Title/Metadata -->
-        <div class="flex items-center gap-3 min-w-0">
-          <!-- Traditional Debossed Bookmark Ribbon Tag -->
-          <div
-            class="bookmark-ribbon flex h-9 w-9 shrink-0 items-center justify-center rounded-xl font-mono text-sm font-bold shadow-2xs transition-transform group-hover:scale-105 {rank === 1 ? 'ribbon-gold' : rank === 2 ? 'ribbon-silver' : rank === 3 ? 'ribbon-bronze' : 'ribbon-default'}"
-          >
-            {rank < 10 ? '0' + rank : rank}
-          </div>
-
-          <!-- Song Title & Metadata -->
-          <div class="min-w-0">
-            <h3
-              class="truncate font-serif text-base font-bold text-[#2d2417] group-hover:text-[#966b26] transition-colors"
-            >
-              <a class="after:absolute after:inset-0 after:rounded-2xl" href={`/tabs/${tab.id}`}>{tab.title}</a>
-            </h3>
-            <div class="flex items-center gap-2 text-[11px] font-serif text-[#8c7b68] mt-0.5">
-              <span class="truncate max-w-[100px] sm:max-w-[130px]">{tab.artist || '未知歌手'}</span>
-              <span class="text-[#ded4be]">·</span>
-              <span class="rounded bg-[#fbf9f4] border border-[#e8e2d4] px-1.5 py-0.2 font-mono text-[10px] text-[#5c4a38]">
-                {tab.key || 'G'} 调
-              </span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Right: Heat, Difficulty & Interactive Audio Waveform Trigger -->
-        <div class="flex items-center gap-2.5 sm:gap-3 shrink-0">
-          <!-- Difficulty Tag -->
-          <span class="hidden sm:inline-flex items-center rounded-full border px-2 py-0.5 text-[10px] font-medium {diff.class}">
-            {diff.text}
-          </span>
-
-          <!-- Heat Score -->
-          <span class="font-mono text-xs text-[#705c42] flex items-center gap-0.5">
-            <span class="text-[#c84b31] text-[10px]">🔥</span>
-            {formatHeat(tab.heat)}
-          </span>
-
-          <!-- Interactive Live Waveform / Audition Probe Button -->
-          {#if hasPlayableScore}
-            <button
-              type="button"
-              onclick={(e) => triggerAudition(e, tab)}
-              class="waveform-trigger relative z-10 flex min-h-[44px] min-w-[44px] px-2.5 items-center justify-center gap-1.5 rounded-full border border-[#ded4be] bg-[#fbf9f4] text-[#2d2417] shadow-2xs hover:border-[#c49a45] hover:bg-[#ffffff] hover:text-[#966b26] transition-colors"
-              aria-label={isPlaying ? '暂停播放曲谱' : '播放曲谱'}
-              title={isPlaying ? '暂停播放曲谱' : '播放曲谱'}
-            >
-              {#if isLoading}
-                <div class="h-3 w-3 animate-spin rounded-full border-2 border-current border-t-transparent"></div>
-              {:else if isPlaying}
-                <!-- 4-Bar Dancing Audio Spectrum Equalizer -->
-                <div class="flex items-end gap-[2px] h-3.5 w-4">
-                  <span class="spectrum-bar bar-1"></span>
-                  <span class="spectrum-bar bar-2"></span>
-                  <span class="spectrum-bar bar-3"></span>
-                  <span class="spectrum-bar bar-4"></span>
+          <article class="podium-card group relative flex flex-col justify-between rounded-2xl border p-4.5 shadow-[0_4px_16px_rgba(76,59,43,0.05)] hover:shadow-[0_10px_28px_rgba(140,105,50,0.12)] transition-all duration-300 {medalInfo.border} {medalInfo.bg}">
+            <div>
+              <!-- Top Ribbon & Heat -->
+              <div class="flex items-center justify-between mb-3">
+                <div class="flex items-center gap-2">
+                  <span class="bookmark-ribbon flex h-7 w-7 items-center justify-center rounded-lg font-mono text-xs font-bold text-white shadow-2xs {medalInfo.ribbon}">
+                    0{rank}
+                  </span>
+                  <span class="text-xs font-bold font-serif {rank === 1 ? 'text-[#966b26]' : 'text-[#5c4a38]'}">
+                    {medalInfo.title}
+                  </span>
                 </div>
-                <span class="text-[10px] font-serif font-medium text-[#966b26] hidden sm:inline">播放中</span>
-              {:else}
-                <span class="text-[10px]">▶</span>
-                <span class="text-[10px] font-serif text-[#705c42] hidden sm:inline">播放</span>
-              {/if}
-            </button>
-          {:else}
-            <a
-              href={'/tabs/' + tab.id}
-              class="relative z-10 inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-full border border-[#ded4be] bg-[#fbf9f4] px-2.5 text-[10px] font-serif text-[#705c42] hover:border-[#c49a45] hover:text-[#966b26]"
-            >
-              {tab.xheUrl ? '阅读曲谱' : '打开曲谱'}
-            </a>
-          {/if}
+                <span class="font-mono text-xs text-[#c84b31] flex items-center gap-0.5 bg-[#c84b31]/8 px-2 py-0.5 rounded-full font-medium">
+                  <span class="text-[10px]">🔥</span>
+                  {formatHeat(tab.heat)}
+                </span>
+              </div>
 
-          <!-- Subtle Enter Arrow -->
-          <span class="hidden sm:inline-flex text-[#ded4be] group-hover:text-[#966b26] group-hover:translate-x-0.5 transition-all text-sm">
-            →
-          </span>
-        </div>
-        {#if auditionError}
-          <p role="alert" class="relative z-20 basis-full pt-2 text-xs text-[#9b3328]">
-            曲谱播放失败：{auditionError}
-            <a class="ml-1 font-semibold underline underline-offset-2" href={'/tabs/' + tab.id}>打开《{tab.title}》曲谱</a>
-          </p>
+              <!-- Song Title & Metadata -->
+              <h3 class="font-serif text-lg font-bold text-[#2d2417] group-hover:text-[#966b26] transition-colors truncate">
+                <a href={`/tabs/${tab.id}`}>{tab.title}</a>
+              </h3>
+              <div class="flex items-center gap-2 text-xs font-serif text-[#8c7b68] mt-1.5">
+                <span class="truncate max-w-[140px]">{tab.artist || '未知歌手'}</span>
+                <span class="text-[#ded4be]">·</span>
+                <span class="rounded bg-[#fbf9f4] border border-[#e8e2d4] px-1.5 py-0.2 font-mono text-[10px] text-[#5c4a38]">
+                  {tab.key || 'G'} 调
+                </span>
+              </div>
+            </div>
+
+            <!-- Bottom Actions & Difficulty Badge -->
+            <div class="mt-4 pt-3 border-t border-[#f0eae0] flex items-center justify-between">
+              <span class="inline-flex items-center rounded-full border px-2 py-0.5 text-[10px] font-medium {diff.class}">
+                {diff.text}
+              </span>
+
+              <div class="flex items-center gap-2">
+                <a href={`/tabs/${tab.id}`} class="btn btn-ghost h-8 !px-2.5 text-xs font-serif text-[#8c7b68] hover:text-[#2d2417]">
+                  详情
+                </a>
+
+                {#if hasPlayableScore}
+                  <button
+                    type="button"
+                    onclick={(e) => triggerAudition(e, tab)}
+                    class="relative z-10 flex h-8 px-3 items-center justify-center gap-1.5 rounded-full border border-[#ded4be] bg-[#fbf9f4] text-xs font-serif text-[#2d2417] shadow-2xs hover:border-[#c49a45] hover:bg-[#ffffff] hover:text-[#966b26] transition-colors"
+                  >
+                    {#if isLoading}
+                      <div class="h-3 w-3 animate-spin rounded-full border-2 border-current border-t-transparent"></div>
+                    {:else if isPlaying}
+                      <div class="flex items-end gap-[2px] h-3 w-3.5">
+                        <span class="spectrum-bar bar-1"></span>
+                        <span class="spectrum-bar bar-2"></span>
+                        <span class="spectrum-bar bar-3"></span>
+                      </div>
+                      <span class="text-[11px] font-medium text-[#966b26]">试听中</span>
+                    {:else}
+                      <span class="text-[10px]">▶</span>
+                      <span class="text-[11px] text-[#705c42]">试听</span>
+                    {/if}
+                  </button>
+                {/if}
+              </div>
+            </div>
+          </article>
+        {/each}
+      </div>
+    {/if}
+
+    <!-- 2. Ranks 04-10 Dual Column List -->
+    {#if restList.length > 0}
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-3.5 sm:gap-4">
+        {#each restList as tab, index (tab.id)}
+          {@const rank = index + 4}
+          {@const diff = getDiffBadge(tab.difficulty)}
+          {@const isPlaying = audition.isPlaying && audition.currentTabId === tab.id}
+          {@const isLoading = audition.isLoading && audition.currentTabId === tab.id}
+          {@const hasPlayableScore = typeof tab.scoreUrl === 'string' && tab.scoreUrl.trim().length > 0}
+
+          <article
+            class="bookmark-card group relative flex flex-wrap items-center justify-between rounded-2xl border p-3 sm:p-3.5 bg-[#ffffff] border-[#e8e2d4] shadow-[0_2px_10px_rgba(76,59,43,0.03)] hover:shadow-[0_6px_20px_rgba(140,105,50,0.08)] hover:border-[#c49a45]/50 transition-all"
+          >
+            <!-- Left: Bookmark Rank Ribbon & Title/Metadata -->
+            <div class="flex items-center gap-3 min-w-0">
+              <div
+                class="bookmark-ribbon flex h-8 w-8 shrink-0 items-center justify-center rounded-xl font-mono text-xs font-bold shadow-2xs ribbon-default text-[#705c42]"
+              >
+                {rank < 10 ? '0' + rank : rank}
+              </div>
+
+              <div class="min-w-0">
+                <h3
+                  class="truncate font-serif text-sm font-bold text-[#2d2417] group-hover:text-[#966b26] transition-colors"
+                >
+                  <a class="after:absolute after:inset-0 after:rounded-2xl" href={`/tabs/${tab.id}`}>{tab.title}</a>
+                </h3>
+                <div class="flex items-center gap-2 text-[11px] font-serif text-[#8c7b68] mt-0.5">
+                  <span class="truncate max-w-[100px] sm:max-w-[130px]">{tab.artist || '未知歌手'}</span>
+                  <span class="text-[#ded4be]">·</span>
+                  <span class="rounded bg-[#fbf9f4] border border-[#e8e2d4] px-1.5 py-0.2 font-mono text-[10px] text-[#5c4a38]">
+                    {tab.key || 'G'} 调
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right: Heat, Difficulty & Audition -->
+            <div class="flex items-center gap-2.5 sm:gap-3 shrink-0">
+              <span class="hidden sm:inline-flex items-center rounded-full border px-2 py-0.5 text-[10px] font-medium {diff.class}">
+                {diff.text}
+              </span>
+
+              <span class="font-mono text-xs text-[#705c42] flex items-center gap-0.5">
+                <span class="text-[#c84b31] text-[10px]">🔥</span>
+                {formatHeat(tab.heat)}
+              </span>
+
+              {#if hasPlayableScore}
+                <button
+                  type="button"
+                  onclick={(e) => triggerAudition(e, tab)}
+                  class="waveform-trigger relative z-10 flex h-8 px-2.5 items-center justify-center gap-1.5 rounded-full border border-[#ded4be] bg-[#fbf9f4] text-[#2d2417] shadow-2xs hover:border-[#c49a45] hover:bg-[#ffffff] hover:text-[#966b26] transition-colors"
+                  aria-label={isPlaying ? '暂停播放曲谱' : '播放曲谱'}
+                  title={isPlaying ? '暂停播放曲谱' : '播放曲谱'}
+                >
+                  {#if isLoading}
+                    <div class="h-3 w-3 animate-spin rounded-full border-2 border-current border-t-transparent"></div>
+                  {:else if isPlaying}
+                    <div class="flex items-end gap-[2px] h-3 w-3.5">
+                      <span class="spectrum-bar bar-1"></span>
+                      <span class="spectrum-bar bar-2"></span>
+                      <span class="spectrum-bar bar-3"></span>
+                    </div>
+                    <span class="text-[10px] font-serif font-medium text-[#966b26] hidden sm:inline">播放中</span>
+                  {:else}
+                    <span class="text-[10px]">▶</span>
+                    <span class="text-[10px] font-serif text-[#705c42] hidden sm:inline">播放</span>
+                  {/if}
+                </button>
+              {:else}
+                <a
+                  href={'/tabs/' + tab.id}
+                  class="relative z-10 inline-flex h-8 items-center justify-center rounded-full border border-[#ded4be] bg-[#fbf9f4] px-2.5 text-[10px] font-serif text-[#705c42] hover:border-[#c49a45] hover:text-[#966b26]"
+                >
+                  {tab.xheUrl ? '阅读曲谱' : '打开曲谱'}
+                </a>
+              {/if}
+            </div>
+          </article>
+        {/each}
+
+        <!-- Explore More Callout Card if uneven -->
+        {#if restList.length % 2 !== 0}
+          <a
+            href="/tabs?sort=1"
+            class="flex items-center justify-between rounded-2xl border border-dashed border-[#c49a45]/40 bg-[#fdfbf7] p-3.5 hover:border-[#c49a45] hover:bg-[#fcf7ee] transition-all group"
+          >
+            <div class="flex items-center gap-3">
+              <span class="flex h-8 w-8 items-center justify-center rounded-xl bg-[#c49a45]/15 text-[#966b26] text-sm font-bold">✦</span>
+              <div>
+                <h4 class="font-serif text-sm font-bold text-[#2d2417] group-hover:text-[#966b26] transition-colors">发现更多热门研习曲目</h4>
+                <p class="text-[10px] font-serif text-[#8c7b68] mt-0.5">海量官方精编、工坊工程与大师独奏总谱</p>
+              </div>
+            </div>
+            <span class="text-xs font-serif font-semibold text-[#966b26] group-hover:translate-x-0.5 transition-transform">全部曲谱 →</span>
+          </a>
         {/if}
-      </article>
-    {/each}
+      </div>
+    {/if}
   </div>
   {/key}
 </section>

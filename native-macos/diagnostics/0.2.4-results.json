@@ -1,0 +1,963 @@
+{
+  "version": "0.2.4",
+  "updatedAtUTC": "2026-10-26T16:28:57.559467+00:00",
+  "status": "deliveredWithExplicitValidationLimits",
+  "branch": "feature/macos-native",
+  "commitCreated": false,
+  "pushPerformed": false,
+  "sourceRoot": "/Users/mimi/Documents/Codex/2026-10-24/l/outputs/MIMI-Guitar-Mac-20261023/project",
+  "outputRoot": "/Users/mimi/Documents/Codex/2026-10-24/l/outputs/Native-Mac-0.2.4",
+  "build": {
+    "app": "passed",
+    "dmg": "passed",
+    "notarized": false,
+    "minimumMacOS": "13.0",
+    "architectures": [
+      "x86_64",
+      "arm64"
+    ],
+    "arm64PhysicalRun": "notRun",
+    "initialPackagePreserved": "/Users/mimi/Documents/Codex/2026-10-24/l/outputs/MIMI-Guitar-Mac-20261023/project/.build/runtime-audit-024/package-before-initialization-fix",
+    "finalSourceManifest": "/Users/mimi/Documents/Codex/2026-10-24/l/outputs/MIMI-Guitar-Mac-20261023/project/.build/runtime-audit-024/release-024-progress-final-frozen-inputs.json",
+    "finalBuildLog": "/Users/mimi/Documents/Codex/2026-10-24/l/outputs/MIMI-Guitar-Mac-20261023/project/.build/runtime-audit-024/universal-024-progress-final-build.log",
+    "previousPackage": "/Users/mimi/Documents/Codex/2026-10-24/l/outputs/MIMI-Guitar-Mac-20261023/project/.build/runtime-audit-024/package-before-progress-optimization",
+    "normalLaunch": {
+      "atUTC": "2026-10-26T16:22:45.798618+00:00",
+      "productPath": "/Users/mimi/Documents/Codex/2026-10-24/l/outputs/Native-Mac-0.2.4/MIMI Guitar.app/Contents/MacOS/MIMIGuitarMac",
+      "pid": 61000,
+      "aliveAfterSeconds": 12.015,
+      "alive": true,
+      "exitCode": null,
+      "observedCommand": "/Users/mimi/Documents/Codex/2026-10-24/l/outputs/Native-Mac-0.2.4/MIMI Guitar.app/Contents/MacOS/MIMIGuitarMac",
+      "usesDiagnosticMacro": false,
+      "dataDirectoryOverride": false,
+      "scope": "Normal compiled product startup and process liveness; not a replacement for UI or audio checks."
+    },
+    "verification": {
+      "atUTC": "2026-10-26T16:19:26.923975+00:00",
+      "status": "packageAndNormalLaunchPassed",
+      "version": "0.2.4",
+      "buildNumber": "202610261557",
+      "minimumMacOS": "13.0",
+      "architectures": [
+        "x86_64",
+        "arm64"
+      ],
+      "app": "/Users/mimi/Documents/Codex/2026-10-24/l/outputs/Native-Mac-0.2.4/MIMI Guitar.app",
+      "dmg": "/Users/mimi/Documents/Codex/2026-10-24/l/outputs/Native-Mac-0.2.4/MIMI-Guitar-macOS-universal2.dmg",
+      "dmgBytes": 559067199,
+      "dmgSHA256": "d83b549ef56b34b8e9abc587dc7d16ce9b7ee63dbe468fdb969d260da9a3341d",
+      "universalExecutableSHA256": "fe85d1293e87feca256c98e63cf14ce154b2b6af34f00084e59890a4b0e4e77d",
+      "readOnlyMount": true,
+      "applicationsLink": "/Applications",
+      "mountedAppMatchesFullTree": true,
+      "treeVerification": "Verified CPU optimized final app versus read-only DMG: 32654 files, 646776666 bytes",
+      "mountedSignatureVerification": "/Users/mimi/Documents/Codex/2026-10-24/l/outputs/MIMI-Guitar-Mac-20261023/project/.build/runtime-audit-024/dmg-024-mount/MIMI Guitar.app: valid on disk\n/Users/mimi/Documents/Codex/2026-10-24/l/outputs/MIMI-Guitar-Mac-20261023/project/.build/runtime-audit-024/dmg-024-mount/MIMI Guitar.app: satisfies its Designated Requirement",
+      "database": {
+        "integrity": "ok",
+        "catalogCount": 16233,
+        "articleCount": 8
+      },
+      "sourceFreezeUnchanged": true,
+      "preexistingTrackedEditsPreserved": true,
+      "notarized": false,
+      "signature": "ad-hoc",
+      "arm64PhysicalRun": "notRun",
+      "detach": "normal detach passed",
+      "normalProductLaunch": {
+        "atUTC": "2026-10-26T16:22:45.798618+00:00",
+        "productPath": "/Users/mimi/Documents/Codex/2026-10-24/l/outputs/Native-Mac-0.2.4/MIMI Guitar.app/Contents/MacOS/MIMIGuitarMac",
+        "pid": 61000,
+        "aliveAfterSeconds": 12.015,
+        "alive": true,
+        "exitCode": null,
+        "observedCommand": "/Users/mimi/Documents/Codex/2026-10-24/l/outputs/Native-Mac-0.2.4/MIMI Guitar.app/Contents/MacOS/MIMIGuitarMac",
+        "usesDiagnosticMacro": false,
+        "dataDirectoryOverride": false,
+        "scope": "Normal compiled product startup and process liveness; not a replacement for UI or audio checks."
+      }
+    }
+  },
+  "validationPolicy": {
+    "unitTestSuite": "notAddedOrRun",
+    "method": "Explicitly requested runtime playback, real-score visual comparison, build and package verification. Failed and experimental logs retained."
+  },
+  "scoreFidelity": {
+    "status": "passedFinalNativeSourceAndMatchingPackagedResources",
+    "songID": "1sdcWsfNEe0",
+    "song": "斑马斑马",
+    "sourceSHA256": "10799dee80c613a1927074e50a7aed1b73b902c38b4fdffcac186ed6061995d8",
+    "reference": "/Users/mimi/Documents/Codex/2026-10-24/l/outputs/MIMI-Guitar-Mac-20261023/project/.build/runtime-audit-024/clean-reference-17-original-score-reference-1-snapshots/original-score-reference",
+    "isolatedExperimentReport": "/Users/mimi/Documents/Codex/2026-10-24/l/outputs/MIMI-Guitar-Mac-20261023/project/.build/runtime-audit-024/font-load-order-experiment-14-comparison.json",
+    "isolatedExperiment": "38 SVG chunks match, but isolated experiment is not final product validation",
+    "preFinalMismatchReport": "/Users/mimi/Documents/Codex/2026-10-24/l/outputs/MIMI-Guitar-Mac-20261023/project/.build/runtime-audit-024/font-ready-13-comparison.json",
+    "native": "/Users/mimi/Documents/Codex/2026-10-24/l/outputs/MIMI-Guitar-Mac-20261023/project/.build/runtime-audit-024/display-wake-17-score-fidelity-1-snapshots/score-fidelity",
+    "finalComparisonReport": "/Users/mimi/Documents/Codex/2026-10-24/l/outputs/MIMI-Guitar-Mac-20261023/project/.build/runtime-audit-024/progress-layout-18-comparison.json",
+    "svgChunks": 38,
+    "states": [
+      {
+        "state": "mixed-diagram-numberTab-on",
+        "originalChunkCount": 13,
+        "nativeChunkCount": 13,
+        "svgMatch": true,
+        "computedTextProfilesMatch": true,
+        "surfaceWidths": {
+          "original": [
+            1131
+          ],
+          "native": [
+            1131
+          ]
+        },
+        "hostWidths": {
+          "original": 1131,
+          "native": 1130.5
+        },
+        "surfaceHeights": {
+          "original": [
+            5809.3125
+          ],
+          "native": [
+            5809.3125
+          ]
+        }
+      },
+      {
+        "state": "tab-name-numberTab-on",
+        "originalChunkCount": 13,
+        "nativeChunkCount": 13,
+        "svgMatch": true,
+        "computedTextProfilesMatch": true,
+        "surfaceWidths": {
+          "original": [
+            1131
+          ],
+          "native": [
+            1131
+          ]
+        },
+        "hostWidths": {
+          "original": 1131,
+          "native": 1130.5
+        },
+        "surfaceHeights": {
+          "original": [
+            5023.90625
+          ],
+          "native": [
+            5023.90625
+          ]
+        }
+      },
+      {
+        "state": "mixed-diagram-numberTab-off",
+        "originalChunkCount": 12,
+        "nativeChunkCount": 12,
+        "svgMatch": true,
+        "computedTextProfilesMatch": true,
+        "surfaceWidths": {
+          "original": [
+            1131
+          ],
+          "native": [
+            1131
+          ]
+        },
+        "hostWidths": {
+          "original": 1131,
+          "native": 1130.5
+        },
+        "surfaceHeights": {
+          "original": [
+            3422.03125
+          ],
+          "native": [
+            3422.03125
+          ]
+        }
+      }
+    ],
+    "allSVGsMatch": true,
+    "allComputedTextProfilesMatch": true,
+    "visibility": "visible in all three reference and native states",
+    "scope": "Same song bytes, same effective width 1131, same WebKit, three display settings; not whole-catalog or all window widths",
+    "afterNativeProgressOptimization": {
+      "status": "passed",
+      "report": "/Users/mimi/Documents/Codex/2026-10-24/l/outputs/MIMI-Guitar-Mac-20261023/project/.build/runtime-audit-024/progress-layout-18-comparison.json",
+      "allSVGsMatch": true,
+      "allComputedTextProfilesMatch": true,
+      "svgChunks": 38
+    },
+    "packagedPlayerResourceEquality": "27 files, 23119944 bytes, all identical"
+  },
+  "runtime": {
+    "status": "criticalChecksPassedWithManualMatrixNotRun",
+    "previousPlayerUX": "/Users/mimi/Documents/Codex/2026-10-24/l/outputs/MIMI-Guitar-Mac-20261023/project/.build/runtime-audit-024/final-ux-13-player-ux-1.jsonl",
+    "previousPlayerUXResult": "fail",
+    "knownFailure": "One seek startup transient x/y mismatch and 636ms RAF interval; old optimistic tick/time anchor replaced with actual worker seek confirmation. Awaiting post-fix sample.",
+    "additionalPreservedFailure": "/Users/mimi/Documents/Codex/2026-10-24/l/outputs/MIMI-Guitar-Mac-20261023/project/.build/runtime-audit-024/clean-integrated-16-score-fidelity-1.jsonl",
+    "additionalFailureReason": "Hidden initial render ran before the first RAF installed AlphaTab preRender cleanup, causing SVG accumulation. Final source now waits for cancellable initialization RAF and pauses Swift readiness timeout while hidden. Visible integrated score captures now contain exactly 13/13/12 chunks.",
+    "functionalFinal": {
+      "index": "/Users/mimi/Documents/Codex/2026-10-24/l/outputs/MIMI-Guitar-Mac-20261023/project/.build/runtime-audit-024/functional-final-17-index.json",
+      "allCasesPassed": true,
+      "cases": [
+        {
+          "tag": "functional-final-17-direct-1",
+          "at": "2026-10-26T15:28:48.954955+00:00",
+          "exitCode": 0,
+          "timedOut": false,
+          "elapsedSeconds": 4.121,
+          "result": "ok",
+          "phase": null,
+          "report": "/Users/mimi/Documents/Codex/2026-10-24/l/outputs/MIMI-Guitar-Mac-20261023/project/.build/runtime-audit-024/functional-final-17-direct-1.jsonl",
+          "stderr": "/Users/mimi/Documents/Codex/2026-10-24/l/outputs/MIMI-Guitar-Mac-20261023/project/.build/runtime-audit-024/functional-final-17-direct-1.stderr",
+          "command": [
+            "/Users/mimi/Documents/Codex/2026-10-24/l/outputs/MIMI-Guitar-Mac-20261023/project/.build/runtime-audit-024/integrated-build/MIMIRuntimeDiagnostics.app/Contents/MacOS/runtime_diagnostics",
+            "--content-root",
+            "/Users/mimi/Documents/Codex/2026-10-24/l/outputs/MIMI-Guitar-Mac-20261023/project/.build/runtime-audit-024/runtime-resources/Content",
+            "--player-root",
+            "/Users/mimi/Documents/Codex/2026-10-24/l/outputs/MIMI-Guitar-Mac-20261023/project/.build/runtime-audit-024/runtime-resources/Player",
+            "--studio-root",
+            "/Users/mimi/Documents/Codex/2026-10-24/l/outputs/MIMI-Guitar-Mac-20261023/project/.build/runtime-audit-024/runtime-resources/Studio",
+            "--case",
+            "direct"
+          ]
+        },
+        {
+          "tag": "functional-final-17-catalog-reference-1",
+          "at": "2026-10-26T15:28:53.018571+00:00",
+          "exitCode": 0,
+          "timedOut": false,
+          "elapsedSeconds": 4.06,
+          "result": "ok",
+          "phase": null,
+          "report": "/Users/mimi/Documents/Codex/2026-10-24/l/outputs/MIMI-Guitar-Mac-20261023/project/.build/runtime-audit-024/functional-final-17-catalog-reference-1.jsonl",
+          "stderr": "/Users/mimi/Documents/Codex/2026-10-24/l/outputs/MIMI-Guitar-Mac-20261023/project/.build/runtime-audit-024/functional-final-17-catalog-reference-1.stderr",
+          "command": [
+            "/Users/mimi/Documents/Codex/2026-10-24/l/outputs/MIMI-Guitar-Mac-20261023/project/.build/runtime-audit-024/integrated-build/MIMIRuntimeDiagnostics.app/Contents/MacOS/runtime_diagnostics",
+            "--content-root",
+            "/Users/mimi/Documents/Codex/2026-10-24/l/outputs/MIMI-Guitar-Mac-20261023/project/.build/runtime-audit-024/runtime-resources/Content",
+            "--player-root",
+            "/Users/mimi/Documents/Codex/2026-10-24/l/outputs/MIMI-Guitar-Mac-20261023/project/.build/runtime-audit-024/runtime-resources/Player",
+            "--studio-root",
+            "/Users/mimi/Documents/Codex/2026-10-24/l/outputs/MIMI-Guitar-Mac-20261023/project/.build/runtime-audit-024/runtime-resources/Studio",
+            "--case",
+            "catalog-reference"
+          ]
+        },
+        {
+          "tag": "functional-final-17-private-asset-1",
+          "at": "2026-10-26T15:29:01.598491+00:00",
+          "exitCode": 0,
+          "timedOut": false,
+          "elapsedSeconds": 8.579,
+          "result": "ok",
+          "phase": null,
+          "report": "/Users/mimi/Documents/Codex/2026-10-24/l/outputs/MIMI-Guitar-Mac-20261023/project/.build/runtime-audit-024/functional-final-17-private-asset-1.jsonl",
+          "stderr": "/Users/mimi/Documents/Codex/2026-10-24/l/outputs/MIMI-Guitar-Mac-20261023/project/.build/runtime-audit-024/functional-final-17-private-asset-1.stderr",
+          "command": [
+            "/Users/mimi/Documents/Codex/2026-10-24/l/outputs/MIMI-Guitar-Mac-20261023/project/.build/runtime-audit-024/integrated-build/MIMIRuntimeDiagnostics.app/Contents/MacOS/runtime_diagnostics",
+            "--content-root",
+            "/Users/mimi/Documents/Codex/2026-10-24/l/outputs/MIMI-Guitar-Mac-20261023/project/.build/runtime-audit-024/runtime-resources/Content",
+            "--player-root",
+            "/Users/mimi/Documents/Codex/2026-10-24/l/outputs/MIMI-Guitar-Mac-20261023/project/.build/runtime-audit-024/runtime-resources/Player",
+            "--studio-root",
+            "/Users/mimi/Documents/Codex/2026-10-24/l/outputs/MIMI-Guitar-Mac-20261023/project/.build/runtime-audit-024/runtime-resources/Studio",
+            "--case",
+            "private-asset"
+          ]
+        },
+        {
+          "tag": "functional-final-17-xhe-reference-1",
+          "at": "2026-10-26T15:29:02.611461+00:00",
+          "exitCode": 0,
+          "timedOut": false,
+          "elapsedSeconds": 0.998,
+          "result": "ok",
+          "phase": null,
+          "report": "/Users/mimi/Documents/Codex/2026-10-24/l/outputs/MIMI-Guitar-Mac-20261023/project/.build/runtime-audit-024/functional-final-17-xhe-reference-1.jsonl",
+          "stderr": "/Users/mimi/Documents/Codex/2026-10-24/l/outputs/MIMI-Guitar-Mac-20261023/project/.build/runtime-audit-024/functional-final-17-xhe-reference-1.stderr",
+          "command": [
+            "/Users/mimi/Documents/Codex/2026-10-24/l/outputs/MIMI-Guitar-Mac-20261023/project/.build/runtime-audit-024/integrated-build/MIMIRuntimeDiagnostics.app/Contents/MacOS/runtime_diagnostics",
+            "--content-root",
+            "/Users/mimi/Documents/Codex/2026-10-24/l/outputs/MIMI-Guitar-Mac-20261023/project/.build/runtime-audit-024/runtime-resources/Content",
+            "--player-root",
+            "/Users/mimi/Documents/Codex/2026-10-24/l/outputs/MIMI-Guitar-Mac-20261023/project/.build/runtime-audit-024/runtime-resources/Player",
+            "--studio-root",
+            "/Users/mimi/Documents/Codex/2026-10-24/l/outputs/MIMI-Guitar-Mac-20261023/project/.build/runtime-audit-024/runtime-resources/Studio",
+            "--case",
+            "xhe-reference"
+          ]
+        },
+        {
+          "tag": "functional-final-17-practice-ui-1",
+          "at": "2026-10-26T15:29:18.609815+00:00",
+          "exitCode": 0,
+          "timedOut": false,
+          "elapsedSeconds": 15.995,
+          "result": "ok",
+          "phase": null,
+          "report": "/Users/mimi/Documents/Codex/2026-10-24/l/outputs/MIMI-Guitar-Mac-20261023/project/.build/runtime-audit-024/functional-final-17-practice-ui-1.jsonl",
+          "stderr": "/Users/mimi/Documents/Codex/2026-10-24/l/outputs/MIMI-Guitar-Mac-20261023/project/.build/runtime-audit-024/functional-final-17-practice-ui-1.stderr",
+          "command": [
+            "/Users/mimi/Documents/Codex/2026-10-24/l/outputs/MIMI-Guitar-Mac-20261023/project/.build/runtime-audit-024/integrated-build/MIMIRuntimeDiagnostics.app/Contents/MacOS/runtime_diagnostics",
+            "--content-root",
+            "/Users/mimi/Documents/Codex/2026-10-24/l/outputs/MIMI-Guitar-Mac-20261023/project/.build/runtime-audit-024/runtime-resources/Content",
+            "--player-root",
+            "/Users/mimi/Documents/Codex/2026-10-24/l/outputs/MIMI-Guitar-Mac-20261023/project/.build/runtime-audit-024/runtime-resources/Player",
+            "--studio-root",
+            "/Users/mimi/Documents/Codex/2026-10-24/l/outputs/MIMI-Guitar-Mac-20261023/project/.build/runtime-audit-024/runtime-resources/Studio",
+            "--case",
+            "practice-ui"
+          ]
+        }
+      ],
+      "scope": "Function checks. Packaging file-copy activity was running; these runs are not used as performance measurements."
+    },
+    "criticalUXBeforeNativeProgressOptimization": {
+      "report": "/Users/mimi/Documents/Codex/2026-10-24/l/outputs/MIMI-Guitar-Mac-20261023/project/.build/runtime-audit-024/packaged-17-player-ux-1.jsonl",
+      "result": "partial",
+      "passed": [
+        "U01",
+        "U03",
+        "U07",
+        "U09"
+      ],
+      "notRun": [
+        "U08 real inputs",
+        "U12 full system matrix"
+      ],
+      "scope": "Critical score playback and fullscreen passed; the subsequently optimized native progress control awaits its own input/presentation checks."
+    },
+    "nativeUIAutomation": {
+      "status": "unavailable",
+      "observedAtLocalDate": "2026-10-27",
+      "error": "Native apps: Error: Sky Computer Use service startup request failed",
+      "manualKeyboardMouseResult": "notRun; programmatic own-app target/actions are recorded separately"
+    },
+    "finalPlayerUX": {
+      "report": "/Users/mimi/Documents/Codex/2026-10-24/l/outputs/MIMI-Guitar-Mac-20261023/project/.build/runtime-audit-024/packaged-18-player-ux-1.jsonl",
+      "result": "partial",
+      "checks": {
+        "U01": {
+          "status": "pass",
+          "reason": null
+        },
+        "U03": {
+          "status": "pass",
+          "reason": null
+        },
+        "U07": {
+          "status": "pass",
+          "reason": null
+        },
+        "U08": {
+          "status": "notRun",
+          "reason": "real_escape_green_button_and_menu_input_are_not_driven_by_diagnostic_ui_automation"
+        },
+        "U09": {
+          "status": "pass",
+          "reason": null
+        },
+        "U12": {
+          "status": "notRun",
+          "reason": "current_reduce_motion_configuration_does_not_cover_full_system_matrix"
+        }
+      },
+      "continuousCursor": {
+        "durationMs": 22000,
+        "sampledFrameCount": 1321,
+        "sameRowDistinctXCount": 872,
+        "rAFIntervalMsP50": 17,
+        "rAFIntervalMsP95": 18,
+        "rAFIntervalMsMax": 22,
+        "rAFIntervalsOver100ms": 0,
+        "sameRowMaxStepPt": 3.19598388671875,
+        "visibleCursorFrameCount": 1317,
+        "rowTransitions": 1,
+        "longestSamePositionMs": 18
+      },
+      "nativeSlider": {
+        "inputPath": "native_NSSlider_programmatic_target_action",
+        "nativeSliderActionSent": true,
+        "movesBetweenWorkerSamples": true,
+        "presentationSamples": [
+          {
+            "animationKeys": [
+              [
+                "playback-progress"
+              ],
+              [
+                "playback-knob"
+              ]
+            ],
+            "available": true,
+            "controlValue": 0.7831395702555796,
+            "expectedRatio": 0.7831288888888891,
+            "knobXPt": 646.1628538499695,
+            "presentationRatio": 0.7834006841877325,
+            "tick": 180433,
+            "uptime": 48468.602123801,
+            "widthPt": 833.5
+          },
+          {
+            "animationKeys": [
+              [
+                "playback-progress"
+              ],
+              [
+                "playback-knob"
+              ]
+            ],
+            "available": true,
+            "controlValue": 0.7831395702555796,
+            "expectedRatio": 0.7831288888888891,
+            "knobXPt": 646.2940130415985,
+            "presentationRatio": 0.7835627091310667,
+            "tick": 180433,
+            "uptime": 48468.637481616,
+            "widthPt": 833.5
+          },
+          {
+            "animationKeys": [
+              [
+                "playback-progress"
+              ],
+              [
+                "playback-knob"
+              ]
+            ],
+            "available": true,
+            "controlValue": 0.7836559570330696,
+            "expectedRatio": 0.7831288888888891,
+            "knobXPt": 646.4283107653365,
+            "presentationRatio": 0.7837286111986862,
+            "tick": 180433,
+            "uptime": 48468.673677305,
+            "widthPt": 833.5
+          },
+          {
+            "animationKeys": [
+              [
+                "playback-progress"
+              ],
+              [
+                "playback-knob"
+              ]
+            ],
+            "available": true,
+            "controlValue": 0.7839225651957025,
+            "expectedRatio": 0.7839111111111114,
+            "knobXPt": 646.5484295592923,
+            "presentationRatio": 0.7838769976025848,
+            "tick": 180614,
+            "uptime": 48468.712146508005,
+            "widthPt": 833.5
+          },
+          {
+            "animationKeys": [
+              [
+                "playback-progress"
+              ],
+              [
+                "playback-knob"
+              ]
+            ],
+            "available": true,
+            "controlValue": 0.7839225651957025,
+            "expectedRatio": 0.7839111111111114,
+            "knobXPt": 646.6851408371024,
+            "presentationRatio": 0.7840458812070443,
+            "tick": 180614,
+            "uptime": 48468.748705607,
+            "widthPt": 833.5
+          },
+          {
+            "animationKeys": [
+              [
+                "playback-progress"
+              ],
+              [
+                "playback-knob"
+              ]
+            ],
+            "available": true,
+            "controlValue": 0.7839225651957025,
+            "expectedRatio": 0.7839111111111114,
+            "knobXPt": 646.8208667428866,
+            "presentationRatio": 0.7842135475514349,
+            "tick": 180614,
+            "uptime": 48468.785400606,
+            "widthPt": 833.5
+          },
+          {
+            "animationKeys": [
+              [
+                "playback-progress"
+              ],
+              [
+                "playback-knob"
+              ]
+            ],
+            "available": true,
+            "controlValue": 0.7839225651957025,
+            "expectedRatio": 0.7839111111111114,
+            "knobXPt": 646.9521085080148,
+            "presentationRatio": 0.7843756745003272,
+            "tick": 180614,
+            "uptime": 48468.820777565,
+            "widthPt": 833.5
+          }
+        ],
+        "realMouseOrKeyboardInput": false
+      }
+    },
+    "resizeAfterSettling": {
+      "report": "/Users/mimi/Documents/Codex/2026-10-24/l/outputs/MIMI-Guitar-Mac-20261023/project/.build/runtime-audit-024/settled-resize-19-player-ux-1.jsonl",
+      "scope": "Programmatic window resize only; not a repeat of all U03/U07 tests. Each visibility probe begins after the initial 250ms rendering wait.",
+      "U01": "pass",
+      "states": {
+        "980x720": {
+          "visible": true,
+          "elapsedMs": 218,
+          "requiredConsecutiveVisibleFrames": 3
+        },
+        "1280x800": {
+          "visible": true,
+          "elapsedMs": 43,
+          "requiredConsecutiveVisibleFrames": 3
+        }
+      }
+    }
+  },
+  "formats": {
+    "gp5": {
+      "status": "passedFinalFrozenInputs",
+      "evidence": "/Users/mimi/Documents/Codex/2026-10-24/l/outputs/MIMI-Guitar-Mac-20261023/project/.build/runtime-audit-024/functional-final-17-private-asset-1.jsonl",
+      "input": "public/storage/scores/old_boy.gp5",
+      "method": "Personal asset materialization, real score/audio readiness and nonzero audio output"
+    },
+    "musicxmlStudio": {
+      "status": "passed",
+      "evidence": "/Users/mimi/Documents/Codex/2026-10-24/l/outputs/MIMI-Guitar-Mac-20261023/project/.build/runtime-audit-024/studio-xml-regression-studio-edit-1.jsonl",
+      "scope": "Import, 48 edits, undo, redo, save, preview PCM and main score audio; not PersonalStore MusicXML import"
+    }
+  },
+  "performance": {
+    "measurement": "50ms main-queue heartbeat is not FPS. CPU counts the native diagnostic process only; WebKit/GPU/WindowServer are excluded. Three separate sequential cold-start processes per case; no compiler or concurrent MIMI diagnostic. Other applications are uncontrolled. Final full-player baseline/candidate were sampled immediately in sequence after the Universal build finished. No compiler, compression, resource hashing, other MIMI diagnostic or physical interaction ran concurrently. Progress-18 uses the CPU-optimized App source (diagnostic build18b) and the same frozen Player/Content resources; all three runs completed before the next compile began. The previous resource directory was subsequently archived under package-before-progress-optimization.",
+    "groups": {
+      "baseline-home": {
+        "runs": [
+          {
+            "report": "/Users/mimi/Documents/Codex/2026-10-24/l/outputs/MIMI-Guitar-Mac-20261023/project/.build/runtime-audit-024/baseline-023-refresh-home-1.jsonl",
+            "cpuSeconds": 2.3333779999999997,
+            "heartbeat": {
+              "maxLatencyMs": 677.455061,
+              "p50LatencyMs": 1.16146,
+              "p95LatencyMs": 16.840444,
+              "p99LatencyMs": 201.938142,
+              "sampleCount": 210
+            },
+            "result": "ok"
+          },
+          {
+            "report": "/Users/mimi/Documents/Codex/2026-10-24/l/outputs/MIMI-Guitar-Mac-20261023/project/.build/runtime-audit-024/baseline-023-refresh-home-2.jsonl",
+            "cpuSeconds": 2.6229539999999996,
+            "heartbeat": {
+              "maxLatencyMs": 1098.349393,
+              "p50LatencyMs": 0.979373,
+              "p95LatencyMs": 70.202779,
+              "p99LatencyMs": 162.476909,
+              "sampleCount": 199
+            },
+            "result": "ok"
+          },
+          {
+            "report": "/Users/mimi/Documents/Codex/2026-10-24/l/outputs/MIMI-Guitar-Mac-20261023/project/.build/runtime-audit-024/baseline-023-refresh-home-3.jsonl",
+            "cpuSeconds": 2.3912519999999997,
+            "heartbeat": {
+              "maxLatencyMs": 325.645629,
+              "p50LatencyMs": 1.135718,
+              "p95LatencyMs": 32.818235,
+              "p99LatencyMs": 200.923806,
+              "sampleCount": 234
+            },
+            "result": "ok"
+          }
+        ],
+        "medianCPUSeconds": 2.3912519999999997,
+        "medianHeartbeatMs": {
+          "p50LatencyMs": 1.135718,
+          "p95LatencyMs": 32.818235,
+          "p99LatencyMs": 200.923806,
+          "maxLatencyMs": 677.455061
+        }
+      },
+      "baseline-catalog": {
+        "runs": [
+          {
+            "report": "/Users/mimi/Documents/Codex/2026-10-24/l/outputs/MIMI-Guitar-Mac-20261023/project/.build/runtime-audit-024/baseline-023-refresh-catalog-1.jsonl",
+            "cpuSeconds": 2.8565389999999997,
+            "heartbeat": {
+              "maxLatencyMs": 497.149189,
+              "p50LatencyMs": 1.426986,
+              "p95LatencyMs": 62.548853,
+              "p99LatencyMs": 371.664056,
+              "sampleCount": 198
+            },
+            "result": "ok"
+          },
+          {
+            "report": "/Users/mimi/Documents/Codex/2026-10-24/l/outputs/MIMI-Guitar-Mac-20261023/project/.build/runtime-audit-024/baseline-023-refresh-catalog-2.jsonl",
+            "cpuSeconds": 3.1713159999999996,
+            "heartbeat": {
+              "maxLatencyMs": 404.255507,
+              "p50LatencyMs": 1.025351,
+              "p95LatencyMs": 91.894044,
+              "p99LatencyMs": 366.666533,
+              "sampleCount": 195
+            },
+            "result": "ok"
+          },
+          {
+            "report": "/Users/mimi/Documents/Codex/2026-10-24/l/outputs/MIMI-Guitar-Mac-20261023/project/.build/runtime-audit-024/baseline-023-refresh-catalog-3.jsonl",
+            "cpuSeconds": 2.338763,
+            "heartbeat": {
+              "maxLatencyMs": 368.787465,
+              "p50LatencyMs": 0.970176,
+              "p95LatencyMs": 37.587453,
+              "p99LatencyMs": 205.418136,
+              "sampleCount": 214
+            },
+            "result": "ok"
+          }
+        ],
+        "medianCPUSeconds": 2.8565389999999997,
+        "medianHeartbeatMs": {
+          "p50LatencyMs": 1.025351,
+          "p95LatencyMs": 62.548853,
+          "p99LatencyMs": 366.666533,
+          "maxLatencyMs": 404.255507
+        }
+      },
+      "candidate-home": {
+        "runs": [
+          {
+            "report": "/Users/mimi/Documents/Codex/2026-10-24/l/outputs/MIMI-Guitar-Mac-20261023/project/.build/runtime-audit-024/without-snapshot-024-home-1.jsonl",
+            "cpuSeconds": 3.304552,
+            "heartbeat": {
+              "maxLatencyMs": 1090.725214,
+              "p50LatencyMs": 1.342414,
+              "p95LatencyMs": 84.358663,
+              "p99LatencyMs": 250.333126,
+              "sampleCount": 198
+            },
+            "result": "ok"
+          },
+          {
+            "report": "/Users/mimi/Documents/Codex/2026-10-24/l/outputs/MIMI-Guitar-Mac-20261023/project/.build/runtime-audit-024/without-snapshot-024-home-2.jsonl",
+            "cpuSeconds": 2.2332249999999996,
+            "heartbeat": {
+              "maxLatencyMs": 325.213012,
+              "p50LatencyMs": 0.639915,
+              "p95LatencyMs": 46.383044,
+              "p99LatencyMs": 150.593309,
+              "sampleCount": 219
+            },
+            "result": "ok"
+          },
+          {
+            "report": "/Users/mimi/Documents/Codex/2026-10-24/l/outputs/MIMI-Guitar-Mac-20261023/project/.build/runtime-audit-024/without-snapshot-024-home-3.jsonl",
+            "cpuSeconds": 2.334924,
+            "heartbeat": {
+              "maxLatencyMs": 367.037905,
+              "p50LatencyMs": 1.143936,
+              "p95LatencyMs": 55.808576,
+              "p99LatencyMs": 189.131497,
+              "sampleCount": 213
+            },
+            "result": "ok"
+          }
+        ],
+        "medianCPUSeconds": 2.334924,
+        "medianHeartbeatMs": {
+          "p50LatencyMs": 1.143936,
+          "p95LatencyMs": 55.808576,
+          "p99LatencyMs": 189.131497,
+          "maxLatencyMs": 367.037905
+        }
+      },
+      "candidate-catalog": {
+        "runs": [
+          {
+            "report": "/Users/mimi/Documents/Codex/2026-10-24/l/outputs/MIMI-Guitar-Mac-20261023/project/.build/runtime-audit-024/without-snapshot-024-catalog-1.jsonl",
+            "cpuSeconds": 2.757936,
+            "heartbeat": {
+              "maxLatencyMs": 392.757065,
+              "p50LatencyMs": 1.127438,
+              "p95LatencyMs": 49.216794,
+              "p99LatencyMs": 240.691184,
+              "sampleCount": 229
+            },
+            "result": "ok"
+          },
+          {
+            "report": "/Users/mimi/Documents/Codex/2026-10-24/l/outputs/MIMI-Guitar-Mac-20261023/project/.build/runtime-audit-024/without-snapshot-024-catalog-2.jsonl",
+            "cpuSeconds": 2.5316199999999998,
+            "heartbeat": {
+              "maxLatencyMs": 346.932931,
+              "p50LatencyMs": 1.119015,
+              "p95LatencyMs": 48.787045,
+              "p99LatencyMs": 267.909136,
+              "sampleCount": 228
+            },
+            "result": "ok"
+          },
+          {
+            "report": "/Users/mimi/Documents/Codex/2026-10-24/l/outputs/MIMI-Guitar-Mac-20261023/project/.build/runtime-audit-024/without-snapshot-024-catalog-3.jsonl",
+            "cpuSeconds": 3.0848829999999996,
+            "heartbeat": {
+              "maxLatencyMs": 469.645627,
+              "p50LatencyMs": 1.240744,
+              "p95LatencyMs": 120.705816,
+              "p99LatencyMs": 305.080741,
+              "sampleCount": 199
+            },
+            "result": "ok"
+          }
+        ],
+        "medianCPUSeconds": 2.757936,
+        "medianHeartbeatMs": {
+          "p50LatencyMs": 1.127438,
+          "p95LatencyMs": 49.216794,
+          "p99LatencyMs": 267.909136,
+          "maxLatencyMs": 392.757065
+        }
+      },
+      "baseline-full-player": {
+        "runs": [
+          {
+            "report": "/Users/mimi/Documents/Codex/2026-10-24/l/outputs/MIMI-Guitar-Mac-20261023/project/.build/runtime-audit-024/baseline-023-player-refresh-full-player-1.jsonl",
+            "cpuSeconds": 1.0465709999999997,
+            "heartbeat": {
+              "maxLatencyMs": 8.827294,
+              "p50LatencyMs": 1.040194,
+              "p95LatencyMs": 2.104618,
+              "p99LatencyMs": 8.621439,
+              "sampleCount": 241
+            },
+            "result": "ok",
+            "actualPlaybackDurationMs": 11946.66666666668
+          },
+          {
+            "report": "/Users/mimi/Documents/Codex/2026-10-24/l/outputs/MIMI-Guitar-Mac-20261023/project/.build/runtime-audit-024/baseline-023-player-refresh-full-player-2.jsonl",
+            "cpuSeconds": 1.030607,
+            "heartbeat": {
+              "maxLatencyMs": 7.597655,
+              "p50LatencyMs": 0.755458,
+              "p95LatencyMs": 3.380374,
+              "p99LatencyMs": 6.707087,
+              "sampleCount": 240
+            },
+            "result": "ok",
+            "actualPlaybackDurationMs": 11946.66666666668
+          },
+          {
+            "report": "/Users/mimi/Documents/Codex/2026-10-24/l/outputs/MIMI-Guitar-Mac-20261023/project/.build/runtime-audit-024/baseline-023-player-refresh-full-player-3.jsonl",
+            "cpuSeconds": 1.041718,
+            "heartbeat": {
+              "maxLatencyMs": 9.154589,
+              "p50LatencyMs": 0.864086,
+              "p95LatencyMs": 1.945505,
+              "p99LatencyMs": 7.956299,
+              "sampleCount": 240
+            },
+            "result": "ok",
+            "actualPlaybackDurationMs": 11946.66666666668
+          }
+        ],
+        "medianCPUSeconds": 1.041718,
+        "medianHeartbeatMs": {
+          "p50LatencyMs": 0.864086,
+          "p95LatencyMs": 2.104618,
+          "p99LatencyMs": 7.956299,
+          "maxLatencyMs": 8.827294
+        }
+      },
+      "baseline-full-player-late": {
+        "runs": [
+          {
+            "report": "/Users/mimi/Documents/Codex/2026-10-24/l/outputs/MIMI-Guitar-Mac-20261023/project/.build/runtime-audit-024/baseline-late-17-full-player-1.jsonl",
+            "result": "ok",
+            "cpuSeconds": 0.803742,
+            "heartbeat": {
+              "maxLatencyMs": 8.877453,
+              "p50LatencyMs": 0.998107,
+              "p95LatencyMs": 2.138189,
+              "p99LatencyMs": 5.278877,
+              "sampleCount": 240
+            },
+            "actualPlaybackDurationMs": 11888.616780045368,
+            "audioNonzero": true
+          },
+          {
+            "report": "/Users/mimi/Documents/Codex/2026-10-24/l/outputs/MIMI-Guitar-Mac-20261023/project/.build/runtime-audit-024/baseline-late-17-full-player-2.jsonl",
+            "result": "ok",
+            "cpuSeconds": 0.7796090000000002,
+            "heartbeat": {
+              "maxLatencyMs": 6.78155,
+              "p50LatencyMs": 1.275321,
+              "p95LatencyMs": 2.014928,
+              "p99LatencyMs": 5.972554,
+              "sampleCount": 241
+            },
+            "actualPlaybackDurationMs": 11888.616780045368,
+            "audioNonzero": true
+          },
+          {
+            "report": "/Users/mimi/Documents/Codex/2026-10-24/l/outputs/MIMI-Guitar-Mac-20261023/project/.build/runtime-audit-024/baseline-late-17-full-player-3.jsonl",
+            "result": "ok",
+            "cpuSeconds": 0.7589240000000002,
+            "heartbeat": {
+              "maxLatencyMs": 7.705372,
+              "p50LatencyMs": 1.53301,
+              "p95LatencyMs": 4.187659,
+              "p99LatencyMs": 5.526499,
+              "sampleCount": 240
+            },
+            "actualPlaybackDurationMs": 11888.616780045368,
+            "audioNonzero": true
+          }
+        ],
+        "medianCPUSeconds": 0.7796090000000002,
+        "medianHeartbeatMs": {
+          "p50LatencyMs": 1.275321,
+          "p95LatencyMs": 2.138189,
+          "p99LatencyMs": 5.526499,
+          "maxLatencyMs": 7.705372
+        }
+      },
+      "candidate-full-player-before-progress-optimization": {
+        "runs": [
+          {
+            "report": "/Users/mimi/Documents/Codex/2026-10-24/l/outputs/MIMI-Guitar-Mac-20261023/project/.build/runtime-audit-024/packaged-perf-17-full-player-1.jsonl",
+            "result": "ok",
+            "cpuSeconds": 3.079423,
+            "heartbeat": {
+              "maxLatencyMs": 5.067765,
+              "p50LatencyMs": 1.758563,
+              "p95LatencyMs": 1.932089,
+              "p99LatencyMs": 4.466511,
+              "sampleCount": 240
+            },
+            "actualPlaybackDurationMs": 11888.616780045368,
+            "audioNonzero": true
+          },
+          {
+            "report": "/Users/mimi/Documents/Codex/2026-10-24/l/outputs/MIMI-Guitar-Mac-20261023/project/.build/runtime-audit-024/packaged-perf-17-full-player-2.jsonl",
+            "result": "ok",
+            "cpuSeconds": 3.2453259999999995,
+            "heartbeat": {
+              "maxLatencyMs": 5.400157,
+              "p50LatencyMs": 1.106613,
+              "p95LatencyMs": 3.823242,
+              "p99LatencyMs": 4.872187,
+              "sampleCount": 240
+            },
+            "actualPlaybackDurationMs": 11888.616780045368,
+            "audioNonzero": true
+          },
+          {
+            "report": "/Users/mimi/Documents/Codex/2026-10-24/l/outputs/MIMI-Guitar-Mac-20261023/project/.build/runtime-audit-024/packaged-perf-17-full-player-3.jsonl",
+            "result": "ok",
+            "cpuSeconds": 3.0321290000000003,
+            "heartbeat": {
+              "maxLatencyMs": 9.030282,
+              "p50LatencyMs": 1.667228,
+              "p95LatencyMs": 1.826131,
+              "p99LatencyMs": 4.988342,
+              "sampleCount": 240
+            },
+            "actualPlaybackDurationMs": 11888.616780045368,
+            "audioNonzero": true
+          }
+        ],
+        "medianCPUSeconds": 3.079423,
+        "medianHeartbeatMs": {
+          "p50LatencyMs": 1.667228,
+          "p95LatencyMs": 1.932089,
+          "p99LatencyMs": 4.872187,
+          "maxLatencyMs": 5.400157
+        }
+      },
+      "candidate-full-player-after-progress-optimization": {
+        "runs": [
+          {
+            "report": "/Users/mimi/Documents/Codex/2026-10-24/l/outputs/MIMI-Guitar-Mac-20261023/project/.build/runtime-audit-024/progress-18-full-player-1.jsonl",
+            "result": "ok",
+            "cpuSeconds": 0.5475450000000004,
+            "heartbeat": {
+              "maxLatencyMs": 5.294556,
+              "p50LatencyMs": 1.187352,
+              "p95LatencyMs": 2.08107,
+              "p99LatencyMs": 3.024284,
+              "sampleCount": 240
+            },
+            "actualPlaybackDurationMs": 11946.66666666668,
+            "audioNonzero": true
+          },
+          {
+            "report": "/Users/mimi/Documents/Codex/2026-10-24/l/outputs/MIMI-Guitar-Mac-20261023/project/.build/runtime-audit-024/progress-18-full-player-2.jsonl",
+            "result": "ok",
+            "cpuSeconds": 0.606066,
+            "heartbeat": {
+              "maxLatencyMs": 4.548822,
+              "p50LatencyMs": 1.057746,
+              "p95LatencyMs": 2.065753,
+              "p99LatencyMs": 3.019304,
+              "sampleCount": 240
+            },
+            "actualPlaybackDurationMs": 11946.66666666668,
+            "audioNonzero": true
+          },
+          {
+            "report": "/Users/mimi/Documents/Codex/2026-10-24/l/outputs/MIMI-Guitar-Mac-20261023/project/.build/runtime-audit-024/progress-18-full-player-3.jsonl",
+            "result": "ok",
+            "cpuSeconds": 0.6651430000000003,
+            "heartbeat": {
+              "maxLatencyMs": 6.654406,
+              "p50LatencyMs": 1.755463,
+              "p95LatencyMs": 3.965234,
+              "p99LatencyMs": 4.641006,
+              "sampleCount": 240
+            },
+            "actualPlaybackDurationMs": 11946.66666666668,
+            "audioNonzero": true
+          }
+        ],
+        "medianCPUSeconds": 0.606066,
+        "medianHeartbeatMs": {
+          "p50LatencyMs": 1.187352,
+          "p95LatencyMs": 2.08107,
+          "p99LatencyMs": 3.024284,
+          "maxLatencyMs": 5.294556
+        }
+      }
+    },
+    "updatedAtUTC": "2026-10-26T16:01:08.858930+00:00",
+    "comparabilityLimit": "Audio hardware sample rate was not locked; audio clock quantum differs between the baseline/first candidate and progress-18 batches. CPU is an observed diagnostic-process result, not a hardware-wide energy/FPS or all-audio-conditions claim."
+  },
+  "notRun": [
+    "Real keyboard Escape, window green button and menu click via native UI automation",
+    "System Reduce Motion disabled and full spatial transition matrix",
+    "Retina physical device and Apple silicon physical device",
+    "All catalog scores and all format variants",
+    "Speaker output listening and end-to-end hardware audio latency",
+    "FPS and total WebKit/GPU/WindowServer CPU or energy"
+  ],
+  "materialLimits": [
+    "Ad-hoc signature; Apple notarization not performed",
+    "Font redistribution authorization for bundled FZXiaoBiaoSong is not confirmed; existing NOTICE retained",
+    "No remote publication or deployment performed"
+  ]
+}

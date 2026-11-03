@@ -1,0 +1,1430 @@
+{
+  "version": "0.2.3",
+  "build": {
+    "product": {
+      "coreOptimization": "-O",
+      "appOptimization": "-Osize",
+      "diagnosticMacroDefined": false,
+      "architectures": [
+        "x86_64",
+        "arm64"
+      ],
+      "minimumMacOS": "13.0",
+      "buildLog": ".build/runtime-audit-023/universal-023-build.final.log"
+    },
+    "diagnostic": {
+      "coreOptimization": "-Osize",
+      "appOptimization": "-Osize",
+      "diagnosticMacroDefined": true,
+      "buildLog": ".build/runtime-audit-023/integrated-stage11-build.log"
+    },
+    "typechecks": [
+      {
+        "target": "product",
+        "passed": true,
+        "log": ".build/runtime-audit-023/integrated-stage11-product-typecheck.log",
+        "logBytes": 0
+      },
+      {
+        "target": "diagnostic",
+        "passed": true,
+        "log": ".build/runtime-audit-023/integrated-stage11-diagnostic-typecheck.log",
+        "logBytes": 0
+      }
+    ]
+  },
+  "date": "2026-10-25",
+  "timezone": "Asia/Shanghai",
+  "generatedAtUTC": "2026-10-25T08:40:20.117238+00:00",
+  "migrationFullyAccepted": false,
+  "allRecordedFinalChecksSucceeded": true,
+  "pathBase": "Paths beginning .build/ or native-macos/ are relative to project root; package verification preserves absolute artifact paths.",
+  "projectRoot": "/Users/mimi/Documents/Codex/2026-10-24/l/outputs/MIMI-Guitar-Mac-20261023/project",
+  "branch": "feature/macos-native",
+  "gitDelivery": "Uncommitted workspace changes; no commit, push or PR.",
+  "sourceProvenance": {
+    "candidate": "integrated-stage11",
+    "inputSHA256Manifest": ".build/runtime-audit-023/integrated-stage11-source-hashes.json",
+    "inputCount": 85,
+    "currentInputMismatches": [],
+    "diagnosticDrivers": [
+      {
+        "name": "runtime_diagnostics.swift",
+        "sha256": "90d80d1a348cf60aea44c0268f9e930f4efa51b34461032ce1332577997873ef",
+        "baselineSHA256": "90d80d1a348cf60aea44c0268f9e930f4efa51b34461032ce1332577997873ef",
+        "byteIdentical": true
+      },
+      {
+        "name": "runtime_studio_diagnostics.swift",
+        "sha256": "097c00b8d472a791e67cc537854a56c610e53c43cf1b51b974862aff81b460d5",
+        "baselineSHA256": "097c00b8d472a791e67cc537854a56c610e53c43cf1b51b974862aff81b460d5",
+        "byteIdentical": true
+      },
+      {
+        "name": "runtime_visual_diagnostics.swift",
+        "sha256": "96591e093f897f9e4f02ee4d86653399bf99092b5b4342481d1244246d00ae49",
+        "baselineSHA256": "96591e093f897f9e4f02ee4d86653399bf99092b5b4342481d1244246d00ae49",
+        "byteIdentical": true
+      }
+    ],
+    "baselineSources": ".build/runtime-audit-023/baseline-final-driver-native/Sources",
+    "finalSources": ".build/runtime-audit-023/integrated-stage11-native/Sources"
+  },
+  "sourceVerification": {
+    "index": ".build/runtime-audit-023/final-source-verification-index.json",
+    "total": 12,
+    "succeeded": 12,
+    "runs": [
+      {
+        "tag": "direct.final-source-functional-1",
+        "result": "ok",
+        "exitCode": 0,
+        "timeout": false,
+        "report": ".build/runtime-audit-023/direct.final-source-functional-1.jsonl"
+      },
+      {
+        "tag": "catalog-reference.final-source-functional-1",
+        "result": "ok",
+        "exitCode": 0,
+        "timeout": false,
+        "report": ".build/runtime-audit-023/catalog-reference.final-source-functional-1.jsonl"
+      },
+      {
+        "tag": "private-asset.final-source-functional-1",
+        "result": "ok",
+        "exitCode": 0,
+        "timeout": false,
+        "report": ".build/runtime-audit-023/private-asset.final-source-functional-1.jsonl"
+      },
+      {
+        "tag": "xhe-reference.final-source-functional-1",
+        "result": "ok",
+        "exitCode": 0,
+        "timeout": false,
+        "report": ".build/runtime-audit-023/xhe-reference.final-source-functional-1.jsonl"
+      },
+      {
+        "tag": "audition.final-source-functional-1",
+        "result": "ok",
+        "exitCode": 0,
+        "timeout": false,
+        "report": ".build/runtime-audit-023/audition.final-source-functional-1.jsonl"
+      },
+      {
+        "tag": "full-player.final-source-functional-1",
+        "result": "ok",
+        "exitCode": 0,
+        "timeout": false,
+        "report": ".build/runtime-audit-023/full-player.final-source-functional-1.jsonl"
+      },
+      {
+        "tag": "practice-ui.final-source-functional-1",
+        "result": "ok",
+        "exitCode": 0,
+        "timeout": false,
+        "report": ".build/runtime-audit-023/practice-ui.final-source-functional-1.jsonl"
+      },
+      {
+        "tag": "private-asset.final-source-gp5-1",
+        "result": "ok",
+        "exitCode": 0,
+        "timeout": false,
+        "report": ".build/runtime-audit-023/private-asset.final-source-gp5-1.jsonl"
+      },
+      {
+        "tag": "studio-edit.final-source-musicxml-1",
+        "result": "ok",
+        "exitCode": 0,
+        "timeout": false,
+        "report": ".build/runtime-audit-023/studio-edit.final-source-musicxml-1.jsonl"
+      },
+      {
+        "tag": "visual-snapshots.final-source-wide-1",
+        "result": "ok",
+        "exitCode": 0,
+        "timeout": false,
+        "report": ".build/runtime-audit-023/visual-snapshots.final-source-wide-1.jsonl"
+      },
+      {
+        "tag": "visual-secondary-snapshots.final-source-wide-1",
+        "result": "ok",
+        "exitCode": 0,
+        "timeout": false,
+        "report": ".build/runtime-audit-023/visual-secondary-snapshots.final-source-wide-1.jsonl"
+      },
+      {
+        "tag": "visual-snapshots.final-source-narrow-1",
+        "result": "ok",
+        "exitCode": 0,
+        "timeout": false,
+        "report": ".build/runtime-audit-023/visual-snapshots.final-source-narrow-1.jsonl"
+      }
+    ]
+  },
+  "packageResourcesVerification": {
+    "index": ".build/runtime-audit-023/final-package-resources-scenario-index.json",
+    "total": 5,
+    "succeeded": 5,
+    "runs": [
+      {
+        "tag": "catalog-reference.final-package-resources-1",
+        "result": "ok",
+        "exitCode": 0,
+        "timeout": false,
+        "report": ".build/runtime-audit-023/catalog-reference.final-package-resources-1.jsonl"
+      },
+      {
+        "tag": "audition.final-package-resources-1",
+        "result": "ok",
+        "exitCode": 0,
+        "timeout": false,
+        "report": ".build/runtime-audit-023/audition.final-package-resources-1.jsonl"
+      },
+      {
+        "tag": "full-player.final-package-resources-1",
+        "result": "ok",
+        "exitCode": 0,
+        "timeout": false,
+        "report": ".build/runtime-audit-023/full-player.final-package-resources-1.jsonl"
+      },
+      {
+        "tag": "practice-ui.final-package-resources-1",
+        "result": "ok",
+        "exitCode": 0,
+        "timeout": false,
+        "report": ".build/runtime-audit-023/practice-ui.final-package-resources-1.jsonl"
+      },
+      {
+        "tag": "studio-edit.final-package-resources-1",
+        "result": "ok",
+        "exitCode": 0,
+        "timeout": false,
+        "report": ".build/runtime-audit-023/studio-edit.final-package-resources-1.jsonl"
+      }
+    ]
+  },
+  "packageResourcesFunctionalDetails": [
+    {
+      "case": "catalog-reference",
+      "result": "ok",
+      "format": "ibe",
+      "scoreReady": true,
+      "audioReady": true,
+      "currentTimeAdvanced": true,
+      "currentTimeAfterPlayback": 2389.333333333333,
+      "audioOutputEvidence": {
+        "available": true,
+        "contextRunning": true,
+        "contextStates": [
+          "running"
+        ],
+        "nonZeroBlocks": 28,
+        "nonZeroOutputObserved": true,
+        "outputBlocks": 28,
+        "peak": 0.2124880999326706,
+        "processorNodes": 1,
+        "renderedFrames": 114688
+      },
+      "report": ".build/runtime-audit-023/catalog-reference.final-package-resources-1.jsonl"
+    },
+    {
+      "case": "audition",
+      "result": "ok",
+      "format": "ibe",
+      "scoreReady": true,
+      "audioReady": true,
+      "currentTimeAdvanced": true,
+      "currentTimeAfterPlayback": 2303.9999999999995,
+      "audioOutputEvidence": {
+        "available": true,
+        "contextRunning": true,
+        "contextStates": [
+          "running"
+        ],
+        "nonZeroBlocks": 27,
+        "nonZeroOutputObserved": true,
+        "outputBlocks": 27,
+        "peak": 0.2124880999326706,
+        "processorNodes": 1,
+        "renderedFrames": 110592
+      },
+      "report": ".build/runtime-audit-023/audition.final-package-resources-1.jsonl"
+    },
+    {
+      "case": "full-player",
+      "result": "ok",
+      "format": "ibe",
+      "scoreReady": true,
+      "audioReady": true,
+      "audioOutputEvidence": {
+        "available": true,
+        "contextRunning": true,
+        "contextStates": [
+          "running"
+        ],
+        "nonZeroBlocks": 27,
+        "nonZeroOutputObserved": true,
+        "outputBlocks": 27,
+        "peak": 0.2124880999326706,
+        "processorNodes": 1,
+        "renderedFrames": 110592
+      },
+      "report": ".build/runtime-audit-023/full-player.final-package-resources-1.jsonl",
+      "playerUI": {
+        "actionDurationMs": 12007.477556006052,
+        "actualPlaybackDurationMs": 11946.66666666668,
+        "clockAdvancedDuringSample": true,
+        "currentTimeAfterSample": 12032.000000000015,
+        "playbackContinuousThroughSample": true,
+        "isPlayingAtSampleEnd": true,
+        "nativePlayerPaneMounted": true,
+        "nativePlayerRenderObserved": true,
+        "sampleComplete": true,
+        "engineErrorObserved": false
+      }
+    },
+    {
+      "case": "practice-ui",
+      "result": "ok",
+      "format": "ibe",
+      "scoreReady": true,
+      "audioReady": true,
+      "audioOutputEvidence": {
+        "available": true,
+        "contextRunning": true,
+        "contextStates": [
+          "running"
+        ],
+        "nonZeroBlocks": 27,
+        "nonZeroOutputObserved": true,
+        "outputBlocks": 27,
+        "peak": 0.2124880999326706,
+        "processorNodes": 1,
+        "renderedFrames": 110592
+      },
+      "report": ".build/runtime-audit-023/practice-ui.final-package-resources-1.jsonl",
+      "playerUI": {
+        "actionDurationMs": 12028.578973004187,
+        "actualPlaybackDurationMs": 11946.66666666668,
+        "clockAdvancedDuringSample": true,
+        "currentTimeAfterSample": 12032.000000000015,
+        "playbackContinuousThroughSample": true,
+        "isPlayingAtSampleEnd": true,
+        "nativePlayerPaneMounted": true,
+        "nativePlayerRenderObserved": true,
+        "sampleComplete": true,
+        "engineErrorObserved": false
+      }
+    },
+    {
+      "case": "studio-edit",
+      "result": "ok",
+      "audioAdvanced": true,
+      "audioEvidence": {
+        "apiPresent": true,
+        "apiReadyForPlayback": true,
+        "audioDiagnosticsAvailable": true,
+        "contextRunning": true,
+        "contextStates": [
+          "running",
+          "running"
+        ],
+        "firstTrackFirstBeatNoteCount": 2,
+        "nativeIsPlaying": true,
+        "nonZeroBlocks": 16,
+        "nonZeroOutputObserved": true,
+        "outputBlocks": 16,
+        "peak": 0.31211674213409424,
+        "playerState": 1,
+        "processorNodes": 1,
+        "renderedFrames": 65536,
+        "timePosition": 1365.333333333333,
+        "timePositionAdvanced": true,
+        "timePositionAfter": 1365.333333333333,
+        "timePositionBaseline": 0
+      },
+      "importedFormat": "musicxml",
+      "importedBarCount": 4,
+      "importedTrackCount": 1,
+      "importedNoteCountBeforeEdits": 16,
+      "importedNoteMidiSequenceBeforeEdits": [
+        60,
+        62,
+        64,
+        67,
+        60,
+        62,
+        64,
+        67,
+        60,
+        62,
+        64,
+        67,
+        60,
+        62,
+        64,
+        67
+      ],
+      "editedCount": 48,
+      "editDurationMs": 12060.801734005508,
+      "contentRevision": 54,
+      "saveCount": 9,
+      "manualSaveCount": 1,
+      "savePersonalRevision": 9,
+      "saveVerified": true,
+      "undoVerified": true,
+      "redoVerified": true,
+      "previewAudioVerified": true,
+      "previewAfterRenderStable": true,
+      "autoInsertBarCursorAdvanceVerified": true,
+      "report": ".build/runtime-audit-023/studio-edit.final-package-resources-1.jsonl",
+      "saveVerification": {
+        "attemptCount": 2,
+        "durabilityGate": "persisted/current content match + published saved-project content and updatedAt match the persisted snapshot + clean model + current/requested revision match",
+        "statusGateIsObservationalOnly": true,
+        "requestedRevision": 54,
+        "successfulAttempt": {
+          "attempt": 2,
+          "contentComparison": "all StudioProject fields except updatedAt",
+          "contentMatches": true,
+          "currentRevision": 54,
+          "durabilityGateSatisfied": true,
+          "isDirty": false,
+          "modelSavedContentMatchesPersisted": true,
+          "modelSavedProjectExists": true,
+          "modelSavedProjectUpdatedAt": 1792916495591.947,
+          "modelSavedUpdatedAt": null,
+          "modelSavedUpdatedAtAvailability": "private/unavailable; model.savedProjects updatedAt is the published acknowledgement",
+          "persistedProjectExists": true,
+          "persistedUpdatedAt": 1792916495591.947,
+          "projectID": "adaptation_pryjzdy_mvnk6imb",
+          "requestedRevision": 54,
+          "requestedRevisionMatchesCurrent": true,
+          "savedTimestampMatchesPersisted": true,
+          "status": "已保存到本地草稿箱：Runtime Studio Audit 47",
+          "statusGateSatisfied": true,
+          "storeRevision": 9
+        }
+      }
+    }
+  ],
+  "visualVerification": {
+    "captureType": "Own-process NSView/WK snapshots; not system screenshots of installed product",
+    "manualReviewCount": 28,
+    "sameStateOriginalWebsiteAvailable": false,
+    "pixelEqualityClaimed": false,
+    "groups": [
+      {
+        "report": ".build/runtime-audit-023/visual-snapshots.final-source-wide-1.jsonl",
+        "result": "ok",
+        "windowContentSize": {
+          "height": 900,
+          "width": 1280
+        },
+        "screenshotCount": 9,
+        "readyCount": 9,
+        "screenshots": [
+          {
+            "name": "01-home",
+            "path": ".build/runtime-audit-023/visual-snapshots.final-source-wide-1-snapshots/01-home.png",
+            "sha256": "e8c0de54d758f9e580b6060d398b1fb55da6d45a96224033fd618ab8b92deb88",
+            "pixelWidth": 1280,
+            "pixelHeight": 900,
+            "captured": true,
+            "ready": true,
+            "visibleWebViewCount": 0,
+            "capturedWebViewCount": 0,
+            "thumbnailLoadConfirmed": false
+          },
+          {
+            "name": "02-catalog",
+            "path": ".build/runtime-audit-023/visual-snapshots.final-source-wide-1-snapshots/02-catalog.png",
+            "sha256": "bf0034374b4737ee1d0706351dfa9405109cf503999025dd3b9173af94e79b14",
+            "pixelWidth": 1280,
+            "pixelHeight": 900,
+            "captured": true,
+            "ready": true,
+            "visibleWebViewCount": 0,
+            "capturedWebViewCount": 0,
+            "thumbnailLoadConfirmed": false
+          },
+          {
+            "name": "03-library",
+            "path": ".build/runtime-audit-023/visual-snapshots.final-source-wide-1-snapshots/03-library.png",
+            "sha256": "70cbda009429a244d86ffd18db229dc87555dc6e95f9e28c9a7c6e605892c0ee",
+            "pixelWidth": 1280,
+            "pixelHeight": 900,
+            "captured": true,
+            "ready": true,
+            "visibleWebViewCount": 0,
+            "capturedWebViewCount": 0,
+            "thumbnailLoadConfirmed": null
+          },
+          {
+            "name": "03-library-bottom",
+            "path": ".build/runtime-audit-023/visual-snapshots.final-source-wide-1-snapshots/03-library-bottom.png",
+            "sha256": "9c4731ac406e2a7e44e355cdc010bb516e476cc571b3e0618b2d7555c482e466",
+            "pixelWidth": 1280,
+            "pixelHeight": 900,
+            "captured": true,
+            "ready": true,
+            "visibleWebViewCount": 0,
+            "capturedWebViewCount": 0,
+            "thumbnailLoadConfirmed": null
+          },
+          {
+            "name": "04-practice",
+            "path": ".build/runtime-audit-023/visual-snapshots.final-source-wide-1-snapshots/04-practice.png",
+            "sha256": "b031755a6a1fc6872ab680108c4e78089888c21e43e9a9a06d489b55ec9c814c",
+            "pixelWidth": 1280,
+            "pixelHeight": 900,
+            "captured": true,
+            "ready": true,
+            "visibleWebViewCount": 1,
+            "capturedWebViewCount": 1,
+            "thumbnailLoadConfirmed": null
+          },
+          {
+            "name": "05-score",
+            "path": ".build/runtime-audit-023/visual-snapshots.final-source-wide-1-snapshots/05-score.png",
+            "sha256": "ff80df9587f1951b480f502019d6004d5b88f3d09a2d80e98e7640b8750989e7",
+            "pixelWidth": 1280,
+            "pixelHeight": 900,
+            "captured": true,
+            "ready": true,
+            "visibleWebViewCount": 1,
+            "capturedWebViewCount": 1,
+            "thumbnailLoadConfirmed": null
+          },
+          {
+            "name": "05-score-bottom",
+            "path": ".build/runtime-audit-023/visual-snapshots.final-source-wide-1-snapshots/05-score-bottom.png",
+            "sha256": "4dbe597d8dd2cea2640888e51c5e2fbfa0aad5e6d062d2f5c3f86cf322f1465d",
+            "pixelWidth": 1280,
+            "pixelHeight": 900,
+            "captured": true,
+            "ready": true,
+            "visibleWebViewCount": 1,
+            "capturedWebViewCount": 0,
+            "thumbnailLoadConfirmed": null
+          },
+          {
+            "name": "06-studio",
+            "path": ".build/runtime-audit-023/visual-snapshots.final-source-wide-1-snapshots/06-studio.png",
+            "sha256": "ddef2923e55b966d79b317e975e234f905c7801cd283ab3b264ac36021d10bf9",
+            "pixelWidth": 1280,
+            "pixelHeight": 900,
+            "captured": true,
+            "ready": true,
+            "visibleWebViewCount": 1,
+            "capturedWebViewCount": 1,
+            "thumbnailLoadConfirmed": null
+          },
+          {
+            "name": "06-studio-bottom",
+            "path": ".build/runtime-audit-023/visual-snapshots.final-source-wide-1-snapshots/06-studio-bottom.png",
+            "sha256": "b7b6b5b0b0237cd4f0aa20a64c120ca0b7dbfb7a1ff24c4eb00b331a2e364672",
+            "pixelWidth": 1280,
+            "pixelHeight": 900,
+            "captured": true,
+            "ready": true,
+            "visibleWebViewCount": 1,
+            "capturedWebViewCount": 1,
+            "thumbnailLoadConfirmed": null
+          }
+        ]
+      },
+      {
+        "report": ".build/runtime-audit-023/visual-secondary-snapshots.final-source-wide-1.jsonl",
+        "result": "ok",
+        "windowContentSize": {
+          "height": 900,
+          "width": 1280
+        },
+        "screenshotCount": 10,
+        "readyCount": 10,
+        "screenshots": [
+          {
+            "name": "01-data-settings",
+            "path": ".build/runtime-audit-023/visual-secondary-snapshots.final-source-wide-1-snapshots/01-data-settings.png",
+            "sha256": "8741560931340c1ec66e6ec090765db538cadf638f33c76bc274fbdfc2020f9c",
+            "pixelWidth": 1280,
+            "pixelHeight": 900,
+            "captured": true,
+            "ready": true,
+            "visibleWebViewCount": 0,
+            "capturedWebViewCount": 0,
+            "thumbnailLoadConfirmed": null
+          },
+          {
+            "name": "02-data-settings-bottom",
+            "path": ".build/runtime-audit-023/visual-secondary-snapshots.final-source-wide-1-snapshots/02-data-settings-bottom.png",
+            "sha256": "9ffc66aa37a5090b334d3be298c7c322cc1f2e7c5134693a46b688a2bad76817",
+            "pixelWidth": 1280,
+            "pixelHeight": 900,
+            "captured": true,
+            "ready": true,
+            "visibleWebViewCount": 0,
+            "capturedWebViewCount": 0,
+            "thumbnailLoadConfirmed": null
+          },
+          {
+            "name": "03-articles",
+            "path": ".build/runtime-audit-023/visual-secondary-snapshots.final-source-wide-1-snapshots/03-articles.png",
+            "sha256": "a0b8ef4716f8eae988d5835b1464f6f884670b413da41a2352a7e3eab0d67815",
+            "pixelWidth": 1280,
+            "pixelHeight": 900,
+            "captured": true,
+            "ready": true,
+            "visibleWebViewCount": 0,
+            "capturedWebViewCount": 0,
+            "thumbnailLoadConfirmed": null
+          },
+          {
+            "name": "04-article-detail",
+            "path": ".build/runtime-audit-023/visual-secondary-snapshots.final-source-wide-1-snapshots/04-article-detail.png",
+            "sha256": "f33e6182089ffe961998d00415a0bd60286e46c959cf9cb7b060537c2307b9db",
+            "pixelWidth": 1280,
+            "pixelHeight": 900,
+            "captured": true,
+            "ready": true,
+            "visibleWebViewCount": 0,
+            "capturedWebViewCount": 0,
+            "thumbnailLoadConfirmed": null
+          },
+          {
+            "name": "05-account-profile",
+            "path": ".build/runtime-audit-023/visual-secondary-snapshots.final-source-wide-1-snapshots/05-account-profile.png",
+            "sha256": "3315a45577f2f989d2fb27c79410d8ce74428efe91252f52267195ec09762231",
+            "pixelWidth": 1280,
+            "pixelHeight": 900,
+            "captured": true,
+            "ready": true,
+            "visibleWebViewCount": 0,
+            "capturedWebViewCount": 0,
+            "thumbnailLoadConfirmed": null
+          },
+          {
+            "name": "06-account-favorites",
+            "path": ".build/runtime-audit-023/visual-secondary-snapshots.final-source-wide-1-snapshots/06-account-favorites.png",
+            "sha256": "a9f9319533cf6904002cee5bcabd782b9fc695c97922786b6dcc7e2feb12721d",
+            "pixelWidth": 1280,
+            "pixelHeight": 900,
+            "captured": true,
+            "ready": true,
+            "visibleWebViewCount": 0,
+            "capturedWebViewCount": 0,
+            "thumbnailLoadConfirmed": null
+          },
+          {
+            "name": "07-account-auth",
+            "path": ".build/runtime-audit-023/visual-secondary-snapshots.final-source-wide-1-snapshots/07-account-auth.png",
+            "sha256": "140b4a63cd122700c04da2aaddc148982e31ee63327c7403f577448f099d65f0",
+            "pixelWidth": 1280,
+            "pixelHeight": 900,
+            "captured": true,
+            "ready": true,
+            "visibleWebViewCount": 0,
+            "capturedWebViewCount": 0,
+            "thumbnailLoadConfirmed": null
+          },
+          {
+            "name": "08-help",
+            "path": ".build/runtime-audit-023/visual-secondary-snapshots.final-source-wide-1-snapshots/08-help.png",
+            "sha256": "a1d055f5a87fc28ce2109df389e310b30cfb35b1883af50ac3b4248fa6bbaff3",
+            "pixelWidth": 1280,
+            "pixelHeight": 900,
+            "captured": true,
+            "ready": true,
+            "visibleWebViewCount": 0,
+            "capturedWebViewCount": 0,
+            "thumbnailLoadConfirmed": null
+          },
+          {
+            "name": "09-motion",
+            "path": ".build/runtime-audit-023/visual-secondary-snapshots.final-source-wide-1-snapshots/09-motion.png",
+            "sha256": "6181a15fb742b38b89532886fe2ecb50632ae4101740bd313785acd39961b108",
+            "pixelWidth": 1280,
+            "pixelHeight": 900,
+            "captured": true,
+            "ready": true,
+            "visibleWebViewCount": 0,
+            "capturedWebViewCount": 0,
+            "thumbnailLoadConfirmed": null
+          },
+          {
+            "name": "10-showcase",
+            "path": ".build/runtime-audit-023/visual-secondary-snapshots.final-source-wide-1-snapshots/10-showcase.png",
+            "sha256": "0fabb01a168f5c1c665e49a211c54be07465a734ed44157820646eebaa0d6c1e",
+            "pixelWidth": 1280,
+            "pixelHeight": 900,
+            "captured": true,
+            "ready": true,
+            "visibleWebViewCount": 0,
+            "capturedWebViewCount": 0,
+            "thumbnailLoadConfirmed": null
+          }
+        ]
+      },
+      {
+        "report": ".build/runtime-audit-023/visual-snapshots.final-source-narrow-1.jsonl",
+        "result": "ok",
+        "windowContentSize": {
+          "height": 900,
+          "width": 980
+        },
+        "screenshotCount": 9,
+        "readyCount": 9,
+        "screenshots": [
+          {
+            "name": "01-home",
+            "path": ".build/runtime-audit-023/visual-snapshots.final-source-narrow-1-snapshots/01-home.png",
+            "sha256": "4b5451719bf50b79b3237656e039d4fd9a017edd145d5c98e5d9d208549dc280",
+            "pixelWidth": 980,
+            "pixelHeight": 900,
+            "captured": true,
+            "ready": true,
+            "visibleWebViewCount": 0,
+            "capturedWebViewCount": 0,
+            "thumbnailLoadConfirmed": false
+          },
+          {
+            "name": "02-catalog",
+            "path": ".build/runtime-audit-023/visual-snapshots.final-source-narrow-1-snapshots/02-catalog.png",
+            "sha256": "6eedb3ec74ba8c6329723bc3c4189c35695fcb9685807c7a2f5d399a64cc68a8",
+            "pixelWidth": 980,
+            "pixelHeight": 900,
+            "captured": true,
+            "ready": true,
+            "visibleWebViewCount": 0,
+            "capturedWebViewCount": 0,
+            "thumbnailLoadConfirmed": false
+          },
+          {
+            "name": "03-library",
+            "path": ".build/runtime-audit-023/visual-snapshots.final-source-narrow-1-snapshots/03-library.png",
+            "sha256": "a563c3a131064df6cddcc50ae82c08d2f7288b976941a3cc9361f470ec6e675b",
+            "pixelWidth": 980,
+            "pixelHeight": 900,
+            "captured": true,
+            "ready": true,
+            "visibleWebViewCount": 0,
+            "capturedWebViewCount": 0,
+            "thumbnailLoadConfirmed": null
+          },
+          {
+            "name": "03-library-bottom",
+            "path": ".build/runtime-audit-023/visual-snapshots.final-source-narrow-1-snapshots/03-library-bottom.png",
+            "sha256": "6ebacf53f9dc90fe6b51fc07fd444cfb9a72a335eda20cb241bfdfc21997a03d",
+            "pixelWidth": 980,
+            "pixelHeight": 900,
+            "captured": true,
+            "ready": true,
+            "visibleWebViewCount": 0,
+            "capturedWebViewCount": 0,
+            "thumbnailLoadConfirmed": null
+          },
+          {
+            "name": "04-practice",
+            "path": ".build/runtime-audit-023/visual-snapshots.final-source-narrow-1-snapshots/04-practice.png",
+            "sha256": "67a8725d97471828fa86fd9e33f6ccc830017d0501c9f26f4c7e9cce82534654",
+            "pixelWidth": 980,
+            "pixelHeight": 900,
+            "captured": true,
+            "ready": true,
+            "visibleWebViewCount": 1,
+            "capturedWebViewCount": 1,
+            "thumbnailLoadConfirmed": null
+          },
+          {
+            "name": "05-score",
+            "path": ".build/runtime-audit-023/visual-snapshots.final-source-narrow-1-snapshots/05-score.png",
+            "sha256": "3f41c6ec1d3a172191a1d36011712ee145a288b8277f96447e9e2b5137d6f803",
+            "pixelWidth": 980,
+            "pixelHeight": 900,
+            "captured": true,
+            "ready": true,
+            "visibleWebViewCount": 1,
+            "capturedWebViewCount": 1,
+            "thumbnailLoadConfirmed": null
+          },
+          {
+            "name": "05-score-bottom",
+            "path": ".build/runtime-audit-023/visual-snapshots.final-source-narrow-1-snapshots/05-score-bottom.png",
+            "sha256": "bf23a9ab56989e69f556865cbc8cc947e2b7044adf11565f94d7f55ed9b9cf9b",
+            "pixelWidth": 980,
+            "pixelHeight": 900,
+            "captured": true,
+            "ready": true,
+            "visibleWebViewCount": 1,
+            "capturedWebViewCount": 0,
+            "thumbnailLoadConfirmed": null
+          },
+          {
+            "name": "06-studio",
+            "path": ".build/runtime-audit-023/visual-snapshots.final-source-narrow-1-snapshots/06-studio.png",
+            "sha256": "9a2568ad6b38dfc0ed139599e5bbea74da4668cc0afa9f452597c2f0894dfbea",
+            "pixelWidth": 980,
+            "pixelHeight": 900,
+            "captured": true,
+            "ready": true,
+            "visibleWebViewCount": 1,
+            "capturedWebViewCount": 1,
+            "thumbnailLoadConfirmed": null
+          },
+          {
+            "name": "06-studio-bottom",
+            "path": ".build/runtime-audit-023/visual-snapshots.final-source-narrow-1-snapshots/06-studio-bottom.png",
+            "sha256": "642e5d14f1db6974833eb637e4e3e6383cb69964939f4c184b4153ee94d7b329",
+            "pixelWidth": 980,
+            "pixelHeight": 900,
+            "captured": true,
+            "ready": true,
+            "visibleWebViewCount": 1,
+            "capturedWebViewCount": 1,
+            "thumbnailLoadConfirmed": null
+          }
+        ]
+      }
+    ]
+  },
+  "performanceVerification": {
+    "runs": {
+      "index": ".build/runtime-audit-023/final-unlocked-performance-index.json",
+      "total": 18,
+      "succeeded": 18,
+      "runs": [
+        {
+          "tag": "home.perf-unlocked-baseline-home-round1-1",
+          "result": "ok",
+          "exitCode": 0,
+          "timeout": false,
+          "report": ".build/runtime-audit-023/home.perf-unlocked-baseline-home-round1-1.jsonl"
+        },
+        {
+          "tag": "home.perf-unlocked-fixed-home-round1-1",
+          "result": "ok",
+          "exitCode": 0,
+          "timeout": false,
+          "report": ".build/runtime-audit-023/home.perf-unlocked-fixed-home-round1-1.jsonl"
+        },
+        {
+          "tag": "catalog.perf-unlocked-baseline-catalog-round1-1",
+          "result": "ok",
+          "exitCode": 0,
+          "timeout": false,
+          "report": ".build/runtime-audit-023/catalog.perf-unlocked-baseline-catalog-round1-1.jsonl"
+        },
+        {
+          "tag": "catalog.perf-unlocked-fixed-catalog-round1-1",
+          "result": "ok",
+          "exitCode": 0,
+          "timeout": false,
+          "report": ".build/runtime-audit-023/catalog.perf-unlocked-fixed-catalog-round1-1.jsonl"
+        },
+        {
+          "tag": "studio-edit.perf-unlocked-baseline-studio-edit-round1-1",
+          "result": "ok",
+          "exitCode": 0,
+          "timeout": false,
+          "report": ".build/runtime-audit-023/studio-edit.perf-unlocked-baseline-studio-edit-round1-1.jsonl"
+        },
+        {
+          "tag": "studio-edit.perf-unlocked-fixed-studio-edit-round1-1",
+          "result": "ok",
+          "exitCode": 0,
+          "timeout": false,
+          "report": ".build/runtime-audit-023/studio-edit.perf-unlocked-fixed-studio-edit-round1-1.jsonl"
+        },
+        {
+          "tag": "home.perf-unlocked-fixed-home-round2-1",
+          "result": "ok",
+          "exitCode": 0,
+          "timeout": false,
+          "report": ".build/runtime-audit-023/home.perf-unlocked-fixed-home-round2-1.jsonl"
+        },
+        {
+          "tag": "home.perf-unlocked-baseline-home-round2-1",
+          "result": "ok",
+          "exitCode": 0,
+          "timeout": false,
+          "report": ".build/runtime-audit-023/home.perf-unlocked-baseline-home-round2-1.jsonl"
+        },
+        {
+          "tag": "catalog.perf-unlocked-fixed-catalog-round2-1",
+          "result": "ok",
+          "exitCode": 0,
+          "timeout": false,
+          "report": ".build/runtime-audit-023/catalog.perf-unlocked-fixed-catalog-round2-1.jsonl"
+        },
+        {
+          "tag": "catalog.perf-unlocked-baseline-catalog-round2-1",
+          "result": "ok",
+          "exitCode": 0,
+          "timeout": false,
+          "report": ".build/runtime-audit-023/catalog.perf-unlocked-baseline-catalog-round2-1.jsonl"
+        },
+        {
+          "tag": "studio-edit.perf-unlocked-fixed-studio-edit-round2-1",
+          "result": "ok",
+          "exitCode": 0,
+          "timeout": false,
+          "report": ".build/runtime-audit-023/studio-edit.perf-unlocked-fixed-studio-edit-round2-1.jsonl"
+        },
+        {
+          "tag": "studio-edit.perf-unlocked-baseline-studio-edit-round2-1",
+          "result": "ok",
+          "exitCode": 0,
+          "timeout": false,
+          "report": ".build/runtime-audit-023/studio-edit.perf-unlocked-baseline-studio-edit-round2-1.jsonl"
+        },
+        {
+          "tag": "home.perf-unlocked-baseline-home-round3-1",
+          "result": "ok",
+          "exitCode": 0,
+          "timeout": false,
+          "report": ".build/runtime-audit-023/home.perf-unlocked-baseline-home-round3-1.jsonl"
+        },
+        {
+          "tag": "home.perf-unlocked-fixed-home-round3-1",
+          "result": "ok",
+          "exitCode": 0,
+          "timeout": false,
+          "report": ".build/runtime-audit-023/home.perf-unlocked-fixed-home-round3-1.jsonl"
+        },
+        {
+          "tag": "catalog.perf-unlocked-baseline-catalog-round3-1",
+          "result": "ok",
+          "exitCode": 0,
+          "timeout": false,
+          "report": ".build/runtime-audit-023/catalog.perf-unlocked-baseline-catalog-round3-1.jsonl"
+        },
+        {
+          "tag": "catalog.perf-unlocked-fixed-catalog-round3-1",
+          "result": "ok",
+          "exitCode": 0,
+          "timeout": false,
+          "report": ".build/runtime-audit-023/catalog.perf-unlocked-fixed-catalog-round3-1.jsonl"
+        },
+        {
+          "tag": "studio-edit.perf-unlocked-baseline-studio-edit-round3-1",
+          "result": "ok",
+          "exitCode": 0,
+          "timeout": false,
+          "report": ".build/runtime-audit-023/studio-edit.perf-unlocked-baseline-studio-edit-round3-1.jsonl"
+        },
+        {
+          "tag": "studio-edit.perf-unlocked-fixed-studio-edit-round3-1",
+          "result": "ok",
+          "exitCode": 0,
+          "timeout": false,
+          "report": ".build/runtime-audit-023/studio-edit.perf-unlocked-fixed-studio-edit-round3-1.jsonl"
+        }
+      ]
+    },
+    "summary": {
+      "at": "2026-10-25T08:18:39.306121+00:00",
+      "sampleCount": 18,
+      "successCount": 18,
+      "method": {
+        "device": "Intel MacBookPro15,1",
+        "cpu": "Intel(R) Core(TM) i7-8750H CPU @ 2.20GHz",
+        "memoryBytes": 34359738368,
+        "os": "13.7.8",
+        "window": [
+          1280,
+          720
+        ],
+        "sourceBuildFlags": "Core -Osize, App -Osize, MIMI_RUNTIME_DIAGNOSTICS",
+        "operationWindow": "12 seconds, operations wait for real UI/render acknowledgements",
+        "rounds": 3,
+        "ordering": "For each case: baseline/fixed in rounds 1 and 3; fixed/baseline in round 2",
+        "renderTraceEnabled": false,
+        "powerAssertion": "Temporary caffeinate -diu, user confirmed Mac unlocked; no permanent setting change",
+        "backgroundCompilation": false,
+        "scope": "Native diagnostic process CPU and 50ms main-queue timer lateness. Excludes WebKit/GPU/WindowServer CPU; not FPS or energy.",
+        "allThreeDiagnosticDriversByteIdentical": true
+      },
+      "cases": {
+        "home": {
+          "baseline": {
+            "samples": [
+              {
+                "round": 1,
+                "result": "ok",
+                "cpuSeconds": 1.369999,
+                "p50Ms": 0.887178,
+                "p99Ms": 135.059818,
+                "durationMs": 12599.677652004175,
+                "report": ".build/runtime-audit-023/home.perf-unlocked-baseline-home-round1-1.jsonl"
+              },
+              {
+                "round": 2,
+                "result": "ok",
+                "cpuSeconds": 1.45185,
+                "p50Ms": 1.330649,
+                "p99Ms": 134.26578,
+                "durationMs": 12851.98139300337,
+                "report": ".build/runtime-audit-023/home.perf-unlocked-baseline-home-round2-1.jsonl"
+              },
+              {
+                "round": 3,
+                "result": "ok",
+                "cpuSeconds": 1.4260309999999998,
+                "p50Ms": 1.281322,
+                "p99Ms": 140.707847,
+                "durationMs": 12849.673059005,
+                "report": ".build/runtime-audit-023/home.perf-unlocked-baseline-home-round3-1.jsonl"
+              }
+            ],
+            "medians": {
+              "cpuSeconds": 1.4260309999999998,
+              "p50Ms": 1.281322,
+              "p99Ms": 135.059818,
+              "durationMs": 12849.673059005
+            }
+          },
+          "fixed": {
+            "samples": [
+              {
+                "round": 1,
+                "result": "ok",
+                "cpuSeconds": 1.512252,
+                "p50Ms": 0.911324,
+                "p99Ms": 139.673084,
+                "durationMs": 12699.994951006374,
+                "report": ".build/runtime-audit-023/home.perf-unlocked-fixed-home-round1-1.jsonl"
+              },
+              {
+                "round": 2,
+                "result": "ok",
+                "cpuSeconds": 1.529227,
+                "p50Ms": 1.214723,
+                "p99Ms": 137.75647,
+                "durationMs": 12751.983485002711,
+                "report": ".build/runtime-audit-023/home.perf-unlocked-fixed-home-round2-1.jsonl"
+              },
+              {
+                "round": 3,
+                "result": "ok",
+                "cpuSeconds": 1.5037269999999998,
+                "p50Ms": 0.905802,
+                "p99Ms": 136.423841,
+                "durationMs": 12851.170006993925,
+                "report": ".build/runtime-audit-023/home.perf-unlocked-fixed-home-round3-1.jsonl"
+              }
+            ],
+            "medians": {
+              "cpuSeconds": 1.512252,
+              "p50Ms": 0.911324,
+              "p99Ms": 137.75647,
+              "durationMs": 12751.983485002711
+            }
+          },
+          "fixedChangePercent": {
+            "cpuSeconds": 6.046221996576517,
+            "p50Ms": -28.87626997741396,
+            "p99Ms": 1.9966352982942803,
+            "durationMs": -0.7602494908135249
+          }
+        },
+        "catalog": {
+          "baseline": {
+            "samples": [
+              {
+                "round": 1,
+                "result": "ok",
+                "cpuSeconds": 1.8903419999999997,
+                "p50Ms": 1.135273,
+                "p99Ms": 157.035096,
+                "durationMs": 12847.918626001047,
+                "report": ".build/runtime-audit-023/catalog.perf-unlocked-baseline-catalog-round1-1.jsonl"
+              },
+              {
+                "round": 2,
+                "result": "ok",
+                "cpuSeconds": 1.8314460000000004,
+                "p50Ms": 0.921754,
+                "p99Ms": 166.292438,
+                "durationMs": 12897.73627199611,
+                "report": ".build/runtime-audit-023/catalog.perf-unlocked-baseline-catalog-round2-1.jsonl"
+              },
+              {
+                "round": 3,
+                "result": "ok",
+                "cpuSeconds": 1.8240709999999998,
+                "p50Ms": 1.454041,
+                "p99Ms": 178.418265,
+                "durationMs": 13001.434890000382,
+                "report": ".build/runtime-audit-023/catalog.perf-unlocked-baseline-catalog-round3-1.jsonl"
+              }
+            ],
+            "medians": {
+              "cpuSeconds": 1.8314460000000004,
+              "p50Ms": 1.135273,
+              "p99Ms": 166.292438,
+              "durationMs": 12897.73627199611
+            }
+          },
+          "fixed": {
+            "samples": [
+              {
+                "round": 1,
+                "result": "ok",
+                "cpuSeconds": 1.8532159999999998,
+                "p50Ms": 0.93556,
+                "p99Ms": 144.980472,
+                "durationMs": 12748.029892005434,
+                "report": ".build/runtime-audit-023/catalog.perf-unlocked-fixed-catalog-round1-1.jsonl"
+              },
+              {
+                "round": 2,
+                "result": "ok",
+                "cpuSeconds": 1.7395429999999998,
+                "p50Ms": 0.86429,
+                "p99Ms": 99.051261,
+                "durationMs": 12849.744628001645,
+                "report": ".build/runtime-audit-023/catalog.perf-unlocked-fixed-catalog-round2-1.jsonl"
+              },
+              {
+                "round": 3,
+                "result": "ok",
+                "cpuSeconds": 1.7748990000000002,
+                "p50Ms": 0.757201,
+                "p99Ms": 110.373757,
+                "durationMs": 12798.042758004158,
+                "report": ".build/runtime-audit-023/catalog.perf-unlocked-fixed-catalog-round3-1.jsonl"
+              }
+            ],
+            "medians": {
+              "cpuSeconds": 1.7748990000000002,
+              "p50Ms": 0.86429,
+              "p99Ms": 110.373757,
+              "durationMs": 12798.042758004158
+            }
+          },
+          "fixedChangePercent": {
+            "cpuSeconds": -3.0875603211888425,
+            "p50Ms": -23.869412907732325,
+            "p99Ms": -33.62671308000187,
+            "durationMs": -0.7729535779732788
+          }
+        },
+        "studio-edit": {
+          "baseline": {
+            "samples": [
+              {
+                "round": 1,
+                "result": "ok",
+                "cpuSeconds": 9.996438000000001,
+                "p50Ms": 32.502067,
+                "p99Ms": 102.322347,
+                "durationMs": 12062.363880999328,
+                "report": ".build/runtime-audit-023/studio-edit.perf-unlocked-baseline-studio-edit-round1-1.jsonl",
+                "edits": 30,
+                "cpuMsPerEdit": 333.2146000000001,
+                "editsPerSecond": 2.4870746974609257,
+                "saveCount": 36,
+                "undoVerified": true,
+                "redoVerified": true,
+                "saveVerified": true,
+                "durabilityGate": true
+              },
+              {
+                "round": 2,
+                "result": "ok",
+                "cpuSeconds": 10.163893,
+                "p50Ms": 24.871736,
+                "p99Ms": 99.253069,
+                "durationMs": 12077.846366002632,
+                "report": ".build/runtime-audit-023/studio-edit.perf-unlocked-baseline-studio-edit-round2-1.jsonl",
+                "edits": 31,
+                "cpuMsPerEdit": 327.86751612903225,
+                "editsPerSecond": 2.5666827562288304,
+                "saveCount": 37,
+                "undoVerified": true,
+                "redoVerified": true,
+                "saveVerified": true,
+                "durabilityGate": true
+              },
+              {
+                "round": 3,
+                "result": "ok",
+                "cpuSeconds": 10.229317,
+                "p50Ms": 27.962991,
+                "p99Ms": 100.987329,
+                "durationMs": 12009.817823993217,
+                "report": ".build/runtime-audit-023/studio-edit.perf-unlocked-baseline-studio-edit-round3-1.jsonl",
+                "edits": 31,
+                "cpuMsPerEdit": 329.97796774193546,
+                "editsPerSecond": 2.581221501800651,
+                "saveCount": 37,
+                "undoVerified": true,
+                "redoVerified": true,
+                "saveVerified": true,
+                "durabilityGate": true
+              }
+            ],
+            "medians": {
+              "cpuSeconds": 10.163893,
+              "p50Ms": 27.962991,
+              "p99Ms": 100.987329,
+              "durationMs": 12062.363880999328,
+              "edits": 31,
+              "cpuMsPerEdit": 329.97796774193546,
+              "editsPerSecond": 2.5666827562288304,
+              "saveCount": 37
+            }
+          },
+          "fixed": {
+            "samples": [
+              {
+                "round": 1,
+                "result": "ok",
+                "cpuSeconds": 8.343869,
+                "p50Ms": 5.87102,
+                "p99Ms": 90.571411,
+                "durationMs": 12142.585645000509,
+                "report": ".build/runtime-audit-023/studio-edit.perf-unlocked-fixed-studio-edit-round1-1.jsonl",
+                "edits": 50,
+                "cpuMsPerEdit": 166.87738000000002,
+                "editsPerSecond": 4.117739125899154,
+                "saveCount": 8,
+                "undoVerified": true,
+                "redoVerified": true,
+                "saveVerified": true,
+                "durabilityGate": true
+              },
+              {
+                "round": 2,
+                "result": "ok",
+                "cpuSeconds": 8.347088,
+                "p50Ms": 7.080067,
+                "p99Ms": 85.463195,
+                "durationMs": 12137.078824998753,
+                "report": ".build/runtime-audit-023/studio-edit.perf-unlocked-fixed-studio-edit-round2-1.jsonl",
+                "edits": 50,
+                "cpuMsPerEdit": 166.94176,
+                "editsPerSecond": 4.119607421269684,
+                "saveCount": 8,
+                "undoVerified": true,
+                "redoVerified": true,
+                "saveVerified": true,
+                "durabilityGate": true
+              },
+              {
+                "round": 3,
+                "result": "ok",
+                "cpuSeconds": 8.411672,
+                "p50Ms": 7.179306,
+                "p99Ms": 85.293407,
+                "durationMs": 12099.702118997811,
+                "report": ".build/runtime-audit-023/studio-edit.perf-unlocked-fixed-studio-edit-round3-1.jsonl",
+                "edits": 50,
+                "cpuMsPerEdit": 168.23343999999997,
+                "editsPerSecond": 4.132333135829412,
+                "saveCount": 8,
+                "undoVerified": true,
+                "redoVerified": true,
+                "saveVerified": true,
+                "durabilityGate": true
+              }
+            ],
+            "medians": {
+              "cpuSeconds": 8.347088,
+              "p50Ms": 7.080067,
+              "p99Ms": 85.463195,
+              "durationMs": 12137.078824998753,
+              "edits": 50,
+              "cpuMsPerEdit": 166.94176,
+              "editsPerSecond": 4.119607421269684,
+              "saveCount": 8
+            }
+          },
+          "fixedChangePercent": {
+            "cpuSeconds": -17.875089790890165,
+            "p50Ms": -74.68058048582857,
+            "p99Ms": -15.372358249023499,
+            "durationMs": 0.6194054891439205,
+            "edits": 61.29032258064515,
+            "cpuMsPerEdit": -49.4082101473637,
+            "editsPerSecond": 60.50317910432108,
+            "saveCount": -78.37837837837837
+          }
+        }
+      }
+    },
+    "claimsDoNotInclude": [
+      "FPS",
+      "energy",
+      "all WebKit/GPU/WindowServer CPU",
+      "all interactions",
+      "long-term behavior",
+      "exact production-binary performance"
+    ]
+  },
+  "package": {
+    "at": "2026-10-25T08:11:26.040957+00:00",
+    "app": "/Users/mimi/Documents/Codex/2026-10-24/l/outputs/Native-Mac-0.2.3/MIMI Guitar.app",
+    "dmg": "/Users/mimi/Documents/Codex/2026-10-24/l/outputs/Native-Mac-0.2.3/MIMI-Guitar-macOS-universal2.dmg",
+    "checks": [
+      {
+        "name": "app-codesign",
+        "exitCode": 0,
+        "passed": true
+      },
+      {
+        "name": "architectures",
+        "exitCode": 0,
+        "passed": true
+      },
+      {
+        "name": "dmg-byte-match-Contents/MacOS/MIMIGuitarMac",
+        "passed": true,
+        "sha256": "90c2f11e18df7bdefbd2eaf1a07c2f91fbb3ef95618b847c62f5cc7f9dea7da0"
+      },
+      {
+        "name": "dmg-byte-match-Contents/Info.plist",
+        "passed": true,
+        "sha256": "f016bc59078f468e5447ce5faa6cdd9d41e8106033915da7d1b8bd9429de9414"
+      },
+      {
+        "name": "dmg-byte-match-Contents/_CodeSignature/CodeResources",
+        "passed": true,
+        "sha256": "ff2c17e6d8a3d22ad578d5bdf0d2bfa648f2529b68745a7acfc00477e2ab9405"
+      },
+      {
+        "name": "mounted-codesign",
+        "exitCode": 0,
+        "passed": true
+      },
+      {
+        "name": "mounted-resources",
+        "exitCode": 0,
+        "passed": true
+      }
+    ],
+    "architectures": [
+      "x86_64",
+      "arm64"
+    ],
+    "version": "0.2.3",
+    "build": "202610250756",
+    "minimumMacOS": "13.0",
+    "mountDevices": [
+      "/dev/disk4",
+      "/dev/disk4s1",
+      "/dev/disk5s1",
+      "/dev/disk5"
+    ],
+    "resourceFileCount": 32649,
+    "resourceBytes": 592819671,
+    "storageFileCount": 32599,
+    "storageBytes": 555536315,
+    "sqliteIntegrity": "ok",
+    "sqliteUserVersion": 0,
+    "exportMetadata": {
+      "schema_version": "2"
+    },
+    "catalogCount": 16233,
+    "articleCount": 8,
+    "applicationsLink": "/Applications",
+    "dmgBytes": 560234782,
+    "dmgSHA256": "93b62392a953ffdcbd8b14877aad789198871ca862d107e45f470c81d355f59d",
+    "executableSHA256": "90c2f11e18df7bdefbd2eaf1a07c2f91fbb3ef95618b847c62f5cc7f9dea7da0",
+    "signature": "ad-hoc",
+    "notarized": false,
+    "passed": true,
+    "detachExitCode": 0
+  },
+  "buildManifestSHA256": "409a4ac08de05e2e331f9236cfb04cf4203dbac42b4d5e44333572fba1f1c88d",
+  "normalProductStartup": {
+    "at": "2026-10-25T08:30:58.390505+00:00",
+    "app": "/Users/mimi/Documents/Codex/2026-10-24/l/outputs/Native-Mac-0.2.3/MIMI Guitar.app",
+    "processesBefore": [],
+    "scope": "Normal product binary startup only; no automation of product UI or edits to personal data.",
+    "openExitCode": 0,
+    "openStderr": "",
+    "processesAfter12s": [
+      "64877 /Users/mimi/Documents/Codex/2026-10-24/l/outputs/Native-Mac-0.2.3/MIMI Guitar.app/Contents/MacOS/MIMIGuitarMac"
+    ],
+    "executed": true,
+    "passed": true
+  },
+  "negativeEvidence": [
+    {
+      "kind": "historical_runtime_failure",
+      "summary": "Early baseline Studio render acknowledgement timed out; not counted as a complete performance sample.",
+      "path": ".build/runtime-audit-023/studio-edit.baseline-2.jsonl",
+      "filePresent": true
+    },
+    {
+      "kind": "diagnostic_assembly_failure",
+      "summary": "Initial manually assembled diagnostic App lacked Resources directory; corrected v2 was rerun.",
+      "path": ".build/runtime-audit-023/matched-baseline-scenario-index.json",
+      "filePresent": true
+    },
+    {
+      "kind": "runtime_failure",
+      "summary": "Studio actual blank render, initial_score_render timeout. Hidden rAF diagnosis led to a single cancellable render watchdog.",
+      "path": ".build/runtime-audit-023/studio-edit.stage7-resource-debug.jsonl",
+      "filePresent": true
+    },
+    {
+      "kind": "tool_false_positive",
+      "summary": "Reported ready but captured outgoing Practice WK for Score route. Strict current-route WK identity and nonblank artifact gates were added; old result not promoted.",
+      "path": ".build/runtime-audit-023/visual-snapshots.visual-stage8-main-1.jsonl",
+      "filePresent": true
+    },
+    {
+      "kind": "hidden_window_playback_failure",
+      "summary": "Playback not started while document hidden; original guard preserved. Final unlocked replay passed.",
+      "path": ".build/runtime-audit-023/full-player.stage8-player-check-1.jsonl",
+      "filePresent": true
+    },
+    {
+      "kind": "hidden_window_playback_failure",
+      "summary": "Playback not started while document hidden; final unlocked replay passed.",
+      "path": ".build/runtime-audit-023/practice-ui.stage8-player-check-1.jsonl",
+      "filePresent": true
+    },
+    {
+      "kind": "save_gate_failure",
+      "summary": "Old UI status gate failed after preview completion. Final gate checks persisted content, published saved-project acknowledgement, clean model and matching revisions. Baseline rebuilt with same final driver.",
+      "path": ".build/runtime-audit-023/studio-edit.perf-final-fixed-studio-round2-1.jsonl",
+      "filePresent": true
+    },
+    {
+      "kind": "save_gate_failure",
+      "summary": "Same historical UI status gate failure; retained without retroactive pass.",
+      "path": ".build/runtime-audit-023/studio-edit.perf-final-fixed-studio-round3-1.jsonl",
+      "filePresent": true
+    },
+    {
+      "kind": "build_interrupted",
+      "summary": "Initial package build intentionally stopped (143) for final narrow-layout fixes; universal-023-build.final.log later completed successfully.",
+      "path": ".build/runtime-audit-023/universal-023-build.log",
+      "filePresent": true
+    }
+  ],
+  "automatedTests": {
+    "added": false,
+    "run": false,
+    "note": "User-authorized runtime reproduction, typecheck and packaging checks were performed; no test suite added or run."
+  },
+  "limitations": [
+    "Original local website was unavailable; source and historical screenshot comparison does not prove pixel equality.",
+    "Snapshot route readiness does not verify every control, thumbnail or state.",
+    "Representative IBE/GP5/MusicXML scenarios do not cover all 16233 scores or all format variants.",
+    "XHE was checked as text only.",
+    "Nonzero digital audio does not establish speaker/headphone listening quality.",
+    "Home did not show an overall performance improvement in the final matched runs.",
+    "FPS, energy, long sessions and full sleep/resume behavior were not measured.",
+    "Actual Finder/drop/open/save/print panels and backup/restore flows remain in the full acceptance matrix.",
+    "Concurrency, interrupted save, process termination and crash durability are not fully accepted.",
+    "Apple silicon slice cross-compiled and verified structurally; no Apple silicon device run.",
+    "Ad-hoc signature only; no Developer ID signature or Apple notarization."
+  ],
+  "nextAcceptancePlan": "native-macos/WEB-FIDELITY-RESTORATION.zh-CN.md",
+  "fullParityMatrix": "native-macos/FULL-PARITY-MATRIX.zh-CN.md"
+}

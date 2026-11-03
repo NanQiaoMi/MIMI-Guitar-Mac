@@ -75,7 +75,10 @@ struct ScoreDetailView: View {
         }.frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 
+    var explicitScoreID: String? = nil
+
     private var requestedScoreID: String? {
+        if let explicitScoreID { return explicitScoreID }
         guard case .score(let id) = model.route else { return nil }
         return id
     }
@@ -129,7 +132,7 @@ struct ScoreDetailView: View {
                 .padding(.vertical, model.isScoreFocused ? 0 : 32)
                 .frame(maxWidth: model.isScoreFocused ? .infinity : 1240, alignment: .leading)
                 .frame(maxWidth: .infinity, alignment: .top)
-                .background(RouteScrollPositionTracker(model: model).frame(width: 0, height: 0), alignment: .topLeading)
+                .background(RouteScrollPositionTracker(model: model, route: .score(id: requestedScoreID ?? "")).frame(width: 0, height: 0), alignment: .topLeading)
             }
             .scrollIndicators(.hidden)
             .scrollDisabled(model.isScoreFocused)
@@ -181,7 +184,7 @@ struct ScoreDetailView: View {
                 .padding(.vertical, model.isScoreFocused ? 0 : 32)
                 .frame(maxWidth: model.isScoreFocused ? .infinity : 1240, alignment: .leading)
                 .frame(maxWidth: .infinity, alignment: .top)
-                .background(RouteScrollPositionTracker(model: model).frame(width: 0, height: 0), alignment: .topLeading)
+                .background(RouteScrollPositionTracker(model: model, route: .score(id: requestedScoreID ?? "")).frame(width: 0, height: 0), alignment: .topLeading)
             }
             .scrollIndicators(.hidden)
             .scrollDisabled(model.isScoreFocused)
