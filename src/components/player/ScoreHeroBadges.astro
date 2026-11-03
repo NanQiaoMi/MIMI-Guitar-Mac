@@ -1,0 +1,183 @@
+---
+interface Props {
+  tab: {
+    id: string;
+    category?: string;
+    difficulty?: number;
+    sheetForm?: number;
+    key?: string | null;
+    bpm?: number | null;
+    heat?: number;
+    format?: string;
+  };
+  backUrl?: string;
+  backText?: string;
+}
+
+const { tab, backUrl, backText } = Astro.props;
+
+// Category
+const isUkulele = tab.category === 'ukulele';
+const categoryLabel = isUkulele ? '尤克里里' : tab.category === 'bass' ? '贝斯' : '吉他';
+const defaultBackUrl = isUkulele ? '/ukulele' : '/tabs';
+const defaultBackText = isUkulele ? '返回全部尤克里里谱' : '返回全部吉他谱';
+const resolvedBackUrl = backUrl ?? defaultBackUrl;
+const resolvedBackText = backText ?? defaultBackText;
+
+// Difficulty calculation & colors matching native macOS ScoreDifficultyMeterBadge
+const rawDifficulty = tab.difficulty ?? 0;
+const difficultyMap = ['', '零基础', '初级', '中级', '高级', '专业'];
+const difficultyLabel = difficultyMap[rawDifficulty] ?? '';
+const difficultyLevel = Math.min(5, Math.max(1, rawDifficulty || 1));
+
+const difficultyStyles: Record<number, { text: string; border: string; bg: string; dotFilled: string; dotEmpty: string }> = {
+  1: { // 零基础：清新竹绿 #3E885B
+    text: 'text-[#3E885B]',
+    border: 'border-[#3E885B]/25',
+    bg: 'bg-gradient-to-b from-[#3E885B]/11 to-[#3E885B]/05',
+    dotFilled: 'bg-[#3E885B]',
+    dotEmpty: 'bg-[#3E885B]/20',
+  },
+  2: { // 初级：松柏青绿 #2D7D62
+    text: 'text-[#2D7D62]',
+    border: 'border-[#2D7D62]/25',
+    bg: 'bg-gradient-to-b from-[#2D7D62]/11 to-[#2D7D62]/05',
+    dotFilled: 'bg-[#2D7D62]',
+    dotEmpty: 'bg-[#2D7D62]/20',
+  },
+  3: { // 中级：靛青湖蓝 #286A8E
+    text: 'text-[#286A8E]',
+    border: 'border-[#286A8E]/25',
+    bg: 'bg-gradient-to-b from-[#286A8E]/11 to-[#286A8E]/05',
+    dotFilled: 'bg-[#286A8E]',
+    dotEmpty: 'bg-[#286A8E]/20',
+  },
+  4: { // 高级：暖赭褐 #B55A26
+    text: 'text-[#B55A26]',
+    border: 'border-[#B55A26]/25',
+    bg: 'bg-gradient-to-b from-[#B55A26]/11 to-[#B55A26]/05',
+    dotFilled: 'bg-[#B55A26]',
+    dotEmpty: 'bg-[#B55A26]/20',
+  },
+  5: { // 专业：琥珀金棕 #8F6D2B
+    text: 'text-[#8F6D2B]',
+    border: 'border-[#8F6D2B]/25',
+    bg: 'bg-gradient-to-b from-[#8F6D2B]/11 to-[#8F6D2B]/05',
+    dotFilled: 'bg-[#8F6D2B]',
+    dotEmpty: 'bg-[#8F6D2B]/20',
+  },
+};
+const currentDiffStyle = difficultyStyles[difficultyLevel] ?? difficultyStyles[3];
+
+// Arrangement (sheetForm) matching native macOS ScoreArrangementBadge
+const formMap = ['', '弹唱谱', '指弹谱', '和弦谱', isUkulele ? '四线谱' : '六线谱'];
+const formLabel = formMap[tab.sheetForm ?? 0] ?? '';
+const arrangementIcon = formLabel.includes('指弹') ? '👆' : formLabel.includes('弹唱') ? '🎤' : formLabel.includes('和弦') ? '▦' : '🎵';
+
+// Key & BPM cleanup matching native ScoreMusicalMetricsPod
+const rawKey = tab.key?.trim() ?? '';
+const cleanKey = rawKey ? (rawKey.endsWith('调') ? rawKey.slice(0, -1).trim() : rawKey) : '';
+const bpm = tab.bpm && tab.bpm > 0 ? tab.bpm : null;
+
+// Heat text matching native ScoreHeatPill
+const heatNumber = tab.heat ?? 0;
+const heatText = heatNumber >= 10000 ? (heatNumber / 10000).toFixed(1) + '万' : (heatNumber > 0 ? String(heatNumber) : '');
+
+// Format
+const formatText = (tab.format || 'GP').toUpperCase();
+---
+
+<nav aria-label="曲谱属性与导航" class="flex flex-wrap items-center gap-2">
+  <!-- 返回上级曲库导航 -->
+  <a
+    href={resolvedBackUrl}
+    class="inline-flex h-6 items-center gap-1 rounded-[7px] border border-[#e2dacd] bg-[#fbf9f5] px-2 text-[11px] font-medium text-[#736859] shadow-2xs transition-colors hover:bg-[#f2ece0] hover:text-[#1a1816]"
+    title={resolvedBackText}
+  >
+    <span aria-hidden="true" class="text-[9px] font-bold">←</span>
+    <span>{resolvedBackText}</span>
+  </a>
+
+  <!-- 乐器分类徽章 (ScoreInstrumentBadge) -->
+  <span
+    class="inline-flex h-6 items-center gap-1 rounded-[7px] border border-[#c84b31]/26 bg-gradient-to-b from-[#c84b31]/12 to-[#c84b31]/06 px-2 text-[11px] font-semibold text-[#c84b31]"
+    title={`乐器分类：${categoryLabel}`}
+  >
+    <span aria-hidden="true" class="text-[10px]">{isUkulele ? '🪕' : '🎸'}</span>
+    <span>{categoryLabel}</span>
+  </span>
+
+  <!-- 五阶音律刻度难度徽章 (ScoreDifficultyMeterBadge) -->
+  {difficultyLabel && (
+    <span
+      class={`inline-flex h-6 items-center gap-1.5 rounded-[7px] border ${currentDiffStyle.border} ${currentDiffStyle.bg} px-2 text-[11px] font-semibold ${currentDiffStyle.text}`}
+      title={`演奏难度：${difficultyLabel}`}
+    >
+      <span>{difficultyLabel}</span>
+      <span class="inline-flex items-center gap-[2.5px]" aria-label={`难度星级 ${difficultyLevel} / 5`}>
+        {[1, 2, 3, 4, 5].map((step) => (
+          <span
+            class={`inline-block h-[3.5px] w-[3.5px] rounded-full transition-opacity ${step <= difficultyLevel ? currentDiffStyle.dotFilled : currentDiffStyle.dotEmpty}`}
+          />
+        ))}
+      </span>
+    </span>
+  )}
+
+  <!-- 谱型徽章 (ScoreArrangementBadge) -->
+  {formLabel && (
+    <span
+      class="inline-flex h-6 items-center gap-1 rounded-[7px] border border-[#2e6b48]/22 bg-gradient-to-b from-[#2e6b48]/10 to-[#2e6b48]/04 px-2 text-[11px] font-medium text-[#2e6b48]"
+      title={`编配谱型：${formLabel}`}
+    >
+      <span aria-hidden="true" class="text-[9.5px]">{arrangementIcon}</span>
+      <span>{formLabel}</span>
+    </span>
+  )}
+
+  <!-- 乐理度量胶囊 (ScoreMusicalMetricsPod) -->
+  {(cleanKey || bpm) && (
+    <div
+      class="inline-flex h-6 items-center rounded-[7px] border border-[#e2dacd] bg-[#f8f5ee] shadow-2xs"
+      title={`调性：${cleanKey || '未标注'} · 速度：${bpm ? bpm + ' BPM' : '未标注'}`}
+    >
+      {cleanKey && (
+        <span class="inline-flex items-baseline gap-0.5 px-2 text-[11px]">
+          <strong class="font-display font-bold text-[#1a1816]">{cleanKey}</strong>
+          <span class="text-[9.5px] font-medium text-[#705c42]">调</span>
+        </span>
+      )}
+      {cleanKey && bpm && (
+        <span class="inline-block h-2.5 w-[0.8px] bg-[#e2dacd]" aria-hidden="true" />
+      )}
+      {bpm && (
+        <span class="inline-flex items-center gap-1 px-2 text-[11px] font-semibold text-[#584a3b]">
+          <span class="font-sans text-[10px] text-[#8c7b68]">♩</span>
+          <span>{bpm}</span>
+          <span class="text-[8.5px] font-medium text-[#8c7b68]">BPM</span>
+        </span>
+      )}
+    </div>
+  )}
+
+  <!-- 热度胶囊 (ScoreHeatPill) -->
+  {heatText && (
+    <span
+      class="inline-flex h-6 items-center gap-1 rounded-full border border-[#c84b31]/18 bg-[#c84b31]/07 px-2 text-[11px] font-semibold text-[#c84b31]"
+      title={`谱面热度：${heatText}`}
+    >
+      <span aria-hidden="true" class="text-[10px] text-[#ea580c]">🔥</span>
+      <span>{heatText}</span>
+    </span>
+  )}
+
+  <!-- 格式徽章 (ScoreFormatBadge) -->
+  {formatText && (
+    <span
+      class="inline-flex h-6 items-center rounded-[6px] border border-[#e2dacd] bg-[#f0eae0] px-1.5 font-mono text-[10px] font-bold tracking-tight text-[#584a3b]"
+      title={`文件格式：${formatText}`}
+    >
+      {formatText}
+    </span>
+  )}
+</nav>

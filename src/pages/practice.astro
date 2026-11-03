@@ -1,6 +1,19 @@
 ---
 import Base from '../layouts/Base.astro';
 import PersonalPractice from '../components/PersonalPractice.svelte';
+
+const dailyTips = [
+  '慢练是通往飞速的唯一捷径：在 50% 速度下确保每个音清晰饱满，肌肉记忆自会成倍加速。',
+  '左手换把位时拇指切忌大力抓握琴颈，先放松滑行再落指，换弦更轻盈自然。',
+  '小节拆分法：把卡手的难点单独圈出 1~2 小节开启循环跟弹，攻克后再连贯演奏。',
+  '倾听时值的饱满度：不仅要把音符弹对，更要让每个时值充分延展，伴奏与主旋律才能真正呼吸。',
+  '节拍器是乐手最好的朋友：在节奏的律动中寻找松弛感，保持稳定的内拍比盲目提速更重要。',
+  '右手拨弦手指以 45 度角切入琴弦，发出的音色最温润结实，避免干瘪杂音。',
+  '温故而知新：每次练新曲子前，花 5 分钟弹一首完全掌握的老歌热身，迅速找回最佳手感。',
+];
+
+const dayOfYear = Math.floor((Date.now() - new Date(new Date().getFullYear(), 0, 0).getTime()) / 86400000);
+const todayTip = dailyTips[Math.abs(dayOfYear) % dailyTips.length];
 ---
 
 <Base title="我的练习 · MIMI Guitar">
@@ -16,9 +29,9 @@ import PersonalPractice from '../components/PersonalPractice.svelte';
       </div>
       <div class="rounded-xl border hairline bg-paper p-3 text-xs text-ash shadow-sm">
         <div class="flex items-center gap-2 text-[#8c6d38] font-semibold">
-          <span>💡 每日琴房箴言</span>
+          <span>✨ 每日琴房灵感</span>
         </div>
-        <p class="mt-1 max-w-sm text-[#584a3b]">慢练是通往飞速的唯一捷径：在 50% 速度下确保每个音清晰饱满，肌肉记忆自会成倍加速。</p>
+        <p class="mt-1 max-w-sm text-[#584a3b]">{todayTip}</p>
       </div>
     </header>
     <PersonalPractice client:load />
