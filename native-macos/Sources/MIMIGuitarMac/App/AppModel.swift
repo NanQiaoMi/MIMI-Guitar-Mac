@@ -209,6 +209,7 @@ final class AppModel: ObservableObject {
     private var didReportPublicationCacheError = false
     private var pendingSearch: Task<Void, Never>?
     private var routeHistory: [RouteHistoryState] = []
+    private var routeForwardHistory: [RouteHistoryState] = []
     private var authenticationReturnDestination: String?
     private weak var mainWindow: NSWindow?
     private var windowWasFullScreenBeforeScoreFocus: Bool?
@@ -363,6 +364,7 @@ final class AppModel: ObservableObject {
     func navigate(_ next: NativeRoute) {
         let next = normalizedPracticeRoute(next)
         pushCurrentRouteState()
+        routeForwardHistory.removeAll()
         if case .authenticationReturn = next {
             setRoute(next)
         } else if next == .login || next == .register, let destination = authenticationReturnDestination {
@@ -386,6 +388,7 @@ final class AppModel: ObservableObject {
     }
 
     var canNavigateBack: Bool { !routeHistory.isEmpty }
+    var canNavigateForward: Bool { !routeForwardHistory.isEmpty }
 
     var canToggleScoreFullscreen: Bool { routeSupportsScoreFocus(route) }
 
@@ -512,17 +515,30 @@ final class AppModel: ObservableObject {
 
     func navigateBack() {
         guard let previous = routeHistory.popLast() else { return }
+        routeForwardHistory.append(createCurrentRouteHistoryState())
+        if routeForwardHistory.count > 60 { routeForwardHistory.removeFirst(routeForwardHistory.count - 60) }
         setRoute(previous.route, restoring: previous)
     }
 
-    private func pushCurrentRouteState() {
-        routeHistory.append(RouteHistoryState(
+    func navigateForward() {
+        guard let next = routeForwardHistory.popLast() else { return }
+        routeHistory.append(createCurrentRouteHistoryState())
+        if routeHistory.count > 60 { routeHistory.removeFirst(routeHistory.count - 60) }
+        setRoute(next.route, restoring: next)
+    }
+
+    private func createCurrentRouteHistoryState() -> RouteHistoryState {
+        RouteHistoryState(
             route: route, selectedSection: selectedSection, selectedLibrarySection: selectedLibrarySection, searchText: searchText, searchField: searchField,
             sort: sort, catalogPage: catalogPage, difficulty: difficultyFilter, style: styleFilter,
             key: keyFilter, tuning: tuningFilter, sheetForm: sheetFormFilter,
             articleSearch: articleSearch, articleSort: articleSort, articlePage: articlePage,
             scrollOffset: currentRouteScrollOffset
-        ))
+        )
+    }
+
+    private func pushCurrentRouteState() {
+        routeHistory.append(createCurrentRouteHistoryState())
         if routeHistory.count > 60 { routeHistory.removeFirst(routeHistory.count - 60) }
     }
 
@@ -1016,7 +1032,10 @@ final class AppModel: ObservableObject {
 
     func openCatalogItem(_ item: CatalogItem) {
         auditionController.pause()
-        if case .score(let activeID) = route, activeID == item.id {} else { pushCurrentRouteState() }
+        if case .score(let activeID) = route, activeID == item.id {} else {
+            pushCurrentRouteState()
+            routeForwardHistory.removeAll()
+        }
         invalidatePageLoads()
         loadMessage = nil
         selectedItem = item

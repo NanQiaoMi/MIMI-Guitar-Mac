@@ -125,6 +125,11 @@ final class NativeAuditionController: ObservableObject {
         begin(item: item, previewDuration: previewDuration)
     }
 
+    func toggleActive() {
+        guard let item = activeItem else { return }
+        toggle(item: item)
+    }
+
     /// The compact status bar uses this action to stop and dismiss audition.
     func pause() {
         hostModel?.closeAudition()
