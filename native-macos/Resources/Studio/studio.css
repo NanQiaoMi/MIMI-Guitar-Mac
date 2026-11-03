@@ -1,0 +1,49 @@
+@font-face {
+  font-family: "Bravura";
+  src: url("/font/Bravura.woff2") format("woff2"), url("/font/Bravura.woff") format("woff");
+  font-display: block;
+}
+@font-face {
+  font-family: "Cascadia Code";
+  src: url("/font/CascadiaCode.woff2") format("woff2"), url("/font/CascadiaCode.ttf") format("truetype");
+}
+@font-face {
+  font-family: "方正小标宋简体";
+  src: url("/font/FZXiaoBiaoSong.woff2") format("woff2"), url("/font/FZXiaoBiaoSong.TTF") format("truetype");
+}
+
+:root { color-scheme: light; --ink: #292724; --paper: #f6f2e8; --line: #d6d0c2; --gold: #c49a45; }
+* { box-sizing: border-box; }
+html, body { width: 100%; height: 100%; margin: 0; overflow: hidden; background: var(--paper); color: var(--ink); }
+body { font: 14px/1.5 -apple-system, BlinkMacSystemFont, "PingFang SC", sans-serif; }
+#studio-score-scroll { width: 100%; height: 100%; overflow: auto; overscroll-behavior: contain; padding: 12px 16px 32px; }
+#studio-score {
+  position: relative;
+  width: 100%;
+  min-height: 100%;
+  outline: none;
+  border: 1px solid #e4dbcc;
+  border-radius: 18px;
+  background:
+    linear-gradient(var(--gold), var(--gold)) left 14px top 14px / 26px 2px no-repeat,
+    linear-gradient(var(--gold), var(--gold)) left 14px top 14px / 2px 26px no-repeat,
+    linear-gradient(var(--gold), var(--gold)) right 14px top 14px / 26px 2px no-repeat,
+    linear-gradient(var(--gold), var(--gold)) right 14px top 14px / 2px 26px no-repeat,
+    linear-gradient(var(--gold), var(--gold)) left 14px bottom 14px / 26px 2px no-repeat,
+    linear-gradient(var(--gold), var(--gold)) left 14px bottom 14px / 2px 26px no-repeat,
+    linear-gradient(var(--gold), var(--gold)) right 14px bottom 14px / 26px 2px no-repeat,
+    linear-gradient(var(--gold), var(--gold)) right 14px bottom 14px / 2px 26px no-repeat,
+    #fbf9f4;
+  box-shadow: 0 10px 28px rgba(76, 59, 43, .045);
+}
+#studio-score:focus-visible .at-wrap { outline: 2px solid rgba(135, 103, 56, .4); outline-offset: 6px; }
+.at-wrap { margin: 0 auto; min-width: 720px; max-width: none; padding: 28px 28px 40px; }
+.at-surface { min-width: 720px; }
+.at-cursor-bar { filter: drop-shadow(0 0 2px rgba(145, 100, 39, .28)); }
+.at-cursor-beat { fill: rgba(202, 159, 80, .16) !important; }
+.at-highlight * { fill: #b17423 !important; }
+#studio-error { margin: 2rem auto; max-width: 640px; padding: 16px 18px; border: 1px solid #c97961; border-radius: 9px; background: #fff1ed; color: #7c3325; white-space: pre-wrap; }
+@media print {
+  html, body, #studio-score-scroll { overflow: visible !important; height: auto !important; background: white !important; padding: 0 !important; }
+  .at-wrap { min-width: 0; max-width: none; padding: 0; }
+}
