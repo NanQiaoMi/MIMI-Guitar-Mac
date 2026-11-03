@@ -57,8 +57,20 @@
     playableUrl = '';
   }
 
+  function normalizeScoreParam(raw: string | null): string {
+    if (!raw) return '';
+    const trimmed = raw.trim();
+    if (!trimmed) return '';
+    if (trimmed.startsWith('catalog:') || trimmed.startsWith('private:') || trimmed.startsWith('project:')) {
+      return trimmed;
+    }
+    return `catalog:${trimmed}`;
+  }
+
   function isActivePracticeScore(source: PersonalData, scoreId: string): boolean {
-    return source.practiceItems.some((item) => item.scoreId === scoreId && item.status !== 'archived');
+    if (!scoreId) return false;
+    const normalized = normalizeScoreParam(scoreId);
+    return source.practiceItems.some((item) => (item.scoreId === scoreId || item.scoreId === normalized) && item.status !== 'archived');
   }
 
   function scoreTransitionKey(score: PersonalScore | null, scoreId: string, status: string): string {
@@ -260,11 +272,12 @@
     data = next;
     loading = false;
     if (!currentId) {
-      const requestedId = new URLSearchParams(location.search).get('score') ?? '';
+      const urlParams = new URLSearchParams(location.search);
+      const requestedId = normalizeScoreParam(urlParams.get('score') ?? urlParams.get('tabId'));
       if (!isInitial && explicitRequestPending) { deferredDataReconcile = true; return; }
       const requestedIsActive = requestedId && isActivePracticeScore(next, requestedId);
       if (!isInitial && !requestedIsActive) return;
-      const preferredId = isInitial ? preferredPracticeScoreId(next.practiceItems, requestedId) : requestedId;
+      const preferredId = isInitial ? (requestedIsActive ? requestedId : preferredPracticeScoreId(next.practiceItems, requestedId)) : requestedId;
       if (preferredId) void selectScore(preferredId, true);
       return;
     }
@@ -351,7 +364,8 @@
     });
     void dataReads.refresh();
     const pop = () => {
-      const requestedId = new URLSearchParams(location.search).get('score') ?? '';
+      const urlParams = new URLSearchParams(location.search);
+      const requestedId = normalizeScoreParam(urlParams.get('score') ?? urlParams.get('tabId'));
       if (requestedId && data && !isActivePracticeScore(data, requestedId)) {
         error = '历史记录中的曲谱当前不在待练列表，已保留当前练习。';
         restoreUrlToConfirmedSelection();
