@@ -80,6 +80,11 @@ struct MainWindowView: View {
             model.setRouteTransitionCaptureHandler(nil)
         }
         .onExitCommand { model.handleScoreFocusEscape() }
+        .onReceive(NotificationCenter.default.publisher(for: Notification.Name("MIMI.TogglePlayback"))) { _ in
+            if !model.canToggleScoreFullscreen, model.auditionController.activeItem != nil {
+                model.auditionController.toggleActive()
+            }
+        }
         .animation(motionPolicy.controlAnimation, value: isDropTargeted)
         .environment(\.mimiFooterNavigate) { route in model.navigate(route) }
     }
@@ -156,7 +161,7 @@ struct MainWindowView: View {
                     pageContentWithSiteFooter(for: route, bottomPadding: 30, includeFooter: false) { HomeView() }
                         .id("home-scroll-top")
                 }
-                    .scrollIndicators(.hidden)
+                    .scrollIndicators(.automatic)
                     .onReceive(NotificationCenter.default.publisher(for: .init("MIMI.ScrollToTop"))) { _ in
                         withAnimation(reduceMotion || motionPreference == "off" ? nil : .easeOut(duration: 0.2)) {
                             proxy.scrollTo("home-scroll-top", anchor: .top)
@@ -167,7 +172,7 @@ struct MainWindowView: View {
             ScrollView(.vertical) {
                 pageContentWithSiteFooter(for: route) { CatalogListView() }
             }
-                .scrollIndicators(.hidden)
+                .scrollIndicators(.automatic)
         case .search(_, let domain):
             ScrollView(.vertical) {
                 pageContentWithSiteFooter(for: route) {
@@ -177,7 +182,7 @@ struct MainWindowView: View {
                     }
                 }
             }
-            .scrollIndicators(.hidden)
+            .scrollIndicators(.automatic)
         case .score(let id):
             ScoreDetailView(explicitScoreID: id)
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -227,7 +232,7 @@ struct MainWindowView: View {
                     pageContentWithSiteFooter(for: route) { PracticeView() }
                         .frame(minHeight: geometry.size.height, alignment: .top)
                 }
-                .scrollIndicators(.hidden)
+                .scrollIndicators(.automatic)
                 .scrollDisabled(model.isScoreFocused)
                 .environment(\.mimiViewportHeight, geometry.size.height)
             }
@@ -244,14 +249,14 @@ struct MainWindowView: View {
                         })
                     }
                 }
-                .scrollIndicators(.hidden)
+                .scrollIndicators(.automatic)
             }
         case .dataSettings:
-            ScrollView { pageContentWithSiteFooter(for: route) { BackupSettingsView() } }.scrollIndicators(.hidden)
+            ScrollView { pageContentWithSiteFooter(for: route) { BackupSettingsView() } }.scrollIndicators(.automatic)
         case .articles:
-            ScrollView { pageContentWithSiteFooter(for: route) { ArticleListView() } }.scrollIndicators(.hidden)
+            ScrollView { pageContentWithSiteFooter(for: route) { ArticleListView() } }.scrollIndicators(.automatic)
         case .article(let id):
-            ScrollView { pageContentWithSiteFooter(for: route) { ArticleDetailView(articleID: id) } }.scrollIndicators(.hidden)
+            ScrollView { pageContentWithSiteFooter(for: route) { ArticleDetailView(articleID: id) } }.scrollIndicators(.automatic)
         case .publishArticle:
             ScrollView { pageContentWithSiteFooter(for: route) { PublishArticleView() } }.scrollIndicators(.hidden)
         case .account(let area):
@@ -406,8 +411,14 @@ private struct NativeNavigationBar: View {
     ]
 
     var body: some View {
-        HStack(spacing: 20) {
-            Button { model.navigate(.home) } label: {
+        HStack(spacing: 16) {
+            Button {
+                if model.route == .home {
+                    NotificationCenter.default.post(name: Notification.Name("MIMI.ScrollToTop"), object: nil)
+                } else {
+                    model.navigate(.home)
+                }
+            } label: {
                 HStack(spacing: 9) {
                     MIMILogoView(size: 34)
                     Text("MIMI Guitar")
@@ -418,6 +429,36 @@ private struct NativeNavigationBar: View {
                 }
             }
             .buttonStyle(.plain)
+            .help("首页 (⌘0)")
+
+            // Native macOS History Navigation Controls (Back / Forward)
+            HStack(spacing: 4) {
+                Button {
+                    model.navigateBack()
+                } label: {
+                    Image(systemName: "chevron.left")
+                        .font(.system(size: 11, weight: .bold))
+                        .foregroundStyle(model.canNavigateBack ? MIMITheme.navigationInk : MIMITheme.navigationMuted.opacity(0.35))
+                        .frame(width: 28, height: 28)
+                        .background(MIMITheme.navigationSegment.opacity(model.canNavigateBack ? 0.85 : 0.35), in: Circle())
+                }
+                .buttonStyle(.plain)
+                .disabled(!model.canNavigateBack)
+                .help("返回上一页 (⌘[)")
+
+                Button {
+                    model.navigateForward()
+                } label: {
+                    Image(systemName: "chevron.right")
+                        .font(.system(size: 11, weight: .bold))
+                        .foregroundStyle(model.canNavigateForward ? MIMITheme.navigationInk : MIMITheme.navigationMuted.opacity(0.35))
+                        .frame(width: 28, height: 28)
+                        .background(MIMITheme.navigationSegment.opacity(model.canNavigateForward ? 0.85 : 0.35), in: Circle())
+                }
+                .buttonStyle(.plain)
+                .disabled(!model.canNavigateForward)
+                .help("前往下一页 (⌘])")
+            }
 
             ViewThatFits(in: .horizontal) {
                 desktopNavigationLinks
@@ -494,7 +535,13 @@ private struct NativeNavigationBar: View {
     private var desktopNavigationLinks: some View {
         HStack(spacing: 3) {
             ForEach(links, id: \.0) { label, route in
-                Button { model.navigate(route) } label: {
+                Button {
+                    if isActive(route) {
+                        NotificationCenter.default.post(name: Notification.Name("MIMI.ScrollToTop"), object: nil)
+                    } else {
+                        model.navigate(route)
+                    }
+                } label: {
                     HStack(spacing: 5) {
                         if label == "制谱工坊 PRO" {
                             Text("制谱工坊")

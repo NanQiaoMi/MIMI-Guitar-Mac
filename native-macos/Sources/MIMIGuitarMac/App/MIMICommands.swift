@@ -22,21 +22,44 @@ struct MIMICommands: Commands {
             Button("播放或暂停") {
                 NotificationCenter.default.post(name: Notification.Name("MIMI.TogglePlayback"), object: nil)
             }
-            .keyboardShortcut(.return, modifiers: [.command])
-            .disabled(!model.canToggleScoreFullscreen)
+            .keyboardShortcut(.space, modifiers: [])
+            .disabled(!model.canToggleScoreFullscreen && model.auditionController.activeItem == nil)
 
             Button("停止") {
                 NotificationCenter.default.post(name: Notification.Name("MIMI.StopPlayback"), object: nil)
             }
             .keyboardShortcut(".", modifiers: [.command])
-            .disabled(!model.canToggleScoreFullscreen)
+            .disabled(!model.canToggleScoreFullscreen && model.auditionController.activeItem == nil)
         }
 
         CommandMenu("导航") {
             Button("返回上一页") { model.navigateBack() }
                 .keyboardShortcut("[", modifiers: [.command])
                 .disabled(!model.canNavigateBack)
-            Button("首页") { model.navigate(.home) }
+            Button("前往下一页") { model.navigateForward() }
+                .keyboardShortcut("]", modifiers: [.command])
+                .disabled(!model.canNavigateForward)
+            Divider()
+            Group {
+                Button("首页") { model.navigate(.home) }
+                    .keyboardShortcut("0", modifiers: [.command])
+                Button("吉他谱") { model.navigate(.catalog(.guitar)) }
+                    .keyboardShortcut("1", modifiers: [.command])
+                Button("尤克里里") { model.navigate(.catalog(.ukulele)) }
+                    .keyboardShortcut("2", modifiers: [.command])
+                Button("制谱工坊 PRO") { model.navigate(.studio) }
+                    .keyboardShortcut("3", modifiers: [.command])
+                Button("专栏文章") { model.navigate(.articles) }
+                    .keyboardShortcut("4", modifiers: [.command])
+            }
+            Group {
+                Button("我的练习") { model.navigate(.practice(scoreID: nil)) }
+                    .keyboardShortcut("5", modifiers: [.command])
+                Button("我的谱") { model.navigate(.library) }
+                    .keyboardShortcut("6", modifiers: [.command])
+                Button("备份") { model.navigate(.dataSettings) }
+                    .keyboardShortcut("7", modifiers: [.command])
+            }
         }
     }
 }
