@@ -148,6 +148,7 @@ final class AppModel: ObservableObject {
     }
     @Published var isScoreFocused = false
     @Published private(set) var isWindowFullScreen = false
+    @Published private(set) var isWindowOccluded = false
     @Published private(set) var requestedRouteScrollRestore: RouteScrollRestore?
     @Published var selectedItemID: String?
     @Published var selectedSection: LibrarySection = .allScores
@@ -440,6 +441,21 @@ final class AppModel: ObservableObject {
             restoreScrollAfterScoreFocus()
         }
         reconcileWindowFullScreenRequest()
+    }
+
+    func windowOcclusionDidChange(_ isOccluded: Bool) {
+        guard isWindowOccluded != isOccluded else { return }
+        isWindowOccluded = isOccluded
+        if isOccluded {
+            if auditionController.isPlaying {
+                auditionController.pause()
+            }
+        }
+        NotificationCenter.default.post(
+            name: Notification.Name("MIMI.WindowOcclusionDidChange"),
+            object: nil,
+            userInfo: ["isOccluded": isOccluded]
+        )
     }
 
     func toggleScoreFullscreen() {

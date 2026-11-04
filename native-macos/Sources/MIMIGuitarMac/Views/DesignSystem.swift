@@ -3,27 +3,27 @@ import CoreText
 import SwiftUI
 
 enum MIMITheme {
-    static let paper = Color(hex: 0xFBFAF6)
-    static let paperWhite = Color(hex: 0xFEFFFC)
-    static let navigationPaper = Color(hex: 0xFFFFFF)
-    static let navigationOutline = Color(hex: 0xE8E0D2)
-    static let navigationBorder = Color(hex: 0xE2DACD)
-    static let navigationSegment = Color(hex: 0xF2ECE0)
-    static let navigationSearch = Color(hex: 0xF8F5EE)
-    static let navigationInk = Color(hex: 0x24201D)
-    static let navigationBrown = Color(hex: 0x6E5D48)
-    static let navigationMuted = Color(hex: 0x8C7C6B)
-    static let card = Color.white
-    static let ink = Color(hex: 0x24201D)
-    static let bodyInk = Color(hex: 0x584A3B)
-    static let mutedInk = Color(hex: 0x8C7C6B)
-    static let softBorder = Color(hex: 0xE5DDD0)
-    static let faintBorder = Color(hex: 0xF0E9DE)
-    static let warmGold = Color(hex: 0xC49A45)
-    static let darkGold = Color(hex: 0x8F6B28)
-    static let terracotta = Color(hex: 0xC84B31)
-    static let signalBlue = Color(hex: 0x41A1CF)
-    static let green = Color(hex: 0x2E7D32)
+    static let paper = Color.dynamic(lightHex: 0xFBFAF6, darkHex: 0x1E1B18)
+    static let paperWhite = Color.dynamic(lightHex: 0xFEFFFC, darkHex: 0x282420)
+    static let navigationPaper = Color.dynamic(lightHex: 0xFFFFFF, darkHex: 0x24201C)
+    static let navigationOutline = Color.dynamic(lightHex: 0xE8E0D2, darkHex: 0x3C352E)
+    static let navigationBorder = Color.dynamic(lightHex: 0xE2DACD, darkHex: 0x38322B)
+    static let navigationSegment = Color.dynamic(lightHex: 0xF2ECE0, darkHex: 0x302B25)
+    static let navigationSearch = Color.dynamic(lightHex: 0xF8F5EE, darkHex: 0x28231E)
+    static let navigationInk = Color.dynamic(lightHex: 0x24201D, darkHex: 0xF2EAE1)
+    static let navigationBrown = Color.dynamic(lightHex: 0x6E5D48, darkHex: 0xD4C5B3)
+    static let navigationMuted = Color.dynamic(lightHex: 0x8C7C6B, darkHex: 0x9E9182)
+    static let card = Color.dynamic(lightHex: 0xFFFFFF, darkHex: 0x26221D)
+    static let ink = Color.dynamic(lightHex: 0x24201D, darkHex: 0xF5EFE6)
+    static let bodyInk = Color.dynamic(lightHex: 0x584A3B, darkHex: 0xDCD0BF)
+    static let mutedInk = Color.dynamic(lightHex: 0x8C7C6B, darkHex: 0x9E9182)
+    static let softBorder = Color.dynamic(lightHex: 0xE5DDD0, darkHex: 0x3D362E)
+    static let faintBorder = Color.dynamic(lightHex: 0xF0E9DE, darkHex: 0x2F2A23)
+    static let warmGold = Color.dynamic(lightHex: 0xC49A45, darkHex: 0xE0B65C)
+    static let darkGold = Color.dynamic(lightHex: 0x8F6B28, darkHex: 0xCFA348)
+    static let terracotta = Color.dynamic(lightHex: 0xC84B31, darkHex: 0xE06248)
+    static let signalBlue = Color.dynamic(lightHex: 0x41A1CF, darkHex: 0x56B4E0)
+    static let green = Color.dynamic(lightHex: 0x2E7D32, darkHex: 0x4CAE50)
     static let cardRadius: CGFloat = 20
     static let navRadius: CGFloat = 50
 
@@ -63,6 +63,27 @@ enum MIMIFontRegistry {
     }
 }
 
+extension NSColor {
+    convenience init(hex: UInt32, alpha: Double = 1.0) {
+        self.init(
+            srgbRed: CGFloat((hex >> 16) & 0xFF) / 255.0,
+            green: CGFloat((hex >> 8) & 0xFF) / 255.0,
+            blue: CGFloat(hex & 0xFF) / 255.0,
+            alpha: CGFloat(alpha)
+        )
+    }
+
+    static func dynamic(light: NSColor, dark: NSColor) -> NSColor {
+        return NSColor(name: nil) { appearance in
+            appearance.bestMatch(from: [.darkAqua, .aqua]) == .darkAqua ? dark : light
+        }
+    }
+
+    static func dynamic(lightHex: UInt32, darkHex: UInt32) -> NSColor {
+        dynamic(light: NSColor(hex: lightHex), dark: NSColor(hex: darkHex))
+    }
+}
+
 extension Color {
     init(hex: UInt32) {
         self.init(
@@ -72,6 +93,10 @@ extension Color {
             blue: Double(hex & 0xFF) / 255,
             opacity: 1
         )
+    }
+
+    static func dynamic(lightHex: UInt32, darkHex: UInt32) -> Color {
+        Color(nsColor: .dynamic(lightHex: lightHex, darkHex: darkHex))
     }
 }
 
@@ -88,7 +113,7 @@ struct MIMICard: ViewModifier {
                 if shadowOpacity > 0.02 {
                     shape
                         .fill(fill)
-                        .shadow(color: Color(hex: 0x483620).opacity(shadowOpacity * 0.6), radius: 1, x: 0, y: 0.5)
+                        .shadow(color: Color(nsColor: .dynamic(lightHex: 0x483620, darkHex: 0x000000)).opacity(shadowOpacity * 0.6), radius: 1, x: 0, y: 0.5)
                 } else {
                     shape
                         .fill(fill)

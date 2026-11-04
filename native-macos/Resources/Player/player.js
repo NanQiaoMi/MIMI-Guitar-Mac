@@ -2389,7 +2389,12 @@
 
   function setNativeViewVisible(enabled) {
     nativeViewVisible = !!enabled;
-    if (!nativeViewVisible) interruptionRevision += 1;
+    if (!nativeViewVisible) {
+      interruptionRevision += 1;
+      if (isPlaying) {
+        pause();
+      }
+    }
   }
 
   function setMotionPreference(value) {

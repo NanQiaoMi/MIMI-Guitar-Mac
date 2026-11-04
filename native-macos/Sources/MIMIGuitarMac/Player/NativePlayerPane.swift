@@ -322,6 +322,11 @@ struct NativePlayerPane: View {
         .onReceive(NotificationCenter.default.publisher(for: Notification.Name("MIMI.StopPlayback"))) { _ in
             model.stopPlayback()
         }
+        .onReceive(NotificationCenter.default.publisher(for: Notification.Name("MIMI.WindowOcclusionDidChange"))) { notification in
+            if let isOccluded = notification.userInfo?["isOccluded"] as? Bool {
+                model.setNativeViewVisible(!isOccluded)
+            }
+        }
         .onReceive(NotificationCenter.default.publisher(for: Notification.Name("MIMI.Player.ExportPDF"))) { _ in
             model.exportPDF()
         }
@@ -416,9 +421,9 @@ struct NativePlayerPane: View {
                     .font(.system(size: 11, weight: .semibold))
                     .foregroundStyle(MIMITheme.bodyInk)
                     .frame(width: 32, height: 32)
-                    .background(Color.white, in: Circle())
+                    .background(MIMITheme.paperWhite, in: Circle())
                     .overlay(Circle().stroke(MIMITheme.softBorder, lineWidth: 1))
-                    .shadow(color: Color(hex: 0x483620).opacity(0.02), radius: 3, x: 0, y: 1)
+                    .shadow(color: Color(nsColor: .dynamic(lightHex: 0x483620, darkHex: 0x000000)).opacity(0.02), radius: 3, x: 0, y: 1)
             }
             .buttonStyle(.plain)
             .disabled(!model.canPlay)
@@ -496,9 +501,9 @@ struct NativePlayerPane: View {
                     .font(.system(size: 11, weight: .semibold))
                     .foregroundStyle(isFocused ? .white : MIMITheme.bodyInk)
                     .frame(width: 32, height: 32)
-                    .background(isFocused ? MIMITheme.ink : Color.white, in: Circle())
+                    .background(isFocused ? MIMITheme.ink : MIMITheme.paperWhite, in: Circle())
                     .overlay(Circle().stroke(isFocused ? Color.clear : MIMITheme.softBorder, lineWidth: 1))
-                    .shadow(color: Color(hex: 0x483620).opacity(0.02), radius: 3, x: 0, y: 1)
+                    .shadow(color: Color(nsColor: .dynamic(lightHex: 0x483620, darkHex: 0x000000)).opacity(0.02), radius: 3, x: 0, y: 1)
             }
             .buttonStyle(.plain)
             .disabled(onToggleFocus == nil)
@@ -551,10 +556,10 @@ struct NativePlayerPane: View {
             }
         }
         .padding(.horizontal, 10).padding(.vertical, 7)
-        .background(Color(hex: 0xFDFAF5))
+        .background(MIMITheme.card)
         .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
         .overlay(RoundedRectangle(cornerRadius: 14, style: .continuous).stroke(MIMITheme.softBorder, lineWidth: 1))
-        .shadow(color: Color(hex: 0x483620).opacity(0.03), radius: 8, x: 0, y: 2)
+        .shadow(color: Color(nsColor: .dynamic(lightHex: 0x483620, darkHex: 0x000000)).opacity(0.03), radius: 8, x: 0, y: 2)
         .padding(.horizontal, 8).padding(.top, 6).padding(.bottom, 6)
     }
 
@@ -587,7 +592,7 @@ struct NativePlayerPane: View {
                 .padding(.horizontal, 8)
                 .frame(height: 28)
                 .background(
-                    (!isPanelCollapsed && (selectedPanel == .review || selectedPanel == .manuscript)) ? Color.white : Color.clear,
+                    (!isPanelCollapsed && (selectedPanel == .review || selectedPanel == .manuscript)) ? MIMITheme.paperWhite : Color.clear,
                     in: Capsule()
                 )
                 .overlay(
@@ -619,7 +624,7 @@ struct NativePlayerPane: View {
                     .foregroundStyle(MIMITheme.mutedInk)
                     .padding(.horizontal, 8)
                     .frame(height: 26)
-                    .background(Color.white.opacity(0.85), in: Capsule())
+                    .background(MIMITheme.paperWhite, in: Capsule())
                     .overlay(Capsule().stroke(MIMITheme.softBorder, lineWidth: 0.8))
                 }
                 .buttonStyle(.plain)
@@ -628,8 +633,8 @@ struct NativePlayerPane: View {
             }
         }
         .padding(3)
-        .background(Color(hex: 0xF2ECE2).opacity(0.8), in: RoundedRectangle(cornerRadius: 10, style: .continuous))
-        .overlay(RoundedRectangle(cornerRadius: 10, style: .continuous).stroke(Color(hex: 0xE6DFD2), lineWidth: 0.8))
+        .background(MIMITheme.navigationSegment, in: RoundedRectangle(cornerRadius: 10, style: .continuous))
+        .overlay(RoundedRectangle(cornerRadius: 10, style: .continuous).stroke(MIMITheme.softBorder, lineWidth: 0.8))
     }
 
     private func drawerPill(_ panel: PlayerPanel, title: String, symbol: String) -> some View {
@@ -652,7 +657,7 @@ struct NativePlayerPane: View {
             .foregroundStyle(isSelected ? MIMITheme.darkGold : MIMITheme.bodyInk.opacity(0.82))
             .padding(.horizontal, 9)
             .frame(height: 28)
-            .background(isSelected ? Color.white : Color.clear, in: Capsule())
+            .background(isSelected ? MIMITheme.paperWhite : Color.clear, in: Capsule())
             .overlay(
                 Group {
                     if isSelected {
@@ -660,7 +665,7 @@ struct NativePlayerPane: View {
                     }
                 }
             )
-            .shadow(color: isSelected ? Color(hex: 0x483620).opacity(0.06) : .clear, radius: 2, x: 0, y: 1)
+            .shadow(color: isSelected ? Color(nsColor: .dynamic(lightHex: 0x483620, darkHex: 0x000000)).opacity(0.06) : .clear, radius: 2, x: 0, y: 1)
             .contentShape(Rectangle())
         }
         .buttonStyle(.plain)
@@ -722,7 +727,7 @@ struct NativePlayerPane: View {
             }
         }
         .padding(.horizontal, 10).padding(.top, 8).padding(.bottom, 5)
-        .background(Color(hex: 0xFBF9F4), in: RoundedRectangle(cornerRadius: 14, style: .continuous))
+        .background(MIMITheme.card, in: RoundedRectangle(cornerRadius: 14, style: .continuous))
         .overlay(RoundedRectangle(cornerRadius: 14, style: .continuous).stroke(MIMITheme.softBorder, lineWidth: 1))
     }
 
@@ -899,9 +904,9 @@ struct NativePlayerPillButtonStyle: ButtonStyle {
             .frame(minHeight: 34)
             .background(Capsule(style: .continuous).fill(prominent
                 ? MIMITheme.ink
-                : (configuration.isPressed ? Color(hex: 0xEDE4D6) : Color.white)))
+                : (configuration.isPressed ? MIMITheme.navigationSegment : MIMITheme.paperWhite)))
             .overlay(Capsule(style: .continuous).stroke(prominent ? MIMITheme.ink : MIMITheme.softBorder, lineWidth: 1))
-            .shadow(color: Color(hex: 0x483620).opacity(0.025), radius: 4, x: 0, y: 1)
+            .shadow(color: Color(nsColor: .dynamic(lightHex: 0x483620, darkHex: 0x000000)).opacity(0.025), radius: 4, x: 0, y: 1)
             .opacity(isEnabled ? 1 : 0.46)
             .scaleEffect(configuration.isPressed && motionPolicy.allowsSpatialMotion ? 0.98 : 1)
             .animation(motionPolicy.controlAnimation, value: configuration.isPressed)
@@ -924,9 +929,9 @@ struct NativePlayerTogglePillStyle: ToggleStyle {
                 .foregroundStyle(configuration.isOn ? Color.white : MIMITheme.bodyInk)
                 .padding(.horizontal, 13)
                 .frame(minHeight: 34)
-                .background(Capsule(style: .continuous).fill(configuration.isOn ? MIMITheme.ink : Color.white))
+                .background(Capsule(style: .continuous).fill(configuration.isOn ? MIMITheme.ink : MIMITheme.paperWhite))
                 .overlay(Capsule(style: .continuous).stroke(configuration.isOn ? MIMITheme.ink : MIMITheme.softBorder, lineWidth: 1))
-                .shadow(color: Color(hex: 0x483620).opacity(0.025), radius: 4, x: 0, y: 1)
+                .shadow(color: Color(nsColor: .dynamic(lightHex: 0x483620, darkHex: 0x000000)).opacity(0.025), radius: 4, x: 0, y: 1)
         }
         .buttonStyle(.plain)
         .disabled(!isEnabled)
@@ -1069,9 +1074,9 @@ private struct NativePlayerTempoStepper: View {
         }
         .padding(.horizontal, 4)
         .frame(height: 32)
-        .background(Color.white, in: Capsule())
+        .background(MIMITheme.paperWhite, in: Capsule())
         .overlay(Capsule().stroke(MIMITheme.softBorder, lineWidth: 1))
-        .shadow(color: Color(hex: 0x483620).opacity(0.02), radius: 4, x: 0, y: 1)
+        .shadow(color: Color(nsColor: .dynamic(lightHex: 0x483620, darkHex: 0x000000)).opacity(0.02), radius: 4, x: 0, y: 1)
         .disabled(!model.canPlay)
         .help(model.canPlay ? "调整播放速度（单击微调，点数字展开倍速面板）" : model.playDisabledReason)
     }
