@@ -9,6 +9,7 @@ struct MainWindowView: View {
     @AppStorage("mimi.motion.preference") private var motionPreference = "system"
     @State private var isDropTargeted = false
     @State private var contentViewportHeight: CGFloat = 0
+    @State private var navCoordinator = NavigationGestureCoordinator()
 
     private var motionPolicy: MIMIMotionPolicy {
         .resolve(preference: motionPreference, reduceMotion: reduceMotion)
@@ -75,9 +76,11 @@ struct MainWindowView: View {
         }
         .onAppear {
             model.setRouteTransitionCaptureHandler { }
+            navCoordinator.start(model: model)
         }
         .onDisappear {
             model.setRouteTransitionCaptureHandler(nil)
+            navCoordinator.stop()
         }
         .onExitCommand { model.handleScoreFocusEscape() }
         .onReceive(NotificationCenter.default.publisher(for: Notification.Name("MIMI.TogglePlayback"))) { _ in
@@ -258,19 +261,19 @@ struct MainWindowView: View {
         case .article(let id):
             ScrollView { pageContentWithSiteFooter(for: route) { ArticleDetailView(articleID: id) } }.scrollIndicators(.automatic)
         case .publishArticle:
-            ScrollView { pageContentWithSiteFooter(for: route) { PublishArticleView() } }.scrollIndicators(.hidden)
+            ScrollView { pageContentWithSiteFooter(for: route) { PublishArticleView() } }.scrollIndicators(.automatic)
         case .account(let area):
-            ScrollView { pageContentWithSiteFooter(for: route) { AccountView(area: area) } }.scrollIndicators(.hidden)
+            ScrollView { pageContentWithSiteFooter(for: route) { AccountView(area: area) } }.scrollIndicators(.automatic)
         case .login, .register, .authenticationReturn, .resetPassword:
-            ScrollView { pageContentWithSiteFooter(for: route) { AccountAuthView() } }.scrollIndicators(.hidden)
+            ScrollView { pageContentWithSiteFooter(for: route) { AccountAuthView() } }.scrollIndicators(.automatic)
         case .upload:
-            ScrollView { pageContentWithSiteFooter(for: route) { PublicUploadDisabledView() } }.scrollIndicators(.hidden)
+            ScrollView { pageContentWithSiteFooter(for: route) { PublicUploadDisabledView() } }.scrollIndicators(.automatic)
         case .document(let page):
-            ScrollView { pageContentWithSiteFooter(for: route) { DocumentPageView(page: page) } }.scrollIndicators(.hidden)
+            ScrollView { pageContentWithSiteFooter(for: route) { DocumentPageView(page: page) } }.scrollIndicators(.automatic)
         case .motion:
-            ScrollView { pageContentWithSiteFooter(for: route) { MotionExperienceView() } }.scrollIndicators(.hidden)
+            ScrollView { pageContentWithSiteFooter(for: route) { MotionExperienceView() } }.scrollIndicators(.automatic)
         case .showcase:
-            ScrollView { pageContentWithSiteFooter(for: route) { ShowcasePageView() } }.scrollIndicators(.hidden)
+            ScrollView { pageContentWithSiteFooter(for: route) { ShowcasePageView() } }.scrollIndicators(.automatic)
         }
     }
 
@@ -817,5 +820,77 @@ struct WorkspaceUnavailableView: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .padding(32)
         .mimiCard()
+    }
+}
+
+@MainActor
+private final class NavigationGestureCoordinator {
+    private var accumulatedDeltaX: CGFloat = 0
+    private var accumulatedDeltaY: CGFloat = 0
+    private var lastSwipeUptime: TimeInterval = 0
+    private var monitor: Any?
+
+    func start(model: AppModel) {
+        stop()
+        monitor = NSEvent.addLocalMonitorForEvents(matching: [.scrollWheel, .otherMouseUp]) { [weak self, weak model] event in
+            guard let self, let model else { return event }
+
+            if event.type == .otherMouseUp {
+                if event.buttonNumber == 3 && model.canNavigateBack {
+                    DispatchQueue.main.async { model.navigateBack() }
+                    return nil
+                } else if event.buttonNumber == 4 && model.canNavigateForward {
+                    DispatchQueue.main.async { model.navigateForward() }
+                    return nil
+                }
+                return event
+            }
+
+            if event.type == .scrollWheel && event.hasPreciseScrollingDeltas {
+                let now = ProcessInfo.processInfo.systemUptime
+                if now - self.lastSwipeUptime < 0.45 { return event }
+
+                switch event.phase {
+                case .began:
+                    self.accumulatedDeltaX = 0
+                    self.accumulatedDeltaY = 0
+                case .changed:
+                    self.accumulatedDeltaX += event.scrollingDeltaX
+                    self.accumulatedDeltaY += event.scrollingDeltaY
+
+                    let absX = abs(self.accumulatedDeltaX)
+                    let absY = abs(self.accumulatedDeltaY)
+                    let threshold: CGFloat = 65
+
+                    if absX > threshold && absX > absY * 1.8 {
+                        if self.accumulatedDeltaX > 0 && model.canNavigateBack {
+                            self.lastSwipeUptime = now
+                            self.accumulatedDeltaX = 0
+                            self.accumulatedDeltaY = 0
+                            DispatchQueue.main.async { model.navigateBack() }
+                        } else if self.accumulatedDeltaX < 0 && model.canNavigateForward {
+                            self.lastSwipeUptime = now
+                            self.accumulatedDeltaX = 0
+                            self.accumulatedDeltaY = 0
+                            DispatchQueue.main.async { model.navigateForward() }
+                        }
+                    }
+                case .ended, .cancelled:
+                    self.accumulatedDeltaX = 0
+                    self.accumulatedDeltaY = 0
+                default:
+                    break
+                }
+            }
+
+            return event
+        }
+    }
+
+    func stop() {
+        if let monitor {
+            NSEvent.removeMonitor(monitor)
+            self.monitor = nil
+        }
     }
 }

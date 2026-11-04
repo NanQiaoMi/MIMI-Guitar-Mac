@@ -319,7 +319,7 @@ struct NativeStudioPane: View {
                 .padding(.top, 24)
                 .frame(maxWidth: .infinity, alignment: .top)
             }
-            .scrollIndicators(.hidden)
+            .scrollIndicators(.automatic)
             Divider()
             statusBar
         }
