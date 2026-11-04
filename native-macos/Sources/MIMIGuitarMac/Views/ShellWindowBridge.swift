@@ -320,6 +320,12 @@ struct MainWindowBridge: NSViewRepresentable {
         private var didExitObserver: NSObjectProtocol?
         private var willEnterObserver: NSObjectProtocol?
         private var willExitObserver: NSObjectProtocol?
+        private var occlusionObserver: NSObjectProtocol?
+        private var miniaturizeObserver: NSObjectProtocol?
+        private var deminiaturizeObserver: NSObjectProtocol?
+        private var appHideObserver: NSObjectProtocol?
+        private var appUnhideObserver: NSObjectProtocol?
+        private var appearanceObserver: NSObjectProtocol?
 
         init(model: AppModel, transition: MainWindowTransitionState? = nil) {
             self.model = model
@@ -333,10 +339,79 @@ struct MainWindowBridge: NSViewRepresentable {
             guard let window else { return }
             window.titleVisibility = .hidden
             window.titlebarAppearsTransparent = true
-            window.styleMask.insert(.fullSizeContentView)
+            window.styleMask.insert([.fullSizeContentView, .miniaturizable])
             window.isMovableByWindowBackground = false
-            window.backgroundColor = NSColor(red: 251.0/255.0, green: 250.0/255.0, blue: 246.0/255.0, alpha: 1.0)
+            window.backgroundColor = .dynamic(lightHex: 0xFBFAF6, darkHex: 0x1E1B18)
+            updateWindowAppearance(window)
             model.attachMainWindow(window)
+
+            handleOcclusionChange(window)
+
+            occlusionObserver = NotificationCenter.default.addObserver(
+                forName: NSWindow.didChangeOcclusionStateNotification,
+                object: window,
+                queue: .main
+            ) { [weak self, weak window] _ in
+                Task { @MainActor [weak self, weak window] in
+                    guard let window else { return }
+                    self?.handleOcclusionChange(window)
+                }
+            }
+
+            miniaturizeObserver = NotificationCenter.default.addObserver(
+                forName: NSWindow.didMiniaturizeNotification,
+                object: window,
+                queue: .main
+            ) { [weak self, weak window] _ in
+                Task { @MainActor [weak self, weak window] in
+                    guard let window else { return }
+                    self?.handleOcclusionChange(window)
+                }
+            }
+
+            deminiaturizeObserver = NotificationCenter.default.addObserver(
+                forName: NSWindow.didDeminiaturizeNotification,
+                object: window,
+                queue: .main
+            ) { [weak self, weak window] _ in
+                Task { @MainActor [weak self, weak window] in
+                    guard let window else { return }
+                    self?.handleOcclusionChange(window)
+                }
+            }
+
+            appHideObserver = NotificationCenter.default.addObserver(
+                forName: NSApplication.willHideNotification,
+                object: nil,
+                queue: .main
+            ) { [weak self] _ in
+                Task { @MainActor [weak self] in
+                    self?.model.windowOcclusionDidChange(true)
+                }
+            }
+
+            appUnhideObserver = NotificationCenter.default.addObserver(
+                forName: NSApplication.didUnhideNotification,
+                object: nil,
+                queue: .main
+            ) { [weak self, weak window] _ in
+                Task { @MainActor [weak self, weak window] in
+                    guard let window else { return }
+                    self?.handleOcclusionChange(window)
+                }
+            }
+
+            appearanceObserver = NotificationCenter.default.addObserver(
+                forName: UserDefaults.didChangeNotification,
+                object: nil,
+                queue: .main
+            ) { [weak self, weak window] _ in
+                guard let window else { return }
+                Task { @MainActor [weak self] in
+                    self?.updateWindowAppearance(window)
+                }
+            }
+
             willEnterObserver = NotificationCenter.default.addObserver(
                 forName: NSWindow.willEnterFullScreenNotification, object: window, queue: .main
             ) { [weak self] _ in
@@ -363,6 +438,23 @@ struct MainWindowBridge: NSViewRepresentable {
             }
         }
 
+        private func handleOcclusionChange(_ window: NSWindow) {
+            let isOccluded = window.isMiniaturized || !window.occlusionState.contains(.visible)
+            model.windowOcclusionDidChange(isOccluded)
+        }
+
+        private func updateWindowAppearance(_ window: NSWindow) {
+            let pref = UserDefaults.standard.string(forKey: "mimi.appearance") ?? "system"
+            switch pref {
+            case "light":
+                window.appearance = NSAppearance(named: .aqua)
+            case "dark":
+                window.appearance = NSAppearance(named: .darkAqua)
+            default:
+                window.appearance = nil
+            }
+        }
+
         func detach() {
             removeObservers()
             observedWindow = nil
@@ -374,10 +466,22 @@ struct MainWindowBridge: NSViewRepresentable {
             if let didExitObserver { NotificationCenter.default.removeObserver(didExitObserver) }
             if let willEnterObserver { NotificationCenter.default.removeObserver(willEnterObserver) }
             if let willExitObserver { NotificationCenter.default.removeObserver(willExitObserver) }
+            if let occlusionObserver { NotificationCenter.default.removeObserver(occlusionObserver) }
+            if let miniaturizeObserver { NotificationCenter.default.removeObserver(miniaturizeObserver) }
+            if let deminiaturizeObserver { NotificationCenter.default.removeObserver(deminiaturizeObserver) }
+            if let appHideObserver { NotificationCenter.default.removeObserver(appHideObserver) }
+            if let appUnhideObserver { NotificationCenter.default.removeObserver(appUnhideObserver) }
+            if let appearanceObserver { NotificationCenter.default.removeObserver(appearanceObserver) }
             didEnterObserver = nil
             didExitObserver = nil
             willEnterObserver = nil
             willExitObserver = nil
+            occlusionObserver = nil
+            miniaturizeObserver = nil
+            deminiaturizeObserver = nil
+            appHideObserver = nil
+            appUnhideObserver = nil
+            appearanceObserver = nil
         }
     }
 }
