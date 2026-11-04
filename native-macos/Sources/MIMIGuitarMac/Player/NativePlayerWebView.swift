@@ -79,7 +79,11 @@ struct NativePlayerWebView: NSViewRepresentable {
         }
     }
 
-    func updateNSView(_ webView: WKWebView, context: Context) {}
+    func updateNSView(_ webView: WKWebView, context: Context) {
+        if let source = model.source {
+            context.coordinator.schemeHandler?.updateSource(source)
+        }
+    }
 
     static func dismantleNSView(_ webView: WKWebView, coordinator: Coordinator) {
         coordinator.dismantle(webView)

@@ -117,7 +117,6 @@ struct ScoreDetailView: View {
                             viewportHeight: viewportHeight,
                             onToggleFocus: { model.toggleScoreFullscreen() }
                         )
-                        .id(item.id)
                         .frame(maxWidth: .infinity)
                         .padding(.horizontal, model.isScoreFocused ? 0 : 1)
                         .mimiCard(radius: model.isScoreFocused ? 0 : 20, fill: MIMITheme.paperWhite, shadowOpacity: model.isScoreFocused ? 0 : 0.04)
@@ -170,7 +169,6 @@ struct ScoreDetailView: View {
                             viewportHeight: viewportHeight,
                             onToggleFocus: { model.toggleScoreFullscreen() }
                         )
-                        .id(score.id)
                         .frame(maxWidth: .infinity)
                         .padding(.horizontal, model.isScoreFocused ? 0 : 1)
                         .mimiCard(radius: model.isScoreFocused ? 0 : 20, fill: MIMITheme.paperWhite, shadowOpacity: model.isScoreFocused ? 0 : 0.04)

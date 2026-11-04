@@ -10,6 +10,28 @@ struct MIMICommands: Commands {
             }
             .keyboardShortcut("o", modifiers: [.command])
             .disabled(model.isImporting)
+
+            Menu("最近打开曲谱") {
+                if model.recentEntries.isEmpty {
+                    Text("暂无最近记录")
+                } else {
+                    ForEach(Array(model.recentEntries.prefix(10))) { entry in
+                        Button {
+                            model.openRecentEntry(entry)
+                        } label: {
+                            if let artist = entry.artist, !artist.isEmpty {
+                                Text("\(entry.title) - \(artist)")
+                            } else {
+                                Text(entry.title)
+                            }
+                        }
+                    }
+                    Divider()
+                    Button("清空最近记录") {
+                        model.clearRecentHistory()
+                    }
+                }
+            }
         }
 
         CommandGroup(after: .textEditing) {

@@ -141,6 +141,9 @@ final class AppModel: ObservableObject {
             currentRouteScrollOffset = 0
             requestedRouteScrollRestore = nil
             if !routeSupportsScoreFocus(route), isScoreFocused { exitScoreFullscreen() }
+            if let restoration = route.asRestorationString {
+                UserDefaults.standard.set(restoration, forKey: "mimi.native.lastRoute")
+            }
         }
     }
     @Published var isScoreFocused = false
@@ -204,6 +207,7 @@ final class AppModel: ObservableObject {
     private var studioLoadGeneration = 0
     private var accountGeneration = 0
     private var commandGeneration = 0
+    private var pendingImportFileURL: URL?
     private var publicationCache: PublishedArticleCache?
     private var publishedArticles: [CatalogArticle] = []
     private var didReportPublicationCacheError = false
@@ -256,7 +260,7 @@ final class AppModel: ObservableObject {
     var personalScores: [PersonalScore] { personalSnapshot.scores }
     private(set) var favoriteIDs: Set<String> = []
     private(set) var practiceItems: [PracticeItem] = []
-    private(set) var recentEntries: [PersonalHistoryEntry] = []
+    @Published private(set) var recentEntries: [PersonalHistoryEntry] = []
     private(set) var personalScoresByID: [String: PersonalScore] = [:]
     var hasAccountSession: Bool { remoteUser != nil }
 
@@ -315,7 +319,28 @@ final class AppModel: ObservableObject {
         catalogCount = count
         apply(snapshot)
         bootstrapMessage = nil
-        activate(route)
+
+        if let pending = pendingImportFileURL {
+            pendingImportFileURL = nil
+            routeImportedFile(pending)
+            return
+        }
+
+        if route == .home,
+           let lastRouteString = UserDefaults.standard.string(forKey: "mimi.native.lastRoute"),
+           let url = URL(string: "mimi-local://route\(lastRouteString)"),
+           let restoredRoute = NativeRoute.resolve(url) {
+            switch restoredRoute {
+            case .score(let id):
+                selectCatalogItem(id: id)
+            case .practice, .library, .catalog, .articles, .dataSettings, .studio:
+                navigate(restoredRoute)
+            default:
+                activate(route)
+            }
+        } else {
+            activate(route)
+        }
     }
 
     private func finishBootstrap(error: String) {
@@ -1080,6 +1105,27 @@ final class AppModel: ObservableObject {
         navigate(.score(id: id))
     }
 
+    func openRecentEntry(_ entry: PersonalHistoryEntry) {
+        if let score = personalScores.first(where: { $0.id == entry.id || $0.sourceId == entry.id || $0.id == "catalog:\(entry.id)" }) {
+            openPersonalScore(score)
+        } else {
+            let cleanID = entry.id.hasPrefix("catalog:") ? String(entry.id.dropFirst("catalog:".count)) : entry.id
+            selectCatalogItem(id: cleanID)
+        }
+    }
+
+    func clearRecentHistory() {
+        guard let personalStoreValue else { return }
+        Task { @MainActor [weak self] in
+            do {
+                try await personalStoreValue.clearRecentHistory()
+                self?.apply(try await personalStoreValue.snapshot())
+            } catch {
+                self?.presentAlert(title: "无法清空最近打开", message: error.localizedDescription)
+            }
+        }
+    }
+
     func loadScore(id: String) {
         auditionController.pause()
         scoreLoadGeneration += 1
@@ -1268,6 +1314,10 @@ final class AppModel: ObservableObject {
     }
 
     func routeImportedFile(_ url: URL) {
+        guard personalStoreValue != nil else {
+            pendingImportFileURL = url
+            return
+        }
         let ext = url.pathExtension.lowercased()
         let studioFormats: Set<String> = ["musicxml", "xml", "tex", "alphatex", "json"]
         if studioFormats.contains(ext) {

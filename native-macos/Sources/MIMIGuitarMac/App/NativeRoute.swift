@@ -172,6 +172,36 @@ enum NativeRoute: Hashable {
         }
     }
 
+    var asRestorationString: String? {
+        switch self {
+        case .home: return "/"
+        case .catalog(let cat):
+            switch cat {
+            case .guitar: return "/tabs"
+            case .ukulele: return "/ukulele"
+            case .bass, .all: return "/tabs"
+            }
+        case .score(let id): return "/guitar/\(id)"
+        case .studio: return "/studio"
+        case .studioClone(let sourceID): return "/studio?cloneFrom=\(sourceID)"
+        case .studioScore(let id): return "/studio?cloneFromPersonal=\(id)"
+        case .studioProject(let id): return "/studio?project=\(id)"
+        case .articles: return "/article"
+        case .article(let id): return "/article/\(id)"
+        case .publishArticle: return "/publishArticle"
+        case .practice(let scoreID):
+            if let scoreID, !scoreID.isEmpty { return "/practice?score=\(scoreID)" }
+            return "/practice"
+        case .library: return "/library"
+        case .dataSettings: return "/settings/data"
+        case .motion: return "/motion"
+        case .showcase: return "/showcase"
+        case .account(let area): return "/account/\(area.routeNumber)"
+        case .document(let doc): return doc.routePath
+        default: return nil
+        }
+    }
+
     static func resolve(_ url: URL) -> NativeRoute? {
         let path = url.path
         let query = URLComponents(url: url, resolvingAgainstBaseURL: false)?.queryItems ?? []
