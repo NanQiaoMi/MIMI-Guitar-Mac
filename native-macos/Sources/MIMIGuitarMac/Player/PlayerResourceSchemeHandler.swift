@@ -23,6 +23,9 @@ final class PlayerResourceSchemeHandler: NSObject, WKURLSchemeHandler {
     private let ioQueue = DispatchQueue(label: "com.mimi.guitar.player-resource-io", qos: .userInitiated, attributes: .concurrent)
     private var activeTasks: [ObjectIdentifier: ActiveTask] = [:]
 
+    private static var staticDataCache: [String: (Data, String, String?)] = [:]
+    private static let cacheLock = NSLock()
+
     init(playerRoot: URL, contentRoot: URL, source: NativePlayerSource) throws {
         self.playerRoot = playerRoot.standardizedFileURL.resolvingSymlinksInPath().standardizedFileURL
         self.contentRoot = contentRoot.standardizedFileURL.resolvingSymlinksInPath().standardizedFileURL
@@ -40,22 +43,62 @@ final class PlayerResourceSchemeHandler: NSObject, WKURLSchemeHandler {
                 urlSchemeTask.didFailWithError(PlayerResourceError.invalidRequest)
                 return
             }
+
+            let isDynamicSource = (path == "/source/current")
+
+            // 1. Fast path: check in-memory static cache
+            if !isDynamicSource {
+                Self.cacheLock.lock()
+                let cached = Self.staticDataCache[path]
+                Self.cacheLock.unlock()
+
+                if let cached {
+                    let headers = [
+                        "Content-Type": cached.2.map { "\(cached.1); charset=\($0)" } ?? cached.1,
+                        "Content-Length": String(cached.0.count),
+                        "Cache-Control": "public, max-age=31536000, immutable",
+                    ]
+                    if let response = HTTPURLResponse(url: url, statusCode: 200, httpVersion: "HTTP/1.1", headerFields: headers) {
+                        urlSchemeTask.didReceive(response)
+                        urlSchemeTask.didReceive(cached.0)
+                        urlSchemeTask.didFinish()
+                        return
+                    }
+                }
+            }
+
             do {
                 let (fileURL, mimeType, textEncoding) = try self.resource(for: path)
                 let values = try fileURL.resourceValues(forKeys: [.fileSizeKey, .isRegularFileKey])
                 guard values.isRegularFile == true else { throw PlayerResourceError.fileMissing }
+
+                // 2. Pre-cache static assets into memory on first read
+                if !isDynamicSource, let data = try? Data(contentsOf: fileURL, options: .mappedIfSafe) {
+                    Self.cacheLock.lock()
+                    Self.staticDataCache[path] = (data, mimeType, textEncoding)
+                    Self.cacheLock.unlock()
+
+                    let headers = [
+                        "Content-Type": textEncoding.map { "\(mimeType); charset=\($0)" } ?? mimeType,
+                        "Content-Length": String(data.count),
+                        "Cache-Control": "public, max-age=31536000, immutable",
+                    ]
+                    if let response = HTTPURLResponse(url: url, statusCode: 200, httpVersion: "HTTP/1.1", headerFields: headers) {
+                        urlSchemeTask.didReceive(response)
+                        urlSchemeTask.didReceive(data)
+                        urlSchemeTask.didFinish()
+                        return
+                    }
+                }
+
                 let handle = try FileHandle(forReadingFrom: fileURL)
                 let state = ActiveTask(task: urlSchemeTask, fileHandle: handle)
                 self.activeTasks[taskID] = state
                 let headers = [
                     "Content-Type": textEncoding.map { "\(mimeType); charset=\($0)" } ?? mimeType,
                     "Content-Length": String(values.fileSize ?? 0),
-                    "Cache-Control": "no-store",
+                    "Cache-Control": isDynamicSource ? "no-cache, no-store, must-revalidate" : "public, max-age=31536000, immutable",
                 ]
-                // A custom-scheme URLResponse has no HTTP success status. fetch() can
-                // therefore expose status 0 / ok=false even though the bytes arrived.
-                // Preserve the strict mimiplayer://app allowlist while giving fetch a
-                // standards-shaped successful response for each approved resource.
                 let response = HTTPURLResponse(
                     url: url,
                     statusCode: 200,

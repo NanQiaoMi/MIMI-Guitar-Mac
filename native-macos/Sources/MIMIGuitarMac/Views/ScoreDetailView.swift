@@ -7,6 +7,7 @@ struct ScoreDetailView: View {
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @AppStorage("mimi.motion.preference") private var motionPreference = "system"
     @State private var expandedDescriptionScoreID: String?
+    @State private var baseZoom: Double = 1.0
 
     private var motionPolicy: MIMIMotionPolicy {
         MIMIMotionPolicy.resolve(preference: motionPreference, reduceMotion: reduceMotion)
@@ -37,6 +38,15 @@ struct ScoreDetailView: View {
         }
         .background(MIMITheme.paper)
         .animation(motionPolicy.pageAnimation, value: model.selectedItem?.id ?? model.selectedPersonalScore?.id)
+        .onReceive(NotificationCenter.default.publisher(for: Notification.Name("MIMI.Player.ZoomReset"))) { _ in
+            baseZoom = 1.0
+        }
+        .onReceive(NotificationCenter.default.publisher(for: Notification.Name("MIMI.Player.ZoomIn"))) { _ in
+            baseZoom = min(1.6, baseZoom + 0.1)
+        }
+        .onReceive(NotificationCenter.default.publisher(for: Notification.Name("MIMI.Player.ZoomOut"))) { _ in
+            baseZoom = max(0.6, baseZoom - 0.1)
+        }
     }
 
     private func emptyState(title: String, message: String) -> some View {
@@ -112,6 +122,7 @@ struct ScoreDetailView: View {
                         .padding(.horizontal, model.isScoreFocused ? 0 : 1)
                         .mimiCard(radius: model.isScoreFocused ? 0 : 20, fill: MIMITheme.paperWhite, shadowOpacity: model.isScoreFocused ? 0 : 0.04)
                         .padding(.horizontal, model.isScoreFocused ? 0 : pageInset)
+                        .gesture(scorePinchGesture)
 
                         if !model.isScoreFocused {
                             screenshotAndMetadata(item).padding(.horizontal, pageInset)
@@ -164,6 +175,7 @@ struct ScoreDetailView: View {
                         .padding(.horizontal, model.isScoreFocused ? 0 : 1)
                         .mimiCard(radius: model.isScoreFocused ? 0 : 20, fill: MIMITheme.paperWhite, shadowOpacity: model.isScoreFocused ? 0 : 0.04)
                         .padding(.horizontal, model.isScoreFocused ? 0 : pageInset)
+                        .gesture(scorePinchGesture)
 
                         if !model.isScoreFocused, let warnings = score.warnings, !warnings.isEmpty {
                             VStack(alignment: .leading, spacing: 8) {
@@ -190,6 +202,25 @@ struct ScoreDetailView: View {
             .scrollDisabled(model.isScoreFocused)
             .background(MIMITheme.paper)
         }
+    }
+
+    private var scorePinchGesture: some Gesture {
+        MagnificationGesture()
+            .onChanged { scale in
+                let target = min(1.6, max(0.6, ((baseZoom * Double(scale) * 100).rounded() / 100)))
+                NotificationCenter.default.post(
+                    name: Notification.Name("MIMI.Player.SetZoom"),
+                    object: NSNumber(value: target)
+                )
+            }
+            .onEnded { scale in
+                let finalZoom = min(1.6, max(0.6, ((baseZoom * Double(scale) * 100).rounded() / 100)))
+                baseZoom = finalZoom
+                NotificationCenter.default.post(
+                    name: Notification.Name("MIMI.Player.SetZoom"),
+                    object: NSNumber(value: finalZoom)
+                )
+            }
     }
 
     private func playerViewportHeight(in availableHeight: CGFloat) -> CGFloat {
