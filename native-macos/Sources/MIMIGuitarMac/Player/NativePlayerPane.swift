@@ -318,6 +318,12 @@ struct NativePlayerPane: View {
         .onReceive(NotificationCenter.default.publisher(for: Notification.Name("MIMI.Player.ZoomReset"))) { _ in
             model.resetZoom()
         }
+        .onReceive(NotificationCenter.default.publisher(for: Notification.Name("MIMI.Player.SetZoom"))) { notification in
+            if let value = notification.object as? NSNumber {
+                model.zoom = min(1.6, max(0.6, ((value.doubleValue * 100).rounded() / 100)))
+                model.applyZoom()
+            }
+        }
         .onReceive(NotificationCenter.default.publisher(for: Notification.Name("MIMI.Player.SeekForward"))) { _ in
             model.seekBySeconds(5)
         }

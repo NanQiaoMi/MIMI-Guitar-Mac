@@ -20,6 +20,9 @@ public actor CatalogStore {
     private var database: OpaquePointer?
     private let catalogColumns: Set<String>
     private let articleColumns: Set<String>
+    private var queryCache: [CatalogQuery: CatalogPage] = [:]
+    private var queryCacheKeys: [CatalogQuery] = []
+    private let queryCacheCapacity = 64
 
     public init(databaseURL: URL) throws {
         var opened: OpaquePointer?
@@ -54,6 +57,9 @@ public actor CatalogStore {
     }
 
     public func search(_ query: CatalogQuery) throws -> CatalogPage {
+        if let cached = queryCache[query] {
+            return cached
+        }
         guard let database else { throw CatalogStoreError.open("数据库连接已关闭") }
         let orderedIDs = query.sort == .providedOrder && query.ids != nil ? Self.uniqueIDs(query.ids ?? []) : nil
         if let orderedIDs, orderedIDs.isEmpty { return CatalogPage(items: [], total: 0) }
@@ -90,7 +96,14 @@ public actor CatalogStore {
         LIMIT ? OFFSET ?
         """
         let items = try Self.readItems(database: database, sql: sql, values: idOrder.values + filter.values + [.integer(limit), .integer(offset)])
-        return CatalogPage(items: items, total: total)
+        let page = CatalogPage(items: items, total: total)
+        if queryCacheKeys.count >= queryCacheCapacity {
+            let evicted = queryCacheKeys.removeFirst()
+            queryCache.removeValue(forKey: evicted)
+        }
+        queryCacheKeys.append(query)
+        queryCache[query] = page
+        return page
     }
 
     public func item(id: String) throws -> CatalogItem? {

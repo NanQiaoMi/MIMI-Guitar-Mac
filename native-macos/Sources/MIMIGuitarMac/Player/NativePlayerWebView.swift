@@ -24,7 +24,7 @@ struct NativePlayerWebView: NSViewRepresentable {
             )
             context.coordinator.schemeHandler = schemeHandler
             let configuration = WKWebViewConfiguration()
-            configuration.websiteDataStore = .nonPersistent()
+            configuration.websiteDataStore = .default()
             configuration.preferences.javaScriptCanOpenWindowsAutomatically = false
             configuration.mediaTypesRequiringUserActionForPlayback = []
 
@@ -71,7 +71,7 @@ struct NativePlayerWebView: NSViewRepresentable {
                 return webView
             }
             model.pageLoadStarted()
-            webView.load(URLRequest(url: entryURL, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 20))
+            webView.load(URLRequest(url: entryURL, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 20))
             return webView
         } catch {
             model.playerRootError = error.localizedDescription

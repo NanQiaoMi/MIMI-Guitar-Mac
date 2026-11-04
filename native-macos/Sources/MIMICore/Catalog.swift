@@ -99,7 +99,7 @@ public enum CatalogRankingPeriod: String, CaseIterable, Sendable {
     case month
 }
 
-public struct CatalogQuery: Sendable {
+public struct CatalogQuery: Sendable, Hashable, Equatable {
     public let text: String
     public let searchField: CatalogSearchField
     public let category: String?
@@ -180,7 +180,7 @@ public enum CatalogArticleSort: String, CaseIterable, Sendable {
     case popular
 }
 
-public struct CatalogArticleQuery: Sendable {
+public struct CatalogArticleQuery: Sendable, Hashable, Equatable {
     public let text: String
     public let sort: CatalogArticleSort
     public let limit: Int
