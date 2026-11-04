@@ -386,7 +386,7 @@ public enum StudioPatternGenerator {
         let totalChords = progression.chords.count
 
         // 确保有足够的小节，不足时自动追加小节
-        var neededBars = startBarIndex + totalChords
+        let neededBars = startBarIndex + totalChords
         while current.bars.count < neededBars {
             let lastIndex = current.bars.count
             let templateBar = current.bars.last ?? StudioBar(

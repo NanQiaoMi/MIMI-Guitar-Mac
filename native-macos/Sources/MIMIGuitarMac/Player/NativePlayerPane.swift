@@ -309,6 +309,27 @@ struct NativePlayerPane: View {
         .onReceive(NotificationCenter.default.publisher(for: Notification.Name("MIMI.Player.ExportPDF"))) { _ in
             model.exportPDF()
         }
+        .onReceive(NotificationCenter.default.publisher(for: Notification.Name("MIMI.Player.ZoomIn"))) { _ in
+            model.zoomIn()
+        }
+        .onReceive(NotificationCenter.default.publisher(for: Notification.Name("MIMI.Player.ZoomOut"))) { _ in
+            model.zoomOut()
+        }
+        .onReceive(NotificationCenter.default.publisher(for: Notification.Name("MIMI.Player.ZoomReset"))) { _ in
+            model.resetZoom()
+        }
+        .onReceive(NotificationCenter.default.publisher(for: Notification.Name("MIMI.Player.SeekForward"))) { _ in
+            model.seekBySeconds(5)
+        }
+        .onReceive(NotificationCenter.default.publisher(for: Notification.Name("MIMI.Player.SeekBackward"))) { _ in
+            model.seekBySeconds(-5)
+        }
+        .onReceive(NotificationCenter.default.publisher(for: Notification.Name("MIMI.Player.PreviousBar"))) { _ in
+            model.seekPreviousBar()
+        }
+        .onReceive(NotificationCenter.default.publisher(for: Notification.Name("MIMI.Player.NextBar"))) { _ in
+            model.seekNextBar()
+        }
     }
 
     private var panelHeight: CGFloat {
@@ -2265,6 +2286,26 @@ final class NativePlayerModel: ObservableObject {
         send("setZoom", arguments: ["value": zoom])
     }
 
+    func zoomIn() {
+        let next = min(1.6, ((zoom + 0.1) * 100).rounded() / 100)
+        zoom = next
+        applyZoom()
+        markResumeDirty()
+    }
+
+    func zoomOut() {
+        let next = max(0.6, ((zoom - 0.1) * 100).rounded() / 100)
+        zoom = next
+        applyZoom()
+        markResumeDirty()
+    }
+
+    func resetZoom() {
+        zoom = 1.0
+        applyZoom()
+        markResumeDirty()
+    }
+
     func setMetronome(_ enabled: Bool) { metronome = enabled; send("setMetronome", arguments: ["enabled": enabled]); markResumeDirty() }
     func setCountIn(_ enabled: Bool) { countIn = enabled; send("setCountIn", arguments: ["enabled": enabled]); markResumeDirty() }
     func setCapo(_ value: Int, useSource: Bool) {
@@ -2341,6 +2382,27 @@ final class NativePlayerModel: ObservableObject {
     func seekToBar(_ barIndex: Int) {
         guard canPlay, barIndex >= 0, barIndex < barCount else { return }
         send("seekBar", arguments: ["barIndex": barIndex])
+    }
+
+    func seekBySeconds(_ seconds: Double) {
+        guard canPlay, endTime > 0 else { return }
+        let now = ProcessInfo.processInfo.systemUptime
+        let currentMs = positionState.interpolatedTime(at: now)
+        let targetMs = max(0, min(endTime, currentMs + seconds * 1000))
+        let ratio = targetMs / endTime
+        seek(toRatio: ratio)
+    }
+
+    func seekPreviousBar() {
+        guard canPlay, barCount > 0 else { return }
+        let target = max(0, currentBar - 1)
+        seekToBar(target)
+    }
+
+    func seekNextBar() {
+        guard canPlay, barCount > 0 else { return }
+        let target = min(barCount - 1, currentBar + 1)
+        seekToBar(target)
     }
 
     func scrollToPage(_ page: Int) {

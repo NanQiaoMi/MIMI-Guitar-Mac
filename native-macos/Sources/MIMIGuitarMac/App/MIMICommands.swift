@@ -12,24 +12,79 @@ struct MIMICommands: Commands {
             .disabled(model.isImporting)
         }
 
-        CommandMenu("播放") {
-            Button(model.isScoreFocused ? "退出全屏阅谱" : "全屏阅谱") {
-                model.toggleScoreFullscreen()
+        CommandGroup(after: .textEditing) {
+            Button("全站搜索与跳转…") {
+                model.presentCommandPalette()
             }
-            .keyboardShortcut("f", modifiers: [.command, .shift])
+            .keyboardShortcut("f", modifiers: [.command])
+        }
+
+        CommandMenu("播放") {
+            Section {
+                Button(model.isScoreFocused ? "退出全屏阅谱" : "全屏阅谱") {
+                    model.toggleScoreFullscreen()
+                }
+                .keyboardShortcut("f", modifiers: [.command, .shift])
+                .disabled(!model.canToggleScoreFullscreen)
+
+                Button("播放或暂停") {
+                    NotificationCenter.default.post(name: Notification.Name("MIMI.TogglePlayback"), object: nil)
+                }
+                .keyboardShortcut(.space, modifiers: [])
+                .disabled(!model.canToggleScoreFullscreen && model.auditionController.activeItem == nil)
+
+                Button("停止") {
+                    NotificationCenter.default.post(name: Notification.Name("MIMI.StopPlayback"), object: nil)
+                }
+                .keyboardShortcut(".", modifiers: [.command])
+                .disabled(!model.canToggleScoreFullscreen && model.auditionController.activeItem == nil)
+            }
+
+            Section {
+                Button("快退 5 秒") {
+                    NotificationCenter.default.post(name: Notification.Name("MIMI.Player.SeekBackward"), object: nil)
+                }
+                .keyboardShortcut(.leftArrow, modifiers: [.command])
+                .disabled(!model.canToggleScoreFullscreen)
+
+                Button("快进 5 秒") {
+                    NotificationCenter.default.post(name: Notification.Name("MIMI.Player.SeekForward"), object: nil)
+                }
+                .keyboardShortcut(.rightArrow, modifiers: [.command])
+                .disabled(!model.canToggleScoreFullscreen)
+
+                Button("上一小节") {
+                    NotificationCenter.default.post(name: Notification.Name("MIMI.Player.PreviousBar"), object: nil)
+                }
+                .keyboardShortcut(.leftArrow, modifiers: [.option])
+                .disabled(!model.canToggleScoreFullscreen)
+
+                Button("下一小节") {
+                    NotificationCenter.default.post(name: Notification.Name("MIMI.Player.NextBar"), object: nil)
+                }
+                .keyboardShortcut(.rightArrow, modifiers: [.option])
+                .disabled(!model.canToggleScoreFullscreen)
+            }
+        }
+
+        CommandMenu("显示") {
+            Button("放大曲谱") {
+                NotificationCenter.default.post(name: Notification.Name("MIMI.Player.ZoomIn"), object: nil)
+            }
+            .keyboardShortcut("+", modifiers: [.command])
             .disabled(!model.canToggleScoreFullscreen)
 
-            Button("播放或暂停") {
-                NotificationCenter.default.post(name: Notification.Name("MIMI.TogglePlayback"), object: nil)
+            Button("缩小曲谱") {
+                NotificationCenter.default.post(name: Notification.Name("MIMI.Player.ZoomOut"), object: nil)
             }
-            .keyboardShortcut(.space, modifiers: [])
-            .disabled(!model.canToggleScoreFullscreen && model.auditionController.activeItem == nil)
+            .keyboardShortcut("-", modifiers: [.command])
+            .disabled(!model.canToggleScoreFullscreen)
 
-            Button("停止") {
-                NotificationCenter.default.post(name: Notification.Name("MIMI.StopPlayback"), object: nil)
+            Button("实际大小 (100%)") {
+                NotificationCenter.default.post(name: Notification.Name("MIMI.Player.ZoomReset"), object: nil)
             }
-            .keyboardShortcut(".", modifiers: [.command])
-            .disabled(!model.canToggleScoreFullscreen && model.auditionController.activeItem == nil)
+            .keyboardShortcut("0", modifiers: [.command, .option])
+            .disabled(!model.canToggleScoreFullscreen)
         }
 
         CommandMenu("导航") {

@@ -134,7 +134,7 @@ struct ScoreDetailView: View {
                 .frame(maxWidth: .infinity, alignment: .top)
                 .background(RouteScrollPositionTracker(model: model, route: .score(id: requestedScoreID ?? "")).frame(width: 0, height: 0), alignment: .topLeading)
             }
-            .scrollIndicators(.hidden)
+            .scrollIndicators(.automatic)
             .scrollDisabled(model.isScoreFocused)
             .background(MIMITheme.paper)
         }
@@ -186,7 +186,7 @@ struct ScoreDetailView: View {
                 .frame(maxWidth: .infinity, alignment: .top)
                 .background(RouteScrollPositionTracker(model: model, route: .score(id: requestedScoreID ?? "")).frame(width: 0, height: 0), alignment: .topLeading)
             }
-            .scrollIndicators(.hidden)
+            .scrollIndicators(.automatic)
             .scrollDisabled(model.isScoreFocused)
             .background(MIMITheme.paper)
         }
