@@ -17,7 +17,8 @@ final class PlayerResourceSchemeHandler: NSObject, WKURLSchemeHandler {
 
     private let playerRoot: URL
     private let contentRoot: URL
-    private let source: NativePlayerSource
+    private var source: NativePlayerSource
+    private let sourceLock = NSLock()
     private let soundFontURL: URL
     private let ukuleleSoundFontURL: URL?
     private let ioQueue = DispatchQueue(label: "com.mimi.guitar.player-resource-io", qos: .userInitiated, attributes: .concurrent)
@@ -33,6 +34,12 @@ final class PlayerResourceSchemeHandler: NSObject, WKURLSchemeHandler {
         soundFontURL = try AppPaths.resolve(reference: "/soundfonts/sonivox.sf2", contentRoot: contentRoot)
         ukuleleSoundFontURL = try? AppPaths.resolve(reference: "/storage/soundfonts/ukulele_fast.sf2", contentRoot: contentRoot)
         super.init()
+    }
+
+    func updateSource(_ newSource: NativePlayerSource) {
+        sourceLock.lock()
+        source = newSource
+        sourceLock.unlock()
     }
 
     func webView(_ webView: WKWebView, start urlSchemeTask: WKURLSchemeTask) {
@@ -124,8 +131,11 @@ final class PlayerResourceSchemeHandler: NSObject, WKURLSchemeHandler {
 
     private func resource(for path: String) throws -> (URL, String, String?) {
         if path == "/source/current" {
-            try validateSource(source)
-            return (source.url, Self.mimeType(for: source.url.pathExtension), nil)
+            sourceLock.lock()
+            let currentSource = source
+            sourceLock.unlock()
+            try validateSource(currentSource)
+            return (currentSource.url, Self.mimeType(for: currentSource.url.pathExtension), nil)
         }
         if path == "/soundfont/main" {
             try validateContentFile(soundFontURL, rootName: "soundfonts")

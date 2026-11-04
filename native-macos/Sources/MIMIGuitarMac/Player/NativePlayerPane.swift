@@ -144,6 +144,8 @@ struct NativePlayerPane: View {
     @AppStorage("mimi.motion.preference") private var motionPreference = "system"
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @Environment(\.scenePhase) private var scenePhase
+    private let item: CatalogItem?
+    private let personalScore: PersonalScore?
     private let isFocused: Bool
     private let viewportHeight: CGFloat?
     private let onToggleFocus: (() -> Void)?
@@ -164,6 +166,8 @@ struct NativePlayerPane: View {
         viewportHeight: CGFloat? = nil,
         onToggleFocus: (() -> Void)? = nil
     ) {
+        self.item = item
+        self.personalScore = personalScore
         self.isFocused = isFocused
         self.viewportHeight = viewportHeight
         self.onToggleFocus = onToggleFocus
@@ -181,6 +185,8 @@ struct NativePlayerPane: View {
 
 #if MIMI_RUNTIME_DIAGNOSTICS
     init(runtimeDiagnosticModel model: NativePlayerModel) {
+        item = model.item
+        personalScore = model.personalScore
         isFocused = false
         viewportHeight = nil
         onToggleFocus = nil
@@ -300,6 +306,16 @@ struct NativePlayerPane: View {
 #endif
         }
         .onChange(of: scenePhase) { phase in model.setApplicationActive(phase == .active) }
+        .onChange(of: item?.id) { _ in
+            if let item {
+                model.open(item: item, autoplay: false)
+            }
+        }
+        .onChange(of: personalScore?.id) { _ in
+            if let personalScore {
+                model.loadPersonalScore(personalScore)
+            }
+        }
         .onReceive(NotificationCenter.default.publisher(for: Notification.Name("MIMI.TogglePlayback"))) { _ in
             model.togglePlayback()
         }
@@ -2533,9 +2549,13 @@ final class NativePlayerModel: ObservableObject {
         do {
             let resolved = try Self.resolveSource(item: item, contentRoot: contentRoot, importedFileURL: nil)
             source = resolved
-            webViewIdentity = UUID()
             computeRevision(for: resolved)
             Task { [personalStore] in try? await personalStore.recordRecent(item.id) }
+            if playerPageReady, webView != nil {
+                pageDidBecomeReady()
+            } else {
+                webViewIdentity = UUID()
+            }
         } catch { sourceError = error.localizedDescription }
     }
 
@@ -2885,7 +2905,11 @@ final class NativePlayerModel: ObservableObject {
                     self.scoreRevision = fileInfo.hash
                     self.tempo = Double(score.format.lowercased() == "xhe" ? 80 : (self.item?.bpm ?? Int(self.sourceTempo)))
                     self.sourceTempo = max(20, self.tempo)
-                    self.webViewIdentity = UUID()
+                    if self.playerPageReady, self.webView != nil {
+                        self.pageDidBecomeReady()
+                    } else {
+                        self.webViewIdentity = UUID()
+                    }
                     self.refreshPracticeData()
                 }
             } catch {

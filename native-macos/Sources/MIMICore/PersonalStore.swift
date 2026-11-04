@@ -636,6 +636,17 @@ public actor PersonalStore {
         }
     }
 
+    public func clearRecentHistory() throws {
+        guard let database else { throw PersonalStoreError.storage("数据库连接已关闭") }
+        try Self.withTransaction(database: database) { database in
+            let current = try Self.readSnapshot(database: database)
+            var draft = current.currentSchema
+            guard !draft.history.isEmpty else { return }
+            draft.history.removeAll()
+            _ = try Self.commitSnapshot(database: database, current: current, proposed: &draft, incomingAssets: [], removeStageSession: nil)
+        }
+    }
+
     private func mutateCatalogCollection(id: String, favorite: Bool, metadata: CatalogItem?, toggleFavorite: Bool = true, rawCatalogID: Bool = false) throws {
         guard let database else { throw PersonalStoreError.storage("数据库连接已关闭") }
         let normalized = try rawCatalogID ? Self.validRawCatalogID(id) : Self.normalizedID(id)
