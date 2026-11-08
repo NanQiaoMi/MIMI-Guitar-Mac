@@ -137,6 +137,19 @@ struct MIMICommands: Commands {
                 Button("备份") { model.navigate(.dataSettings) }
                     .keyboardShortcut("7", modifiers: [.command])
             }
+            Divider()
+            Button("跳转到乐理天梯") {
+                if model.route != .home { model.navigate(.home) }
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                    NotificationCenter.default.post(name: Notification.Name("MIMI.ScrollToTheory"), object: nil)
+                }
+            }
+            Button("跳转到页脚") {
+                if model.route != .home { model.navigate(.home) }
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                    NotificationCenter.default.post(name: Notification.Name("MIMI.ScrollToFooter"), object: nil)
+                }
+            }
         }
     }
 }

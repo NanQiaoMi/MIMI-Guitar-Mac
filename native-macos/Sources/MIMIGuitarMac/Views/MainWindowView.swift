@@ -170,6 +170,16 @@ struct MainWindowView: View {
                             proxy.scrollTo("home-scroll-top", anchor: .top)
                         }
                     }
+                    .onReceive(NotificationCenter.default.publisher(for: .init("MIMI.ScrollToTheory"))) { _ in
+                        withAnimation(reduceMotion || motionPreference == "off" ? nil : .easeOut(duration: 0.2)) {
+                            proxy.scrollTo("home-theory-section", anchor: .top)
+                        }
+                    }
+                    .onReceive(NotificationCenter.default.publisher(for: .init("MIMI.ScrollToFooter"))) { _ in
+                        withAnimation(reduceMotion || motionPreference == "off" ? nil : .easeOut(duration: 0.2)) {
+                            proxy.scrollTo("home-footer-section", anchor: .bottom)
+                        }
+                    }
             }
         case .catalog, .catalogQuery:
             ScrollView(.vertical) {
