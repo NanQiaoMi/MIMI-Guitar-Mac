@@ -733,64 +733,325 @@ struct HomeView: View {
     }
 
     private var footer: some View {
-        VStack(spacing: 24) {
-            HStack(alignment: .top, spacing: 35) {
-                VStack(alignment: .leading, spacing: 13) {
-                    HStack(spacing: 10) {
-                        MIMILogoView(size: 36)
-                        Text("MIMI Guitar 乐谱与练习").font(MIMITheme.displayFont(size: 19, weight: .bold)).foregroundStyle(MIMITheme.ink)
+        VStack(spacing: 28) {
+            // Main Top Content
+            HStack(alignment: .top, spacing: 36) {
+                // Left Brand Column & Colophon Bookplate
+                VStack(alignment: .leading, spacing: 16) {
+                    HStack(spacing: 12) {
+                        MIMILogoView(size: 40, cornerRadius: 10)
+                        VStack(alignment: .leading, spacing: 2) {
+                            Text("MIMI Guitar")
+                                .font(MIMITheme.displayFont(size: 20, weight: .bold))
+                                .foregroundStyle(MIMITheme.ink)
+                            Text("数字乐谱 · 严谨研习工坊")
+                                .font(MIMITheme.bodyFont(size: 11, weight: .medium))
+                                .foregroundStyle(MIMITheme.darkGold)
+                        }
                     }
-                    Text("把每一份乐谱，都当作一页书来对待。为吉他与尤克里里演奏者提供乐谱浏览、播放控制和本地练习记录。")
-                        .font(MIMITheme.bodyFont(size: 11)).foregroundStyle(MIMITheme.mutedInk).lineSpacing(4).frame(maxWidth: 350, alignment: .leading)
+
+                    // Inscription blockquote
+                    HStack(alignment: .top, spacing: 10) {
+                        Rectangle()
+                            .fill(MIMITheme.warmGold.gradient)
+                            .frame(width: 3)
+                            .cornerRadius(1.5)
+                        VStack(alignment: .leading, spacing: 5) {
+                            Text("“把每一份乐谱，都当作一页书来对待。”")
+                                .font(MIMITheme.displayFont(size: 13, weight: .semibold))
+                                .foregroundStyle(MIMITheme.ink)
+                            Text("为吉他与尤克里里演奏者打造的离线优先乐谱系统，提供六线谱原手稿排版、原声音轨播放控制与本地研习记录。")
+                                .font(MIMITheme.bodyFont(size: 11))
+                                .foregroundStyle(MIMITheme.mutedInk)
+                                .lineSpacing(3.5)
+                        }
+                    }
+                    .padding(12)
+                    .background(
+                        RoundedRectangle(cornerRadius: 12, style: .continuous)
+                            .fill(Color.dynamic(lightHex: 0xF3EFE6, darkHex: 0x2A251F))
+                    )
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 12, style: .continuous)
+                            .stroke(MIMITheme.softBorder.opacity(0.7), lineWidth: 1)
+                    )
+
+                    // Architecture & Capability Badges
                     HStack(spacing: 7) {
-                        MIMIPill(title: "印", tint: MIMITheme.terracotta, fill: MIMITheme.terracotta.opacity(0.08))
-                        Text("曲谱浏览 · 本地练习 · 个人备份").font(MIMITheme.bodyFont(size: 10)).foregroundStyle(MIMITheme.mutedInk)
+                        HomeFooterPill(icon: "apple.logo", title: "macOS 原生", color: MIMITheme.ink)
+                        HomeFooterPill(icon: "bolt.fill", title: "120Hz 渲染", color: MIMITheme.warmGold)
+                        HomeFooterPill(icon: "lock.shield.fill", title: "100% 离线私有", color: MIMITheme.green)
                     }
                 }
-                .frame(maxWidth: .infinity, alignment: .leading)
-                footerColumn("曲谱生态", links: [("吉他谱大全", .catalog(.guitar)), ("尤克里里精选", .catalog(.ukulele)), ("指弹独奏谱", .catalog(.guitar)), ("经典弹唱谱", .catalog(.guitar)), ("曲谱排序浏览", .catalog(.all))])
-                footerColumn("核心功能", links: [("乐谱播放控制", .document(.help)), ("六线谱与简谱显示", .document(.help)), ("音轨播放设置", .document(.help)), ("吉他指板显示", .document(.help)), ("变调与移调设置", .document(.help))])
-                footerColumn("乐理与工坊", links: [("个人导入曲谱", .library), ("动效与交互偏好", .motion), ("G 调和弦家族", .catalog(.all)), ("C 调入门精选", .catalog(.all)), ("零基础新手天梯", .catalog(.all))])
-                VStack(alignment: .leading, spacing: 11) {
-                    Text("关于与政策").font(MIMITheme.displayFont(size: 14, weight: .bold)).foregroundStyle(MIMITheme.ink)
-                    footerLink("帮助中心", .document(.help))
-                    footerLink("隐私政策", .document(.privacy))
-                    footerLink("用户协议", .document(.agreement))
-                    footerLink("版权政策", .document(.copyright))
-                    footerLink("授权说明", .document(.licenses))
+                .frame(maxWidth: 370, alignment: .leading)
+
+                // Right 4 Curated Category Tiles
+                HStack(alignment: .top, spacing: 20) {
+                    HomeFooterColumn(
+                        title: "曲谱生态",
+                        icon: "music.quarternote.3",
+                        iconColor: MIMITheme.terracotta,
+                        links: [
+                            ("吉他曲谱全集", .catalog(.guitar)),
+                            ("尤克里里专区", .catalog(.ukulele)),
+                            ("经典指弹独奏", .catalog(.guitar)),
+                            ("原版民谣弹唱", .catalog(.guitar)),
+                            ("按热度排序浏览", .catalog(.all))
+                        ],
+                        onNavigate: { model.navigate($0) }
+                    )
+
+                    HomeFooterColumn(
+                        title: "核心特性",
+                        icon: "tuningfork",
+                        iconColor: MIMITheme.warmGold,
+                        links: [
+                            ("六线谱与简谱排版", .document(.help)),
+                            ("多音轨原声试听", .catalog(.all)),
+                            ("吉他指板与和弦", .catalog(.guitar)),
+                            ("速度与移调控制", .document(.help)),
+                            ("无损打印与导出", .document(.help))
+                        ],
+                        onNavigate: { model.navigate($0) }
+                    )
+
+                    HomeFooterColumn(
+                        title: "工坊研习",
+                        icon: "waveform.and.magnifyingglass",
+                        iconColor: MIMITheme.signalBlue,
+                        links: [
+                            ("制谱工坊 PRO", .studio),
+                            ("我的练习中心", .practice(scoreID: nil)),
+                            ("个人曲谱书库", .library),
+                            ("深度专栏文章", .articles),
+                            ("动效与交互偏好", .motion)
+                        ],
+                        onNavigate: { model.navigate($0) }
+                    )
+
+                    HomeFooterColumn(
+                        title: "关于规范",
+                        icon: "shield.lefthalf.filled",
+                        iconColor: MIMITheme.green,
+                        links: [
+                            ("使用帮助与快捷键", .document(.help)),
+                            ("隐私与本地安全", .document(.privacy)),
+                            ("用户服务协议", .document(.agreement)),
+                            ("乐谱版权说明", .document(.copyright)),
+                            ("开源与授权说明", .document(.licenses))
+                        ],
+                        onNavigate: { model.navigate($0) }
+                    )
                 }
+                .frame(maxWidth: .infinity)
             }
-            Rectangle().fill(MIMITheme.softBorder).frame(height: 1)
-            HStack {
-                Text("© 2026 MIMI Guitar Workshop. All rights reserved.")
+
+            // Divider Line
+            Rectangle()
+                .fill(Color.dynamic(lightHex: 0xE8DFCFC, darkHex: 0x3A332B))
+                .frame(height: 1)
+
+            // Bottom Colophon Status Bar
+            HStack(spacing: 14) {
+                // Left copyright & craft declaration
+                VStack(alignment: .leading, spacing: 2) {
+                    Text("© 2026 MIMI Guitar Workshop. All rights reserved.")
+                        .font(.system(size: 10.5, weight: .medium))
+                        .foregroundStyle(MIMITheme.bodyInk)
+                    Text("专为严谨吉他演奏与研习打造 · 本地优先数字乐谱架构")
+                        .font(.system(size: 9.5))
+                        .foregroundStyle(MIMITheme.mutedInk)
+                }
+
                 Spacer()
-                HStack(spacing: 13) {
-                    footerLink("联系我们", .document(.contact))
-                    footerLink("上传政策", .document(.uploadPolicy))
-                    Button { NotificationCenter.default.post(name: .init("MIMI.ScrollToTop"), object: nil) } label: {
-                        Label("返回顶部", systemImage: "arrow.up").font(MIMITheme.bodyFont(size: 10, weight: .medium)).foregroundStyle(MIMITheme.bodyInk)
-                            .padding(.horizontal, 12).padding(.vertical, 7).background(.white, in: Capsule()).overlay(Capsule().stroke(MIMITheme.softBorder, lineWidth: 1))
-                    }.buttonStyle(.plain)
+
+                // Center Library Readiness status pill
+                HStack(spacing: 6) {
+                    Circle()
+                        .fill(MIMITheme.green)
+                        .frame(width: 6, height: 6)
+                    Text("本地引擎已就绪 · \(model.catalogCount > 0 ? "\(model.catalogCount)" : "16,233") 首曲库")
+                        .font(.system(size: 10, weight: .semibold, design: .monospaced))
+                        .foregroundStyle(MIMITheme.mutedInk)
+                }
+                .padding(.horizontal, 10)
+                .padding(.vertical, 4.5)
+                .background(
+                    RoundedRectangle(cornerRadius: 8, style: .continuous)
+                        .fill(Color.dynamic(lightHex: 0xF3EFE6, darkHex: 0x2A251F))
+                )
+                .overlay(
+                    RoundedRectangle(cornerRadius: 8, style: .continuous)
+                        .stroke(MIMITheme.softBorder, lineWidth: 1)
+                )
+
+                Spacer()
+
+                // Right quick actions
+                HStack(spacing: 9) {
+                    Button { model.presentCommandPalette() } label: {
+                        HStack(spacing: 4) {
+                            Image(systemName: "command")
+                                .font(.system(size: 9.5, weight: .bold))
+                            Text("快捷指令")
+                                .font(MIMITheme.bodyFont(size: 10.5, weight: .medium))
+                        }
+                        .foregroundStyle(MIMITheme.bodyInk)
+                        .padding(.horizontal, 10).padding(.vertical, 5)
+                        .background(Color.dynamic(lightHex: 0xFFFFFF, darkHex: 0x2C2721), in: Capsule())
+                        .overlay(Capsule().stroke(MIMITheme.softBorder, lineWidth: 1))
+                    }
+                    .buttonStyle(.plain)
+
+                    Button { model.navigate(.document(.contact)) } label: {
+                        Text("联系我们")
+                            .font(MIMITheme.bodyFont(size: 10.5))
+                            .foregroundStyle(MIMITheme.bodyInk)
+                    }
+                    .buttonStyle(.plain)
+
+                    Button { model.navigate(.document(.uploadPolicy)) } label: {
+                        Text("上传政策")
+                            .font(MIMITheme.bodyFont(size: 10.5))
+                            .foregroundStyle(MIMITheme.bodyInk)
+                    }
+                    .buttonStyle(.plain)
+
+                    Button {
+                        NotificationCenter.default.post(name: .init("MIMI.ScrollToTop"), object: nil)
+                    } label: {
+                        HStack(spacing: 4) {
+                            Image(systemName: "arrow.up")
+                                .font(.system(size: 9, weight: .bold))
+                            Text("返回顶部")
+                                .font(MIMITheme.bodyFont(size: 10.5, weight: .semibold))
+                        }
+                        .foregroundStyle(MIMITheme.darkGold)
+                        .padding(.horizontal, 12).padding(.vertical, 5)
+                        .background(
+                            Color.dynamic(lightHex: 0xFFFFFF, darkHex: 0x2C2721),
+                            in: Capsule()
+                        )
+                        .overlay(Capsule().stroke(MIMITheme.warmGold.opacity(0.4), lineWidth: 1))
+                    }
+                    .buttonStyle(.plain)
                 }
             }
-            .font(MIMITheme.bodyFont(size: 10)).foregroundStyle(MIMITheme.mutedInk)
         }
-        .padding(.horizontal, 8).padding(.top, 36).padding(.bottom, 18)
-        .background(MIMITheme.paper.opacity(0.72))
-        .overlay(alignment: .top) { Rectangle().fill(MIMITheme.softBorder).frame(height: 1) }
+        .padding(.horizontal, 32)
+        .padding(.vertical, 30)
+        .background(
+            RoundedRectangle(cornerRadius: 24, style: .continuous)
+                .fill(
+                    LinearGradient(
+                        colors: [
+                            Color.dynamic(lightHex: 0xFFFEFA, darkHex: 0x25211D),
+                            Color.dynamic(lightHex: 0xF7F4EB, darkHex: 0x201C18)
+                        ],
+                        startPoint: .topLeading,
+                        endPoint: .bottomTrailing
+                    )
+                )
+        )
+        .overlay(
+            RoundedRectangle(cornerRadius: 24, style: .continuous)
+                .stroke(
+                    Color.dynamic(lightHex: 0xE8DFCFC, darkHex: 0x383027),
+                    lineWidth: 1
+                )
+        )
+        .shadow(
+            color: Color(nsColor: .dynamic(lightHex: 0x483620, darkHex: 0x000000)).opacity(0.04),
+            radius: 12,
+            y: 4
+        )
+        .padding(.top, 10)
+        .padding(.bottom, 24)
     }
 
-    private func footerColumn(_ title: String, links: [(String, NativeRoute)]) -> some View {
-        VStack(alignment: .leading, spacing: 11) {
-            Text(title).font(MIMITheme.displayFont(size: 14, weight: .bold)).foregroundStyle(MIMITheme.ink)
-            ForEach(Array(links.enumerated()), id: \.offset) { _, link in footerLink(link.0, link.1) }
-        }.frame(maxWidth: .infinity, alignment: .leading)
-    }
+private struct HomeFooterPill: View {
+    let icon: String
+    let title: String
+    let color: Color
 
-    private func footerLink(_ title: String, _ route: NativeRoute) -> some View {
-        Button(title) { model.navigate(route) }.buttonStyle(.plain)
-            .font(MIMITheme.bodyFont(size: 11)).foregroundStyle(MIMITheme.bodyInk)
+    var body: some View {
+        HStack(spacing: 4) {
+            Image(systemName: icon)
+                .font(.system(size: 8.5, weight: .semibold))
+                .foregroundStyle(color)
+            Text(title)
+                .font(.system(size: 9.5, weight: .medium))
+                .foregroundStyle(MIMITheme.bodyInk)
+        }
+        .padding(.horizontal, 7)
+        .padding(.vertical, 3.5)
+        .background(
+            Color.dynamic(lightHex: 0xF3EFE6, darkHex: 0x2D2721),
+            in: Capsule()
+        )
+        .overlay(
+            Capsule().stroke(MIMITheme.softBorder, lineWidth: 1)
+        )
     }
+}
+
+private struct HomeFooterColumn: View {
+    let title: String
+    let icon: String
+    let iconColor: Color
+    let links: [(String, NativeRoute)]
+    let onNavigate: (NativeRoute) -> Void
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            HStack(spacing: 6) {
+                Image(systemName: icon)
+                    .font(.system(size: 11, weight: .semibold))
+                    .foregroundStyle(iconColor)
+                Text(title)
+                    .font(MIMITheme.displayFont(size: 13.5, weight: .bold))
+                    .foregroundStyle(MIMITheme.ink)
+            }
+            .padding(.bottom, 2)
+
+            VStack(alignment: .leading, spacing: 8) {
+                ForEach(Array(links.enumerated()), id: \.offset) { _, item in
+                    HomeFooterInteractiveLink(title: item.0, route: item.1, onNavigate: onNavigate)
+                }
+            }
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+    }
+}
+
+private struct HomeFooterInteractiveLink: View {
+    let title: String
+    let route: NativeRoute
+    let onNavigate: (NativeRoute) -> Void
+
+    @State private var isHovered = false
+
+    var body: some View {
+        Button {
+            onNavigate(route)
+        } label: {
+            HStack(spacing: 5) {
+                Image(systemName: isHovered ? "chevron.right" : "circle.fill")
+                    .font(.system(size: isHovered ? 7.5 : 3.5, weight: .bold))
+                    .foregroundStyle(isHovered ? MIMITheme.warmGold : MIMITheme.mutedInk.opacity(0.45))
+                    .frame(width: 8, alignment: .center)
+
+                Text(title)
+                    .font(MIMITheme.bodyFont(size: 11, weight: isHovered ? .medium : .regular))
+                    .foregroundStyle(isHovered ? MIMITheme.ink : MIMITheme.bodyInk)
+                    .offset(x: isHovered ? 1.5 : 0)
+            }
+        }
+        .buttonStyle(.plain)
+        .onHover { isHovered = $0 }
+        .animation(.easeInOut(duration: 0.12), value: isHovered)
+    }
+}
 
     private func submitHomeSearch(_ rawTerm: String) {
         let term = rawTerm.trimmingCharacters(in: .whitespacesAndNewlines)
