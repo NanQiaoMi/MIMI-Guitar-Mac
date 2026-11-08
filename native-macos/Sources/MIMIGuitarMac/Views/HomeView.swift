@@ -51,15 +51,17 @@ struct HomeView: View {
     private let sectionSpacing: CGFloat = 64
 
     var body: some View {
-        LazyVStack(alignment: .leading, spacing: sectionSpacing) {
+        VStack(alignment: .leading, spacing: sectionSpacing) {
             hero
             masterpieceSection
             bentoSection
             rankingSection
             theorySection
+                .id("home-theory-section")
             studyNotesSection
             callToAction
             footer
+                .id("home-footer-section")
         }
         .frame(maxWidth: 1240, alignment: .center)
         .frame(maxWidth: .infinity, alignment: .center)
@@ -396,88 +398,71 @@ struct HomeView: View {
     }
 
     private var theorySection: some View {
-        VStack(alignment: .leading, spacing: 20) {
-            MIMISectionHeading(title: "乐理进阶天梯与调性探索罗盘", subtitle: "清晰规划你的吉他研习路线，从零基础启蒙到专业大师级独奏。")
+        VStack(alignment: .leading, spacing: 22) {
+            MIMISectionHeading(
+                title: "乐理进阶天梯与调性探索罗盘",
+                subtitle: "清晰规划你的吉他研习路线，从零基础启蒙到专业大师级独奏"
+            )
 
-            // Progressive Connected Stage Breadcrumbs
+            // Progressive Connected Stage Stepper Rail
             HStack(spacing: 0) {
                 ForEach(Array(TheoryLevel.rows.enumerated()), id: \.element.id) { index, row in
-                    HStack(spacing: 4) {
-                        Circle()
-                            .fill(row.color)
-                            .frame(width: 6, height: 6)
-                        Text("L\(row.level) \(row.stage)")
-                            .font(.system(size: 11, weight: .bold))
-                            .foregroundStyle(row.color)
-                    }
-                    .padding(.horizontal, 10)
-                    .padding(.vertical, 5)
-                    .background(row.color.opacity(0.08), in: Capsule())
-
-                    if index < TheoryLevel.rows.count - 1 {
-                        Image(systemName: "chevron.right")
-                            .font(.system(size: 9, weight: .bold))
-                            .foregroundStyle(MIMITheme.softBorder)
-                            .padding(.horizontal, 6)
-                    }
-                }
-                Spacer()
-            }
-            .padding(.horizontal, 4)
-
-            // 5 Progressive Level Cards
-            HStack(alignment: .top, spacing: 12) {
-                ForEach(TheoryLevel.rows) { row in
                     Button {
                         model.navigate(.catalog(.guitar))
                         model.difficultyFilter = row.level
                         model.filterDidChange()
                     } label: {
-                        VStack(alignment: .leading, spacing: 10) {
-                            // Top Stage Tag & Color Pill
-                            HStack {
-                                MIMIPill(title: "L\(row.level) · \(row.stage)", tint: row.color, fill: row.color.opacity(0.12))
-                                Spacer()
-                                Text("LEVEL 0\(row.level)")
-                                    .font(.system(size: 9, weight: .bold, design: .monospaced))
-                                    .foregroundStyle(MIMITheme.mutedInk)
+                        HStack(spacing: 6) {
+                            ZStack {
+                                Circle()
+                                    .fill(row.color)
+                                    .frame(width: 19, height: 19)
+                                Text("\(row.level)")
+                                    .font(.system(size: 10, weight: .heavy, design: .rounded))
+                                    .foregroundStyle(.white)
                             }
-
-                            // Level Title
-                            Text(row.title)
-                                .font(MIMITheme.displayFont(size: 15, weight: .bold))
+                            Text(row.stage)
+                                .font(.system(size: 11, weight: .bold))
                                 .foregroundStyle(MIMITheme.ink)
-                                .lineLimit(1)
-                                .minimumScaleFactor(0.85)
-
-                            // Detail text
-                            Text(row.detail)
-                                .font(MIMITheme.bodyFont(size: 11))
-                                .foregroundStyle(MIMITheme.bodyInk)
-                                .lineSpacing(2.5)
-                                .frame(maxWidth: .infinity, minHeight: 44, alignment: .topLeading)
-
-                            Rectangle().fill(MIMITheme.faintBorder).frame(height: 1)
-
-                            // Representative Songs Pills
-                            VStack(alignment: .leading, spacing: 5) {
-                                Text("经典研习代表作:")
-                                    .font(MIMITheme.bodyFont(size: 10))
-                                    .foregroundStyle(MIMITheme.mutedInk)
-
-                                FlowSongPills(songs: row.reps, tint: row.color)
-                            }
                         }
-                        .padding(14)
-                        .frame(maxWidth: .infinity, minHeight: 228, alignment: .topLeading)
-                        .background(MIMITheme.paperWhite, in: RoundedRectangle(cornerRadius: 16, style: .continuous))
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 16, style: .continuous)
-                                .stroke(row.color.opacity(0.2), lineWidth: 1)
+                        .padding(.horizontal, 10)
+                        .padding(.vertical, 5)
+                        .background(
+                            Color.dynamic(lightHex: 0xFFFFFF, darkHex: 0x2A2520),
+                            in: Capsule()
                         )
-                        .shadow(color: Color.black.opacity(0.02), radius: 6, x: 0, y: 2)
+                        .overlay(
+                            Capsule().stroke(row.color.opacity(0.35), lineWidth: 1)
+                        )
+                        .shadow(color: Color.black.opacity(0.02), radius: 2, y: 1)
                     }
                     .buttonStyle(.plain)
+
+                    if index < TheoryLevel.rows.count - 1 {
+                        HStack(spacing: 3) {
+                            Rectangle()
+                                .fill(LinearGradient(colors: [row.color.opacity(0.4), TheoryLevel.rows[index + 1].color.opacity(0.4)], startPoint: .leading, endPoint: .trailing))
+                                .frame(height: 2)
+                            Image(systemName: "chevron.right")
+                                .font(.system(size: 8, weight: .black))
+                                .foregroundStyle(TheoryLevel.rows[index + 1].color.opacity(0.6))
+                        }
+                        .frame(maxWidth: 36)
+                        .padding(.horizontal, 4)
+                    }
+                }
+                Spacer()
+            }
+            .padding(.horizontal, 2)
+
+            // 5 Progressive Level Cards
+            HStack(alignment: .top, spacing: 12) {
+                ForEach(TheoryLevel.rows) { row in
+                    TheoryLevelCard(row: row) {
+                        model.navigate(.catalog(.guitar))
+                        model.difficultyFilter = row.level
+                        model.filterDidChange()
+                    }
                     .frame(maxWidth: .infinity)
                 }
             }
@@ -507,52 +492,34 @@ struct HomeView: View {
 
             LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())], spacing: 10) {
                 ForEach(KeyFamily.rows) { key in
-                    keyFamilyButton(key)
+                    KeyFamilyButton(key: key) {
+                        model.navigate(.catalog(.all))
+                        model.keyFilter = key.key
+                        model.filterDidChange()
+                    }
                 }
             }
         }
-        .padding(18)
-        .frame(minHeight: 220, alignment: .top)
-        .mimiCard(radius: 20, fill: Color(hex: 0xFAF7F2))
-    }
-
-    private func keyFamilyButton(_ key: KeyFamily) -> some View {
-        Button {
-            model.navigate(.catalog(.all))
-            model.keyFilter = key.key
-            model.filterDidChange()
-        } label: {
-            VStack(alignment: .leading, spacing: 5) {
-                HStack(spacing: 6) {
-                    Text(key.tonic)
-                        .font(.system(size: 12, weight: .heavy, design: .rounded))
-                        .foregroundStyle(.white)
-                        .frame(width: 22, height: 22)
-                        .background(key.color, in: Circle())
-
-                    Text(key.title)
-                        .font(.system(size: 13, weight: .bold, design: .rounded))
-                        .foregroundStyle(MIMITheme.ink)
-                    Spacer()
-                }
-
-                Text(key.mood)
-                    .font(.system(size: 9.5, weight: .medium))
-                    .foregroundStyle(MIMITheme.mutedInk)
-                    .lineLimit(1)
-
-                Text(key.chords)
-                    .font(.system(size: 9, weight: .medium, design: .monospaced))
-                    .foregroundStyle(key.color)
-                    .lineLimit(1)
-                    .minimumScaleFactor(0.7)
-            }
-            .padding(10)
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .background(Color.white, in: RoundedRectangle(cornerRadius: 12, style: .continuous))
-            .overlay(RoundedRectangle(cornerRadius: 12, style: .continuous).stroke(MIMITheme.softBorder, lineWidth: 1))
-        }
-        .buttonStyle(.plain)
+        .padding(20)
+        .frame(minHeight: 224, alignment: .top)
+        .background(
+            RoundedRectangle(cornerRadius: 22, style: .continuous)
+                .fill(
+                    LinearGradient(
+                        colors: [
+                            Color.dynamic(lightHex: 0xFAF7F2, darkHex: 0x24201C),
+                            Color.dynamic(lightHex: 0xF5F0E6, darkHex: 0x1F1B17)
+                        ],
+                        startPoint: .topLeading,
+                        endPoint: .bottomTrailing
+                    )
+                )
+        )
+        .overlay(
+            RoundedRectangle(cornerRadius: 22, style: .continuous)
+                .stroke(MIMITheme.softBorder, lineWidth: 1)
+        )
+        .shadow(color: Color(nsColor: .dynamic(lightHex: 0x483620, darkHex: 0x000000)).opacity(0.03), radius: 8, y: 2)
     }
 
     private var stylePanel: some View {
@@ -562,46 +529,33 @@ struct HomeView: View {
                     Text("曲风分类与编曲体裁")
                         .font(MIMITheme.displayFont(size: 18, weight: .bold))
                         .foregroundStyle(MIMITheme.ink)
-                    MIMIPill(title: "6大体裁", tint: MIMITheme.bodyInk, fill: MIMITheme.paper)
+                    MIMIPill(title: "6大体裁", tint: MIMITheme.bodyInk, fill: MIMITheme.warmGold.opacity(0.10))
                 }
                 Spacer()
-                Button("全部曲谱 →") {
+                Button {
                     model.navigate(.catalog(.all))
+                } label: {
+                    HStack(spacing: 4) {
+                        Text("全部曲谱")
+                        Image(systemName: "arrow.right")
+                            .font(.system(size: 9, weight: .bold))
+                    }
+                    .font(MIMITheme.bodyFont(size: 11, weight: .semibold))
+                    .foregroundStyle(MIMITheme.darkGold)
+                    .padding(.horizontal, 10).padding(.vertical, 5)
+                    .background(Color.dynamic(lightHex: 0xFFFFFF, darkHex: 0x2A2520), in: Capsule())
+                    .overlay(Capsule().stroke(MIMITheme.softBorder, lineWidth: 1))
                 }
-                .font(MIMITheme.bodyFont(size: 11, weight: .semibold))
-                .foregroundStyle(MIMITheme.darkGold)
                 .buttonStyle(.plain)
             }
 
             LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())], spacing: 9) {
                 ForEach(TheoryStyle.rows) { style in
-                    Button {
+                    TheoryStyleTile(style: style) {
                         model.navigate(.catalog(.all))
                         model.styleFilter = style.value
                         model.filterDidChange()
-                    } label: {
-                        HStack(spacing: 8) {
-                            Image(systemName: style.icon)
-                                .font(.system(size: 12))
-                                .foregroundStyle(MIMITheme.darkGold)
-                            VStack(alignment: .leading, spacing: 1) {
-                                Text(style.title)
-                                    .font(MIMITheme.bodyFont(size: 12, weight: .bold))
-                                    .foregroundStyle(MIMITheme.ink)
-                                Text(style.desc)
-                                    .font(.system(size: 8.5))
-                                    .foregroundStyle(MIMITheme.mutedInk)
-                                    .lineLimit(1)
-                            }
-                            Spacer(minLength: 0)
-                        }
-                        .padding(.horizontal, 10)
-                        .padding(.vertical, 8)
-                        .frame(maxWidth: .infinity)
-                        .background(MIMITheme.paper, in: RoundedRectangle(cornerRadius: 11, style: .continuous))
-                        .overlay(RoundedRectangle(cornerRadius: 11, style: .continuous).stroke(MIMITheme.softBorder, lineWidth: 1))
                     }
-                    .buttonStyle(.plain)
                 }
             }
 
@@ -609,10 +563,14 @@ struct HomeView: View {
 
             // Custom Tab Submission Callout
             HStack(spacing: 12) {
+                Image(systemName: "sparkles")
+                    .font(.system(size: 15, weight: .bold))
+                    .foregroundStyle(MIMITheme.darkGold)
+
                 VStack(alignment: .leading, spacing: 2) {
                     Text("未找到想要的曲谱？")
-                        .font(MIMITheme.displayFont(size: 12, weight: .bold))
-                        .foregroundStyle(Color(hex: 0x8F6D2B))
+                        .font(MIMITheme.displayFont(size: 12.5, weight: .bold))
+                        .foregroundStyle(MIMITheme.ink)
                     Text("支持导入 GP / IBE / XHE 格式，也可在制谱工坊自由编配。")
                         .font(MIMITheme.bodyFont(size: 10.5))
                         .foregroundStyle(MIMITheme.mutedInk)
@@ -625,30 +583,53 @@ struct HomeView: View {
                     }
                     .font(MIMITheme.bodyFont(size: 11, weight: .semibold))
                     .foregroundStyle(.white)
-                    .padding(.horizontal, 11)
+                    .padding(.horizontal, 12)
                     .frame(height: 28)
                     .background(MIMITheme.ink, in: Capsule())
                     .buttonStyle(.plain)
 
-                    Button("制谱工坊") {
+                    Button("制谱工坊 PRO") {
                         model.navigate(.studio)
                     }
                     .font(MIMITheme.bodyFont(size: 11, weight: .semibold))
                     .foregroundStyle(MIMITheme.darkGold)
-                    .padding(.horizontal, 11)
+                    .padding(.horizontal, 12)
                     .frame(height: 28)
-                    .background(Color.white, in: Capsule())
+                    .background(Color.dynamic(lightHex: 0xFFFFFF, darkHex: 0x2A2520), in: Capsule())
                     .overlay(Capsule().stroke(MIMITheme.warmGold.opacity(0.4), lineWidth: 1))
                     .buttonStyle(.plain)
                 }
             }
             .padding(12)
-            .background(MIMITheme.warmGold.opacity(0.08), in: RoundedRectangle(cornerRadius: 14, style: .continuous))
-            .overlay(RoundedRectangle(cornerRadius: 14, style: .continuous).stroke(MIMITheme.warmGold.opacity(0.2), lineWidth: 1))
+            .background(
+                RoundedRectangle(cornerRadius: 14, style: .continuous)
+                    .fill(Color.dynamic(lightHex: 0xF5EFE4, darkHex: 0x2A2520))
+            )
+            .overlay(
+                RoundedRectangle(cornerRadius: 14, style: .continuous)
+                    .stroke(MIMITheme.softBorder, lineWidth: 1)
+            )
         }
-        .padding(18)
-        .frame(minHeight: 220, alignment: .top)
-        .mimiCard(radius: 20, fill: MIMITheme.paperWhite)
+        .padding(20)
+        .frame(minHeight: 224, alignment: .top)
+        .background(
+            RoundedRectangle(cornerRadius: 22, style: .continuous)
+                .fill(
+                    LinearGradient(
+                        colors: [
+                            Color.dynamic(lightHex: 0xFAF7F2, darkHex: 0x24201C),
+                            Color.dynamic(lightHex: 0xF5F0E6, darkHex: 0x1F1B17)
+                        ],
+                        startPoint: .topLeading,
+                        endPoint: .bottomTrailing
+                    )
+                )
+        )
+        .overlay(
+            RoundedRectangle(cornerRadius: 22, style: .continuous)
+                .stroke(MIMITheme.softBorder, lineWidth: 1)
+        )
+        .shadow(color: Color(nsColor: .dynamic(lightHex: 0x483620, darkHex: 0x000000)).opacity(0.03), radius: 8, y: 2)
     }
 
     private var studyNotesSection: some View {
@@ -818,7 +799,7 @@ struct HomeView: View {
                     HomeFooterColumn(
                         title: "工坊研习",
                         icon: "waveform.and.magnifyingglass",
-                        iconColor: MIMITheme.signalBlue,
+                        iconColor: Color.dynamic(lightHex: 0xA86A3D, darkHex: 0xD4945C),
                         links: [
                             ("制谱工坊 PRO", .studio),
                             ("我的练习中心", .practice(scoreID: nil)),
@@ -848,7 +829,7 @@ struct HomeView: View {
 
             // Divider Line
             Rectangle()
-                .fill(Color.dynamic(lightHex: 0xE8DFCFC, darkHex: 0x3A332B))
+                .fill(MIMITheme.softBorder.opacity(0.85))
                 .frame(height: 1)
 
             // Bottom Colophon Status Bar
@@ -955,10 +936,7 @@ struct HomeView: View {
         )
         .overlay(
             RoundedRectangle(cornerRadius: 24, style: .continuous)
-                .stroke(
-                    Color.dynamic(lightHex: 0xE8DFCFC, darkHex: 0x383027),
-                    lineWidth: 1
-                )
+                .stroke(MIMITheme.softBorder, lineWidth: 1)
         )
         .shadow(
             color: Color(nsColor: .dynamic(lightHex: 0x483620, darkHex: 0x000000)).opacity(0.04),
@@ -1035,17 +1013,18 @@ private struct HomeFooterInteractiveLink: View {
         Button {
             onNavigate(route)
         } label: {
-            HStack(spacing: 5) {
+            HStack(spacing: 6) {
                 Image(systemName: isHovered ? "chevron.right" : "circle.fill")
                     .font(.system(size: isHovered ? 7.5 : 3.5, weight: .bold))
-                    .foregroundStyle(isHovered ? MIMITheme.warmGold : MIMITheme.mutedInk.opacity(0.45))
+                    .foregroundStyle(isHovered ? MIMITheme.darkGold : MIMITheme.mutedInk.opacity(0.4))
                     .frame(width: 8, alignment: .center)
 
                 Text(title)
-                    .font(MIMITheme.bodyFont(size: 11, weight: isHovered ? .medium : .regular))
-                    .foregroundStyle(isHovered ? MIMITheme.ink : MIMITheme.bodyInk)
+                    .font(MIMITheme.bodyFont(size: 11.5, weight: isHovered ? .medium : .regular))
+                    .foregroundStyle(isHovered ? MIMITheme.darkGold : MIMITheme.bodyInk)
                     .offset(x: isHovered ? 1.5 : 0)
             }
+            .padding(.vertical, 1.5)
         }
         .buttonStyle(.plain)
         .onHover { isHovered = $0 }
@@ -2483,12 +2462,132 @@ private struct TheoryLevel: Identifiable {
     var id: Int { level }
 
     static let rows: [TheoryLevel] = [
-        TheoryLevel(level: 1, stage: "启蒙破冰", title: "零基础 · 启蒙", detail: "单音旋律、入门开放和弦与基础扫弦", reps: ["小星星", "老男孩"], color: Color(hex: 0x2E7D32)),
-        TheoryLevel(level: 2, stage: "弹唱基石", title: "初级 · 熟练弹唱", detail: "常用大调和弦、基础切音与前奏滑音", reps: ["晴天", "后来", "平凡之路"], color: Color(hex: 0x00838F)),
-        TheoryLevel(level: 3, stage: "复调独奏", title: "中级 · 进阶独奏", detail: "F大横按攻克、击勾弦与中级指弹复调", reps: ["反方向的钟", "我记得", "海阔天空"], color: Color(hex: 0x1565C0)),
-        TheoryLevel(level: 4, stage: "舞台炫技", title: "高级 · 舞台指弹", detail: "拍弦（Slap）、点弦、人工泛音与变拍子", reps: ["卡农", "加州旅馆", "风之诗"], color: Color(hex: 0xE65100)),
-        TheoryLevel(level: 5, stage: "大师造极", title: "专业 · 大师总谱", detail: "多声部交响吉他、特殊调弦法与极速独奏", reps: ["Fight", "Wings", "黄昏"], color: Color(hex: 0x8F6D2B))
+        TheoryLevel(level: 1, stage: "启蒙破冰", title: "零基础 · 启蒙", detail: "单音旋律、入门开放和弦与基础扫弦", reps: ["小星星", "老男孩"], color: Color(hex: 0x2D7A4D)),
+        TheoryLevel(level: 2, stage: "弹唱基石", title: "初级 · 熟练弹唱", detail: "常用大调和弦、基础切音与前奏滑音", reps: ["晴天", "后来", "平凡之路"], color: Color(hex: 0x2A7B72)),
+        TheoryLevel(level: 3, stage: "复调独奏", title: "中级 · 进阶独奏", detail: "F大横按攻克、击勾弦与中级指弹复调", reps: ["反方向的钟", "我记得", "海阔天空"], color: Color(hex: 0x2B4C6F)),
+        TheoryLevel(level: 4, stage: "舞台炫技", title: "高级 · 舞台指弹", detail: "拍弦（Slap）、点弦、人工泛音与变拍子", reps: ["卡农", "加州旅馆", "风之诗"], color: Color(hex: 0xC05621)),
+        TheoryLevel(level: 5, stage: "大师造极", title: "专业 · 大师总谱", detail: "多声部交响吉他、特殊调弦法与极速独奏", reps: ["Fight", "Wings", "黄昏"], color: Color(hex: 0x975A16))
     ]
+}
+
+private struct TheoryLevelCard: View {
+    let row: TheoryLevel
+    let onSelect: () -> Void
+    @State private var isHovered = false
+
+    var body: some View {
+        Button(action: onSelect) {
+            VStack(alignment: .leading, spacing: 0) {
+                // Top Color Accent Bar
+                Rectangle()
+                    .fill(
+                        LinearGradient(
+                            colors: [row.color, row.color.opacity(0.4)],
+                            startPoint: .leading,
+                            endPoint: .trailing
+                        )
+                    )
+                    .frame(height: 3)
+                    .clipShape(RoundedRectangle(cornerRadius: 1.5))
+                    .padding(.bottom, 12)
+
+                // Header badge row
+                HStack(alignment: .center) {
+                    HStack(spacing: 5) {
+                        ZStack {
+                            Circle()
+                                .fill(row.color)
+                                .frame(width: 17, height: 17)
+                            Text("\(row.level)")
+                                .font(.system(size: 9.5, weight: .heavy, design: .rounded))
+                                .foregroundStyle(.white)
+                        }
+                        Text(row.stage)
+                            .font(.system(size: 11, weight: .bold))
+                            .foregroundStyle(row.color)
+                    }
+                    .padding(.horizontal, 7)
+                    .padding(.vertical, 3.5)
+                    .background(row.color.opacity(0.12), in: Capsule())
+
+                    Spacer(minLength: 4)
+
+                    Text("LEVEL 0\(row.level)")
+                        .font(.system(size: 9, weight: .bold, design: .monospaced))
+                        .foregroundStyle(MIMITheme.mutedInk.opacity(0.7))
+                }
+                .padding(.bottom, 10)
+
+                // Title
+                Text(row.title)
+                    .font(MIMITheme.displayFont(size: 15, weight: .bold))
+                    .foregroundStyle(MIMITheme.ink)
+                    .padding(.bottom, 6)
+
+                // Detail text
+                Text(row.detail)
+                    .font(MIMITheme.bodyFont(size: 11.5))
+                    .foregroundStyle(MIMITheme.bodyInk)
+                    .lineSpacing(2)
+                    .frame(maxWidth: .infinity, minHeight: 38, alignment: .topLeading)
+                    .padding(.bottom, 10)
+
+                // Divider
+                Rectangle()
+                    .fill(MIMITheme.softBorder.opacity(0.85))
+                    .frame(height: 1)
+                    .padding(.bottom, 10)
+
+                // Song Recommendations section
+                VStack(alignment: .leading, spacing: 6) {
+                    HStack(spacing: 4) {
+                        Image(systemName: "music.quarternote.3")
+                            .font(.system(size: 8.5))
+                            .foregroundStyle(MIMITheme.darkGold)
+                        Text("经典研习代表作：")
+                            .font(MIMITheme.bodyFont(size: 10, weight: .medium))
+                            .foregroundStyle(MIMITheme.mutedInk)
+                    }
+
+                    FlowSongPills(songs: row.reps, tint: row.color)
+                }
+
+                Spacer(minLength: 4)
+
+                // Bottom Action Pill
+                HStack {
+                    Text("探索曲目")
+                        .font(MIMITheme.bodyFont(size: 10.5, weight: .semibold))
+                        .foregroundStyle(isHovered ? row.color : MIMITheme.mutedInk)
+                    Image(systemName: "arrow.right")
+                        .font(.system(size: 8.5, weight: .bold))
+                        .foregroundStyle(isHovered ? row.color : MIMITheme.mutedInk)
+                        .offset(x: isHovered ? 2 : 0)
+                }
+                .padding(.top, 2)
+            }
+            .padding(14)
+            .frame(maxWidth: .infinity, minHeight: 242, maxHeight: 242, alignment: .topLeading)
+            .background(
+                RoundedRectangle(cornerRadius: 16, style: .continuous)
+                    .fill(Color.dynamic(lightHex: isHovered ? 0xFFFFFF : 0xFCFAF7, darkHex: isHovered ? 0x2A2520 : 0x24201C))
+            )
+            .overlay(
+                RoundedRectangle(cornerRadius: 16, style: .continuous)
+                    .stroke(isHovered ? row.color.opacity(0.65) : MIMITheme.softBorder, lineWidth: isHovered ? 1.5 : 1)
+            )
+            .shadow(
+                color: Color(nsColor: .dynamic(lightHex: 0x483620, darkHex: 0x000000))
+                    .opacity(isHovered ? 0.08 : 0.025),
+                radius: isHovered ? 8 : 3,
+                y: isHovered ? 3 : 1
+            )
+            .offset(y: isHovered ? -2 : 0)
+        }
+        .buttonStyle(.plain)
+        .onHover { isHovered = $0 }
+        .animation(.spring(response: 0.25, dampingFraction: 0.8), value: isHovered)
+    }
 }
 
 private struct FlowSongPills: View {
@@ -2497,14 +2596,23 @@ private struct FlowSongPills: View {
 
     var body: some View {
         ViewThatFits(in: .horizontal) {
-            HStack(spacing: 4) {
+            HStack(spacing: 3) {
                 ForEach(songs, id: \.self) { song in
                     songBadge(song)
                 }
             }
-            VStack(alignment: .leading, spacing: 4) {
-                ForEach(songs, id: \.self) { song in
-                    songBadge(song)
+            VStack(alignment: .leading, spacing: 3) {
+                HStack(spacing: 3) {
+                    ForEach(Array(songs.prefix(2)), id: \.self) { song in
+                        songBadge(song)
+                    }
+                }
+                if songs.count > 2 {
+                    HStack(spacing: 3) {
+                        ForEach(Array(songs.dropFirst(2)), id: \.self) { song in
+                            songBadge(song)
+                        }
+                    }
                 }
             }
         }
@@ -2512,12 +2620,12 @@ private struct FlowSongPills: View {
 
     private func songBadge(_ title: String) -> some View {
         Text("《\(title)》")
-            .font(MIMITheme.bodyFont(size: 10, weight: .medium))
+            .font(MIMITheme.bodyFont(size: 9.5, weight: .medium))
             .foregroundStyle(MIMITheme.ink)
-            .padding(.horizontal, 6)
+            .padding(.horizontal, 5)
             .padding(.vertical, 2)
-            .background(MIMITheme.paper, in: RoundedRectangle(cornerRadius: 6, style: .continuous))
-            .overlay(RoundedRectangle(cornerRadius: 6, style: .continuous).stroke(MIMITheme.softBorder, lineWidth: 0.8))
+            .background(Color.dynamic(lightHex: 0xF3EFE7, darkHex: 0x2E2822), in: RoundedRectangle(cornerRadius: 5, style: .continuous))
+            .overlay(RoundedRectangle(cornerRadius: 5, style: .continuous).stroke(MIMITheme.softBorder, lineWidth: 0.8))
     }
 }
 
@@ -2531,15 +2639,97 @@ private struct KeyFamily: Identifiable {
     var id: String { key }
 
     static let rows = [
-        KeyFamily(key: "C", tonic: "C", title: "C 大调", mood: "纯净基石 · 温暖明朗", chords: "C · Dm · Em · F · G · Am", color: Color(hex: 0x1565C0)),
-        KeyFamily(key: "G", tonic: "G", title: "G 大调", mood: "民谣灵魂 · 清澈开阔", chords: "G · Am · Bm · C · D · Em", color: Color(hex: 0x2E7D32)),
-        KeyFamily(key: "D", tonic: "D", title: "D 大调", mood: "明快辉煌 · 抒情指弹", chords: "D · Em · F#m · G · A · Bm", color: Color(hex: 0xE65100)),
-        KeyFamily(key: "A", tonic: "A", title: "A 大调", mood: "清亮激昂 · 流行摇滚", chords: "A · Bm · C#m · D · E · F#m", color: Color(hex: 0x7B1FA2)),
-        KeyFamily(key: "E", tonic: "E", title: "E 大调", mood: "浑厚深沉 · 蓝调布鲁斯", chords: "E · F#m · G#m · A · B · C#m", color: Color(hex: 0xC2185B)),
-        KeyFamily(key: "F", tonic: "F", title: "F 大调", mood: "柔和浪漫 · 横按试炼", chords: "F · Gm · Am · Bb · C · Dm", color: Color(hex: 0x00838F)),
-        KeyFamily(key: "Em", tonic: "Em", title: "Em 小调", mood: "苍凉质朴 · 幽谷民谣", chords: "Em · F#dim · G · Am · Bm · C", color: Color(hex: 0x5C4A38)),
-        KeyFamily(key: "Am", tonic: "Am", title: "Am 小调", mood: "凄美深情 · 经典流行", chords: "Am · Bdim · C · Dm · Em · F", color: Color(hex: 0xC84B31)),
+        KeyFamily(key: "C", tonic: "C", title: "C 大调", mood: "纯净基石 · 温暖明朗", chords: "C · G · Am · F", color: Color(hex: 0x2C4A6F)),
+        KeyFamily(key: "G", tonic: "G", title: "G 大调", mood: "民谣灵魂 · 清澈开阔", chords: "G · D · Em · C", color: Color(hex: 0x2D7A4D)),
+        KeyFamily(key: "D", tonic: "D", title: "D 大调", mood: "明快辉煌 · 抒情指弹", chords: "D · A · Bm · G", color: Color(hex: 0xC05621)),
+        KeyFamily(key: "A", tonic: "A", title: "A 大调", mood: "清亮激昂 · 流行摇滚", chords: "A · E · F#m · D", color: Color(hex: 0x6E3985)),
+        KeyFamily(key: "E", tonic: "E", title: "E 大调", mood: "浑厚深沉 · 蓝调布鲁斯", chords: "E · B · C#m · A", color: Color(hex: 0xA22358)),
+        KeyFamily(key: "F", tonic: "F", title: "F 大调", mood: "柔和浪漫 · 横按试炼", chords: "F · C · Dm · Bb", color: Color(hex: 0x2A7B72)),
+        KeyFamily(key: "Em", tonic: "Em", title: "Em 小调", mood: "苍凉质朴 · 幽谷民谣", chords: "Em · C · G · D", color: Color(hex: 0x5C4A38)),
+        KeyFamily(key: "Am", tonic: "Am", title: "Am 小调", mood: "凄美深情 · 经典流行", chords: "Am · F · C · G", color: Color(hex: 0x9F3A25)),
     ]
+}
+
+private struct KeyFamilyButton: View {
+    let key: KeyFamily
+    let onSelect: () -> Void
+    @State private var isHovered = false
+
+    var body: some View {
+        Button(action: onSelect) {
+            VStack(alignment: .leading, spacing: 6) {
+                HStack(spacing: 7) {
+                    ZStack {
+                        Circle()
+                            .fill(
+                                LinearGradient(
+                                    colors: [key.color, key.color.opacity(0.85)],
+                                    startPoint: .topLeading,
+                                    endPoint: .bottomTrailing
+                                )
+                            )
+                            .frame(width: 24, height: 24)
+                        Text(key.tonic)
+                            .font(.system(size: 11, weight: .heavy, design: .rounded))
+                            .foregroundStyle(.white)
+                    }
+                    .shadow(color: key.color.opacity(0.25), radius: 2, y: 1)
+
+                    Text(key.title)
+                        .font(MIMITheme.displayFont(size: 13, weight: .bold))
+                        .foregroundStyle(MIMITheme.ink)
+
+                    Spacer(minLength: 0)
+
+                    Image(systemName: "chevron.right")
+                        .font(.system(size: 8, weight: .bold))
+                        .foregroundStyle(key.color)
+                        .opacity(isHovered ? 1 : 0)
+                }
+
+                Text(key.mood)
+                    .font(MIMITheme.bodyFont(size: 9.5, weight: .regular))
+                    .foregroundStyle(MIMITheme.mutedInk)
+                    .lineLimit(1)
+
+                HStack(spacing: 3) {
+                    Text("走向")
+                        .font(MIMITheme.bodyFont(size: 8.5, weight: .medium))
+                        .foregroundStyle(MIMITheme.mutedInk.opacity(0.8))
+                    Text(key.chords)
+                        .font(.system(size: 8.5, weight: .bold, design: .monospaced))
+                        .foregroundStyle(isHovered ? key.color : MIMITheme.bodyInk)
+                }
+                .lineLimit(1)
+                .padding(.horizontal, 6)
+                .padding(.vertical, 2.5)
+                .background(
+                    Color.dynamic(lightHex: 0xF2ECE2, darkHex: 0x2D2721),
+                    in: RoundedRectangle(cornerRadius: 5, style: .continuous)
+                )
+            }
+            .padding(10)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .background(
+                RoundedRectangle(cornerRadius: 13, style: .continuous)
+                    .fill(Color.dynamic(lightHex: isHovered ? 0xFFFFFF : 0xFCFAF7, darkHex: isHovered ? 0x2A2520 : 0x24201C))
+            )
+            .overlay(
+                RoundedRectangle(cornerRadius: 13, style: .continuous)
+                    .stroke(isHovered ? key.color.opacity(0.55) : MIMITheme.softBorder, lineWidth: isHovered ? 1.2 : 1)
+            )
+            .shadow(
+                color: Color(nsColor: .dynamic(lightHex: 0x483620, darkHex: 0x000000))
+                    .opacity(isHovered ? 0.06 : 0.02),
+                radius: isHovered ? 5 : 2,
+                y: isHovered ? 2 : 1
+            )
+            .offset(y: isHovered ? -1.5 : 0)
+        }
+        .buttonStyle(.plain)
+        .onHover { isHovered = $0 }
+        .animation(.spring(response: 0.22, dampingFraction: 0.8), value: isHovered)
+    }
 }
 
 private struct TheoryStyle: Identifiable {
@@ -2556,6 +2746,69 @@ private struct TheoryStyle: Identifiable {
         TheoryStyle(value: 107, title: "乡村", desc: "指尖律动 · 欢快叙事", icon: "leaf.fill"),
         TheoryStyle(value: 109, title: "金属", desc: "强力和弦 · 极速失真", icon: "flame.fill"),
     ]
+}
+
+private struct TheoryStyleTile: View {
+    let style: TheoryStyle
+    let onSelect: () -> Void
+    @State private var isHovered = false
+
+    var body: some View {
+        Button(action: onSelect) {
+            HStack(spacing: 9) {
+                ZStack {
+                    RoundedRectangle(cornerRadius: 9, style: .continuous)
+                        .fill(
+                            isHovered
+                                ? MIMITheme.warmGold.opacity(0.18)
+                                : Color.dynamic(lightHex: 0xF2ECE1, darkHex: 0x302922)
+                        )
+                        .frame(width: 32, height: 32)
+                    Image(systemName: style.icon)
+                        .font(.system(size: 13, weight: .bold))
+                        .foregroundStyle(isHovered ? MIMITheme.darkGold : Color.dynamic(lightHex: 0x8C6B46, darkHex: 0xC4A47E))
+                }
+
+                VStack(alignment: .leading, spacing: 2) {
+                    Text(style.title)
+                        .font(MIMITheme.displayFont(size: 12.5, weight: .bold))
+                        .foregroundStyle(isHovered ? MIMITheme.darkGold : MIMITheme.ink)
+                    Text(style.desc)
+                        .font(MIMITheme.bodyFont(size: 9.5))
+                        .foregroundStyle(MIMITheme.mutedInk)
+                        .lineLimit(1)
+                }
+
+                Spacer(minLength: 0)
+
+                Image(systemName: "chevron.right")
+                    .font(.system(size: 8, weight: .bold))
+                    .foregroundStyle(MIMITheme.darkGold)
+                    .opacity(isHovered ? 1 : 0)
+            }
+            .padding(.horizontal, 9)
+            .padding(.vertical, 8)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .background(
+                RoundedRectangle(cornerRadius: 12, style: .continuous)
+                    .fill(Color.dynamic(lightHex: isHovered ? 0xFFFFFF : 0xFCFAF7, darkHex: isHovered ? 0x2A2520 : 0x24201C))
+            )
+            .overlay(
+                RoundedRectangle(cornerRadius: 12, style: .continuous)
+                    .stroke(isHovered ? MIMITheme.warmGold.opacity(0.6) : MIMITheme.softBorder, lineWidth: isHovered ? 1.2 : 1)
+            )
+            .shadow(
+                color: Color(nsColor: .dynamic(lightHex: 0x483620, darkHex: 0x000000))
+                    .opacity(isHovered ? 0.05 : 0.015),
+                radius: isHovered ? 4 : 2,
+                y: isHovered ? 1.5 : 0.5
+            )
+            .offset(y: isHovered ? -1 : 0)
+        }
+        .buttonStyle(.plain)
+        .onHover { isHovered = $0 }
+        .animation(.spring(response: 0.22, dampingFraction: 0.8), value: isHovered)
+    }
 }
 
 private struct PracticeMemoryCard: View {
