@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { existsSync } from "node:fs";
 import { readFile } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 import test from "node:test";
@@ -12,6 +13,13 @@ import {
 const soundfontBytes = new Uint8Array(
   await readFile(fileURLToPath(new URL("../public/soundfonts/sonivox.sf2", import.meta.url))),
 );
+const ukuleleSoundfontPath = fileURLToPath(
+  new URL("../public/storage/soundfonts/ukulele_fast.sf2", import.meta.url),
+);
+const hasUkuleleSoundfont = existsSync(ukuleleSoundfontPath);
+if (!hasUkuleleSoundfont && process.env.REQUIRE_LOCAL_ASSETS === "1") {
+  throw new Error("Required public/storage/soundfonts/ukulele_fast.sf2 is unavailable; soundfont checks cannot be skipped");
+}
 
 const common = {
   soundfontBytes,
@@ -71,7 +79,7 @@ test("bank 128 program 0 renders the drum preset instead of melodic piano", asyn
   assert.notDeepEqual(drums.channels[0], piano.channels[0]);
 });
 
-test("verified ukulele SF2 presets render through AlphaTab and expose only the requested preset", async () => {
+test("verified ukulele SF2 presets render through AlphaTab and expose only the requested preset", { skip: !hasUkuleleSoundfont }, async () => {
   const originalFetch = globalThis.fetch;
   globalThis.fetch = async (input) => {
     const url = new URL(String(input), "https://local.test");

@@ -9,25 +9,31 @@ import { DEMO_ARTICLES } from '../src/lib/demoData.ts';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(__dirname, '..');
 const catalogDbPath = path.join(root, 'native-macos', 'Data', 'catalog.sqlite');
+const hasCatalogSqlite = fs.existsSync(catalogDbPath);
+if (!hasCatalogSqlite && process.env.REQUIRE_LOCAL_ASSETS === '1') {
+  throw new Error('Required native-macos/Data/catalog.sqlite is unavailable; catalog checks cannot be skipped');
+}
 
-test('all required tutorial and editorial articles are present in catalog.sqlite and demoData', async () => {
-  const expectedIDs = [
-    'art-player',
-    'art-studio',
-    'art-practice',
-    'art-tab',
-    'art-capo',
-    'art-barre',
-    'art-ukulele',
-    'art-backup',
-  ];
+const expectedIDs = [
+  'art-player',
+  'art-studio',
+  'art-practice',
+  'art-tab',
+  'art-capo',
+  'art-barre',
+  'art-ukulele',
+  'art-backup',
+];
 
+test('all required tutorial and editorial articles are present in demoData', async () => {
   // 1. Verify demoData
   const demoIDs = new Set(DEMO_ARTICLES.map((a) => a.id));
   for (const id of expectedIDs) {
     assert.ok(demoIDs.has(id), `DEMO_ARTICLES is missing expected tutorial: ${id}`);
   }
+});
 
+test('all required tutorial and editorial articles are present in catalog.sqlite', { skip: !hasCatalogSqlite }, async () => {
   // 2. Verify catalog.sqlite exists and has clean records
   assert.ok(fs.existsSync(catalogDbPath), 'catalog.sqlite must exist');
   
