@@ -1,5 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import { existsSync } from 'node:fs';
 import { readFile } from 'node:fs/promises';
 import {
   filterScoreSoundfontPreset,
@@ -11,7 +12,12 @@ import {
 } from '../src/lib/player/verifiedScoreSoundfont.ts';
 
 const gmBytes = new Uint8Array(await readFile('public/soundfonts/sonivox.sf2'));
-const ukuleleBytes = new Uint8Array(await readFile('public/storage/soundfonts/ukulele_fast.sf2'));
+const ukulelePath = 'public/storage/soundfonts/ukulele_fast.sf2';
+const hasUkuleleSoundfont = existsSync(ukulelePath);
+if (!hasUkuleleSoundfont && process.env.REQUIRE_LOCAL_ASSETS === '1') {
+  throw new Error('Required public/storage/soundfonts/ukulele_fast.sf2 is unavailable; soundfont checks cannot be skipped');
+}
+const ukuleleBytes = hasUkuleleSoundfont ? new Uint8Array(await readFile(ukulelePath)) : null;
 
 test('the bundled full GM source has every bank 0 preset and distinct nylon, steel, pad, and drum identities', () => {
   const presets = Array.from({ length: 128 }, (_, program) => inspectScoreSoundfontPreset(gmBytes, 0, program));
@@ -25,7 +31,7 @@ test('the bundled full GM source has every bank 0 preset and distinct nylon, ste
   assert.ok(kits.every((kit) => kit.presetName.length > 0 && kit.sampleNames.length > 0));
 });
 
-test('the local Uke source has real 0/24/25 presets and can expose only the selected header', () => {
+test('the local Uke source has real 0/24/25 presets and can expose only the selected header', { skip: !ukuleleBytes }, () => {
   const names = new Map([0, 24, 25].map((program) => [
     program,
     inspectScoreSoundfontPreset(ukuleleBytes, 0, program).presetName,
@@ -73,7 +79,7 @@ test('verified loader shares a bounded fetch while one caller can abort independ
   assert.equal(next.bytes[0], 0x52);
 });
 
-test('failed verified fetch can be retried and invalid/missing presets never fall back', async (t) => {
+test('failed verified fetch can be retried and invalid/missing presets never fall back', { skip: !ukuleleBytes }, async (t) => {
   const originalFetch = globalThis.fetch;
   t.after(() => { globalThis.fetch = originalFetch; });
   let fetchCount = 0;

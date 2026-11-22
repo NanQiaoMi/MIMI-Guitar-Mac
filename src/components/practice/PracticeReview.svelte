@@ -14,6 +14,9 @@
   const maxDayDuration = $derived(
     Math.max(1800000, ...(summary?.last7Days.map((d) => d.durationMs) ?? [0]))
   );
+  const todayProgress = $derived(
+    summary ? Math.min(1.0, summary.today.durationMs / (20 * 60 * 1000)) : 0
+  );
 
   function durationLabel(durationMs: number): string {
     if (!Number.isFinite(durationMs) || durationMs <= 0) return '0 分钟';
@@ -108,7 +111,6 @@
         </div>
 
         <!-- 今日目标完成进度条 -->
-        {@const todayProgress = Math.min(1.0, (summary.today.durationMs) / (20 * 60 * 1000))}
         <div class="space-y-1.5 pt-1">
           <div class="flex items-center justify-between text-xs">
             <span class="text-[#584a3b] font-medium flex items-center gap-1.5">
