@@ -45,9 +45,11 @@
     practicePositionSnapshot,
     positionBeatMetadata,
     primarySourceCapo,
+    resolveFullscreenEscapeAction,
     resolvedCatalogScoreUrl,
     shouldIgnorePositionDuringSeek,
     shouldKeepVerifiedPracticeScore,
+    shouldRunCapoChange,
     sourceCapoSummary,
     trackVolumePercent,
   } from '../../lib/player/scorePlayerCorrectness.mjs';
@@ -331,6 +333,8 @@
   let fullscreenSettingsOpen = $state(false);
   let fullscreenEntryTrigger: HTMLButtonElement | null = null;
   let fullscreenExitTrigger = $state<HTMLButtonElement | null>(null);
+  let fullscreenSettingsTrigger = $state<HTMLButtonElement | null>(null);
+  let fullscreenSettingsPanel = $state<HTMLDivElement | null>(null);
   let fullscreenFocusSequence = 0;
   let fullscreenComponentDestroyed = false;
   // 移动端滚动吸顶：当卡片顶部接近视口时，切换为 fixed 定位
@@ -394,6 +398,39 @@
       const trigger = target();
       if (canFocusFullscreenTrigger(trigger)) trigger.focus({ preventScroll: true });
     });
+  }
+
+  function openFullscreenSettings() {
+    if (!isFullscreen) return;
+    fullscreenSettingsOpen = true;
+    void tick().then(() => {
+      if (fullscreenComponentDestroyed || !isFullscreen || !fullscreenSettingsOpen) return;
+      const firstButton = fullscreenSettingsPanel?.querySelector<HTMLButtonElement>('button:not(:disabled)') ?? null;
+      if (canFocusFullscreenTrigger(firstButton)) {
+        firstButton.focus({ preventScroll: true });
+      }
+    });
+  }
+
+  function closeFullscreenSettings(returnFocus = false) {
+    if (!fullscreenSettingsOpen) return;
+    fullscreenSettingsOpen = false;
+    if (returnFocus) {
+      void tick().then(() => {
+        if (fullscreenComponentDestroyed || !isFullscreen || fullscreenSettingsOpen) return;
+        if (canFocusFullscreenTrigger(fullscreenSettingsTrigger)) {
+          fullscreenSettingsTrigger.focus({ preventScroll: true });
+        }
+      });
+    }
+  }
+
+  function toggleFullscreenSettings() {
+    if (fullscreenSettingsOpen) {
+      closeFullscreenSettings(false);
+    } else {
+      openFullscreenSettings();
+    }
   }
 
   function exitFullscreen(nativeAlreadyExited = false) {
@@ -467,7 +504,15 @@
       if (isFullscreen) exitFullscreen(true);
     };
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape' && isFullscreen) exitFullscreen();
+      if (e.key !== 'Escape') return;
+      const action = resolveFullscreenEscapeAction({ isFullscreen, settingsOpen: fullscreenSettingsOpen });
+      if (action === 'close-settings') {
+        e.preventDefault();
+        closeFullscreenSettings(true);
+      } else if (action === 'exit-fullscreen') {
+        e.preventDefault();
+        exitFullscreen();
+      }
     };
     document.addEventListener('fullscreenchange', onFsChange);
     document.addEventListener('keydown', onKey);
@@ -475,6 +520,20 @@
       document.removeEventListener('fullscreenchange', onFsChange);
       document.removeEventListener('keydown', onKey);
       if (typeof document !== 'undefined') document.body.classList.remove('score-fullscreen-lock');
+    };
+  });
+
+  $effect(() => {
+    if (!isFullscreen || !fullscreenSettingsOpen || typeof document === 'undefined') return;
+    const closeOnOutsidePointer = (event: PointerEvent) => {
+      const target = event.target;
+      if (!(target instanceof Node)) return;
+      if (fullscreenSettingsPanel?.contains(target) || fullscreenSettingsTrigger?.contains(target)) return;
+      closeFullscreenSettings(false);
+    };
+    document.addEventListener('pointerdown', closeOnOutsidePointer, true);
+    return () => {
+      document.removeEventListener('pointerdown', closeOnOutsidePointer, true);
     };
   });
 
@@ -494,6 +553,8 @@
     }
     fullscreenEntryTrigger = null;
     fullscreenExitTrigger = null;
+    fullscreenSettingsTrigger = null;
+    fullscreenSettingsPanel = null;
   });
 
   // 短视口（横屏手机）滚动吸顶：当卡片接近视口顶部时切换 fixed 定位
@@ -2383,11 +2444,14 @@
    * - 变调夹/降半调调弦 → staff.capo（只改变发声音高，谱面显示不变，与参考站实测一致）
    * - 整曲转调 → staff.transpositionPitch（显示 + 播放整体移调，参考站无此控件，有意差异）
    */
-  async function applyTransposition(transposeValue = transpose) {
+  async function applyTransposition(
+    transposeValue = transpose,
+    capoSelection: { useSourceCapo: boolean; capo: number } = { useSourceCapo, capo: capoMode },
+  ) {
     const currentApi = api;
     const currentScore = score;
     if (!currentApi || !currentScore) return;
-    applyCapoSelection(currentScore, sourceStaffCapos, { useSourceCapo, capo: capoMode });
+    applyCapoSelection(currentScore, sourceStaffCapos, capoSelection);
     for (const t of currentScore.tracks) for (const st of t.staves) st.transpositionPitch = -transposeValue;
     await enqueueRender(() => currentApi.renderScore(currentScore, visibleTracks));
   }
@@ -2440,20 +2504,65 @@
     };
   });
 
-  function selectCapo(v: number) {
+  async function applyCapoChange(next: { useSourceCapo: boolean; capo: number }) {
+    if (!shouldRunCapoChange({
+      current: { useSourceCapo, capo: capoMode },
+      next,
+      isPending: transposePending,
+    })) {
+      if (capoMenuOpen) void closeCapoMenu(true);
+      return;
+    }
     markResumeIntent();
-    useSourceCapo = false;
-    capoMode = v;
-    void closeCapoMenu(true);
-    if (api && score) withRenderPreservingPosition(() => applyTransposition(), { reloadMidi: true });
+    if (capoMenuOpen) void closeCapoMenu(true);
+    if (!api || !score) {
+      useSourceCapo = next.useSourceCapo;
+      capoMode = next.capo;
+      return;
+    }
+
+    const previous = { useSourceCapo, capo: capoMode };
+    transposePending = true;
+    renderNotice = '';
+    try {
+      const outcome = await runWithRollbackTransaction({
+        previousValue: previous,
+        nextValue: next,
+        commit: (value: { useSourceCapo: boolean; capo: number }) => {
+          useSourceCapo = value.useSourceCapo;
+          capoMode = value.capo;
+        },
+        apply: async (value: { useSourceCapo: boolean; capo: number }) => {
+          const rendered = await withRenderPreservingPosition(() => applyTransposition(transpose, value), { reloadMidi: true });
+          if (!rendered) throw new Error('AlphaTab 未能完成变调夹更新');
+        },
+        rollback: async (value: { useSourceCapo: boolean; capo: number }) => {
+          const rendered = await withRenderPreservingPosition(() => applyTransposition(transpose, value), { reloadMidi: true });
+          if (!rendered) throw new Error('AlphaTab 未能恢复原变调夹排版');
+        },
+      });
+      renderNotice = outcome.ok
+        ? ''
+        : outcome.rollbackError
+          ? '变调夹切换失败，原设置已恢复，但谱面恢复排版未完成；请重试或下载原谱。'
+          : '变调夹切换失败，已恢复原变调夹与上一张有效谱面。';
+    } catch (e) {
+      console.error('[ScorePlayer] capo transaction failed', e);
+      renderNotice = '变调夹切换失败，当前设置已恢复；请重试或下载原谱。';
+    } finally {
+      transposePending = false;
+    }
+  }
+
+  function selectCapo(v: number) {
+    void applyCapoChange({ useSourceCapo: false, capo: v });
   }
 
   function selectSourceCapo() {
-    markResumeIntent();
-    useSourceCapo = true;
-    capoMode = primarySourceCapo(sourceStaffCapos, primaryTrackIndex());
-    void closeCapoMenu(true);
-    if (api && score) withRenderPreservingPosition(() => applyTransposition(), { reloadMidi: true });
+    void applyCapoChange({
+      useSourceCapo: true,
+      capo: primarySourceCapo(sourceStaffCapos, primaryTrackIndex()),
+    });
   }
 
   async function changeTranspose(d: number) {
@@ -2506,7 +2615,7 @@
 
   /** 一键恢复原曲默认速度、原调变调夹与 0 转调 */
   function resetToDefaults() {
-    if (!api || !score) return;
+    if (!api || !score || transposePending) return;
     const currentApi = api;
     const defaultCapoVal = primarySourceCapo(sourceStaffCapos, primaryTrackIndex());
     const defaultTargetBpm = clampTargetBpm(sourceTempo);
@@ -2918,7 +3027,7 @@
         onclick={() => (capoMenuOpen = !capoMenuOpen)}
         aria-expanded={capoMenuOpen}
         aria-controls="score-capo-options"
-        disabled={!score}
+        disabled={!score || transposePending}
       >
         {selectedCapoLabel} · 变调夹
         <svg class="h-3 w-3 ml-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -2935,9 +3044,10 @@
       >
         <button
           type="button"
-          class="block min-h-[44px] w-full rounded-xl px-3 py-2 text-left text-xs font-medium transition hover:bg-canvas focus-visible:outline focus-visible:outline-2 focus-visible:outline-signal {useSourceCapo ? 'text-signal font-semibold bg-signal/10' : 'text-charcoal'}"
+          class="block min-h-[44px] w-full rounded-xl px-3 py-2 text-left text-xs font-medium transition hover:bg-canvas disabled:opacity-40 focus-visible:outline focus-visible:outline-2 focus-visible:outline-signal {useSourceCapo ? 'text-signal font-semibold bg-signal/10' : 'text-charcoal'}"
           aria-pressed={useSourceCapo}
           onclick={selectSourceCapo}
+          disabled={!score || transposePending}
         >
           <span class="block">使用原谱变调夹</span>
           <span class="mt-0.5 block break-words text-[10px] text-mid-gray">{sourceCapoText}</span>
@@ -2945,9 +3055,10 @@
         {#each CAPO_OPTIONS as o}
           <button
             type="button"
-            class="block min-h-[44px] w-full rounded-pill px-3 py-1.5 text-left text-xs font-medium transition hover:bg-canvas focus-visible:outline focus-visible:outline-2 focus-visible:outline-signal {!useSourceCapo && o.value === capoMode ? 'text-signal font-semibold bg-signal/10' : 'text-charcoal'}"
+            class="block min-h-[44px] w-full rounded-pill px-3 py-1.5 text-left text-xs font-medium transition hover:bg-canvas disabled:opacity-40 focus-visible:outline focus-visible:outline-2 focus-visible:outline-signal {!useSourceCapo && o.value === capoMode ? 'text-signal font-semibold bg-signal/10' : 'text-charcoal'}"
             aria-pressed={!useSourceCapo && o.value === capoMode}
             onclick={() => selectCapo(o.value)}
+            disabled={!score || transposePending}
           >
             {o.label}
           </button>
@@ -2971,7 +3082,7 @@
     <button
       type="button"
       onclick={resetToDefaults}
-      disabled={!score || !isCustomized}
+      disabled={!score || !isCustomized || transposePending}
       class="btn min-h-[44px] !rounded-pill !px-3 !py-1 text-xs font-medium flex items-center gap-1.5 transition-all {isCustomized ? 'bg-[#faf5eb] border border-[#c49a45]/60 text-[#966b26] hover:bg-[#966b26] hover:text-white shadow-2xs active:scale-95' : 'bg-surface-alt border hairline text-mid-gray/50 opacity-60 cursor-not-allowed'}"
       title="一键恢复默认速度 ({sourceTempo} BPM)、原谱变调夹 ({sourceCapoText}) 与原调 (0 转调)"
       aria-label="恢复默认速度变调转调"
@@ -3314,55 +3425,123 @@
 
   {#if isFullscreen}
     <!-- 全屏右上角控制组 -->
-    <div class="fixed top-4 right-4 z-[80] flex items-start gap-2">
+    <div class="fixed top-4 right-4 z-[80] flex max-w-[calc(100vw-2rem)] items-start justify-end gap-2">
       <!-- 设置面板 -->
-      {#if fullscreenSettingsOpen}
-        <div class="mr-2 rounded-2xl border border-white/20 bg-black/50 px-3 py-2.5 text-xs text-white backdrop-blur-md space-y-2 min-w-[160px]">
-          <!-- 变调夹 -->
-          <div class="flex items-center justify-between gap-2">
-            <span class="text-white/60">变调夹</span>
-            <div class="flex items-center gap-1">
-              {#each [0,1,2,3,4,5,6] as n}
-                <button
-                  class="h-6 w-6 rounded-full text-[10px] font-medium transition {!useSourceCapo && capoMode === n ? 'bg-white/30 text-white' : 'bg-white/10 text-white/60 hover:bg-white/20'}"
-                  onclick={() => selectCapo(n)}>
-                  {n}
-                </button>
-              {/each}
-            </div>
+      <div
+        id="fullscreen-player-settings"
+        bind:this={fullscreenSettingsPanel}
+        role="region"
+        aria-label="全屏播放设置"
+        aria-hidden={!fullscreenSettingsOpen}
+        inert={!fullscreenSettingsOpen}
+        class="mr-1 w-80 max-w-[calc(100vw-8.5rem)] max-h-[calc(100dvh-6rem)] overflow-y-auto overscroll-contain rounded-2xl border border-white/20 bg-black/70 px-3 py-3 text-xs text-white backdrop-blur-md space-y-2.5 transition-[opacity,transform] duration-200 motion-reduce:transition-none {fullscreenSettingsOpen ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 -translate-y-1 pointer-events-none'}"
+      >
+        {#if transposePending}
+          <div role="status" aria-live="polite" class="rounded-xl border border-amber-300/30 bg-amber-500/20 px-2.5 py-1.5 text-[11px] text-amber-100">
+            正在更新调性与音频…
           </div>
-          <!-- 转调 -->
+        {/if}
+        <!-- 变调夹 -->
+        <div class="space-y-1.5">
           <div class="flex items-center justify-between gap-2">
-            <span class="text-white/60">转调</span>
-            <div class="flex items-center gap-1">
-              <button class="flex h-6 w-6 items-center justify-center rounded-full bg-white/10 text-xs text-white/80 hover:bg-white/20" onclick={() => changeTranspose(-1)} disabled={transposePending || transpose <= -12}>−</button>
-              <span class="w-5 text-center font-mono text-white/90">{transpose > 0 ? '+' : ''}{transpose}</span>
-              <button class="flex h-6 w-6 items-center justify-center rounded-full bg-white/10 text-xs text-white/80 hover:bg-white/20" onclick={() => changeTranspose(1)} disabled={transposePending || transpose >= 12}>+</button>
-            </div>
+            <span class="text-white/70">变调夹</span>
+            <span class="text-[11px] font-mono text-white/80">{selectedCapoLabel}</span>
           </div>
-          <!-- 和弦显示模式 -->
-          <div class="flex items-center justify-between gap-2">
-            <span class="text-white/60">和弦</span>
-            <div class="flex items-center gap-1">
-              <button class="rounded-pill px-2 py-0.5 text-[10px] font-medium transition {chordMode === 'name' ? 'bg-white/30 text-white' : 'bg-white/10 text-white/60 hover:bg-white/20'}" onclick={() => setChordMode('name')}>字母</button>
-              <button class="rounded-pill px-2 py-0.5 text-[10px] font-medium transition {chordMode === 'diagram' ? 'bg-white/30 text-white' : 'bg-white/10 text-white/60 hover:bg-white/20'}" onclick={() => setChordMode('diagram')}>指法</button>
-            </div>
-          </div>
-          <!-- 谱面显示模式 -->
-          <div class="flex items-center justify-between gap-2">
-            <span class="text-white/60">谱面</span>
-            <div class="flex items-center gap-1">
-              <button class="rounded-pill px-2 py-0.5 text-[10px] font-medium transition {scoreDisplayMode === SCORE_DISPLAY_MODES.MIXED ? 'bg-white/30 text-white' : 'bg-white/10 text-white/60 hover:bg-white/20'}" onclick={() => setScoreDisplayMode(SCORE_DISPLAY_MODES.MIXED)}>混排</button>
-              <button class="rounded-pill px-2 py-0.5 text-[10px] font-medium transition {scoreDisplayMode === SCORE_DISPLAY_MODES.ALL_TAB ? 'bg-white/30 text-white' : 'bg-white/10 text-white/60 hover:bg-white/20'}" onclick={() => setScoreDisplayMode(SCORE_DISPLAY_MODES.ALL_TAB)}>六线</button>
-            </div>
+          <div class="flex flex-wrap items-center gap-1.5" role="group" aria-label="全屏变调夹选项">
+            <button
+              type="button"
+              class="min-h-[44px] min-w-[44px] rounded-pill px-3 text-xs font-medium transition disabled:opacity-40 focus-visible:outline focus-visible:outline-2 focus-visible:outline-white {useSourceCapo ? 'bg-white/30 text-white font-semibold' : 'bg-white/10 text-white/75 hover:bg-white/20'}"
+              aria-pressed={useSourceCapo}
+              aria-label="使用原谱变调夹"
+              disabled={!score || loading || transposePending}
+              onclick={selectSourceCapo}
+            >
+              原谱
+            </button>
+            {#each [0, 1, 2, 3, 4, 5, 6] as n}
+              <button
+                type="button"
+                class="min-h-[44px] min-w-[44px] rounded-full px-2 text-xs font-medium transition disabled:opacity-40 focus-visible:outline focus-visible:outline-2 focus-visible:outline-white {!useSourceCapo && capoMode === n ? 'bg-white/30 text-white font-semibold' : 'bg-white/10 text-white/75 hover:bg-white/20'}"
+                aria-pressed={!useSourceCapo && capoMode === n}
+                aria-label={n === 0 ? '变调夹不夹' : `变调夹 ${n} 品`}
+                disabled={!score || loading || transposePending}
+                onclick={() => selectCapo(n)}
+              >
+                {n}
+              </button>
+            {/each}
           </div>
         </div>
-      {/if}
+        <!-- 转调 -->
+        <div class="flex flex-wrap items-center justify-between gap-2">
+          <span class="text-white/70">转调</span>
+          <div class="flex items-center gap-1.5">
+            <button
+              type="button"
+              class="flex min-h-[44px] min-w-[44px] items-center justify-center rounded-full bg-white/10 text-sm text-white/85 transition hover:bg-white/20 disabled:opacity-40 focus-visible:outline focus-visible:outline-2 focus-visible:outline-white"
+              aria-label="转调降低半音"
+              onclick={() => changeTranspose(-1)}
+              disabled={!score || loading || transposePending || transpose <= -12}
+            >−</button>
+            <span class="w-8 text-center font-mono text-white/95 tabular-nums" aria-live="polite">{transpose > 0 ? '+' : ''}{transpose}</span>
+            <button
+              type="button"
+              class="flex min-h-[44px] min-w-[44px] items-center justify-center rounded-full bg-white/10 text-sm text-white/85 transition hover:bg-white/20 disabled:opacity-40 focus-visible:outline focus-visible:outline-2 focus-visible:outline-white"
+              aria-label="转调升高半音"
+              onclick={() => changeTranspose(1)}
+              disabled={!score || loading || transposePending || transpose >= 12}
+            >+</button>
+          </div>
+        </div>
+        <!-- 和弦显示模式 -->
+        <div class="flex flex-wrap items-center justify-between gap-2">
+          <span class="text-white/70">和弦</span>
+          <div class="flex flex-wrap items-center gap-1.5" role="group" aria-label="全屏和弦显示模式">
+            <button
+              type="button"
+              class="min-h-[44px] rounded-pill px-3 text-xs font-medium transition disabled:opacity-40 focus-visible:outline focus-visible:outline-2 focus-visible:outline-white {chordMode === 'name' ? 'bg-white/30 text-white font-semibold' : 'bg-white/10 text-white/75 hover:bg-white/20'}"
+              aria-pressed={chordMode === 'name'}
+              disabled={!score || loading}
+              onclick={() => setChordMode('name')}
+            >字母</button>
+            <button
+              type="button"
+              class="min-h-[44px] rounded-pill px-3 text-xs font-medium transition disabled:opacity-40 focus-visible:outline focus-visible:outline-2 focus-visible:outline-white {chordMode === 'diagram' ? 'bg-white/30 text-white font-semibold' : 'bg-white/10 text-white/75 hover:bg-white/20'}"
+              aria-pressed={chordMode === 'diagram'}
+              disabled={!score || loading}
+              onclick={() => setChordMode('diagram')}
+            >指法</button>
+          </div>
+        </div>
+        <!-- 谱面显示模式 -->
+        <div class="flex flex-wrap items-center justify-between gap-2">
+          <span class="text-white/70">谱面</span>
+          <div class="flex flex-wrap items-center gap-1.5" role="group" aria-label="全屏谱面显示模式">
+            <button
+              type="button"
+              class="min-h-[44px] rounded-pill px-3 text-xs font-medium transition disabled:opacity-40 focus-visible:outline focus-visible:outline-2 focus-visible:outline-white {scoreDisplayMode === SCORE_DISPLAY_MODES.MIXED ? 'bg-white/30 text-white font-semibold' : 'bg-white/10 text-white/75 hover:bg-white/20'}"
+              aria-pressed={scoreDisplayMode === SCORE_DISPLAY_MODES.MIXED}
+              disabled={!score || loading || !canMixed}
+              onclick={() => setScoreDisplayMode(SCORE_DISPLAY_MODES.MIXED)}
+            >混排</button>
+            <button
+              type="button"
+              class="min-h-[44px] rounded-pill px-3 text-xs font-medium transition disabled:opacity-40 focus-visible:outline focus-visible:outline-2 focus-visible:outline-white {scoreDisplayMode === SCORE_DISPLAY_MODES.ALL_TAB ? 'bg-white/30 text-white font-semibold' : 'bg-white/10 text-white/75 hover:bg-white/20'}"
+              aria-pressed={scoreDisplayMode === SCORE_DISPLAY_MODES.ALL_TAB}
+              disabled={!score || loading || !canMixed}
+              onclick={() => setScoreDisplayMode(SCORE_DISPLAY_MODES.ALL_TAB)}
+            >六线</button>
+          </div>
+        </div>
+      </div>
       <!-- 设置按钮 -->
       <button
+        bind:this={fullscreenSettingsTrigger}
         type="button"
-        onclick={() => (fullscreenSettingsOpen = !fullscreenSettingsOpen)}
-        class="flex h-11 w-11 min-h-[44px] min-w-[44px] items-center justify-center rounded-full border border-white/20 bg-black/30 text-white backdrop-blur-md transition hover:bg-black/50 active:scale-90"
+        onclick={toggleFullscreenSettings}
+        aria-expanded={fullscreenSettingsOpen}
+        aria-controls="fullscreen-player-settings"
+        class="flex h-11 w-11 min-h-[44px] min-w-[44px] shrink-0 items-center justify-center rounded-full border border-white/20 bg-black/40 text-white backdrop-blur-md transition hover:bg-black/60 active:scale-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-white"
         aria-label="设置"
         title="设置"
       >
@@ -3376,7 +3555,7 @@
         bind:this={fullscreenExitTrigger}
         type="button"
         onclick={toggleFullscreen}
-        class="flex h-11 w-11 min-h-[44px] min-w-[44px] items-center justify-center rounded-full border border-white/20 bg-black/30 text-white backdrop-blur-md transition hover:bg-black/50 active:scale-90"
+        class="flex h-11 w-11 min-h-[44px] min-w-[44px] shrink-0 items-center justify-center rounded-full border border-white/20 bg-black/40 text-white backdrop-blur-md transition hover:bg-black/60 active:scale-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-white"
         aria-label="退出全屏"
         title="退出全屏"
       >

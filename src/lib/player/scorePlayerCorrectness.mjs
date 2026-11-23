@@ -192,3 +192,19 @@ export function positionBeatMetadata(lookup, tick, endTick) {
     repeatAmbiguous: !!repeatGroup?.isOpened && (repeatGroup.masterBars?.length ?? 0) > 1,
   };
 }
+
+/** Resolve two-stage Escape handling inside fullscreen player settings. */
+export function resolveFullscreenEscapeAction({ isFullscreen, settingsOpen }) {
+  if (!isFullscreen) return 'none';
+  return settingsOpen ? 'close-settings' : 'exit-fullscreen';
+}
+
+/** Gate capo updates so concurrent or redundant selections do not re-render. */
+export function shouldRunCapoChange({ current, next, isPending }) {
+  if (isPending) return false;
+  const currentUseSource = Boolean(current?.useSourceCapo);
+  const nextUseSource = Boolean(next?.useSourceCapo);
+  if (currentUseSource !== nextUseSource) return true;
+  if (!nextUseSource && current?.capo !== next?.capo) return true;
+  return false;
+}

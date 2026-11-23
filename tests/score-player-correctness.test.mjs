@@ -12,12 +12,15 @@ import {
   pausePositionRestoreTarget,
   practicePositionSnapshot,
   primarySourceCapo,
+  resolveFullscreenEscapeAction,
   resolvedCatalogScoreUrl,
   sourceCapoSummary,
   shouldKeepVerifiedPracticeScore,
   shouldIgnorePositionDuringSeek,
+  shouldRunCapoChange,
   trackVolumePercent,
 } from '../src/lib/player/scorePlayerCorrectness.mjs';
+import { runWithRollbackTransaction } from '../src/lib/scoreLoadGuard.mjs';
 
 test('track volume keeps a muted track at zero while defaulting missing values', () => {
   assert.equal(trackVolumePercent(0), 0);
@@ -213,4 +216,70 @@ test('a pending rapid seek ignores an earlier seek and ordinary playback positio
   assert.equal(shouldIgnorePositionDuringSeek(latestTarget, { isSeek: false, currentTick: 7679 }), true);
   assert.equal(shouldIgnorePositionDuringSeek(latestTarget, { isSeek: true, currentTick: 7679 }), false);
   assert.equal(shouldIgnorePositionDuringSeek(null, { isSeek: false, currentTick: 10 }), false);
+});
+
+test('fullscreen Escape closes settings before exiting fullscreen', () => {
+  assert.equal(resolveFullscreenEscapeAction({ isFullscreen: false, settingsOpen: false }), 'none');
+  assert.equal(resolveFullscreenEscapeAction({ isFullscreen: false, settingsOpen: true }), 'none');
+  assert.equal(resolveFullscreenEscapeAction({ isFullscreen: true, settingsOpen: true }), 'close-settings');
+  assert.equal(resolveFullscreenEscapeAction({ isFullscreen: true, settingsOpen: false }), 'exit-fullscreen');
+});
+
+test('capo change guard rejects pending updates and redundant selections', () => {
+  assert.equal(shouldRunCapoChange({
+    current: { useSourceCapo: true, capo: 0 },
+    next: { useSourceCapo: false, capo: 2 },
+    isPending: true,
+  }), false);
+  assert.equal(shouldRunCapoChange({
+    current: { useSourceCapo: true, capo: 2 },
+    next: { useSourceCapo: true, capo: 0 },
+    isPending: false,
+  }), false);
+  assert.equal(shouldRunCapoChange({
+    current: { useSourceCapo: false, capo: 3 },
+    next: { useSourceCapo: false, capo: 3 },
+    isPending: false,
+  }), false);
+  assert.equal(shouldRunCapoChange({
+    current: { useSourceCapo: true, capo: 0 },
+    next: { useSourceCapo: false, capo: 0 },
+    isPending: false,
+  }), true);
+  assert.equal(shouldRunCapoChange({
+    current: { useSourceCapo: false, capo: 2 },
+    next: { useSourceCapo: true, capo: 0 },
+    isPending: false,
+  }), true);
+  assert.equal(shouldRunCapoChange({
+    current: { useSourceCapo: false, capo: 2 },
+    next: { useSourceCapo: false, capo: 4 },
+    isPending: false,
+  }), true);
+});
+
+test('failed capo transaction restores the previous capo state without leaving unapplied UI state', async () => {
+  let state = { useSourceCapo: true, capo: 2 };
+  const applied = [];
+
+  const outcome = await runWithRollbackTransaction({
+    previousValue: { ...state },
+    nextValue: { useSourceCapo: false, capo: 5 },
+    commit: (value) => { state = value; },
+    apply: async (value) => {
+      applied.push(['apply', value]);
+      throw new Error('AlphaTab 未能完成变调夹更新');
+    },
+    rollback: async (value) => {
+      applied.push(['rollback', value]);
+    },
+  });
+
+  assert.equal(outcome.ok, false);
+  assert.equal(outcome.rollbackError, null);
+  assert.deepEqual(state, { useSourceCapo: true, capo: 2 });
+  assert.deepEqual(applied, [
+    ['apply', { useSourceCapo: false, capo: 5 }],
+    ['rollback', { useSourceCapo: true, capo: 2 }],
+  ]);
 });
