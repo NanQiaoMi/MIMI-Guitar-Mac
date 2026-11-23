@@ -26,7 +26,7 @@ MIMI-Guitar-Mac/
 ├── tests/                       # Node 内置测试（node --test tests/*.test.mjs）
 ├── tools/                       # 构建校验、资源检查、本地启动、数据库测试等 CLI
 ├── docs/                        # 架构计划、恢复文档与验收证据（docs/evidence/）
-├── .github/workflows/           # CI 工作流（validate.yml：Web 端检查与构建）
+├── .github/workflows/           # CI 工作流（validate.yml：Web 端；validate-macos.yml：macOS 编译）
 ├── native-macos/                # macOS 原生端（SwiftPM / swiftc 构建）
 │   ├── Sources/
 │   │   ├── MIMICore/            # 曲库 SQLite 读取、个人存储、IBE/核心模型
@@ -84,7 +84,7 @@ MIMI-Guitar-Mac/
 
 1. **Git 分支与 PR 纪律**
    - 严禁直接在 `main` 分支编码、提交或推送；所有改动必须基于最新 `origin/main` 拉出规范前缀分支（`feat/`、`fix/`、`ci/`、`docs/`、`refactor/` 等）。
-   - 推送并创建 PR 后，必须跟踪 `.github/workflows/validate.yml` 至全绿；禁止未获人工确认擅自合并 PR。
+   - 推送并创建 PR 后，必须跟踪 `.github/workflows/validate.yml`（以及修改 `native-macos/` 时自动触发的 `.github/workflows/validate-macos.yml`）至全绿；禁止未获人工确认擅自合并 PR。
 2. **敏感信息与大文件隔离**
    - 严禁提交 `.env`、`.env.mac.local`、密钥凭证、构建产物（`dist/`、`.astro/`）或大体积本地媒体库（`public/storage/`）。
 3. **数据库安全边界**
