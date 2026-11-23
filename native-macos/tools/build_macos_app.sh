@@ -5,7 +5,7 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 VERIFY_SCRIPT="$SCRIPT_DIR/verify_macos_resources.py"
 NATIVE_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
 PROJECT_ROOT="$(cd "$NATIVE_ROOT/.." && pwd)"
-OUTPUT_ROOT_DEFAULT="$(cd "$PROJECT_ROOT/../.." && pwd)/Native-Mac-0.2.4"
+OUTPUT_ROOT_DEFAULT="$(cd "$PROJECT_ROOT/../.." && pwd)/Native-Mac-0.2.6"
 OUTPUT_ROOT="${MIMI_MAC_OUTPUT_DIR:-$OUTPUT_ROOT_DEFAULT}"
 BUILD_ROOT="$NATIVE_ROOT/.build/package"
 SDK_DEFAULT="/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk"
@@ -13,7 +13,7 @@ APP_NAME="MIMI Guitar.app"
 EXECUTABLE_NAME="MIMIGuitarMac"
 BUNDLE_ID="com.mimi.guitar.mac"
 MINIMUM_MACOS="13.0"
-APP_VERSION="${MIMI_MAC_VERSION:-0.2.4}"
+APP_VERSION="${MIMI_MAC_VERSION:-0.2.6}"
 BUILD_NUMBER="${MIMI_MAC_BUILD_NUMBER:-$(date -u +%Y%m%d%H%M)}"
 ARCH="${MIMI_MAC_ARCH:-$(uname -m)}"
 BUILD_JOBS="${MIMI_MAC_BUILD_JOBS:-1}"
@@ -26,7 +26,7 @@ Usage: tools/build_macos_app.sh [--no-dmg] [--replace]
 
 Build a native MIMI Guitar .app with an explicit macOS SDK, a static MIMICore
 archive, bundled offline content, and an ad-hoc code signature. By default it
-also creates a compressed DMG. Output defaults to ../../Native-Mac-0.2.4 relative to
+also creates a compressed DMG. Output defaults to ../../Native-Mac-0.2.6 relative to
 the project; set MIMI_MAC_OUTPUT_DIR to choose another output directory.
 
 Options:
@@ -37,9 +37,9 @@ Options:
 Environment:
   MIMI_MAC_SDK         SDK directory; defaults to the local Command Line Tools SDK.
   MIMI_MAC_ARCH        x86_64 or arm64; defaults to the current host architecture.
-  MIMI_MAC_VERSION     CFBundleShortVersionString; defaults to 0.2.4.
+  MIMI_MAC_VERSION     CFBundleShortVersionString; defaults to 0.2.6.
   MIMI_MAC_BUILD_NUMBER CFBundleVersion; defaults to the current UTC minute.
-  MIMI_MAC_OUTPUT_DIR  Output directory; defaults to outputs/Native-Mac-0.2.4.
+  MIMI_MAC_OUTPUT_DIR  Output directory; defaults to outputs/Native-Mac-0.2.6.
   MIMI_MAC_BUILD_JOBS  Compiler parallel jobs; defaults to 1.
 EOF
 }

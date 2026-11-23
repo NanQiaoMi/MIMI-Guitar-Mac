@@ -2,7 +2,35 @@
 
 日期：2026-10-27（Asia/Shanghai）。用户要求将网页的界面和功能完整迁移为可安装 macOS 软件，复刻细节，不省略。
 
-本文件记录代码范围和已取得的检查证据。**完整迁移尚未验收完成**。用户在 0.2.1 实际使用中报告曲谱无法播放，并出现“导入谱面路径无效，必须先复制到应用的 Imports 目录”，首页、曲库和工坊均有卡顿。旧 `outputs/Native-Mac-Full/MIMI Guitar.app` 是这一失败版本；它的编译、资源、签名与 DMG 校验不能作为功能通过的依据，也不代表当前 0.2.3 工作树。0.2.2 的修复与构建记录保留在下方历史。逐项页面和功能状态见 `FULL-PARITY-MATRIX.zh-CN.md`。
+本文件记录代码范围和已取得的检查证据。**完整迁移尚未验收完成**。用户在 0.2.1 实际使用中报告曲谱无法播放，并出现“导入谱面路径无效，必须先复制到应用的 Imports 目录”，首页、曲库和工坊均有卡顿。旧 `outputs/Native-Mac-Full/MIMI Guitar.app` 是这一失败版本；它的编译、资源、签名与 DMG 校验不能作为功能通过的依据，也不代表当前工作树。0.2.2 的修复与构建记录保留在下方历史。逐项页面和功能状态见 `FULL-PARITY-MATRIX.zh-CN.md`。
+
+## 0.2.6 编译验证与首页视觉更新（2026-11-23）
+
+本轮在 `v0.2.5` 基础上收口 11 月 8 日的首页视觉改版，并补齐不依赖离线大文件曲库的纯源码双架构编译校验入口。
+
+### 首页视觉更新（2026-11-08 已合入 main）
+
+- **精选曲谱展示重构（`3c3b4de`）**：首页精选曲谱展示区改用真实六线谱视觉与触感试听控件。
+- **出版物版权页页脚（`901447a`）**：首页页脚重构为出版物版权页（Editorial Colophon Folio Card）风格。
+- **乐理指南针与暖色页脚边框（`8973a0c`）**：升级乐理指南针（Theory Compass）设计并消除页脚青色边框，统一为暖色纸边。
+
+### 本轮编译校验与版本基线（2026-11-23）
+
+- 新增独立编译检查脚本 `native-macos/tools/verify_macos_compile.sh`（支持 `--arch x86_64|arm64|universal`），直接调用 `swiftc` 分别构建 `MIMICore` 静态库与 `MIMIGuitarMac` 可执行文件并用 `file` 校验目标架构，不依赖未入库的 `native-macos/Data/catalog.sqlite` 与 `public/storage/`。
+- 将 `native-macos/tools/build_macos_app.sh` 与 `native-macos/tools/build_macos_universal_app.sh` 默认版本及输出目录前缀升级至 `0.2.6`。
+- 实测 `bash native-macos/tools/verify_macos_compile.sh --arch universal`（使用 `/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk`，10 个 Core Swift 文件 + 44 个 App Swift 文件，`-j 4`）通过：
+  - `x86_64-apple-macosx13.0`：`libMIMICore.a`（`current ar archive`）与 `MIMIGuitarMac`（`Mach-O 64-bit executable x86_64`）编译链接通过。
+  - `arm64-apple-macosx13.0`：`libMIMICore.a`（`current ar archive`）与 `MIMIGuitarMac`（`Mach-O 64-bit executable arm64`）编译链接通过。
+- **未执行项与边界**：因当前干净仓库工作区不含未入库的 `native-macos/Data/catalog.sqlite` 与 `public/storage/`，本轮未打出完整离线 `.app` / `.dmg` 安装包，也未在实机上复测 UI、可闻音频、Apple Silicon 真机运行、Developer ID 签名/公证及 0.2.4 遗留的 `U08` / `U12` 矩阵。
+
+## 0.2.5 原生体验与性能优化（2026-11-04，Tag `v0.2.5`）
+
+`v0.2.5` 在 `0.2.4` 基础上聚焦原生性能、导航体验与桌面端自适应能力，相关提交均已合入 `main`：
+
+- **P0 性能优化（`4e989aa`）**：实现静态资源内存缓存、曲库 LRU 查询缓存与播放器双指捏合缩放手势。
+- **P1 原生桌面体验（`0d487af`）**：实现热切换播放器、最近打开曲谱菜单、窗口状态恢复与外部文件关联打开。
+- **P2 休眠与暗色纸张主题（`6619ff0`）**：实现窗口被遮挡时的休眠节流（Window Occlusion Sleep）与暗色纸张主题（Dark Paper Theme）。
+- **键盘与触控板导航增强（`b328f9b`、`8d16c52`）**：补充原生导航历史栈、菜单快捷键、空格键播放控制、滚动指示器、命令面板键盘导航、触控板左右滑动导航、缩放快捷键及播放快进/快退控制。
 
 ## 0.2.4 播放与界面优化（截至 2026-10-27，仍在验收）
 

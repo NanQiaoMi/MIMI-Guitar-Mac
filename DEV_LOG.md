@@ -2,6 +2,17 @@
 
 > 规则：每次开发完成后必须及时更新本节，不积压；验收必须有明确标准与证据（测试结果/截图/控制台日志）。未通过不进下一步。
 
+## 2026-11-23 CI 恢复、AGENTS.md 补齐与 macOS 0.2.6 双架构编译验证
+
+- **Web 端 CI 恢复与工程规范（PR #1，`5830274`）**：
+  - 修复 `.github/workflows/validate.yml` Postgres 服务健康检查缺少 `-U test -d mimi_platform_test` 参数导致长期超时失败的问题。
+  - 为 `tests/article-editorial-redesign.test.mjs`、`tests/guitar-sample-playback.test.mjs`、`tests/sample-note-renderer.test.mjs`、`tests/verified-score-soundfont.test.mjs` 中依赖未入库 `native-macos/Data/catalog.sqlite` 或 `public/storage/soundfonts/ukulele_fast.sf2` 的 5 个子用例增加 `{ skip: ... }` 守卫，支持 `REQUIRE_LOCAL_ASSETS=1` 强制校验。
+  - 修复 `src/components/practice/PracticeReview.svelte` 中普通 `<div>` 内使用 `{@const}` 触发 `svelte-check` 报错的问题（迁移为 `$derived`）。
+  - 新增项目根目录 `AGENTS.md`，远端 GitHub Actions（`test:db` 10/10、`npm test` 539 pass / 5 skip、`typecheck` 0 errors、`build` 9.46s）全部绿灯后 Squash Merge 入 `main`。
+- **macOS 原生端 0.2.6 编译验证与文档同步**：
+  - 新增 `native-macos/tools/verify_macos_compile.sh`，在不依赖离线 `catalog.sqlite` 与 `public/storage/` 的情况下完成 `MIMICore`（10 文件）与 `MIMIGuitarMac`（44 文件）在 `x86_64-apple-macosx13.0` 与 `arm64-apple-macosx13.0` 下的 `swiftc` 双架构编译链接与 `file` 校验，exit 0。
+  - 将 `build_macos_app.sh` 与 `build_macos_universal_app.sh` 默认版本升级至 `0.2.6`，并在 `native-macos/IMPLEMENTATION-STATUS.zh-CN.md`、`native-macos/BUILDING.zh-CN.md` 与 `AGENTS.md` 同步补齐 `v0.2.5`、2026-11-08 首页视觉改版及 `0.2.6` 编译验证状态；因缺少离线媒体与数据库文件，完整 `.app`/`.dmg` 打包与实机交互验收留待离线资源就位后执行。
+
 ## 2026-10-19 原谱404与本地资源交付修复
 
 - 用户反馈谱面加载失败。独立4336详情页真实复现：`/storage/scores/1sdc49P3eKm.ibe` 404，主播放器和画卷同时失败；稳定public/dist仅132个音源文件，原目录原谱存在且15份演示谱均可解码。上轮仅检查音源与页面200不足以验证原谱交付。
