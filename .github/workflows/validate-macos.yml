@@ -1,0 +1,39 @@
+name: Validate macOS native
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'native-macos/**'
+      - '.github/workflows/validate-macos.yml'
+  pull_request:
+    paths:
+      - 'native-macos/**'
+      - '.github/workflows/validate-macos.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  compile:
+    runs-on: macos-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - name: Shell syntax check
+        run: >-
+          bash -n
+          native-macos/tools/verify_macos_compile.sh
+          native-macos/tools/build_macos_app.sh
+          native-macos/tools/build_macos_universal_app.sh
+      - name: Show Swift & SDK toolchain
+        run: |
+          swiftc --version
+          xcrun --sdk macosx --show-sdk-path
+      - name: Verify universal Swift compile
+        run: bash native-macos/tools/verify_macos_compile.sh --arch universal
