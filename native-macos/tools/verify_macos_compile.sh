@@ -20,8 +20,8 @@ Options:
   --help, -h     Show this help.
 
 Environment:
-  MIMI_MAC_SDK         macOS SDK directory; defaults to Command Line Tools SDK
-                       (with fallback to xcrun --sdk macosx --show-sdk-path).
+  MIMI_MAC_SDK         macOS SDK directory; defaults to xcrun --sdk macosx --show-sdk-path
+                       (with fallback to Command Line Tools SDK).
   MIMI_MAC_BUILD_JOBS  Compiler parallel jobs; defaults to 4.
 EOF
 }
@@ -70,14 +70,17 @@ fi
 
 if [[ -n "${MIMI_MAC_SDK:-}" ]]; then
   SDK_PATH="$MIMI_MAC_SDK"
-elif [[ -d "$SDK_DEFAULT" ]]; then
-  SDK_PATH="$SDK_DEFAULT"
 else
-  SDK_PATH="$(xcrun --sdk macosx --show-sdk-path 2>/dev/null || true)"
+  XCRUN_SDK="$(xcrun --sdk macosx --show-sdk-path 2>/dev/null || true)"
+  if [[ -n "$XCRUN_SDK" && -d "$XCRUN_SDK" ]]; then
+    SDK_PATH="$XCRUN_SDK"
+  else
+    SDK_PATH="$SDK_DEFAULT"
+  fi
 fi
 
 if [[ -z "$SDK_PATH" || ! -d "$SDK_PATH" ]]; then
-  printf 'macOS SDK not found (checked MIMI_MAC_SDK, %s, and xcrun).\n' "$SDK_DEFAULT" >&2
+  printf 'macOS SDK not found (checked MIMI_MAC_SDK, xcrun, and %s).\n' "$SDK_DEFAULT" >&2
   exit 1
 fi
 
