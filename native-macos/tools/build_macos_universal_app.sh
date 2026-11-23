@@ -6,12 +6,12 @@ NATIVE_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
 PROJECT_ROOT="$(cd "$NATIVE_ROOT/.." && pwd)"
 BUILD_SCRIPT="$SCRIPT_DIR/build_macos_app.sh"
 VERIFY_SCRIPT="$SCRIPT_DIR/verify_macos_resources.py"
-OUTPUT_ROOT_DEFAULT="$(cd "$PROJECT_ROOT/../.." && pwd)/Native-Mac-0.2.4"
+OUTPUT_ROOT_DEFAULT="$(cd "$PROJECT_ROOT/../.." && pwd)/Native-Mac-0.2.6"
 OUTPUT_ROOT="${MIMI_MAC_OUTPUT_DIR:-$OUTPUT_ROOT_DEFAULT}"
 APP_NAME="MIMI Guitar.app"
 EXECUTABLE_NAME="MIMIGuitarMac"
 MINIMUM_MACOS="13.0"
-APP_VERSION="${MIMI_MAC_VERSION:-0.2.4}"
+APP_VERSION="${MIMI_MAC_VERSION:-0.2.6}"
 BUILD_NUMBER="${MIMI_MAC_BUILD_NUMBER:-$(date -u +%Y%m%d%H%M)}"
 MAKE_DMG=1
 ALLOW_REPLACE=0
@@ -31,9 +31,9 @@ Options:
 
 Environment:
   MIMI_MAC_SDK          SDK directory; defaults to the local Command Line Tools SDK.
-  MIMI_MAC_VERSION      CFBundleShortVersionString; defaults to 0.2.4.
+  MIMI_MAC_VERSION      CFBundleShortVersionString; defaults to 0.2.6.
   MIMI_MAC_BUILD_NUMBER CFBundleVersion; defaults to the current UTC minute.
-  MIMI_MAC_OUTPUT_DIR   Output directory; defaults to outputs/Native-Mac-0.2.4.
+  MIMI_MAC_OUTPUT_DIR   Output directory; defaults to outputs/Native-Mac-0.2.6.
 EOF
 }
 
