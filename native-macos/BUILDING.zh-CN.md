@@ -22,7 +22,19 @@
 
 ## 构建
 
-在 macOS 主机、仓库根目录运行 Universal 2 打包脚本。脚本当前默认版本为 0.2.4，默认输出目录为本任务 outputs 下的 `Native-Mac-0.2.4/`；上方 0.2.3 数字属于历史产物：
+### 纯代码双架构编译校验（不依赖离线曲库）
+
+若仓库工作区尚未放入未入库的 `native-macos/Data/catalog.sqlite` 与 `public/storage/`，可运行独立脚本仅校验 `MIMICore` 与 `MIMIGuitarMac` 源码在 `x86_64` 和 `arm64` 下的真实 `swiftc` 编译与链接：
+
+```sh
+bash native-macos/tools/verify_macos_compile.sh --arch universal
+```
+
+支持 `--arch x86_64|arm64|universal`（默认 `universal`），并可通过 `MIMI_MAC_SDK` 与 `MIMI_MAC_BUILD_JOBS`（默认 `4`）覆盖 SDK 与并行数；临时编译产物会自动清理，不污染仓库目录。
+
+### 完整离线安装包构建
+
+在 macOS 主机、仓库根目录运行 Universal 2 打包脚本（需提前就位 `native-macos/Data/catalog.sqlite` 与 `public/storage/`）。脚本当前默认版本为 0.2.6，默认输出目录为工作区上层相对路径 `../../Native-Mac-0.2.6`（可通过 `MIMI_MAC_OUTPUT_DIR` 覆盖）；上方 0.2.4 / 0.2.3 数字属于历史产物：
 
 ```sh
 bash native-macos/tools/build_macos_universal_app.sh

@@ -59,6 +59,11 @@ MIMI-Guitar-Mac/
 - 检查静态曲谱资源完整性：`npm run resources:check`
 
 ### macOS 原生端（仓库根目录执行，依赖 Xcode Command Line Tools / macOS SDK）
+- 纯代码双架构编译校验（不依赖离线 `catalog.sqlite` / `public/storage/`）：
+  ```sh
+  bash native-macos/tools/verify_macos_compile.sh --arch universal
+  ```
+  - 支持 `--arch x86_64|arm64|universal`（默认 `universal`），`MIMI_MAC_BUILD_JOBS` 默认为 `4`。
 - 重新生成主谱渲染 bundle（修改播放器/渲染入口或共享依赖后执行）：
   ```sh
   node native-macos/tools/build_score_rendering_bundle.mjs
