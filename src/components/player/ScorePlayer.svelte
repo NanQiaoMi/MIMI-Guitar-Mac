@@ -405,8 +405,8 @@
     fullscreenSettingsOpen = true;
     void tick().then(() => {
       if (fullscreenComponentDestroyed || !isFullscreen || !fullscreenSettingsOpen) return;
-      const firstButton = fullscreenSettingsPanel?.querySelector<HTMLButtonElement>('button:not(:disabled)');
-      if (canFocusFullscreenTrigger(firstButton ?? null)) {
+      const firstButton = fullscreenSettingsPanel?.querySelector<HTMLButtonElement>('button:not(:disabled)') ?? null;
+      if (canFocusFullscreenTrigger(firstButton)) {
         firstButton.focus({ preventScroll: true });
       }
     });
