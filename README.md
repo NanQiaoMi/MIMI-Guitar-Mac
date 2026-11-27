@@ -31,6 +31,12 @@
 - **专业演练套件**：专为突破指法瓶颈打造的 A-B 循环攻坚、渐进式递增提速训练器（Speed Trainer）以及练习日志留痕。
 - **全离线与本地优先**：原生 macOS 版开箱内置 16,000+ 首曲目数据库，不依赖网络与外部服务即可离线秒开；个人数据支持符合规范的分卷备份与跨设备无损迁移。
 
+<p align="center">
+  <img src="docs/images/main-home.png" alt="MIMI Guitar 主界面与曲库检索" />
+  <br />
+  <sub><b>书卷质感主界面</b> · 16,000+ 精选曲谱检索、快捷指令与热门榜单</sub>
+</p>
+
 ---
 
 ## 🌟 核心功能
@@ -58,26 +64,58 @@
 - **双架构支持**：Universal 2 架构，原生适配 Apple Silicon (M1/M2/M3/M4) 与 Intel 芯片。
 - **极速离线体验**：内置 SQLite 曲库索引与随包媒体，采用专有方案本地解析，脱离网络秒级响应。
 
+### 界面与功能预览
+
+<table>
+  <tr>
+    <td width="50%" align="center">
+      <img src="docs/images/tab-library.png" alt="曲库与多维筛选" />
+      <br />
+      <sub><b>曲库与多维筛选</b> · 按难度、类型、调性、调弦与谱型快速检索</sub>
+    </td>
+    <td width="50%" align="center">
+      <img src="docs/images/score-player.png" alt="交互式乐谱播放器" />
+      <br />
+      <sub><b>交互式乐谱播放器</b> · 六线谱/简谱并排、无级变速、变调夹与矢量 PDF 导出</sub>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" align="center">
+      <img src="docs/images/fretboard-chords.png" alt="动态虚拟指板与和弦系统" />
+      <br />
+      <sub><b>动态虚拟指板</b> · 玫瑰木/黑檀木/枫木/宣纸材质切换，演奏品位实时点亮</sub>
+    </td>
+    <td width="50%" align="center">
+      <img src="docs/images/score-studio.png" alt="制谱工坊 Score Studio" />
+      <br />
+      <sub><b>制谱工坊 (Score Studio)</b> · 24 品实况指板录谱、和弦速选与小节实时校验</sub>
+    </td>
+  </tr>
+</table>
+
 ---
 
 ## 🏗️ 系统架构
 
-```
-┌──────────────────────────────────────────────────────────────┐
-│                       MIMI Guitar 核心                       │
-├──────────────────────────────┬───────────────────────────────┤
-│       🌐 Web 端架构           │       🍎 macOS 原生桌面端      │
-│  • Astro 5 (SSR / 路由)      │  • SwiftUI / AppKit 窗口系统  │
-│  • Svelte 5 (Runes 交互岛屿) │  • WebKit 自定义协议方案桥    │
-│  • Tailwind CSS v4 样式系统  │  • 原生菜单 / 手势 / 打印     │
-│  • Prisma ORM + PostgreSQL   │  • 内置 SQLite 离线曲库       │
-├──────────────────────────────┴───────────────────────────────┤
-│                   🎼 共享乐谱与音频处理中枢                   │
-│  • 定制 AlphaTab 1.8.4 渲染管线 (Canvas / SVG 矢量排版)       │
-│  • Web Audio API + Blob Worker 多音轨采样实时合成             │
-│  • rAF 驱动的平滑连续跟谱控制器与动态虚拟指板                 │
-│  • 本地数据存储与 RFC 标准分卷备份/恢复引擎                   │
-└──────────────────────────────────────────────────────────────┘
+```mermaid
+flowchart TB
+  subgraph Clients["应用终端"]
+    Web["🌐 Web 端\nAstro 5 SSR + Svelte 5 Runes + Tailwind v4"]
+    Mac["🍎 macOS 原生端\nSwiftUI / AppKit + WebKit 自定义协议桥"]
+  end
+  subgraph Core["🎼 共享乐谱与音频处理中枢"]
+    AlphaTab["定制 AlphaTab 1.8.4 渲染管线\nCanvas / SVG 矢量排版"]
+    Audio["Web Audio API + Blob Worker\nSONiVOX 多轨合成 / 变速变调"]
+    Sync["rAF 平滑跟谱控制器 + 动态虚拟指板"]
+  end
+  subgraph Data["💾 数据持久化"]
+    PG["PostgreSQL + Prisma 6 (Web)"]
+    SQLite["内置 SQLite 3 离线曲库 (macOS)"]
+  end
+  Web --> Core
+  Mac --> Core
+  Web --> PG
+  Mac --> SQLite
 ```
 
 ### 技术选型矩阵
