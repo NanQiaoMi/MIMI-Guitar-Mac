@@ -100,12 +100,12 @@
 ```mermaid
 flowchart TB
   subgraph Clients["应用终端"]
-    Web["🌐 Web 端\nAstro 5 SSR + Svelte 5 Runes + Tailwind v4"]
-    Mac["🍎 macOS 原生端\nSwiftUI / AppKit + WebKit 自定义协议桥"]
+    Web["🌐 Web 端<br/>Astro 5 SSR + Svelte 5 Runes + Tailwind v4"]
+    Mac["🍎 macOS 原生端<br/>SwiftUI / AppKit + WebKit 自定义协议桥"]
   end
   subgraph Core["🎼 共享乐谱与音频处理中枢"]
-    AlphaTab["定制 AlphaTab 1.8.4 渲染管线\nCanvas / SVG 矢量排版"]
-    Audio["Web Audio API + Blob Worker\nSONiVOX 多轨合成 / 变速变调"]
+    AlphaTab["定制 AlphaTab 1.8.4 渲染管线<br/>Canvas / SVG 矢量排版"]
+    Audio["Web Audio API + Blob Worker<br/>SONiVOX 多轨合成 / 变速变调"]
     Sync["rAF 平滑跟谱控制器 + 动态虚拟指板"]
   end
   subgraph Data["💾 数据持久化"]
